@@ -6,7 +6,7 @@
 
  Main start file that defines 3 global vars, etc
 
- Does nothing to special, start create new KApplcaiton (incorrectly,
+ Does nothing to special, start create new("KApplcaiton") KApplcaiton (incorrectly,
  btw, should use the code Kalle posted so it can be session managment
  restarted, etc) loads colours then fires off the main widget.  On
  exit it calls a sync so the kConfig get written.  (Is this a bug?)
@@ -45,7 +45,7 @@ global_config *kSircConfig;
 int main( int argc, char ** argv )
 {
   // Start the KDE application
-  kApp = new KApplication( argc, argv, QString("ksirc") );
+  kApp = new("KApplication") KApplication( argc, argv, QString("ksirc") );
 
   kConfig = kApp->getConfig();
 
@@ -74,21 +74,21 @@ int main( int argc, char ** argv )
 
   // Get config, and setup internal structure.
 
-  kSircConfig = new global_config;
+  kSircConfig = new("global_config") global_config;
 
   kConfig->setGroup("Colours");
-  kSircConfig->colour_text = new QColor(kConfig->readColorEntry("text", &black));
-  kSircConfig->colour_info = new QColor(kConfig->readColorEntry("info", &blue));
-  kSircConfig->colour_chan = new QColor(kConfig->readColorEntry("chan", &green));
-  kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
+  kSircConfig->colour_text = new("QColor") QColor(kConfig->readColorEntry("text", &black));
+  kSircConfig->colour_info = new("QColor") QColor(kConfig->readColorEntry("info", &blue));
+  kSircConfig->colour_chan = new("QColor") QColor(kConfig->readColorEntry("chan", &green));
+  kSircConfig->colour_error = new("QColor") QColor(kConfig->readColorEntry("error", &red));
   if(kSircConfig->colour_text == 0x0)
-      kSircConfig->colour_text = new QColor("black");
+      kSircConfig->colour_text = new("QColor") QColor("black");
   if(kSircConfig->colour_info == 0x0)
-      kSircConfig->colour_info = new QColor("blue");
+      kSircConfig->colour_info = new("QColor") QColor("blue");
   if(kSircConfig->colour_chan == 0x0)
-      kSircConfig->colour_chan = new QColor("green");
+      kSircConfig->colour_chan = new("QColor") QColor("green");
   if(kSircConfig->colour_error == 0x0)
-      kSircConfig->colour_error = new QColor("red");
+      kSircConfig->colour_error = new("QColor") QColor("red");
   
 
   kSircConfig->colour_background = 0;
@@ -127,7 +127,7 @@ int main( int argc, char ** argv )
   putenv(ld_path.data());
 
   kConfig->setGroup("GlobalOptions");
-  kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
+  kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new("QFont") QFont("fixed"));
   kConfig->setGroup("General");
   kSircConfig->DisplayMode = kConfig->readNumEntry("DisplayMode", 0);
 
@@ -141,7 +141,7 @@ int main( int argc, char ** argv )
   if(kApp->isRestored()){
     int n = 1;
     while (servercontroller::canBeRestored(n)) {
-      servercontroller *sc = new servercontroller(0, "servercontroller");
+      servercontroller *sc = new("servercontroller") servercontroller(0, "servercontroller");
       CHECK_PTR(sc);
       sc->restore(n);
       kApp->setMainWidget(sc);
@@ -149,7 +149,7 @@ int main( int argc, char ** argv )
     }
   }
   else{
-    servercontroller *control = new servercontroller(0, "servercontroller");
+    servercontroller *control = new("servercontroller") servercontroller(0, "servercontroller");
     control->show();
     kApp->setMainWidget(control);
   }

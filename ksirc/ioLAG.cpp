@@ -18,7 +18,8 @@ KSircIOLAG::KSircIOLAG(KSircProcess *_proc)
   proc = _proc;
   setBroadcast(FALSE);
   startTimer(30000);
-  //  (proc->getWindowList())["!all"]->control_message(SET_LAG, "99");
+//  startTimer(5000);
+//(proc->getWindowList())["!all"]->control_message(SET_LAG, "99");
 }
 
 
@@ -29,6 +30,7 @@ KSircIOLAG::~KSircIOLAG()
 
 void KSircIOLAG::sirc_receive(QString str)
 {
+
   if(str.contains("*L*")){
     int s1, s2;
     s1 = str.find("*L* ") + 4;
@@ -42,6 +44,7 @@ void KSircIOLAG::sirc_receive(QString str)
     //    cerr << "Setting lag to: " << lag << endl;
     (proc->getWindowList())["!all"]->control_message(SET_LAG, lag);
   }
+
 }
 
 void KSircIOLAG::control_message(int, QString)

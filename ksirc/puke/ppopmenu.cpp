@@ -2,14 +2,14 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PPopupMenu *pm = new PPopupMenu(ca.parent);
+  PPopupMenu *pm = new("PPopupMenu") PPopupMenu(ca.parent);
   QPopupMenu *qpm;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QPopupMenu") == TRUE)
     qpm= (QPopupMenu *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    qpm = new QPopupMenu((QWidget *) ca.parent->widget());
+    qpm = new("QPopupMenu") QPopupMenu((QWidget *) ca.parent->widget());
   else
-    qpm = new QPopupMenu();
+    qpm = new("QPopupMenu") QPopupMenu();
   pm->setWidget(qpm);
   pm->setWidgetId(ca.pwI);
   return pm;
@@ -22,7 +22,7 @@ PPopupMenu::PPopupMenu(PObject *parent)
   //  debug("PLineEdit PLineEdit called");
   menu = 0;
   setWidget(menu);
-  pmd = new PMenuData(this);
+  pmd = new("PMenuData") PMenuData(this);
 }
 
 PPopupMenu::~PPopupMenu()

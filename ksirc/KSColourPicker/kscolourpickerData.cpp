@@ -23,7 +23,7 @@ kscolourpickerData::kscolourpickerData
 	:
 	Inherited( parent, name, TRUE, 0 )
 {
-	PB_Pick = new QPushButton( this, "PushButton_33" );
+	PB_Pick = new("QPushButton") QPushButton( this, "PushButton_33" );
 	PB_Pick->setGeometry( 120, 50, 100, 25 );
 	PB_Pick->setMinimumSize( 10, 10 );
 	PB_Pick->setMaximumSize( 32767, 32767 );
@@ -31,7 +31,7 @@ kscolourpickerData::kscolourpickerData
 	PB_Pick->setAutoRepeat( FALSE );
 	PB_Pick->setAutoResize( FALSE );
 
-	PB_Cancel = new QPushButton( this, "PushButton_34" );
+	PB_Cancel = new("QPushButton") QPushButton( this, "PushButton_34" );
 	PB_Cancel->setGeometry( 235, 50, 100, 25 );
 	PB_Cancel->setMinimumSize( 10, 10 );
 	PB_Cancel->setMaximumSize( 32767, 32767 );
@@ -39,7 +39,7 @@ kscolourpickerData::kscolourpickerData
 	PB_Cancel->setAutoRepeat( FALSE );
 	PB_Cancel->setAutoResize( FALSE );
 
-	SLE_SampleText = new QLineEdit( this, "LineEdit_1" );
+	SLE_SampleText = new("QLineEdit") QLineEdit( this, "LineEdit_1" );
 	SLE_SampleText->setGeometry( 15, 50, 95, 25 );
 	SLE_SampleText->setMinimumSize( 10, 10 );
 	SLE_SampleText->setMaximumSize( 32767, 32767 );

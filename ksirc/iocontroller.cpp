@@ -86,6 +86,8 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
   proc = _proc;              // save proc
   ksircproc = _ksircproc;    // save ksircproce
 
+  send_buf = 0x0;
+
   // Connect the data arrived
   // to sirc receive for adding
   // the main text window
@@ -130,7 +132,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 
     Variables: 
        _buffer original buffer, holds just, icky thing, NOT NULL terminated!
-       buf: new clean just the right size buf that is null terminated.
+       buf: new("clean") clean just the right size buf that is null terminated.
        pos, pos2, pos3 used to cut the string up into peices, etc.
        name: destination window.
        line: line to ship out.
@@ -218,12 +220,19 @@ void KSircIOController::stderr_read(KProcess *p, char *b, int l)
   stdout_read(p, b, l);
 }
 
-void KSircIOController::stdin_write(QString &s)
+void KSircIOController::stdin_write(QString s)
 {
 
-  buffer += s.data();
+  buffer += s;
   if(proc_CTS == TRUE){
-    if(proc->writeStdin(buffer.data(), buffer.length()) == FALSE){
+    int len = buffer.length();
+    if(send_buf != 0x0){
+      warning("KProcess barfed in all clear signal again");
+      delete[] send_buf;
+    }
+    send_buf = new("char[send_buf]") char[len];
+    strncpy(send_buf, buffer, len);
+    if(proc->writeStdin(send_buf, len) == FALSE){
       //      cerr << "Failed to write but CTS HIGH! Setting low!: " << s << endl;
       proc_CTS = FALSE;
       killTimers();
@@ -266,6 +275,8 @@ void KSircIOController::timerEvent ( QTimerEvent * )
 void KSircIOController::procCTS ( KProcess *)
 {
   proc_CTS = TRUE;
+  delete[] send_buf;
+  send_buf = 0x0;
   if(buffer.isEmpty() == FALSE){
     QString str = "";
     stdin_write(str);

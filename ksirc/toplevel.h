@@ -118,7 +118,7 @@ signals:
     * output a new line.  The line is correctly
     * linefeed terminated, etc.
     */
-  void outputLine(QString&);
+  void outputLine(QString);
   /**
     * open a new toplevel widget with for the
     * channel/user QString.
@@ -313,8 +313,8 @@ private:
   // QPopupMenu's used for the menubar
   QPopupMenu *file, *edit;
 
-  ircListItem *parse_input(QString &string);
-  void sirc_write(QString &str);
+  ircListItem *parse_input(QString string);
+  void sirc_write(QString str);
 
   QPopupMenu *user_controls;
   static QList<UserControlMenu> *user_menu;

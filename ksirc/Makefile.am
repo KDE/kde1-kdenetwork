@@ -16,9 +16,9 @@
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
-DEFS = @DEFS@ -I. -I$(srcdir) -I..
+DEFS = @DEFS@ -I. -I$(srcdir) -I.. -include $(srcdir)/kplunger/kplunger.h
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker KSOpenkSirc pws-0.5 puke img doc
+SUBDIRS = kplunger KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker KSOpenkSirc pws-0.5 puke img doc
 
 ####### This part is very ksirc specific
 # you can add here more. This one gets installed 
@@ -69,7 +69,7 @@ objFinder.cpp \
 mobjFinder.cpp \
 KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp \
 displayMgr.cpp displayMgrMDI.cpp displayMgrSDI.cpp \
-welcomeWin.cpp mwelcomeWin.cpp welcomeWinData.cpp mwelcomeWinData.cpp 
+welcomeWin.cpp mwelcomeWin.cpp welcomeWinData.cpp mwelcomeWinData.cpp
 
 ksircstaticSOURCES = $(ksirc_SOURCES)
 ksircstaticOBJECTS = $(ksirc_OBJECTS)
@@ -81,9 +81,9 @@ ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la $(LIB_KFILE) $(LIBDL) 
+ksirc_LDADD   = ./kplunger/libkplunger.a ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la $(LIB_KFILE) $(LIBDL) 
 
-ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a KSOpenkSirc/libksopenksirc.a puke/.libs/libpuke.a
+ksircstaticLDADD =  ./kplunger/libkplunger.a ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a KSOpenkSirc/libksopenksirc.a puke/.libs/libpuke.a
 
 #if COMPILE_KSIRC_STATIC
 STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lXext $(LIB_X11) $(LIBDL) -lm -lc

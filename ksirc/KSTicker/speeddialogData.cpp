@@ -25,7 +25,7 @@ speeddialogData::speeddialogData
 	:
 	Inherited( parent, name, 0 )
 {
-	sliderTick = new QSlider( this, "Slider_1" );
+	sliderTick = new("QSlider") QSlider( this, "Slider_1" );
 	sliderTick->setGeometry( 90, 10, 100, 20 );
 	sliderTick->setMinimumSize( 10, 10 );
 	sliderTick->setMaximumSize( 32767, 32767 );
@@ -38,7 +38,7 @@ speeddialogData::speeddialogData
 	sliderTick->setTickmarks( QSlider::NoMarks );
 	sliderTick->setTickInterval( 0 );
 
-	sliderStep = new QSlider( this, "Slider_2" );
+	sliderStep = new("QSlider") QSlider( this, "Slider_2" );
 	sliderStep->setGeometry( 90, 45, 100, 20 );
 	sliderStep->setMinimumSize( 10, 10 );
 	sliderStep->setMaximumSize( 32767, 32767 );
@@ -51,7 +51,7 @@ speeddialogData::speeddialogData
 	sliderStep->setTickmarks( QSlider::NoMarks );
 	sliderStep->setTickInterval( 0 );
 
-	lcdTick = new QLCDNumber( this, "LCDNumber_1" );
+	lcdTick = new("QLCDNumber") QLCDNumber( this, "LCDNumber_1" );
 	lcdTick->setGeometry( 200, 5, 60, 30 );
 	lcdTick->setMinimumSize( 10, 10 );
 	lcdTick->setMaximumSize( 32767, 32767 );
@@ -61,7 +61,7 @@ speeddialogData::speeddialogData
 	lcdTick->setMode( QLCDNumber::DEC );
 	lcdTick->setSegmentStyle( QLCDNumber::Outline );
 
-	lcdStep = new QLCDNumber( this, "LCDNumber_2" );
+	lcdStep = new("QLCDNumber") QLCDNumber( this, "LCDNumber_2" );
 	lcdStep->setGeometry( 200, 40, 60, 30 );
 	lcdStep->setMinimumSize( 10, 10 );
 	lcdStep->setMaximumSize( 32767, 32767 );
@@ -72,7 +72,7 @@ speeddialogData::speeddialogData
 	lcdStep->setSegmentStyle( QLCDNumber::Outline );
 
 	QLabel* dlgedit_Label_1;
-	dlgedit_Label_1 = new QLabel( this, "Label_1" );
+	dlgedit_Label_1 = new("QLabel") QLabel( this, "Label_1" );
 	dlgedit_Label_1->setGeometry( 10, 5, 80, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
@@ -81,7 +81,7 @@ speeddialogData::speeddialogData
 	dlgedit_Label_1->setMargin( -1 );
 
 	QLabel* dlgedit_Label_2;
-	dlgedit_Label_2 = new QLabel( this, "Label_2" );
+	dlgedit_Label_2 = new("QLabel") QLabel( this, "Label_2" );
 	dlgedit_Label_2->setGeometry( 10, 40, 80, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
@@ -90,7 +90,7 @@ speeddialogData::speeddialogData
 	dlgedit_Label_2->setMargin( -1 );
 
 	QPushButton* dlgedit_PushButton_2;
-	dlgedit_PushButton_2 = new QPushButton( this, "PushButton_2" );
+	dlgedit_PushButton_2 = new("QPushButton") QPushButton( this, "PushButton_2" );
 	dlgedit_PushButton_2->setGeometry( 140, 80, 120, 30 );
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );

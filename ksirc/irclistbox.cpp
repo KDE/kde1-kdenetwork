@@ -19,7 +19,7 @@ KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QLis
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
   thDirty = TRUE;
-  vertScroll = new QScrollBar(this, "VertScrollBar");
+  vertScroll = new("QScrollBar") QScrollBar(this, "VertScrollBar");
   vertScroll->setOrientation(QScrollBar::Vertical);
   vertScroll->resize(16, this->height());
   vertScroll->move(this->width() - vertScroll->width(), 0);

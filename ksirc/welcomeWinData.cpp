@@ -23,12 +23,12 @@ welcomeWinData::welcomeWinData
 	:
 	Inherited( parent, name, TRUE, 643072 )
 {
-	DisplayDialog = new KSircListBox( this, "Dispay dialog" );
+	DisplayDialog = new("KSircListBox") KSircListBox( this, "Dispay dialog" );
 	DisplayDialog->setGeometry( 10, 10, 580, 490 );
 	DisplayDialog->setMinimumSize( 10, 10 );
 	DisplayDialog->setMaximumSize( 32767, 32767 );
 
-	ShowAgain = new QCheckBox( this, "Show again checkbox" );
+	ShowAgain = new("QCheckBox") QCheckBox( this, "Show again checkbox" );
 	ShowAgain->setGeometry( 10, 510, 100, 30 );
 	ShowAgain->setMinimumSize( 10, 10 );
 	ShowAgain->setMaximumSize( 32767, 32767 );
@@ -36,7 +36,7 @@ welcomeWinData::welcomeWinData
 	ShowAgain->setAutoRepeat( FALSE );
 	ShowAgain->setAutoResize( FALSE );
 
-	But_dismiss = new QPushButton( this, "Dismiss Button" );
+	But_dismiss = new("QPushButton") QPushButton( this, "Dismiss Button" );
 	But_dismiss->setGeometry( 480, 510, 110, 30 );
 	But_dismiss->setMinimumSize( 10, 10 );
 	But_dismiss->setMaximumSize( 32767, 32767 );

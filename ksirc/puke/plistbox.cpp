@@ -2,14 +2,14 @@
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PListBox *plb = new PListBox(ca.parent);
+  PListBox *plb = new("PListBox") PListBox(ca.parent);
   QListBox *lb;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QListBox") == TRUE)
     lb = (QListBox *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    lb = new QListBox((QWidget *) ca.parent->widget());
+    lb = new("QListBox") QListBox((QWidget *) ca.parent->widget());
   else
-    lb = new QListBox();
+    lb = new("QListBox") QListBox();
   plb->setWidget(lb);
   plb->setWidgetId(ca.pwI);
   return plb;

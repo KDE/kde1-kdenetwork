@@ -30,7 +30,7 @@ KTypeLayout::KTypeLayout(TLForm *_parent)
     path=parent->ID+".";
     windowStack.push(parent);
     lastobj=parent;
-    rows.append(new QList <TLObj>);
+    rows.append(new("QList") QList <TLObj>);
 }
 
 KTypeLayout::~KTypeLayout()
@@ -106,7 +106,7 @@ void KTypeLayout::end()
             maxw=lens[il];
     }
     
-    grid=new QGridLayout (widget,rows.count()+slacky,
+    grid=new("QGridLayout") QGridLayout (widget,rows.count()+slacky,
                           maxw,outBorder,inBorder);
     
     bool occupied[maxw][rows.count()+slacky];
@@ -153,7 +153,7 @@ void KTypeLayout::end()
 TLObj *KTypeLayout::addWidget(const char *ID,QWidget *w)
 {
     TLObj *o;
-    o=new TLObj(ID);
+    o=new("TLObj") TLObj(ID);
     o->widget=w;
     o->path=path;
     windowStack.top()->layout->rows.last()->append(o);
@@ -167,12 +167,12 @@ TLForm *KTypeLayout::addGroup(const char *ID,const char *title, bool frame)
     QWidget *g;
     
     if (frame)
-        g=new QGroupBox(title,windowStack.top()->widget);
+        g=new("QGroupBox") QGroupBox(title,windowStack.top()->widget);
     else
-        g=new QWidget(windowStack.top()->widget);
+        g=new("QWidget") QWidget(windowStack.top()->widget);
 
     g->show();
-    TLForm *o=new TLForm(ID,"",g);
+    TLForm *o=new("TLForm") TLForm(ID,"",g);
     if (frame)
     {
         int h=g->fontMetrics().height();
@@ -191,7 +191,7 @@ TLForm *KTypeLayout::addGroup(const char *ID,const char *title, bool frame)
 TLObj *KTypeLayout::addLabel(const char *ID,const char *text)
 {
     QWidget *g;
-    QLabel *l=new QLabel(text,windowStack.top()->widget);
+    QLabel *l=new("QLabel") QLabel(text,windowStack.top()->widget);
     g=l;
 
     g->show();
@@ -203,7 +203,7 @@ TLObj *KTypeLayout::addLabel(const char *ID,const char *text)
 TLObj *KTypeLayout::addButton(const char *ID,const char *text)
 {
     QWidget *g;
-    QPushButton *l=new QPushButton(text,windowStack.top()->widget);
+    QPushButton *l=new("QPushButton") QPushButton(text,windowStack.top()->widget);
     g=l;
 
     g->show();
@@ -226,7 +226,7 @@ TLObj *KTypeLayout::addColorButton(const char *ID,const QColor *c)
 
     KColorButton *l;
     QWidget *g;
-    l=new KColorButton(windowStack.top()->widget);
+    l=new("KColorButton") KColorButton(windowStack.top()->widget);
     g=l;
 
     g->show();
@@ -241,7 +241,7 @@ TLObj *KTypeLayout::addColorButton(const char *ID,const QColor *c)
 TLObj *KTypeLayout::addButton(const char *ID,const QPixmap &p)
 {
     QWidget *g;
-    QPushButton *l=new QPushButton("",windowStack.top()->widget);
+    QPushButton *l=new("QPushButton") QPushButton("",windowStack.top()->widget);
     l->setPixmap(p);
     g=l;
 
@@ -260,7 +260,7 @@ TLObj *KTypeLayout::addButton(const char *ID,const QPixmap &p)
 TLObj *KTypeLayout::addCheckBox(const char *ID,const char *text,bool value)
 {
     QWidget *g;
-    QCheckBox *l=new QCheckBox(text,windowStack.top()->widget);
+    QCheckBox *l=new("QCheckBox") QCheckBox(text,windowStack.top()->widget);
     l->setChecked(value);
     g=l;
 
@@ -276,12 +276,12 @@ TLObj *KTypeLayout::addRadioButton(const char *ID,const char *GroupID,
                                    const char *text,bool value,int id=-1)
 {
     QWidget *g;
-    QRadioButton *l=new QRadioButton(text,windowStack.top()->widget);
+    QRadioButton *l=new("QRadioButton") QRadioButton(text,windowStack.top()->widget);
 
     QButtonGroup *bg=bgroupDict.find(GroupID);
     if (!bg)
     {
-        bg=new QButtonGroup(windowStack.top()->widget,GroupID);
+        bg=new("QButtonGroup") QButtonGroup(windowStack.top()->widget,GroupID);
         bg->hide();
         bgroupDict.insert(GroupID,bg);
     }
@@ -302,10 +302,10 @@ TLBook *KTypeLayout::addBook(const char *ID)
 {
     QWidget *g;
     
-    g=new KTabCtl(windowStack.top()->widget,ID);
+    g=new("KTabCtl") KTabCtl(windowStack.top()->widget,ID);
 
     g->show();
-    TLBook *o=new TLBook(ID,g);
+    TLBook *o=new("TLBook") TLBook(ID,g);
     o->vslack=g->fontMetrics().height()+8;
     o->path=path;
 
@@ -321,12 +321,12 @@ TLForm *KTypeLayout::addPage(const char *ID,const char *title)
 {
     QWidget *g;
     
-    g=new QFrame(windowStack.top()->widget);
+    g=new("QFrame") QFrame(windowStack.top()->widget);
     ((KTabCtl *)windowStack.top()->widget)->addTab(g,title);
 
     g->show();
 
-    TLForm *o=new TLForm(ID,"",g);
+    TLForm *o=new("TLForm") TLForm(ID,"",g);
     o->path=path;
     windowStack.top()->layout->rows.last()->append(o);
     path=path+ID+".";
@@ -338,7 +338,7 @@ TLForm *KTypeLayout::addPage(const char *ID,const char *title)
 TLObj *KTypeLayout::addLineEdit(const char *ID,const char *text,int maxlen)
 {
     QWidget *g;
-    QLineEdit *l=new QLineEdit(windowStack.top()->widget);
+    QLineEdit *l=new("QLineEdit") QLineEdit(windowStack.top()->widget);
     g=l;
 
     if (maxlen>=0)
@@ -356,7 +356,7 @@ TLObj *KTypeLayout::addLineEdit(const char *ID,const char *text,int maxlen)
 TLObj *KTypeLayout::addMultiLineEdit(const char *ID,const char *text,int numrows)
 {
     QWidget *g;
-    QMultiLineEdit *l=new QMultiLineEdit(windowStack.top()->widget);
+    QMultiLineEdit *l=new("QMultiLineEdit") QMultiLineEdit(windowStack.top()->widget);
     g=l;
 
     if (numrows>=0)
@@ -373,7 +373,7 @@ TLObj *KTypeLayout::addMultiLineEdit(const char *ID,const char *text,int numrows
 TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
 {
     QWidget *g;
-    KIntLineEdit *l=new KIntLineEdit(windowStack.top()->widget);
+    KIntLineEdit *l=new("KIntLineEdit") KIntLineEdit(windowStack.top()->widget);
     g=l;
 
     if (maxlen>=0)
@@ -391,7 +391,7 @@ TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
 TLObj *KTypeLayout::addListBox (const char *ID,QStrList *contents,int minRows)
 {
     QWidget *g;
-    QListBox *l=new QListBox(windowStack.top()->widget);
+    QListBox *l=new("QListBox") QListBox(windowStack.top()->widget);
     g=l;
 
     if (contents)
@@ -404,7 +404,7 @@ TLObj *KTypeLayout::addListBox (const char *ID,QStrList *contents,int minRows)
 TLObj *KTypeLayout::addComboBox (const char *ID,QStrList *contents,bool rw)
 {
     QWidget *g;
-    QComboBox *l=new QComboBox(rw,windowStack.top()->widget);
+    QComboBox *l=new("QComboBox") QComboBox(rw,windowStack.top()->widget);
     g=l;
 
     int w=0;
@@ -430,7 +430,7 @@ TLObj *KTypeLayout::addComboBox (const char *ID,QStrList *contents,bool rw)
 void KTypeLayout::newLine()
 {
     KTypeLayout *l=windowStack.top()->layout;
-    l->rows.append(new QList <TLObj>);
+    l->rows.append(new("QList") QList <TLObj>);
 }
 
 void KTypeLayout::skip()
@@ -504,7 +504,7 @@ KBookLayout::KBookLayout(TLForm *_parent)
     path=parent->ID+".";
     windowStack.push(parent);
     lastobj=parent;
-    rows.append(new QList <TLObj>);
+    rows.append(new("QList") QList <TLObj>);
 }
 KBookLayout::~KBookLayout()
 {

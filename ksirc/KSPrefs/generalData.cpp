@@ -25,7 +25,7 @@ generalData::generalData
 	Inherited( parent, name, 0 )
 {
 	QButtonGroup* dlgedit_ButtonGroup_4;
-	dlgedit_ButtonGroup_4 = new QButtonGroup( this, "ButtonGroup_4" );
+	dlgedit_ButtonGroup_4 = new("QButtonGroup") QButtonGroup( this, "ButtonGroup_4" );
 	dlgedit_ButtonGroup_4->setGeometry( 10, 10, 430, 140 );
 	dlgedit_ButtonGroup_4->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_4->setMaximumSize( 32767, 32767 );
@@ -34,7 +34,7 @@ generalData::generalData
 	dlgedit_ButtonGroup_4->setAlignment( 1 );
 
 	QButtonGroup* dlgedit_ButtonGroup_3;
-	dlgedit_ButtonGroup_3 = new QButtonGroup( this, "ButtonGroup_3" );
+	dlgedit_ButtonGroup_3 = new("QButtonGroup") QButtonGroup( this, "ButtonGroup_3" );
 	dlgedit_ButtonGroup_3->setGeometry( 10, 160, 430, 120 );
 	dlgedit_ButtonGroup_3->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_3->setMaximumSize( 32767, 32767 );
@@ -42,7 +42,7 @@ generalData::generalData
 	dlgedit_ButtonGroup_3->setTitle( "" );
 	dlgedit_ButtonGroup_3->setAlignment( 1 );
 
-	CB_AutoCreateWin = new QCheckBox( this, "CheckBox_1" );
+	CB_AutoCreateWin = new("QCheckBox") QCheckBox( this, "CheckBox_1" );
 	CB_AutoCreateWin->setGeometry( 20, 20, 170, 30 );
 	CB_AutoCreateWin->setMinimumSize( 10, 10 );
 	CB_AutoCreateWin->setMaximumSize( 32767, 32767 );
@@ -51,7 +51,7 @@ generalData::generalData
 	CB_AutoCreateWin->setAutoResize( FALSE );
 	CB_AutoCreateWin->setChecked( TRUE );
 
-	CB_BeepNotify = new QCheckBox( this, "CheckBox_3" );
+	CB_BeepNotify = new("QCheckBox") QCheckBox( this, "CheckBox_3" );
 	CB_BeepNotify->setGeometry( 240, 20, 170, 30 );
 	CB_BeepNotify->setMinimumSize( 10, 10 );
 	CB_BeepNotify->setMaximumSize( 32767, 32767 );
@@ -60,7 +60,7 @@ generalData::generalData
 	CB_BeepNotify->setAutoResize( FALSE );
 	CB_BeepNotify->setChecked( TRUE );
 
-	CB_NickCompletion = new QCheckBox( this, "CheckBox_4" );
+	CB_NickCompletion = new("QCheckBox") QCheckBox( this, "CheckBox_4" );
 	CB_NickCompletion->setGeometry( 20, 50, 170, 30 );
 	CB_NickCompletion->setMinimumSize( 10, 10 );
 	CB_NickCompletion->setMaximumSize( 32767, 32767 );
@@ -69,7 +69,7 @@ generalData::generalData
 	CB_NickCompletion->setAutoResize( FALSE );
 	CB_NickCompletion->setChecked( TRUE );
 
-	CB_ColourPicker = new QCheckBox( this, "CheckBox_5" );
+	CB_ColourPicker = new("QCheckBox") QCheckBox( this, "CheckBox_5" );
 	CB_ColourPicker->setGeometry( 240, 50, 170, 30 );
 	CB_ColourPicker->setMinimumSize( 10, 10 );
 	CB_ColourPicker->setMaximumSize( 32767, 32767 );
@@ -78,7 +78,7 @@ generalData::generalData
 	CB_ColourPicker->setAutoResize( FALSE );
 	CB_ColourPicker->setChecked( TRUE );
 
-	CB_AutoRejoin = new QCheckBox( this, "CheckBox_6" );
+	CB_AutoRejoin = new("QCheckBox") QCheckBox( this, "CheckBox_6" );
 	CB_AutoRejoin->setGeometry( 240, 80, 170, 30 );
 	CB_AutoRejoin->setMinimumSize( 10, 10 );
 	CB_AutoRejoin->setMaximumSize( 32767, 32767 );
@@ -87,7 +87,7 @@ generalData::generalData
 	CB_AutoRejoin->setAutoResize( FALSE );
 	CB_AutoRejoin->setChecked( TRUE );
 
-	CB_BackgroundPix = new QCheckBox( this, "CheckBox_8" );
+	CB_BackgroundPix = new("QCheckBox") QCheckBox( this, "CheckBox_8" );
 	CB_BackgroundPix->setGeometry( 20, 180, 190, 30 );
 	CB_BackgroundPix->setMinimumSize( 10, 10 );
 	CB_BackgroundPix->setMaximumSize( 32767, 32767 );
@@ -95,7 +95,7 @@ generalData::generalData
 	CB_BackgroundPix->setAutoRepeat( FALSE );
 	CB_BackgroundPix->setAutoResize( FALSE );
 
-	SLE_BackgroundFile = new QLineEdit( this, "LineEdit_6" );
+	SLE_BackgroundFile = new("QLineEdit") QLineEdit( this, "LineEdit_6" );
 	SLE_BackgroundFile->setGeometry( 20, 220, 260, 30 );
 	SLE_BackgroundFile->setMinimumSize( 10, 10 );
 	SLE_BackgroundFile->setMaximumSize( 32767, 32767 );
@@ -104,7 +104,7 @@ generalData::generalData
 	SLE_BackgroundFile->setEchoMode( QLineEdit::Normal );
 	SLE_BackgroundFile->setFrame( TRUE );
 
-	PB_BackgroundBrowse = new QPushButton( this, "PushButton_7" );
+	PB_BackgroundBrowse = new("QPushButton") QPushButton( this, "PushButton_7" );
 	PB_BackgroundBrowse->setGeometry( 290, 220, 90, 30 );
 	PB_BackgroundBrowse->setMinimumSize( 10, 10 );
 	PB_BackgroundBrowse->setMaximumSize( 32767, 32767 );
@@ -112,7 +112,7 @@ generalData::generalData
 	PB_BackgroundBrowse->setAutoRepeat( FALSE );
 	PB_BackgroundBrowse->setAutoResize( FALSE );
 
-	CB_DisplayTopic = new QCheckBox( this, "CheckBox_9" );
+	CB_DisplayTopic = new("QCheckBox") QCheckBox( this, "CheckBox_9" );
 	CB_DisplayTopic->setGeometry( 20, 80, 210, 30 );
 	CB_DisplayTopic->setMinimumSize( 10, 10 );
 	CB_DisplayTopic->setMaximumSize( 32767, 32767 );
@@ -121,7 +121,7 @@ generalData::generalData
 	CB_DisplayTopic->setAutoResize( FALSE );
 	CB_DisplayTopic->setChecked( TRUE );
 
-	CB_MDIMode = new QCheckBox( this, "CheckBox_10" );
+	CB_MDIMode = new("QCheckBox") QCheckBox( this, "CheckBox_10" );
 	CB_MDIMode->setGeometry( 20, 110, 410, 30 );
 	CB_MDIMode->setMinimumSize( 10, 10 );
 	CB_MDIMode->setMaximumSize( 32767, 32767 );

@@ -138,7 +138,7 @@ void KSircIODCC::sirc_receive(QString str)
     }
     QString nick = str.mid(pos1, pos2 - pos1);
     // Setup info structure before xfer list in case they press cancel.
-    DCCInfo *stat = new DCCInfo;
+    DCCInfo *stat = new("DCCInfo") DCCInfo;
     stat->LastSize = 0;
     stat->PercentSize = fileSize;
     stat->nick = nick;
@@ -146,7 +146,7 @@ void KSircIODCC::sirc_receive(QString str)
     stat->inProgress = FALSE;
     DCCStatus.insert(filename, stat);
     // Setup and make xfer dialog.
-    DlgList.insert(filename, new KSProgress());
+    DlgList.insert(filename, new("KSProgress") KSProgress());
     DlgList[filename]->setID(filename);
     DlgList[filename]->setRange(0,100);
     DlgList[filename]->setTopText("DCC Receving: " + filename);
@@ -194,7 +194,7 @@ void KSircIODCC::sirc_receive(QString str)
       fileSize = 1;
     }
     // Create status structure
-    DCCInfo *stat = new DCCInfo;
+    DCCInfo *stat = new("DCCInfo") DCCInfo;
     stat->LastSize = 0;
     stat->PercentSize = fileSize;
     stat->nick = nick;
@@ -202,7 +202,7 @@ void KSircIODCC::sirc_receive(QString str)
     stat->inProgress = FALSE;
     DCCStatus.insert(filename, stat);
     // Create transfer status window
-    DlgList.insert(filename, new KSProgress());
+    DlgList.insert(filename, new("KSProgress") KSProgress());
     DlgList[filename]->setID(filename);
     DlgList[filename]->setRange(0,100);
     DlgList[filename]->setTopText("DCC Pending Send: " + filename);
@@ -282,10 +282,10 @@ filterRuleList *KSircIODCC::defaultRules()
 {
 
 //  filterRule *fr;
-  filterRuleList *frl = new  filterRuleList();
+  filterRuleList *frl = new("filterRuleList") filterRuleList();
   frl->setAutoDelete(TRUE);
   /*
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Capture DCC IO Messages";
   fr->search = "^\\*D\\*";
   fr->from = "^";

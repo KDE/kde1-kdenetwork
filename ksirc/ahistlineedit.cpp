@@ -150,7 +150,7 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
 
 void aHistLineEdit::ColourPickerPopUp()
 {
-  kscolourpicker *kscp = new kscolourpicker();
+  kscolourpicker *kscp = new("kscolourpicker") kscolourpicker();
   connect(kscp, SIGNAL(picked( QString )), 
           this, SLOT(slot_insert( QString )));
   kscp->show();

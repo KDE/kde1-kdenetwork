@@ -63,7 +63,7 @@ DefaultFilters::DefaultFilters
 
   if(kSircConfig->colour_background == 0){
      kConfig->setGroup("Colours");
-     kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+     kSircConfig->colour_background = new("QColor") QColor(kConfig->readColorEntry("Background", new("QColor") QColor(colorGroup().mid())));
   }
 
   SLE_SampleColourNick->setFocusPolicy(QWidget::NoFocus);

@@ -41,7 +41,7 @@ KSircColour::KSircColour
 	ColourError->setColor( *kSircConfig->colour_error );
 	if(kSircConfig->colour_background == 0){
 	  kConfig->setGroup("Colours");
-	  kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+	  kSircConfig->colour_background = new("QColor") QColor(kConfig->readColorEntry("Background", new("QColor") QColor(colorGroup().mid())));
 	}
 	ColourBackground->setColor( *kSircConfig->colour_background );
 

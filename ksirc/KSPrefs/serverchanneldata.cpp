@@ -26,7 +26,7 @@ serverchanneldata::serverchanneldata
 	Inherited( parent, name, 0 )
 {
 	QButtonGroup* dlgedit_ButtonGroup_2;
-	dlgedit_ButtonGroup_2 = new QButtonGroup( this, "ButtonGroup_2" );
+	dlgedit_ButtonGroup_2 = new("QButtonGroup") QButtonGroup( this, "ButtonGroup_2" );
 	dlgedit_ButtonGroup_2->setGeometry( 10, 150, 380, 150 );
 	dlgedit_ButtonGroup_2->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_2->setMaximumSize( 32767, 32767 );
@@ -35,7 +35,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_ButtonGroup_2->setAlignment( 1 );
 
 	QButtonGroup* dlgedit_ButtonGroup_1;
-	dlgedit_ButtonGroup_1 = new QButtonGroup( this, "ButtonGroup_1" );
+	dlgedit_ButtonGroup_1 = new("QButtonGroup") QButtonGroup( this, "ButtonGroup_1" );
 	dlgedit_ButtonGroup_1->setGeometry( 10, 0, 380, 150 );
 	dlgedit_ButtonGroup_1->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_1->setMaximumSize( 32767, 32767 );
@@ -43,7 +43,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_ButtonGroup_1->setTitle( "Servers" );
 	dlgedit_ButtonGroup_1->setAlignment( 1 );
 
-	LB_Servers = new QListBox( this, "ListBox_3" );
+	LB_Servers = new("QListBox") QListBox( this, "ListBox_3" );
 	LB_Servers->setGeometry( 20, 20, 200, 120 );
 	LB_Servers->setMinimumSize( 10, 10 );
 	LB_Servers->setMaximumSize( 32767, 32767 );
@@ -51,7 +51,7 @@ serverchanneldata::serverchanneldata
 	LB_Servers->setLineWidth( 2 );
 	LB_Servers->setMultiSelection( FALSE );
 
-	LB_Channels = new QListBox( this, "ListBox_4" );
+	LB_Channels = new("QListBox") QListBox( this, "ListBox_4" );
 	LB_Channels->setGeometry( 20, 170, 200, 120 );
 	LB_Channels->setMinimumSize( 10, 10 );
 	LB_Channels->setMaximumSize( 32767, 32767 );
@@ -60,7 +60,7 @@ serverchanneldata::serverchanneldata
 	LB_Channels->setMultiSelection( FALSE );
 
 	QPushButton* dlgedit_PushButton_1;
-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
+	dlgedit_PushButton_1 = new("QPushButton") QPushButton( this, "PushButton_1" );
 	dlgedit_PushButton_1->setGeometry( 230, 170, 150, 30 );
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
@@ -69,7 +69,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 
-	B_AddChannels = new QPushButton( this, "PushButton_2" );
+	B_AddChannels = new("QPushButton") QPushButton( this, "PushButton_2" );
 	B_AddChannels->setGeometry( 230, 215, 150, 30 );
 	B_AddChannels->setMinimumSize( 10, 10 );
 	B_AddChannels->setMaximumSize( 32767, 32767 );
@@ -79,7 +79,7 @@ serverchanneldata::serverchanneldata
 	B_AddChannels->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_4;
-	dlgedit_PushButton_4 = new QPushButton( this, "PushButton_4" );
+	dlgedit_PushButton_4 = new("QPushButton") QPushButton( this, "PushButton_4" );
 	dlgedit_PushButton_4->setGeometry( 230, 20, 150, 30 );
 	dlgedit_PushButton_4->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_4->setMaximumSize( 32767, 32767 );
@@ -88,7 +88,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_PushButton_4->setAutoRepeat( FALSE );
 	dlgedit_PushButton_4->setAutoResize( FALSE );
 
-	B_AddServers = new QPushButton( this, "PushButton_5" );
+	B_AddServers = new("QPushButton") QPushButton( this, "PushButton_5" );
 	B_AddServers->setGeometry( 230, 65, 150, 30 );
 	B_AddServers->setMinimumSize( 10, 10 );
 	B_AddServers->setMaximumSize( 32767, 32767 );
@@ -97,7 +97,7 @@ serverchanneldata::serverchanneldata
 	B_AddServers->setAutoRepeat( FALSE );
 	B_AddServers->setAutoResize( FALSE );
 
-	SLE_Servers = new QLineEdit( this, "LineEdit_4" );
+	SLE_Servers = new("QLineEdit") QLineEdit( this, "LineEdit_4" );
 	SLE_Servers->setGeometry( 230, 110, 150, 30 );
 	SLE_Servers->setMinimumSize( 10, 10 );
 	SLE_Servers->setMaximumSize( 32767, 32767 );
@@ -107,7 +107,7 @@ serverchanneldata::serverchanneldata
 	SLE_Servers->setEchoMode( QLineEdit::Normal );
 	SLE_Servers->setFrame( TRUE );
 
-	SLE_Channels = new QLineEdit( this, "LineEdit_5" );
+	SLE_Channels = new("QLineEdit") QLineEdit( this, "LineEdit_5" );
 	SLE_Channels->setGeometry( 230, 260, 150, 30 );
 	SLE_Channels->setMinimumSize( 10, 10 );
 	SLE_Channels->setMaximumSize( 32767, 32767 );

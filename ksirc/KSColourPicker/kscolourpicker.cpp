@@ -35,7 +35,7 @@ kscolourpicker::kscolourpicker
   if(kSircConfig->colour_background == 0){
      kConfig->setGroup("Colours");
      kSircConfig->colour_background = 
-       new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+       new("QColor") QColor(kConfig->readColorEntry("Background", new("QColor") QColor(colorGroup().mid())));
   }
  
   {
@@ -55,12 +55,12 @@ kscolourpicker::kscolourpicker
   connect(PB_Pick, SIGNAL(pressed()), this, SLOT(slot_pick()));
   connect(PB_Cancel, SIGNAL(pressed()), this, SLOT(slot_cancel()));
 
-  MappedButtons = new PushButtons((KSPainter::maxcolour*2)+2);
+  MappedButtons = new("PushButtons") PushButtons((KSPainter::maxcolour*2)+2);
   int XOffset = 0;
   int YOffset = 0;
 
   for ( int i=0; i<(KSPainter::maxcolour+1)*2; i++ ) {
-    QPushButton *pb = new QPushButton( this );
+    QPushButton *pb = new("QPushButton") QPushButton( this );
     pb->setMinimumSize( 10, 10 );
     pb->setMaximumSize( 32767, 32767 );
     pb->setAutoRepeat( FALSE );

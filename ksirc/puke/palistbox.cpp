@@ -2,14 +2,14 @@
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PAListBox *plb = new PAListBox(ca.parent);
+  PAListBox *plb = new("PAListBox") PAListBox(ca.parent);
   aListBox *lb;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("aListBox") == TRUE)
     lb = (aListBox *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    lb = new aListBox((QWidget *) ca.parent->widget());
+    lb = new("aListBox") aListBox((QWidget *) ca.parent->widget());
   else
-    lb = new aListBox();
+    lb = new("aListBox") aListBox();
   plb->setWidget(lb);
   plb->setWidgetId(ca.pwI);
   return plb;
@@ -76,7 +76,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 
       widget()->setAutoUpdate(FALSE);
       int index = widget()->findNick(pm->cArg);
-      nickListItem *item = new nickListItem();
+      nickListItem *item = new("nickListItem") nickListItem();
       *item = *widget()->item(index);
       widget()->removeItem(index);
       item->setVoice(pm->iArg);
@@ -98,7 +98,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 
       widget()->setAutoUpdate(FALSE);
       int index = widget()->findNick(pm->cArg);
-      nickListItem *item = new nickListItem();
+      nickListItem *item = new("nickListItem") nickListItem();
       *item = *widget()->item(index);
       widget()->removeItem(index);
       item->setOp(pm->iArg);

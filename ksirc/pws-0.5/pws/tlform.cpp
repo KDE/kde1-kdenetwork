@@ -12,14 +12,14 @@ TLForm::TLForm(const char *ID,const char *title,QWidget *_widget, QWidget *_pare
 {
     if (!_widget)
     {
-        widget=new QWidget(_parent,ID);
+        widget=new("QWidget") QWidget(_parent,ID);
     }
     else
         widget=_widget;
     
     widget->setCaption(title);
     align=AlignCenter;
-    layout=new KTypeLayout (this);
+    layout=new("KTypeLayout") KTypeLayout (this);
 }
 
 TLForm::~TLForm()
@@ -30,5 +30,5 @@ TLBook::TLBook(const char *ID,QWidget *_widget=0)
 {
     widget=_widget;
     align=AlignCenter;
-    layout=new KBookLayout (this);
+    layout=new("KBookLayout") KBookLayout (this);
 }

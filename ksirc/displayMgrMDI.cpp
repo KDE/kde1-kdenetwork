@@ -9,7 +9,7 @@
 DisplayMgrMDI::DisplayMgrMDI(KTopLevelWidget *ktw)
   : DisplayMgr()
 {
-  mgr = new KMDIMgrBase(ktw, "MDI Manager");
+  mgr = new("KMDIMgrBase") KMDIMgrBase(ktw, "MDI Manager");
   mgr->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
   ktw->setView(mgr, TRUE);
   

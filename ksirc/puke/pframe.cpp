@@ -2,13 +2,13 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PFrame *pw = new PFrame(ca.parent);
+  PFrame *pw = new("PFrame") PFrame(ca.parent);
   QFrame *tf;
   if(ca.parent != 0 &&
      ca.parent->widget()->isWidgetType() == TRUE)
-    tf = new QFrame((QWidget *) ca.parent->widget());
+    tf = new("QFrame") QFrame((QWidget *) ca.parent->widget());
   else
-    tf = new QFrame();
+    tf = new("QFrame") QFrame();
   pw->setWidget(tf);
   pw->setWidgetId(ca.pwI);
   pw->setPukeController(ca.pc);  

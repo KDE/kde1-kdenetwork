@@ -19,7 +19,7 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
 
   pHeight = 1;
 
-  pic = new QPixmap(); // create pic map here, resize it later though.
+  pic = new("QPixmap") QPixmap(); // create pic map here, resize it later though.
   //  pic->setBackgroundMode(TransparentMode);
 
   KConfig *conf = kapp->getConfig();
@@ -31,7 +31,7 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
   setFont(QFont("fixed"));
   // ring = "Hi";
   ring = "";
-  SInfo *si = new SInfo;
+  SInfo *si = new("SInfo") SInfo;
   si->length = 0;
   StrInfo.append(si);  
   StrInfo.setAutoDelete(TRUE);
@@ -52,7 +52,7 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
   chars = this->width() / onechar;
   StrInfo.setAutoDelete( TRUE );
 
-  popup = new QPopupMenu();
+  popup = new("QPopupMenu") QPopupMenu();
   popup->insertItem("Font...", this, SLOT(fontSelector()));
   popup->insertItem("Scroll Rate...", this, SLOT(scrollRate()));
   iScrollItem = popup->insertItem("Scroll Constantly", this, SLOT(scrollConstantly()));
@@ -116,7 +116,7 @@ void KSTicker::setString(QString str) /*fold00*/
   ring.truncate(0);
   ring = str;
   StrInfo.clear();
-  SInfo *si = new SInfo;
+  SInfo *si = new("SInfo") SInfo;
   si->length = str.length();
   StrInfo.append(si);
   repaint(TRUE);
@@ -127,7 +127,7 @@ void KSTicker::mergeString(QString str) /*FOLD00*/
 {
   str.append("~C");
   ring += str;
-  SInfo *si = new SInfo;
+  SInfo *si = new("SInfo") SInfo;
   si->length = str.length();
   StrInfo.append(si);
   while((ring.length() > (uint) 2*chars + 10) && 
@@ -299,7 +299,7 @@ void KSTicker::resizeEvent( QResizeEvent *e) /*fold00*/
   onechar = fontMetrics().width("X");
   chars = this->width() / onechar;
   killTimers();
-  QPixmap *new_pic = new QPixmap(width() + onechar, height());
+  QPixmap *new_pic = new("QPixmap") QPixmap(width() + onechar, height());
   new_pic->fill(backgroundColor());
   bitBlt(new_pic,
 	 new_pic->width() - pic->width(), 0,
@@ -346,7 +346,7 @@ void KSTicker::mousePressEvent( QMouseEvent *e) /*fold00*/
 }
 void KSTicker::fontSelector() /*fold00*/
 {
-  KFontDialog *kfd = new KFontDialog();
+  KFontDialog *kfd = new("KFontDialog") KFontDialog();
   kfd->setFont(font());
   connect(kfd, SIGNAL(fontSelected(const QFont &)),
 	  this, SLOT(updateFont(const QFont &)));
@@ -355,7 +355,7 @@ void KSTicker::fontSelector() /*fold00*/
 
 void KSTicker::scrollRate() /*fold00*/
 {
-  SpeedDialog *sd = new SpeedDialog(tickRate, tickStep);
+  SpeedDialog *sd = new("SpeedDialog") SpeedDialog(tickRate, tickStep);
   sd->setLimit(5, 200, 1, onechar);
   connect(sd, SIGNAL(stateChange(int, int)),
 	  this, SLOT(setSpeed(int, int)));

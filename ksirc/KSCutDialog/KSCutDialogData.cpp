@@ -25,13 +25,13 @@ KSCutDialogData::KSCutDialogData
 	:
 	Inherited( parent, name, TRUE, 0 )
 {
-	IrcMLE = new KCutMLE( this, "User_1" );
+	IrcMLE = new("KCutMLE") KCutMLE( this, "User_1" );
 	IrcMLE->setGeometry( 5, 5, 580, 320 );
 	IrcMLE->setMinimumSize( 10, 320 );
 	IrcMLE->setMaximumSize( 32767, 320 );
 
 	QPushButton* dlgedit_PushButton_9;
-	dlgedit_PushButton_9 = new QPushButton( this, "PushButton_9" );
+	dlgedit_PushButton_9 = new("QPushButton") QPushButton( this, "PushButton_9" );
 	dlgedit_PushButton_9->setGeometry( 370, 5, 100, 30 );
 	dlgedit_PushButton_9->setMinimumSize( 100, 30 );
 	dlgedit_PushButton_9->setMaximumSize( 100, 30 );
@@ -41,7 +41,7 @@ KSCutDialogData::KSCutDialogData
 	dlgedit_PushButton_9->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_10;
-	dlgedit_PushButton_10 = new QPushButton( this, "PushButton_10" );
+	dlgedit_PushButton_10 = new("QPushButton") QPushButton( this, "PushButton_10" );
 	dlgedit_PushButton_10->setGeometry( 475, 5, 100, 30 );
 	dlgedit_PushButton_10->setMinimumSize( 100, 30 );
 	dlgedit_PushButton_10->setMaximumSize( 100, 30 );
@@ -50,10 +50,10 @@ KSCutDialogData::KSCutDialogData
 	dlgedit_PushButton_10->setAutoRepeat( FALSE );
 	dlgedit_PushButton_10->setAutoResize( FALSE );
 
-	QBoxLayout* dlgedit_layout_1 = new QBoxLayout( this, QBoxLayout::TopToBottom, 5, 5, NULL );
+	QBoxLayout* dlgedit_layout_1 = new("QBoxLayout") QBoxLayout( this, QBoxLayout::TopToBottom, 5, 5, NULL );
 	dlgedit_layout_1->addStrut( 0 );
 	dlgedit_layout_1->addWidget( IrcMLE, 1, 9 );
-	QBoxLayout* dlgedit_layout_1_2 = new QBoxLayout( QBoxLayout::LeftToRight, 5, NULL );
+	QBoxLayout* dlgedit_layout_1_2 = new("QBoxLayout") QBoxLayout( QBoxLayout::LeftToRight, 5, NULL );
 	dlgedit_layout_1->addLayout( dlgedit_layout_1_2, 0 );
 	dlgedit_layout_1_2->addStrut( 0 );
 	dlgedit_layout_1_2->addStretch( 1 );

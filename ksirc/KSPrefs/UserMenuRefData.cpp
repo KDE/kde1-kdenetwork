@@ -25,7 +25,7 @@ UserMenuRefData::UserMenuRefData
 	:
 	Inherited( parent, name, 241664 )
 {
-	MenuName = new QLineEdit( this, "LineEdit_1" );
+	MenuName = new("QLineEdit") QLineEdit( this, "LineEdit_1" );
 	MenuName->setGeometry( 280, 40, 100, 30 );
 	MenuName->setMinimumSize( 10, 10 );
 	MenuName->setMaximumSize( 32767, 32767 );
@@ -34,7 +34,7 @@ UserMenuRefData::UserMenuRefData
 	MenuName->setEchoMode( QLineEdit::Normal );
 	MenuName->setFrame( TRUE );
 
-	MenuCommand = new QLineEdit( this, "LineEdit_2" );
+	MenuCommand = new("QLineEdit") QLineEdit( this, "LineEdit_2" );
 	MenuCommand->setGeometry( 280, 120, 100, 30 );
 	MenuCommand->setMinimumSize( 100, 30 );
 	MenuCommand->setMaximumSize( 100, 30 );
@@ -43,7 +43,7 @@ UserMenuRefData::UserMenuRefData
 	MenuCommand->setEchoMode( QLineEdit::Normal );
 	MenuCommand->setFrame( TRUE );
 
-	MenuType = new QComboBox( FALSE, this, "ComboBox_1" );
+	MenuType = new("QComboBox") QComboBox( FALSE, this, "ComboBox_1" );
 	MenuType->setGeometry( 280, 80, 100, 30 );
 	MenuType->setMinimumSize( 10, 10 );
 	MenuType->setMaximumSize( 32767, 32767 );
@@ -54,7 +54,7 @@ UserMenuRefData::UserMenuRefData
 	MenuType->insertItem( "Action" );
 
 	QLabel* dlgedit_Label_1;
-	dlgedit_Label_1 = new QLabel( this, "Label_1" );
+	dlgedit_Label_1 = new("QLabel") QLabel( this, "Label_1" );
 	dlgedit_Label_1->setGeometry( 170, 40, 100, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
@@ -63,7 +63,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_1->setMargin( -1 );
 
 	QLabel* dlgedit_Label_2;
-	dlgedit_Label_2 = new QLabel( this, "Label_2" );
+	dlgedit_Label_2 = new("QLabel") QLabel( this, "Label_2" );
 	dlgedit_Label_2->setGeometry( 170, 80, 100, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
@@ -72,7 +72,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_2->setMargin( -1 );
 
 	QLabel* dlgedit_Label_3;
-	dlgedit_Label_3 = new QLabel( this, "Label_3" );
+	dlgedit_Label_3 = new("QLabel") QLabel( this, "Label_3" );
 	dlgedit_Label_3->setGeometry( 180, 120, 90, 30 );
 	dlgedit_Label_3->setMinimumSize( 10, 10 );
 	dlgedit_Label_3->setMaximumSize( 32767, 32767 );
@@ -80,7 +80,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_3->setAlignment( 290 );
 	dlgedit_Label_3->setMargin( -1 );
 
-	MenuOpOnly = new QCheckBox( this, "CheckBox_1" );
+	MenuOpOnly = new("QCheckBox") QCheckBox( this, "CheckBox_1" );
 	MenuOpOnly->setGeometry( 280, 160, 100, 30 );
 	MenuOpOnly->setMinimumSize( 10, 10 );
 	MenuOpOnly->setMaximumSize( 32767, 32767 );
@@ -88,7 +88,7 @@ UserMenuRefData::UserMenuRefData
 	MenuOpOnly->setAutoRepeat( FALSE );
 	MenuOpOnly->setAutoResize( FALSE );
 
-	ApplyButton = new QPushButton( this, "PushButton_1" );
+	ApplyButton = new("QPushButton") QPushButton( this, "PushButton_1" );
 	ApplyButton->setGeometry( 280, 240, 100, 30 );
 	ApplyButton->setMinimumSize( 10, 10 );
 	ApplyButton->setMaximumSize( 32767, 32767 );
@@ -97,7 +97,7 @@ UserMenuRefData::UserMenuRefData
 	ApplyButton->setAutoRepeat( FALSE );
 	ApplyButton->setAutoResize( FALSE );
 
-	insertButton = new QPushButton( this, "PushButton_2" );
+	insertButton = new("QPushButton") QPushButton( this, "PushButton_2" );
 	insertButton->setGeometry( 170, 240, 100, 30 );
 	insertButton->setMinimumSize( 10, 10 );
 	insertButton->setMaximumSize( 32767, 32767 );
@@ -106,7 +106,7 @@ UserMenuRefData::UserMenuRefData
 	insertButton->setAutoRepeat( FALSE );
 	insertButton->setAutoResize( FALSE );
 
-	MainListBox = new QListBox( this, "ListBox_1" );
+	MainListBox = new("QListBox") QListBox( this, "ListBox_1" );
 	MainListBox->setGeometry( 30, 40, 120, 230 );
 	MainListBox->setMinimumSize( 10, 10 );
 	MainListBox->setMaximumSize( 32767, 32767 );
@@ -117,7 +117,7 @@ UserMenuRefData::UserMenuRefData
 	MainListBox->setMultiSelection( FALSE );
 
 	QPushButton* dlgedit_PushButton_3;
-	dlgedit_PushButton_3 = new QPushButton( this, "PushButton_3" );
+	dlgedit_PushButton_3 = new("QPushButton") QPushButton( this, "PushButton_3" );
 	dlgedit_PushButton_3->setGeometry( 170, 200, 100, 30 );
 	dlgedit_PushButton_3->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_3->setMaximumSize( 32767, 32767 );
@@ -127,7 +127,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_PushButton_3->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_4;
-	dlgedit_PushButton_4 = new QPushButton( this, "PushButton_4" );
+	dlgedit_PushButton_4 = new("QPushButton") QPushButton( this, "PushButton_4" );
 	dlgedit_PushButton_4->setGeometry( 280, 200, 100, 30 );
 	dlgedit_PushButton_4->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_4->setMaximumSize( 32767, 32767 );

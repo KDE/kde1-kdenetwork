@@ -100,8 +100,8 @@ KMDITitleLabel::KMDITitleLabel(QWidget* p, const char* name) :
   QPalette npal(normal, disabled, active);
   setPalette(npal);
 
-  options.titlebarPixmapActive = new QPixmap;
-  options.titlebarPixmapInactive = new QPixmap;
+  options.titlebarPixmapActive = new("QPixmap") QPixmap;
+  options.titlebarPixmapInactive = new("QPixmap") QPixmap;
   readConfiguration();
 
   titlestring_offset=0;
@@ -147,7 +147,7 @@ void KMDITitleLabel::readConfiguration(){
 
   killTimers();
 
-  config = new KConfig(KApplication::kde_configdir() + "/kwmrc",
+  config = new("KConfig") KConfig(KApplication::kde_configdir() + "/kwmrc",
                        KApplication::localconfigdir() + "/kwmrc");
 
   // this belongs in kapp....
@@ -277,7 +277,7 @@ void KMDITitleLabel::paintState(bool only_label, bool colors_have_changed,
   TITLEBAR_LOOK look = options.TitlebarLook;
 
   if (look == H_SHADED || look == V_SHADED){
-    // the new horizontal (and vertical) shading code
+    // the new("horizontal") horizontal (and vertical) shading code
     if (colors_have_changed){
       aShadepm.resize(0,0);
       iaShadepm.resize(0,0);
@@ -328,12 +328,12 @@ void KMDITitleLabel::paintState(bool only_label, bool colors_have_changed,
 //         *pix++ = is_active ? TITLEBAR_HEIGHT-1-y : y;
 //     }
 //     if (is_active){
-//       shaded_pm_active = new QPixmap;
+//       shaded_pm_active = new("QPixmap") QPixmap;
 //       *shaded_pm_active = image;
 //       shaded_pm_active_color = myapp->activeTitleColor;
 //     }
 //     else{
-//       shaded_pm_inactive = new QPixmap;
+//       shaded_pm_inactive = new("QPixmap") QPixmap;
 //       *shaded_pm_inactive = image;
 //       shaded_pm_inactive_color = myapp->inactiveTitleColor;
 //     }
@@ -364,7 +364,7 @@ void KMDITitleLabel::paintState(bool only_label, bool colors_have_changed,
     p.begin( this );
   else {
     // enable double buffering to avoid flickering with horizontal shading
-    buffer = new QPixmap(r.width(), r.height());
+    buffer = new("QPixmap") QPixmap(r.width(), r.height());
     p.begin(buffer);
     r.setRect(0,0,r.width(),r.height());
   }
@@ -387,7 +387,7 @@ void KMDITitleLabel::paintState(bool only_label, bool colors_have_changed,
 	p.drawPixmap(x, r.y(), *pm);
   }
   else if (look == H_SHADED || look == V_SHADED ){
-    // the new horizontal shading code
+    // the new("horizontal") horizontal shading code
     QPixmap* pm = 0;
     if (is_active){
       if (aShadepm.size() != r.size()){
@@ -522,10 +522,10 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
 {
     KConfig* config;
 
-    config = new KConfig(KApplication::kde_configdir() + "/kwmrc",
+    config = new("KConfig") KConfig(KApplication::kde_configdir() + "/kwmrc",
                          KApplication::localconfigdir() + "/kwmrc");
 
-    QHBoxLayout* hLayout = new QHBoxLayout(this, 0);
+    QHBoxLayout* hLayout = new("QHBoxLayout") QHBoxLayout(this, 0);
 
     QPixmap pixmap;
 //    hLayout->addSpacing(BORDER);
@@ -549,7 +549,7 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
         pixmap=loadIcon("menu.xpm");
     }
 
-    iconBtn = new KButton(this);
+    iconBtn = new("KButton") KButton(this);
     iconBtn->setPixmap(pixmap);
     iconBtn->setMouseTracking(true);
     hLayout->addWidget(iconBtn);
@@ -557,7 +557,7 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
 
     hLayout->addSpacing(BORDER);
 
-    caption = new KMDITitleLabel(this);
+    caption = new("KMDITitleLabel") KMDITitleLabel(this);
     caption->setFrameStyle(QFrame::Panel|QFrame::Sunken);
     caption->setMouseTracking(true);
     hLayout->addWidget(caption, 10);
@@ -566,7 +566,7 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
 
     if (!KMDIMgrBase::minimizePic.isEmpty()){
         pixmap=loadIcon( KMDIMgrBase::minimizePic );
-	minBtn = new KButton(this);
+	minBtn = new("KButton") KButton(this);
 	minBtn->setPixmap(pixmap);
 	minBtn->setMouseTracking(true);
 	hLayout->addWidget(minBtn);
@@ -574,7 +574,7 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
     }
     if (!KMDIMgrBase::maximizePic.isEmpty()){
         pixmap=loadIcon( KMDIMgrBase::maximizePic );
-	maxBtn = new KButton(this);
+	maxBtn = new("KButton") KButton(this);
 	maxBtn->setPixmap(pixmap);
 	maxBtn->setMouseTracking(true);
 	hLayout->addWidget(maxBtn);
@@ -582,7 +582,7 @@ KMDITitle::KMDITitle(const char* icon, QWidget* p, const char* name)
     }
     if (!KMDIMgrBase::closePic.isEmpty()){
         pixmap=loadIcon(KMDIMgrBase::closePic);
-	closeBtn = new KButton(this);
+	closeBtn = new("KButton") KButton(this);
 	closeBtn->setPixmap(pixmap);
 	closeBtn->setMouseTracking(true);
 	hLayout->addWidget(closeBtn);
@@ -623,14 +623,14 @@ KMDIWindow::KMDIWindow ( QWidget* p, const char* name, int flag,
     resizeMode = 0;
     eraseResizeRect = false;
 
-    frame = new QFrame(this);
+    frame = new("QFrame") QFrame(this);
     frame->setFrameStyle( QFrame::Panel | QFrame::Raised );
     frame->setLineWidth(2);
     frame->setMouseTracking(true);
     frame->installEventFilter(this);
     frame->show();
     
-    titleBar = new KMDITitle(icon, frame);
+    titleBar = new("KMDITitle") KMDITitle(icon, frame);
     titleBar->setMouseTracking(true);
     titleBar->installEventFilter(this);
     titleBar->setGeometry(0,0,width(),MIN_TITLE_HEIGHT);
@@ -1161,7 +1161,7 @@ KMDIMgrBase::KMDIMgrBase ( QWidget* p, const char *name)
     closePic    = "close.xpm";
 
     selectedWnd = 0L;
-    windowList  = new QList<KMDIWindow>;
+    windowList  = new("QList<KMDIWindow>") QList<KMDIWindow>;
     windowList->setAutoDelete(false);
     numWindows = 0;
 
@@ -1249,7 +1249,7 @@ void KMDIMgrBase::prevWindow ()
 
 KMDIWindow* KMDIMgrBase::addWindow(QWidget *widget, int flag, const char* icon)
 {
-    KMDIWindow *w = new KMDIWindow(this, widget->name(), flag, icon);
+    KMDIWindow *w = new("KMDIWindow") KMDIWindow(this, widget->name(), flag, icon);
 
     w->setView(widget);
     addWindow(w, flag);
@@ -1263,7 +1263,7 @@ void KMDIMgrBase::addWindow(KMDIWindow *w, int flag)
         w->recreate(this, 0, QPoint(0,0));
     windowList->append(w);
 
-    // now we place and resize the new window
+    // now we place and resize the new("window") window
     int x, y;
     if (smartPlacement){
         x = (width() / 2)  - (defaultWindowWidth  / 2);

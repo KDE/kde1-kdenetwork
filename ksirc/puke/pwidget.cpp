@@ -51,14 +51,14 @@ PWidget::~PWidget()
 
 PObject *PWidget::createWidget(CreateArgs &ca)
 {
-  PWidget *pw = new PWidget();
+  PWidget *pw = new("PWidget") PWidget();
   QWidget *tw;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QWidget") == TRUE)
     tw = (QWidget *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-      tw = new QWidget((QWidget *) ca.parent->widget());
+      tw = new("QWidget") QWidget((QWidget *) ca.parent->widget());
   else
-    tw = new QWidget();
+    tw = new("QWidget") QWidget();
   pw->setWidget(tw);
   pw->setWidgetId(ca.pwI);
   pw->setPukeController(ca.pc);

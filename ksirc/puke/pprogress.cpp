@@ -3,12 +3,12 @@
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PProgress *pw = new PProgress(ca.parent);
+  PProgress *pw = new("PProgress") PProgress(ca.parent);
   KSProgress *ksp;
   if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    ksp = new KSProgress((QWidget *) ca.parent->widget());
+    ksp = new("KSProgress") KSProgress((QWidget *) ca.parent->widget());
   else
-    ksp = new KSProgress();
+    ksp = new("KSProgress") KSProgress();
   pw->setWidget(ksp);
   pw->setWidgetId(ca.pwI);
   return pw;

@@ -65,7 +65,7 @@ general::~general()
 void general::slot_openBrowser()
 {
   /*
-  KFileDialog *FileDialog = new KFileDialog( ".", "*.gif");
+  KFileDialog *FileDialog = new("KFileDialog") KFileDialog( ".", "*.gif");
   connect(FileDialog, SIGNAL(fileSelected(const char*)),
           this, SLOT(slot_setBackgroundFile(const char*)));
           FileDialog->show();

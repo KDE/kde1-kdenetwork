@@ -64,27 +64,27 @@ void KSircIOBroadcast::control_message(int command, QString str)
 filterRuleList *KSircIOBroadcast::defaultRules()
 {
   filterRule *fr;
-  filterRuleList *frl = new  filterRuleList();
+  filterRuleList *frl = new("filterRuleList") filterRuleList();
   frl->setAutoDelete(TRUE);
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Inverse to KSIRC inverse";
   fr->search = ".*";
   fr->from = "(?g)\\x16";
   fr->to = "~r";
   frl->append(fr);
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Underline to KSIRC underline";
   fr->search = ".*";
   fr->from = "(?g)\\x1f";
   fr->to = "~u";
   frl->append(fr);
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Bold to KSIRC bold";
   fr->search = ".*";
   fr->from = "(?g)\\x02";
   fr->to = "~b";
   frl->append(fr);
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Ordinary to KSIRC ordinary";
   fr->search = ".*";
   fr->from = "(?g)\\x0f";

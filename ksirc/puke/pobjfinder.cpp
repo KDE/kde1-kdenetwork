@@ -4,7 +4,7 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PObjFinder *pw = new PObjFinder(ca.parent);
+  PObjFinder *pw = new("PObjFinder") PObjFinder(ca.parent);
   pw->setWidget(0x0);
   pw->setWidgetId(ca.pwI);
   pw->setPukeController(ca.pc);

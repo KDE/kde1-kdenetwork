@@ -26,7 +26,7 @@ KSircColourData::KSircColourData
 	Inherited( parent, name, 12288 )
 {
 	QLabel* dlgedit_Label_1;
-	dlgedit_Label_1 = new QLabel( this, "Label_1" );
+	dlgedit_Label_1 = new("QLabel") QLabel( this, "Label_1" );
 	dlgedit_Label_1->setGeometry( 10, 10, 100, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
@@ -34,28 +34,28 @@ KSircColourData::KSircColourData
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
-	ColourText = new KColorButton( this, "User_1" );
+	ColourText = new("KColorButton") KColorButton( this, "User_1" );
 	ColourText->setGeometry( 120, 10, 100, 30 );
 	ColourText->setMinimumSize( 10, 10 );
 	ColourText->setMaximumSize( 32767, 32767 );
 
-	ColourInfo = new KColorButton( this, "User_2" );
+	ColourInfo = new("KColorButton") KColorButton( this, "User_2" );
 	ColourInfo->setGeometry( 120, 50, 100, 30 );
 	ColourInfo->setMinimumSize( 10, 10 );
 	ColourInfo->setMaximumSize( 32767, 32767 );
 
-	ColourChan = new KColorButton( this, "User_3" );
+	ColourChan = new("KColorButton") KColorButton( this, "User_3" );
 	ColourChan->setGeometry( 120, 90, 100, 30 );
 	ColourChan->setMinimumSize( 10, 10 );
 	ColourChan->setMaximumSize( 32767, 32767 );
 
-	ColourError = new KColorButton( this, "User_4" );
+	ColourError = new("KColorButton") KColorButton( this, "User_4" );
 	ColourError->setGeometry( 120, 130, 100, 30 );
 	ColourError->setMinimumSize( 10, 10 );
 	ColourError->setMaximumSize( 32767, 32767 );
 
 	QLabel* dlgedit_Label_2;
-	dlgedit_Label_2 = new QLabel( this, "Label_2" );
+	dlgedit_Label_2 = new("QLabel") QLabel( this, "Label_2" );
 	dlgedit_Label_2->setGeometry( 10, 50, 100, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
@@ -64,7 +64,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_2->setMargin( -1 );
 
 	QLabel* dlgedit_Label_3;
-	dlgedit_Label_3 = new QLabel( this, "Label_3" );
+	dlgedit_Label_3 = new("QLabel") QLabel( this, "Label_3" );
 	dlgedit_Label_3->setGeometry( 10, 90, 100, 30 );
 	dlgedit_Label_3->setMinimumSize( 10, 10 );
 	dlgedit_Label_3->setMaximumSize( 32767, 32767 );
@@ -73,7 +73,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_3->setMargin( -1 );
 
 	QLabel* dlgedit_Label_4;
-	dlgedit_Label_4 = new QLabel( this, "Label_4" );
+	dlgedit_Label_4 = new("QLabel") QLabel( this, "Label_4" );
 	dlgedit_Label_4->setGeometry( 10, 130, 100, 30 );
 	dlgedit_Label_4->setMinimumSize( 10, 10 );
 	dlgedit_Label_4->setMaximumSize( 32767, 32767 );
@@ -82,7 +82,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_4->setMargin( -1 );
 
 	QPushButton* dlgedit_PushButton_1;
-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
+	dlgedit_PushButton_1 = new("QPushButton") QPushButton( this, "PushButton_1" );
 	dlgedit_PushButton_1->setGeometry( 120, 210, 100, 30 );
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
@@ -93,7 +93,7 @@ KSircColourData::KSircColourData
 	dlgedit_PushButton_1->setAutoDefault( TRUE );
 
 	QPushButton* dlgedit_PushButton_2;
-	dlgedit_PushButton_2 = new QPushButton( this, "PushButton_2" );
+	dlgedit_PushButton_2 = new("QPushButton") QPushButton( this, "PushButton_2" );
 	dlgedit_PushButton_2->setGeometry( 10, 210, 100, 30 );
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
@@ -102,13 +102,13 @@ KSircColourData::KSircColourData
 	dlgedit_PushButton_2->setAutoRepeat( FALSE );
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 
-	ColourBackground = new KColorButton( this, "User_5" );
+	ColourBackground = new("KColorButton") KColorButton( this, "User_5" );
 	ColourBackground->setGeometry( 120, 170, 100, 30 );
 	ColourBackground->setMinimumSize( 10, 10 );
 	ColourBackground->setMaximumSize( 32767, 32767 );
 
 	QLabel* dlgedit_Label_5;
-	dlgedit_Label_5 = new QLabel( this, "Label_5" );
+	dlgedit_Label_5 = new("QLabel") QLabel( this, "Label_5" );
 	dlgedit_Label_5->setGeometry( 10, 170, 100, 30 );
 	dlgedit_Label_5->setMinimumSize( 10, 10 );
 	dlgedit_Label_5->setMaximumSize( 32767, 32767 );

@@ -10,6 +10,7 @@
 #include "open_top.h"
 #include <iostream.h>
 
+
 #define Inherited open_topData
 
 extern KConfig *kConfig;

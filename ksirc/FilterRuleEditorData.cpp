@@ -26,7 +26,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	Inherited( parent, name, 118784 )
 {
 	QLabel* dlgedit_Label_1;
-	dlgedit_Label_1 = new QLabel( this, "Label_1" );
+	dlgedit_Label_1 = new("QLabel") QLabel( this, "Label_1" );
 	dlgedit_Label_1->setGeometry( 140, 10, 80, 30 );
 	dlgedit_Label_1->setMinimumSize( 0, 0 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
@@ -34,7 +34,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
-	LineTitle = new QLineEdit( this, "LineEdit_1" );
+	LineTitle = new("QLineEdit") QLineEdit( this, "LineEdit_1" );
 	LineTitle->setGeometry( 220, 10, 280, 30 );
 	LineTitle->setMinimumSize( 0, 0 );
 	LineTitle->setMaximumSize( 32767, 32767 );
@@ -44,7 +44,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	LineTitle->setFrame( TRUE );
 
 	QLabel* dlgedit_Label_4;
-	dlgedit_Label_4 = new QLabel( this, "Label_4" );
+	dlgedit_Label_4 = new("QLabel") QLabel( this, "Label_4" );
 	dlgedit_Label_4->setGeometry( 140, 50, 70, 30 );
 	dlgedit_Label_4->setMinimumSize( 0, 0 );
 	dlgedit_Label_4->setMaximumSize( 32767, 32767 );
@@ -52,7 +52,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_4->setAlignment( 289 );
 	dlgedit_Label_4->setMargin( -1 );
 
-	LineSearch = new QLineEdit( this, "LineEdit_2" );
+	LineSearch = new("QLineEdit") QLineEdit( this, "LineEdit_2" );
 	LineSearch->setGeometry( 220, 50, 280, 30 );
 	LineSearch->setMinimumSize( 0, 0 );
 	LineSearch->setMaximumSize( 32767, 32767 );
@@ -62,7 +62,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	LineSearch->setFrame( TRUE );
 
 	QLabel* dlgedit_Label_7;
-	dlgedit_Label_7 = new QLabel( this, "Label_7" );
+	dlgedit_Label_7 = new("QLabel") QLabel( this, "Label_7" );
 	dlgedit_Label_7->setGeometry( 140, 90, 80, 30 );
 	dlgedit_Label_7->setMinimumSize( 0, 0 );
 	dlgedit_Label_7->setMaximumSize( 32767, 32767 );
@@ -71,7 +71,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_7->setMargin( -1 );
 
 	QLabel* dlgedit_Label_9;
-	dlgedit_Label_9 = new QLabel( this, "Label_9" );
+	dlgedit_Label_9 = new("QLabel") QLabel( this, "Label_9" );
 	dlgedit_Label_9->setGeometry( 140, 130, 70, 30 );
 	dlgedit_Label_9->setMinimumSize( 0, 0 );
 	dlgedit_Label_9->setMaximumSize( 32767, 32767 );
@@ -79,7 +79,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_9->setAlignment( 289 );
 	dlgedit_Label_9->setMargin( -1 );
 
-	LineFrom = new QLineEdit( this, "LineEdit_3" );
+	LineFrom = new("QLineEdit") QLineEdit( this, "LineEdit_3" );
 	LineFrom->setGeometry( 220, 90, 280, 30 );
 	LineFrom->setMinimumSize( 0, 0 );
 	LineFrom->setMaximumSize( 32767, 32767 );
@@ -88,7 +88,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	LineFrom->setEchoMode( QLineEdit::Normal );
 	LineFrom->setFrame( TRUE );
 
-	LineTo = new QLineEdit( this, "LineEdit_4" );
+	LineTo = new("QLineEdit") QLineEdit( this, "LineEdit_4" );
 	LineTo->setGeometry( 220, 130, 280, 30 );
 	LineTo->setMinimumSize( 0, 0 );
 	LineTo->setMaximumSize( 32767, 32767 );
@@ -97,7 +97,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	LineTo->setEchoMode( QLineEdit::Normal );
 	LineTo->setFrame( TRUE );
 
-	ApplyButton = new QPushButton( this, "PushButton_1" );
+	ApplyButton = new("QPushButton") QPushButton( this, "PushButton_1" );
 	ApplyButton->setGeometry( 390, 170, 110, 30 );
 	ApplyButton->setMinimumSize( 10, 10 );
 	ApplyButton->setMaximumSize( 32767, 32767 );
@@ -108,7 +108,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	ApplyButton->setAutoDefault( TRUE );
 
 	QPushButton* dlgedit_PushButton_2;
-	dlgedit_PushButton_2 = new QPushButton( this, "PushButton_2" );
+	dlgedit_PushButton_2 = new("QPushButton") QPushButton( this, "PushButton_2" );
 	dlgedit_PushButton_2->setGeometry( 390, 210, 110, 30 );
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
@@ -118,16 +118,16 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_7;
-	dlgedit_PushButton_7 = new QPushButton( this, "PushButton_7" );
+	dlgedit_PushButton_7 = new("QPushButton") QPushButton( this, "PushButton_7" );
 	dlgedit_PushButton_7->setGeometry( 270, 170, 110, 30 );
 	dlgedit_PushButton_7->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_7->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_7, SIGNAL(clicked()), SLOT(newRule()) );
-	dlgedit_PushButton_7->setText( i18n("&New Rule") );
+	dlgedit_PushButton_7->setText( i18n("New Rule") );
 	dlgedit_PushButton_7->setAutoRepeat( FALSE );
 	dlgedit_PushButton_7->setAutoResize( FALSE );
 
-	deleteButton = new QPushButton( this, "PushButton_8" );
+	deleteButton = new("QPushButton") QPushButton( this, "PushButton_8" );
 	deleteButton->setGeometry( 150, 170, 110, 30 );
 	deleteButton->setMinimumSize( 10, 10 );
 	deleteButton->setMaximumSize( 32767, 32767 );
@@ -137,7 +137,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	deleteButton->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_9;
-	dlgedit_PushButton_9 = new QPushButton( this, "PushButton_9" );
+	dlgedit_PushButton_9 = new("QPushButton") QPushButton( this, "PushButton_9" );
 	dlgedit_PushButton_9->setGeometry( 10, 210, 55, 30 );
 	dlgedit_PushButton_9->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_9->setMaximumSize( 32767, 32767 );
@@ -147,7 +147,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_9->setAutoResize( FALSE );
 
 	QPushButton* dlgedit_PushButton_10;
-	dlgedit_PushButton_10 = new QPushButton( this, "PushButton_10" );
+	dlgedit_PushButton_10 = new("QPushButton") QPushButton( this, "PushButton_10" );
 	dlgedit_PushButton_10->setGeometry( 75, 210, 55, 30 );
 	dlgedit_PushButton_10->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_10->setMaximumSize( 32767, 32767 );
@@ -156,7 +156,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_10->setAutoRepeat( FALSE );
 	dlgedit_PushButton_10->setAutoResize( FALSE );
 
-	RuleList = new QListBox( this, "ListBox_2" );
+	RuleList = new("QListBox") QListBox( this, "ListBox_2" );
 	RuleList->setGeometry( 10, 10, 120, 190 );
 	RuleList->setMinimumSize( 10, 10 );
 	RuleList->setMaximumSize( 32767, 32767 );

@@ -6,16 +6,16 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PTabDialog *ptd = new PTabDialog(ca.parent);
+  PTabDialog *ptd = new("PTabDialog") PTabDialog(ca.parent);
   QTabDialog *qtd;
   // Retreive the border and direction information out of the
   // carg string
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QTabDialog") == TRUE)
     qtd = (QTabDialog *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    qtd = new QTabDialog((QWidget *) ca.parent->widget());
+    qtd = new("QTabDialog") QTabDialog((QWidget *) ca.parent->widget());
   else
-    qtd = new QTabDialog();
+    qtd = new("QTabDialog") QTabDialog();
   ptd->setWidget(qtd);
   ptd->setWidgetId(ca.pwI);
   ptd->setPukeController(ca.pc);

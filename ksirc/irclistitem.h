@@ -7,6 +7,7 @@
 #include <qpainter.h>  
 #include <qpixmap.h>
 #include <qstrlist.h>
+#include <qintcache.h>
 
 #include "kspainter.h"
 
@@ -16,7 +17,7 @@ class ircListItem : public QObject,
  Q_OBJECT;
  public:
   ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0);
-  ~ircListItem();
+  virtual ~ircListItem();
 
   virtual int row();
 
@@ -67,7 +68,8 @@ protected:
 private:
 
   QPixmap *pm;
-  QPixmap *dbuffer;
+  //  QPixmap *dbuffer;
+  long CacheId;
   bool need_update;
   int old_height, old_width;
   const QColor *colour;
@@ -89,6 +91,8 @@ private:
 
   int revOne, revTwo;
   bool forceClear;
+
+  static QIntCache<QPixmap> *PaintCache;
 
 };
 

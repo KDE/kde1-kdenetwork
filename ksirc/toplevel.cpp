@@ -56,6 +56,8 @@
 
 #include <kwm.h>
 
+#include "new-asj.h"
+
 extern KConfig *kConfig;
 extern KApplication *kApp;
 //extern KMDIMgr *MDIMgr;
@@ -107,7 +109,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   else
     caption = "";
 
-  LineBuffer = new QStrList(TRUE);
+  LineBuffer = new("QStrList") QStrList(TRUE);
   Buffer = FALSE;
 
   have_focus = 0;
@@ -124,22 +126,22 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   /*
    * Create the status bar which will hold the ping time and status info
    */
-  ktool = new KToolBar(this, "toolbar");
+  ktool = new("KToolBar") KToolBar(this, "toolbar");
   ktool->setFullWidth(TRUE);
-  ktool->insertWidget(0, 200, new QFrame(ktool));
+  ktool->insertWidget(0, 200, new("QFrame") QFrame(ktool));
   ktool->setItemAutoSized(0, TRUE);
-  ktool->insertWidget(10, 100, new QFrame(ktool));
+  ktool->insertWidget(10, 100, new("QFrame") QFrame(ktool));
   ktool->alignItemRight(10, TRUE);
   addToolBar(ktool);
 
   ktool->getWidget(10)->setName(QString(QObject::name()) + "_ktoolframe");
-  lagmeter = new QLCDNumber(6, ktool->getFrame(10), QString(QObject::name()) + "_lagmeter");
+  lagmeter = new("QLCDNumber") QLCDNumber(6, ktool->getFrame(10), QString(QObject::name()) + "_lagmeter");
   lagmeter->setFrameStyle(QFrame::NoFrame);
   lagmeter->setFixedHeight(ktool->height() - 2);
   lagmeter->display("      ");
   QToolTip::add(lagmeter, i18n("Lag in seconds to the server"));
   
-  file = new QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
+  file = new("QPopupMenu") QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
   file->insertItem(i18n("&New Window..."), this, SLOT(newWindow()), CTRL + Key_N);
   file->insertItem(i18n("&Ticker Mode"), this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
@@ -151,7 +153,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   menu_frame->setFrameStyle(QFrame::NoFrame); // Turn off the frame style.
   menu_frame->setLineWidth(0);
   
-  kmenu = new QMenuBar(this, "menubar");
+  kmenu = new("QMenuBar") QMenuBar(this, "menubar");
   kmenu->setFrameStyle(QFrame::NoFrame); // Turn off frame style.
   kmenu->setLineWidth(0);  
   kmenu->resize(width(), height() - 2);
@@ -162,7 +164,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   kmenu->insertItem(i18n("&File"), file, 2, -1);
   kmenu->setAccel(Key_F, 2);
 
-  edit = new QPopupMenu();
+  edit = new("QPopupMenu") QPopupMenu();
   edit->insertItem(i18n("&Cut Window..."), this, SLOT(openCutWindow()), CTRL + Key_X);
   edit->insertItem(i18n("&Paste"), this, SLOT(pasteToWindow()), CTRL + Key_V);
   kmenu->insertItem(i18n("&Edit"), edit, -1, -1);
@@ -180,12 +182,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   // kstInside does not setup fonts, etc, it simply handles sizing
 
-  f = new kstInside(this, QString(QObject::name()) + "_" + "kstIFrame");
+  f = new("kstInside") kstInside(this, QString(QObject::name()) + "_" + "kstIFrame");
   setView(f);  // Tell the KApplication what the main widget is.
 
   if(kSircConfig->colour_background == 0){
     kConfig->setGroup("Colours");
-    kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+    kSircConfig->colour_background = new("QColor") QColor(kConfig->readColorEntry("Background", new("QColor") QColor(colorGroup().mid())));
   }
   
   // get basic variable
@@ -263,13 +265,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
     KIconLoader *kicl = kApp->getIconLoader();
     QStrList *strlist = kicl->getDirList();
     kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons");
-    pix_info = new QPixmap(kicl->loadIcon("info.gif"));
-    pix_star = new QPixmap(kicl->loadIcon("star.gif"));
-    pix_bball = new QPixmap(kicl->loadIcon("blueball.gif"));
-    pix_greenp = new QPixmap(kicl->loadIcon("greenpin.gif"));
-    pix_bluep = new QPixmap(kicl->loadIcon("bluepin.gif"));
-    pix_madsmile = new QPixmap(kicl->loadIcon("madsmiley.gif"));
-    pix_server = new QPixmap(kicl->loadIcon("mini-edit.gif"));
+    pix_info = new("QPixmap") QPixmap(kicl->loadIcon("info.gif"));
+    pix_star = new("QPixmap") QPixmap(kicl->loadIcon("star.gif"));
+    pix_bball = new("QPixmap") QPixmap(kicl->loadIcon("blueball.gif"));
+    pix_greenp = new("QPixmap") QPixmap(kicl->loadIcon("greenpin.gif"));
+    pix_bluep = new("QPixmap") QPixmap(kicl->loadIcon("bluepin.gif"));
+    pix_madsmile = new("QPixmap") QPixmap(kicl->loadIcon("madsmiley.gif"));
+    pix_server = new("QPixmap") QPixmap(kicl->loadIcon("mini-edit.gif"));
   }
   setIcon(*pix_server);
   KWM::setMiniIcon(winId(), *pix_server);
@@ -278,7 +280,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
    * Create our basic parser object
    */
 
-  ChanParser = new ChannelParser(this);
+  ChanParser = new("ChannelParser") ChannelParser(this);
   
 
   /* 
@@ -288,12 +290,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
    */
 
   //  if(!user_controls)
-  //    user_controls = new QPopupMenu();
+  //    user_controls = new("QPopupMenu") QPopupMenu();
 
   if(user_menu == 0)
     user_menu = UserControlMenu::parseKConfig();
 
-  user_controls = new QPopupMenu();
+  user_controls = new("QPopupMenu") QPopupMenu();
   kmenu->insertItem(i18n("&Users"), user_controls);
 
   connect(user_controls, SIGNAL(activated(int)), 
@@ -305,7 +307,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   UserUpdateMenu();  // Must call to update Popup.
 
-  accel = new QAccel(this, "accel");
+  accel = new("QAccel") QAccel(this, "accel");
 
   accel->connectItem(accel->insertItem(SHIFT + Key_PageUp),
 		     this,
@@ -390,14 +392,10 @@ KSircTopLevel::~KSircTopLevel() /*FOLD00*/
   delete user_controls;
 
   QToolTip::remove(lagmeter);
-  /*
-   * MEM LEAK?
-   * The new CVS KDE snapshots are doing this for ous
-   * Let's hope this doesn't make a bigleak in older kde dists
-   *
-   */
+
   delete kmenu;
   delete ktool;
+  delete ChanParser;
   free(orig_name);
 }
 
@@ -523,7 +521,7 @@ void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
     for(pchar = LineBuffer->first(); 
 	pchar != 0; 
 	LineBuffer->removeFirst(),     // Remove the first one
-	  pchar=LineBuffer->first()){  // Get the new first one
+	  pchar=LineBuffer->first()){  // Get the new("first") first one
       // Get the need list box item, with colour, etc all set
       string = pchar;
       item = parse_input(string);
@@ -580,7 +578,7 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
   if(s.length() == 0)
     return;
 
-  tab_pressed = 0; // New line, zero the counter.
+  tab_pressed = 0; // new("line,") line, zero the counter.
 
   // 
   // Lookup the nick completion
@@ -613,7 +611,7 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
   
 }
 
-void KSircTopLevel::sirc_write(QString &str) /*fold00*/
+void KSircTopLevel::sirc_write(QString str) /*FOLD00*/
 {
   /*
    * Parse line forcommand we handle
@@ -652,7 +650,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 	  (strncmp(str, "/hop", 4) == 0) ||
 	  (strncmp(str, "/bye", 4) == 0) ||
 	  (strncmp(str, "/quit", 5) == 0)){
-    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
+    QApplication::postEvent(this, new("QCloseEvent") QCloseEvent()); // WE'RE DEAD
     linee->setText("");
     str.truncate(0);
     return;
@@ -681,7 +679,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
+ircListItem *KSircTopLevel::parse_input(QString string) /*FOLD00*/
 {
 
   /* 
@@ -731,7 +729,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
   }
   catch(parseSucc &item){
     if(item.string.length() > 0)
-      return new ircListItem(item.string,item.colour,mainw,item.pm);
+      return new("ircListItem") ircListItem(item.string,item.colour,mainw,item.pm);
     else
       return NULL;
   }
@@ -741,7 +739,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
       warning(format.data(), string.data());
     }
     if(err.str.isEmpty() == FALSE){
-      return new ircListItem(err.str, kSircConfig->colour_error, mainw, pix_madsmile);
+      return new("ircListItem") ircListItem(err.str, kSircConfig->colour_error, mainw, pix_madsmile);
     }
     return NULL;
   }
@@ -753,7 +751,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
   /*
    * We've fallen out of the loop
    */
-  return new ircListItem(string,color,mainw,pixmap);
+  return new("ircListItem") ircListItem(string,color,mainw,pixmap);
 }
 
 void KSircTopLevel::UserSelected(int index) /*fold00*/
@@ -762,7 +760,7 @@ void KSircTopLevel::UserSelected(int index) /*fold00*/
     user_controls->popup(this->cursor().pos());
 }
 
-void KSircTopLevel::UserParseMenu(int id) /*fold00*/
+void KSircTopLevel::UserParseMenu(int id) /*FOLD00*/
 {
   if(nicks->currentItem() < 0){
     QMessageBox::warning(this, "Warning, dork at the helm Captain!\n",
@@ -781,7 +779,7 @@ void KSircTopLevel::UserParseMenu(int id) /*fold00*/
   sirc_write(s);
 }
 
-void KSircTopLevel::UserUpdateMenu() /*fold00*/
+void KSircTopLevel::UserUpdateMenu() /*FOLD00*/
 {
   int i = 0;
   UserControlMenu *ucm;
@@ -829,13 +827,13 @@ void KSircTopLevel::AccelNextMsgNick() /*fold00*/
 
 void KSircTopLevel::newWindow()  /*fold00*/
 { 
-  open_top *w = new open_top(); 
+  open_top *w = new("open_top") open_top(); 
   connect(w, SIGNAL(open_toplevel(QString)),
 	  this, SIGNAL(open_toplevel(QString)));
   w->show();
 }
 
-void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
+void KSircTopLevel::closeEvent(QCloseEvent *) /*FOLD00*/
 {
   // Let's not part the channel till we are acutally delete.
   // We should always get a close event, *BUT* we will always be deleted.
@@ -851,7 +849,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
   // This line is NEVER reached.
 }
 
-void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
+void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
 {
   bool update = mainw->autoUpdate();
   mainw->setAutoUpdate(FALSE);
@@ -1001,10 +999,10 @@ void KSircTopLevel::showTicker() /*FOLD00*/
 {
   myrect = geometry();
   mypoint = pos();
-  ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
+  ticker = new("KSTicker") KSTicker(0, "ticker", WStyle_NormalBorder);
   ticker->setCaption(caption);
   kConfig->setGroup("TickerDefaults");
-  ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
+  ticker->setFont(kConfig->readFontEntry("font", new("QFont") QFont("fixed")));
   ticker->setSpeed(kConfig->readNumEntry("tick", 30), 
 		   kConfig->readNumEntry("step", 3));
   QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
@@ -1074,7 +1072,7 @@ QString KSircTopLevel::findNick(QString part, uint which) /*fold00*/
 
 void KSircTopLevel::openCutWindow() /*FOLD00*/
 {
-  KSCutDialog *kscd = new KSCutDialog();
+  KSCutDialog *kscd = new("KSCutDialog") KSCutDialog();
   QString buffer;
   for(uint i = 0; i < mainw->count(); i++){
     buffer += mainw->text(i);
@@ -1180,17 +1178,17 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*
   : QFrame(parent, name, f, allowLines)
 {
   
-  pan = new KNewPanner(this, "", KNewPanner::Vertical);
+  pan = new("KNewPanner") KNewPanner(this, "", KNewPanner::Vertical);
 
-  mainw = new KSircListBox(pan, "");
+  mainw = new("KSircListBox") KSircListBox(pan, "");
   mainw->setFocusPolicy(QWidget::NoFocus);
 //  mainw->setEnabled(FALSE);
   mainw->setSmoothScrolling(TRUE);       
 
-  nicks = new aListBox(pan, "");
+  nicks = new("aListBox") aListBox(pan, "");
   nicks->setFocusPolicy(QWidget::NoFocus);
 
-  linee = new aHistLineEdit(this, "");
+  linee = new("aHistLineEdit") aHistLineEdit(this, "");
 
   pan->activate(mainw, nicks);
 

@@ -23,7 +23,7 @@ dccDialogData::dccDialogData
 	:
 	Inherited( parent, name, 0 )
 {
-	fileList = new QListBox( this, "ListBox_1" );
+	fileList = new("QListBox") QListBox( this, "ListBox_1" );
 	fileList->setGeometry( 10, 10, 210, 190 );
 	fileList->setMinimumSize( 10, 10 );
 	fileList->setMaximumSize( 32767, 32767 );
@@ -31,7 +31,7 @@ dccDialogData::dccDialogData
 	fileList->setLineWidth( 2 );
 	fileList->setMultiSelection( FALSE );
 
-	getButton = new QPushButton( this, "PushButton_1" );
+	getButton = new("QPushButton") QPushButton( this, "PushButton_1" );
 	getButton->setGeometry( 10, 210, 100, 30 );
 	getButton->setMinimumSize( 10, 10 );
 	getButton->setMaximumSize( 32767, 32767 );
@@ -39,7 +39,7 @@ dccDialogData::dccDialogData
 	getButton->setAutoRepeat( FALSE );
 	getButton->setAutoResize( FALSE );
 
-	forgetButton = new QPushButton( this, "PushButton_2" );
+	forgetButton = new("QPushButton") QPushButton( this, "PushButton_2" );
 	forgetButton->setGeometry( 120, 210, 100, 30 );
 	forgetButton->setMinimumSize( 10, 10 );
 	forgetButton->setMaximumSize( 32767, 32767 );

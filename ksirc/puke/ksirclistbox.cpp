@@ -4,14 +4,14 @@
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PKSircListBox *plb = new PKSircListBox(ca.parent);
+  PKSircListBox *plb = new("PKSircListBox") PKSircListBox(ca.parent);
   KSircListBox *lb;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("KSircListBox") == TRUE)
     lb = (KSircListBox *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    lb = new KSircListBox((QWidget *) ca.parent->widget());
+    lb = new("KSircListBox") KSircListBox((QWidget *) ca.parent->widget());
   else
-    lb = new KSircListBox();
+    lb = new("KSircListBox") KSircListBox();
   plb->setWidget(lb);
   plb->setWidgetId(ca.pwI);
   plb->setPukeController(ca.pc);
@@ -53,7 +53,7 @@ void PKSircListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     if(!checkWidget())
       return;
 
-    widget()->insertItem(new ircListItem(pm->cArg, kSircConfig->colour_text, widget()), pm->iArg);
+    widget()->insertItem(new("ircListItem") ircListItem(pm->cArg, kSircConfig->colour_text, widget()), pm->iArg);
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();

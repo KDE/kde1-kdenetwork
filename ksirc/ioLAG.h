@@ -25,7 +25,7 @@ protected:
  virtual void timerEvent ( QTimerEvent * );
 
 signals:
-  void outputLine(QString &);
+  void outputLine(QString);
 
 private:
   KSircProcess *proc;

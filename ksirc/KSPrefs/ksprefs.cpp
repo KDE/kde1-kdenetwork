@@ -8,14 +8,14 @@ KSPrefs::KSPrefs(QWidget * parent, const char * name)
 {
   setCaption(i18n("kSirc Prefrences"));
 
-  pTab = new QTabDialog(this, "prefstabs");
+  pTab = new("QTabDialog") QTabDialog(this, "prefstabs");
 
   // Start Sub Dialog items.
-  pGeneral = new general(pTab);
-  pStart = new StartUp(pTab);
-  pServerChannel = new ServerChannel(pTab);
-  pMenu = new UserMenuRef(pTab);
-  pFilters = new DefaultFilters(pTab);
+  pGeneral = new("general") general(pTab);
+  pStart = new("StartUp") StartUp(pTab);
+  pServerChannel = new("ServerChannel") ServerChannel(pTab);
+  pMenu = new("UserMenuRef") UserMenuRef(pTab);
+  pFilters = new("DefaultFilters") DefaultFilters(pTab);
 
   pTab->setCancelButton(i18n("Cancel"));
   pTab->setOkButton(i18n("OK"));

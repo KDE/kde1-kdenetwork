@@ -74,7 +74,7 @@ PukeController::PukeController(QString sock, QObject *parent, const char *name) 
   fcntl(iListenFd, F_SETFL, O_NONBLOCK);  // Set it non-block so that
                                           // accept() never blocks.
   
-  qsnListen = new QSocketNotifier(iListenFd, QSocketNotifier::Read, this, QString(name) + "_iListen");
+  qsnListen = new("QSocketNotifier") QSocketNotifier(iListenFd, QSocketNotifier::Read, this, QString(name) + "_iListen");
   connect(qsnListen, SIGNAL(activated(int)),
 	  this, SLOT(NewConnect(int)));
 
@@ -117,7 +117,7 @@ PukeController::~PukeController() /*fold00*/
   unlink(qsPukeSocket);
 }
 
-void PukeController::NewConnect(int) /*fold00*/
+void PukeController::NewConnect(int) /*FOLD00*/
 {
   int cfd;
   ksize_t len = 0;
@@ -131,9 +131,9 @@ void PukeController::NewConnect(int) /*fold00*/
   fcntl(cfd, F_SETFL, O_NONBLOCK);  // Set it non-block so that
                                     // cfd() never blocks.
 
-  fdStatus *fds = new fdStatus();
-  fds->sr = new QSocketNotifier(cfd, QSocketNotifier::Read, this);
-  fds->sw = new QSocketNotifier(cfd, QSocketNotifier::Write, this);
+  fdStatus *fds = new("fdStatus") fdStatus();
+  fds->sr = new("QSocketNotifier") QSocketNotifier(cfd, QSocketNotifier::Read, this);
+  fds->sw = new("QSocketNotifier") QSocketNotifier(cfd, QSocketNotifier::Write, this);
   connect(fds->sr, SIGNAL(activated(int)),
 	  this, SLOT(Traffic(int)));
   connect(fds->sw, SIGNAL(activated(int)),
@@ -144,7 +144,7 @@ void PukeController::NewConnect(int) /*fold00*/
   /*
    * Now we add ourselves as a client to the fd so we can process messages going to us
    */
-  WidgetS *ws = new WidgetS;
+  WidgetS *ws = new("WidgetS") WidgetS;
   ws->pwidget = this;
   ws->type = 1;
   insertPObject(cfd, ControllerWinId, ws);
@@ -369,15 +369,15 @@ void PukeController::initHdlr() /*FOLD00*/
 
   widgetCreate *wc;
 
-  wc = new widgetCreate;
+  wc = new("widgetCreate") widgetCreate;
   wc->wc = PWidget::createWidget;
   widgetCF.insert(PWIDGET_WIDGET, wc);
 
-  wc = new widgetCreate;
+  wc = new("widgetCreate") widgetCreate;
   wc->wc = PObject::createWidget;
   widgetCF.insert(PWIDGET_OBJECT, wc);
 
-  wc = new widgetCreate;
+  wc = new("widgetCreate") widgetCreate;
   wc->wc = PLayout::createWidget;
   widgetCF.insert(POBJECT_LAYOUT, wc);
 
@@ -386,43 +386,43 @@ void PukeController::initHdlr() /*FOLD00*/
 
 
   // Invalid is the default invalid handler
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeInvalid;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_INVALID, cs);
 
   
   // Setup's handled by the setup handler
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeSetup;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP, cs);
 
   // We don't receive PUKE_SETUP_ACK's we send them.
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeInvalid;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP_ACK, cs);  
 
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeEcho;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_ECHO, cs);
 
   // Fetch widget gets the requested widget from the ServerController
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeFetchWidget;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_FETCHWIDGET, cs);
 
   // Fetch widget gets the requested widget from the ServerController
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeDumpTree;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_DUMPTREE, cs);
 
   // Fetch widget gets the requested widget from the ServerController
-  cs = new commandStruct;
+  cs = new("commandStruct") commandStruct;
   cs->cmd = &hdlrPukeDeleteWidget;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_WIDGET_DELETE, cs);
@@ -495,9 +495,9 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
       throw(errorCommandFailed(PUKE_INVALID,6));
   }
 
-//  debug("Fetching new widget, type: %d, parent: %d objname: %s", iType, iParent, name);
+//  debug("Fetching new("widget,") widget, type: %d, parent: %d objname: %s", iType, iParent, name);
 
-  uiBaseWinId++; // Get a new base win id
+  uiBaseWinId++; // Get a new("base") base win id
 
   // wIret holds the current widget id for the new widget
   wIret.iWinId = uiBaseWinId;
@@ -537,7 +537,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
 
   arg.fetchedObj = obj;
   
-  WidgetS *ws = new WidgetS;
+  WidgetS *ws = new("WidgetS") WidgetS;
   ws->pwidget = (widgetCF[iType]->wc)(arg);
   ws->type = iType;
 
@@ -718,7 +718,7 @@ PWidget *PukeController::id2pwidget(widgetId *pwi){ /*FOLD00*/
 void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
   // If no widget list exists for this fd, create one
   if(WidgetList[fd] == NULL){
-    QIntDict<WidgetS> *qidWS = new QIntDict<WidgetS>;
+    QIntDict<WidgetS> *qidWS = new("QIntDict<WidgetS>") QIntDict<WidgetS>;
     qidWS->setAutoDelete(TRUE);
     WidgetList.insert(fd, qidWS);
   }
@@ -726,7 +726,7 @@ void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
   WidgetList[fd]->insert(iWinId, obj);
 
   // Set reverse list used durring delete to remove the widget
-  widgetId *pwi = new widgetId;
+  widgetId *pwi = new("widgetId") widgetId;
   pwi->fd = fd;
   pwi->iWinId = iWinId;
   char key[keySize];
@@ -811,11 +811,11 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
     wc =  (PObject *(*)(CreateArgs &ca) )
         KDynamicLibrary::getSymbol(handle, "createWidget");
 
-    wC = new widgetCreate;
+    wC = new("widgetCreate") widgetCreate;
     wC->wc = wc;
     wC->dlhandle = handle;
     widgetCF.insert(pm->iArg, wC);
-//    warning("New widget: %d with wc: %p and handle: %p", pm->iArg, wc, handle);
+//    warning("new("widget:") widget: %d with wc: %p and handle: %p", pm->iArg, wc, handle);
 
     pmRet.iCommand = -pm->iCommand;
     pmRet.iTextSize = 0;
@@ -859,7 +859,7 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent
-  WidgetS *ws = new WidgetS;
+  WidgetS *ws = new("WidgetS") WidgetS;
 
   /*
    * The parent widget ID and type are packed into the iArg
@@ -881,7 +881,7 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
     throw(errorCommandFailed(PUKE_INVALID,1));
   }
   
-  uiBaseWinId++; // Get a new base win id
+  uiBaseWinId++; // Get a new("base") base win id
 
   // wIret holds the current widget id for the new widget
   wIret.iWinId = uiBaseWinId;

@@ -18,6 +18,8 @@
 #include "config.h"
 #include <qscrbar.h>
 
+aListBox::~aListBox() {
+}
 void aListBox::mousePressEvent(QMouseEvent *e) /*fold00*/
 {
 
@@ -29,7 +31,7 @@ void aListBox::mousePressEvent(QMouseEvent *e) /*fold00*/
 }
 
 
-void aListBox::clear() /*fold00*/
+void aListBox::clear() /*FOLD00*/
 {
   QListBox::clear();
 }
@@ -53,7 +55,7 @@ void aListBox::inSort ( nickListItem *lbi) /*fold00*/
 
 void aListBox::inSort ( const char * text, bool top)  /*fold00*/
 {
-  nickListItem *nli = new nickListItem();
+  nickListItem *nli = new("nickListItem") nickListItem();
   nli->setText(text);
   if(top == TRUE)
     nli->setOp(TRUE);
@@ -202,7 +204,7 @@ nickListItem *aListBox::item(int index){ /*fold00*/
   return (nickListItem *) QListBox::item(index);
 }
 
-nickListItem::nickListItem() /*FOLD00*/
+nickListItem::nickListItem() /*fold00*/
   : QListBoxItem()
 {
   is_op = FALSE;
@@ -211,8 +213,9 @@ nickListItem::nickListItem() /*FOLD00*/
   is_ircop = FALSE;
 }
 
-nickListItem::~nickListItem() /*fold00*/
+nickListItem::~nickListItem() /*FOLD00*/
 {
+  string.truncate(0);
 }
 
 bool nickListItem::op() /*fold00*/
@@ -289,10 +292,10 @@ const QPixmap* nickListItem::pixmap() const /*fold00*/
   return 0l;
 }
 
-void nickListItem::setText(const char *str) /*fold00*/
+void nickListItem::setText(const char *str) /*FOLD00*/
 
 {
-  string = qstrdup(str);
+  string = str;
 }
 
 nickListItem &nickListItem::operator= (const nickListItem &nli) /*FOLD00*/

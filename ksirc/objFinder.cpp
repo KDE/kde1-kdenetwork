@@ -6,12 +6,12 @@
 #include <iostream.h>
 
 
-QDict<QObject> *objFinder::objList = new QDict<QObject>;
+QDict<QObject> *objFinder::objList = new("QDict<QObject>") QDict<QObject>;
 
 /*
  * So we can connect to the slots, etc
  */
-objFinder *objFind = new objFinder();
+objFinder *objFind = new("objFinder") objFinder();
 
 objFinder::objFinder() /*fold00*/
   : QObject()

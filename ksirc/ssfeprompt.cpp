@@ -8,6 +8,7 @@
  *********************************************************************/
 
 #include "ssfeprompt.h"
+#include "kplunger/kplunger.h"
 
 #define Inherited ssfepromptdata
 

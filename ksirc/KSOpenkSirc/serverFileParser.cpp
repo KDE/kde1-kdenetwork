@@ -52,7 +52,7 @@ int serverFileParser::readDatafile( const char *fileName )
             for ( uint portloc = 0; portloc <= buf.length(); portloc++ ) {
               if (buf[portloc] == ',' || portloc == buf.length()) {
                 if (!portbuff.isEmpty())
-                  ports.inSort( new port(portbuff));
+                  ports.inSort( new("port") port(portbuff));
                 portbuff.truncate( 0 );
               } else {
                 portbuff += buf[portloc];
@@ -70,7 +70,7 @@ int serverFileParser::readDatafile( const char *fileName )
       }
     } // for loop
 
-    Groups.inSort( new Server(group, serveraddress, ports, 
+    Groups.inSort( new("Server") Server(group, serveraddress, ports, 
                               servername, script) );
  
   } // while loop

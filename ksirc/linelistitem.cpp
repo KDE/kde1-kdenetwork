@@ -3,6 +3,7 @@
 
 #include "linelistitem.h"
 
+
 void lineListItem::paint( QPainter *p ){
   QPen pen = p->pen();
   p->setPen(colour);

@@ -9,11 +9,19 @@
 
 #include "config.h"
 
+QIntCache<QPixmap> *ircListItem::PaintCache = 0x0;
+
 ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   : QObject(),
     QListBoxItem()
     
 {
+
+  if(PaintCache == 0x0){
+    PaintCache = new("QCache<QPixmap>") QIntCache<QPixmap>;
+    PaintCache->setMaxCost(300);
+    PaintCache->setAutoDelete(TRUE);
+  }
 
   rtext = s.data();
   setText(s);
@@ -21,10 +29,11 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   pm = p;
   parent_lb = lb;
 
-  
   Wrapping = TRUE;
   frozen = FALSE;
 
+  CacheId = 1;
+  
   rows = 1;
   linewidth = 0;
   totalheight = 0;
@@ -32,9 +41,9 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   revOne = revTwo = -1;
   forceClear = FALSE;
 
-  paint_text = new QStrList();
+  paint_text = new("QStrList") QStrList();
 
-  dbuffer = new QPixmap();
+//  dbuffer = new("QPixmap") QPixmap();
   need_update = TRUE;
 
   old_height = old_width = 0;
@@ -46,16 +55,30 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
 ircListItem::~ircListItem()
 {
   delete paint_text;
-  delete dbuffer;
+  PaintCache->remove(CacheId);
   rtext.truncate(0);
   
 }
 
 void ircListItem::paint(QPainter *p)
 {
-  if(need_update == TRUE)
+  QPixmap *dbuffer = PaintCache->find(CacheId);
+  if(dbuffer == 0x0)
+    need_update = TRUE;
+    
+  if(need_update == TRUE){
     setupPainterText();
-  p->drawPixmap(0,0, *dbuffer);
+    dbuffer = PaintCache->find(CacheId); // Updated by setupPainterText();
+    if(dbuffer == 0x0){
+      warning("ircListItem::paint() Failed to get a paint pixmap!! Giving up");
+      need_update = TRUE;
+    }
+    else
+      need_update = FALSE;
+  }
+
+  if(need_update == FALSE)
+    p->drawPixmap(0,0, *dbuffer);
 }
 
 int ircListItem::height(const QListBox *) const
@@ -75,7 +98,19 @@ int ircListItem::row()
 
 void ircListItem::setupPainterText()
 {
-
+  QPixmap *dbuffer = PaintCache->find(CacheId);
+  if(dbuffer == 0x0){
+    dbuffer = new("QPixmap") QPixmap();
+    CacheId = dbuffer->serialNumber();
+    // Should be safe to insert here
+    // and use it for the rest of the function
+    // since no other inserts are done
+    if(PaintCache->insert(CacheId, dbuffer, 1) == false)
+      warning("Insert into cache failed");
+    // Set the old height and width to 0 to get the pixmap sized
+    old_height = old_width = 0;
+  }
+  
   if(frozen == TRUE){
     need_update = TRUE;
     return;

@@ -34,12 +34,12 @@ welcomeWin::welcomeWin
     QString s;
     while(!t.eof()){
       s = t.readLine();
-      DisplayDialog->insertItem(new ircListItem(s, &black, DisplayDialog));
+      DisplayDialog->insertItem(new("ircListItem") ircListItem(s, &black, DisplayDialog));
     }
     f.close();
   }
   else{
-    DisplayDialog->insertItem(new ircListItem("Unable to open release notes file!!", &red, DisplayDialog));
+    DisplayDialog->insertItem(new("ircListItem") ircListItem("Unable to open release notes file!!", &red, DisplayDialog));
   }
   DisplayDialog->updateScrollBars();
 }

@@ -3,12 +3,12 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PLineEdit *pw = new PLineEdit(ca.parent);
+  PLineEdit *pw = new("PLineEdit") PLineEdit(ca.parent);
   QLineEdit *le;
   if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    le = new QLineEdit((QWidget *) ca.parent->widget());
+    le = new("QLineEdit") QLineEdit((QWidget *) ca.parent->widget());
   else
-    le = new QLineEdit();
+    le = new("QLineEdit") QLineEdit();
   pw->setWidget(le);
   pw->setWidgetId(ca.pwI);
   return pw;

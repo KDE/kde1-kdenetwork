@@ -24,7 +24,7 @@ ssfepromptdata::ssfepromptdata
 	:
 	Inherited( parent, name, TRUE, 20480 )
 {
-	prompt = new QLabel( this, "Label_1" );
+	prompt = new("QLabel") QLabel( this, "Label_1" );
 	prompt->setGeometry( 10, 10, 220, 30 );
 	prompt->setMinimumSize( 10, 10 );
 	prompt->setMaximumSize( 32767, 32767 );
@@ -32,7 +32,7 @@ ssfepromptdata::ssfepromptdata
 	prompt->setAlignment( 289 );
 	prompt->setMargin( -1 );
 
-	SLine = new QLineEdit( this, "LineEdit_1" );
+	SLine = new("QLineEdit") QLineEdit( this, "LineEdit_1" );
 	SLine->setGeometry( 240, 10, 100, 30 );
 	SLine->setMinimumSize( 10, 10 );
 	SLine->setMaximumSize( 32767, 32767 );
@@ -43,7 +43,7 @@ ssfepromptdata::ssfepromptdata
 	SLine->setFrame( TRUE );
 
 	QPushButton* dlgedit_PushButton_1;
-	dlgedit_PushButton_1 = new QPushButton( this, "PushButton_1" );
+	dlgedit_PushButton_1 = new("QPushButton") QPushButton( this, "PushButton_1" );
 	dlgedit_PushButton_1->setGeometry( 240, 50, 100, 30 );
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );

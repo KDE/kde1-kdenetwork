@@ -8,7 +8,7 @@
  */
 PObject *createWidget(CreateArgs &ca) {
     warning("Create called for PMenuData, bad things are about to happend\n");
-    return new PObject();
+    return new("PObject") PObject();
 }
 
 

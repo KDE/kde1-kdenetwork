@@ -20,7 +20,7 @@ PLayout::~PLayout()
 
 PObject *PLayout::createWidget(CreateArgs &ca)
 {
-  PLayout *pw = new PLayout(ca.parent);
+  PLayout *pw = new("PLayout") PLayout(ca.parent);
   QBoxLayout *qbl;
   int direction, border, iType, iParent;
   // Retreive the border and direction information out of the
@@ -30,12 +30,12 @@ PObject *PLayout::createWidget(CreateArgs &ca)
   
   if((ca.parent != 0) &&
      (ca.parent->widget()->isWidgetType() == TRUE)){
-    qbl = new QBoxLayout((QWidget *) ca.parent->widget(), (QBoxLayout::Direction) direction, border);
+    qbl = new("QBoxLayout") QBoxLayout((QWidget *) ca.parent->widget(), (QBoxLayout::Direction) direction, border);
     //      debug("Creating layout with parent: %d", parent.iWinId);
 
   }
   else{
-    qbl = new QBoxLayout((QBoxLayout::Direction) direction, border);
+    qbl = new("QBoxLayout") QBoxLayout((QBoxLayout::Direction) direction, border);
     //      debug("Creating layout NO PARENT", parent.iWinId);
   }
   pw->setWidget(qbl);

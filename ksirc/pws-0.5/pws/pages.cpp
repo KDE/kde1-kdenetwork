@@ -36,7 +36,7 @@ GeneralPage::GeneralPage(QWidget *parent = 0, const char *name = 0)
 	: Page(parent, name)
 {
     conf->setGroup("General");
-    TLForm *f=new TLForm("general","General",this);
+    TLForm *f=new("TLForm") TLForm("general","General",this);
     KTypeLayout *l=f->layout;
     
     l->addBook("book");
@@ -164,7 +164,7 @@ ServerPage::ServerPage(QWidget *parent = 0, const char *name = 0)
     QPushButton *b;
     conf->setGroup(name);
     Name=name;
-    TLForm *f=new TLForm(name,name,this);
+    TLForm *f=new("TLForm") TLForm(name,name,this);
     KTypeLayout *l=f->layout;
     QString home=QDir::homeDirPath();
     

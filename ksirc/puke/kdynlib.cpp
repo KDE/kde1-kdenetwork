@@ -80,7 +80,7 @@ KDynamicHandle KDynamicLibrary::loadLibrary(QString fileName, LoadOption opt)
                     RTLD_GLOBAL | ((opt == ResolveLazy) ? RTLD_LAZY : RTLD_NOW));
 
     if (last_error == 0)
-       last_error = new QString();
+       last_error = new("QString") QString();
 
     if(handle == NULL){
       warning("Failed to open %s: %s", fileName.data(), dlerror());
@@ -113,7 +113,7 @@ void *KDynamicLibrary::getSymbol(KDynamicHandle handle, QString symName)
     void *sym = dlsym(handle, symName.data());
      
     if (!last_error)
-       last_error = new QString();
+       last_error = new("QString") QString();
 
     if(sym == NULL){
       warning("Failed to find %s: %s", symName.data(), dlerror());

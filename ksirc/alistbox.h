@@ -15,7 +15,7 @@ class nickListItem : public QListBoxItem
 {
  public:
   nickListItem();
-  ~nickListItem();
+  virtual ~nickListItem();
 
   int height ( const QListBox * ) const;
   int width ( const QListBox * ) const;
@@ -56,6 +56,8 @@ public:
       clear();
       p_scroll = palette().copy();
     }
+
+  virtual ~aListBox();
 
   void clear();
 

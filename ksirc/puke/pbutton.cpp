@@ -5,12 +5,12 @@
 
 PObject *createWidget(CreateArgs &ca)
 {
-  PButton *pb = new PButton(ca.parent);
+  PButton *pb = new("PButton") PButton(ca.parent);
   QButton *qb;
   if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    qb = new QButton((QWidget *) ca.parent->widget());
+    qb = new("QButton") QButton((QWidget *) ca.parent->widget());
   else
-    qb = new QButton();
+    qb = new("QButton") QButton();
   pb->setWidget(qb);
   pb->setWidgetId(ca.pwI);
   return pb;

@@ -22,26 +22,26 @@ void PWS::invokeHelp()
 
 void PWS::show(){
     if(createdUI == FALSE){
-        QPopupMenu *file_menu = new QPopupMenu();
+        QPopupMenu *file_menu = new("QPopupMenu") QPopupMenu();
         file_menu->insertItem(i18n("E&xit"), kapp, SLOT(quit()));
 
-        QPopupMenu *help_menu = new QPopupMenu();
+        QPopupMenu *help_menu = new("QPopupMenu") QPopupMenu();
         help_menu->insertItem(i18n("&Help"), this, SLOT(invokeHelp()));
 
-        //	menuBar = new KMenuBar(this, "menubar");
+        //	menuBar = new("KMenuBar") KMenuBar(this, "menubar");
         //	menuBar->insertItem(i18n("&File"), file_menu);
         //	menuBar->insertItem(i18n("&Help"), help_menu);
 
         //	setMenu(menuBar);
 
-        //	toolBar = new KToolBar(this);
+        //	toolBar = new("KToolBar") KToolBar(this);
         //	addToolBar(toolBar);
 
-        //	statusBar = new KStatusBar(this);
+        //	statusBar = new("KStatusBar") KStatusBar(this);
         //	setStatusBar(statusBar);
 
         //        resize(600,440);
-        view = new PWSWidget(this);
+        view = new("PWSWidget") PWSWidget(this);
         setView(view);
 
         connect(view, SIGNAL(quitPressed(QObject *)),

@@ -25,28 +25,28 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
 
   if(parserTable.isEmpty() == TRUE){
     parserTable.setAutoDelete(TRUE);
-    parserTable.insert("`l`", new parseFunc(&parseSSFEClear));
-    parserTable.insert("`s`", new parseFunc(&parseSSFEStatus));
-    parserTable.insert("`i`", new parseFunc(&parseSSFEInit));
-    parserTable.insert("`t`", new parseFunc(&parseSSFEMsg));
-    parserTable.insert("`o`", new parseFunc(&parseSSFEOut));
-    parserTable.insert("`p`", new parseFunc(&parseSSFEPrompt));
-    parserTable.insert("`P`", new parseFunc(&parseSSFEPrompt));
-    parserTable.insert("`R`", new parseFunc(&parseSSFEReconnect));
+    parserTable.insert("`l`", new("parseFunc") parseFunc(&parseSSFEClear));
+    parserTable.insert("`s`", new("parseFunc") parseFunc(&parseSSFEStatus));
+    parserTable.insert("`i`", new("parseFunc") parseFunc(&parseSSFEInit));
+    parserTable.insert("`t`", new("parseFunc") parseFunc(&parseSSFEMsg));
+    parserTable.insert("`o`", new("parseFunc") parseFunc(&parseSSFEOut));
+    parserTable.insert("`p`", new("parseFunc") parseFunc(&parseSSFEPrompt));
+    parserTable.insert("`P`", new("parseFunc") parseFunc(&parseSSFEPrompt));
+    parserTable.insert("`R`", new("parseFunc") parseFunc(&parseSSFEReconnect));
     // The rest are *** info message
-    parserTable.insert("***", new parseFunc(&parseINFOInfo));
-    parserTable.insert("*E*", new parseFunc(&parseINFOError));
-    parserTable.insert("*!*", new parseFunc(&parseINFONicks)); // Normal
-    parserTable.insert("*C*", new parseFunc(&parseINFONicks)); // 1st line
-    parserTable.insert("*c*", new parseFunc(&parseINFONicks)); // Last line
-    parserTable.insert("*#*", new parseFunc(&parseINFONicks)); // Non enhanced
-    parserTable.insert("*>*", new parseFunc(&parseINFOJoin));
-    parserTable.insert("*<*", new parseFunc(&parseINFOPart));
-    parserTable.insert("*N*", new parseFunc(&parseINFOChangeNick));
-    parserTable.insert("*+*", new parseFunc(&parseINFOMode));
-    parserTable.insert("*T*", new parseFunc(&parseINFOTopic));
+    parserTable.insert("***", new("parseFunc") parseFunc(&parseINFOInfo));
+    parserTable.insert("*E*", new("parseFunc") parseFunc(&parseINFOError));
+    parserTable.insert("*!*", new("parseFunc") parseFunc(&parseINFONicks)); // Normal
+    parserTable.insert("*C*", new("parseFunc") parseFunc(&parseINFONicks)); // 1st line
+    parserTable.insert("*c*", new("parseFunc") parseFunc(&parseINFONicks)); // Last line
+    parserTable.insert("*#*", new("parseFunc") parseFunc(&parseINFONicks)); // Non enhanced
+    parserTable.insert("*>*", new("parseFunc") parseFunc(&parseINFOJoin));
+    parserTable.insert("*<*", new("parseFunc") parseFunc(&parseINFOPart));
+    parserTable.insert("*N*", new("parseFunc") parseFunc(&parseINFOChangeNick));
+    parserTable.insert("*+*", new("parseFunc") parseFunc(&parseINFOMode));
+    parserTable.insert("*T*", new("parseFunc") parseFunc(&parseINFOTopic));
     // End of info message
-    parserTable.insert("*  ", new parseFunc(&parseCTCPAction));
+    parserTable.insert("*  ", new("parseFunc") parseFunc(&parseCTCPAction));
   }
 
 }
@@ -93,7 +93,7 @@ void ChannelParser::parse(QString string) /*fold00*/
   
   pf = parserTable[string.mid(0, 3)];
   if(pf != 0x0){
-//    debug("New hanlder handling: %s", string.data());
+//    debug("new("hanlder") hanlder handling: %s", string.data());
     (this->*(pf->parser))(string);
   }
 
@@ -115,7 +115,7 @@ void ChannelParser::parseSSFEClear(QString string) /*fold00*/
   throw(parseSucc(QString(""))); // Null string, don't display anything
 }
 
-void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
+void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
 {
   string.detach();
   string.remove(0, 4); // strip off the first 4 characters
@@ -234,7 +234,7 @@ void ChannelParser::parseSSFEPrompt(QString string) /*fold00*/
     prompt_active = TRUE;
     // If we use this, then it blows up
     // if we haven't popped up on the remote display yet.
-    sp = new ssfePrompt(prompt, 0);
+    sp = new("ssfePrompt") ssfePrompt(prompt, 0);
     sp->setCaption(caption);
     if(string[1] == 'P')
       sp->setPassword(TRUE);
@@ -339,7 +339,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
   nick = strtok(place_holder, " ");
   
   while(nick != 0x0){                     // While there's nick to go...
-    nickListItem *irc = new nickListItem();
+    nickListItem *irc = new("nickListItem") nickListItem();
 
     bool done = FALSE;
 
@@ -425,7 +425,7 @@ void ChannelParser::parseINFOPart(QString string) /*fold00*/
     else if(sscanf(string, "You have left channel %100s", channel)){
 
       if(strcasecmp(top->channel_name, channel) == 0){
-	QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
+	QApplication::postEvent(top, new("QCloseEvent") QCloseEvent()); // WE'RE DEAD
 	throw(parseSucc(QString("")));
       }
     }
@@ -462,7 +462,7 @@ void ChannelParser::parseINFOPart(QString string) /*fold00*/
                                           }
                                         break;
                                         case 1:
-                                          QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
+                                          QApplication::postEvent(top, new("QCloseEvent") QCloseEvent()); // WE'RE DEAD
                                           break;
         }
         top->KickWinOpen = false;
@@ -523,19 +523,19 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
   // search the list for the nick and remove it
   // since the list is source we should do a binary search...
   found = top->nicks->findNick(old_nick);
-  if(found >= 0){ // If the nick's in the nick list, change it and display the change /*fold01*/
+  if(found >= 0){ // If the nick's in the nick list, change it and display the change /*FOLD01*/
     int selection = top->nicks->currentItem();
     bool isOp = top->nicks->isTop(found); // Are they an op?
     top->nicks->setAutoUpdate(FALSE);
     top->nicks->removeItem(found);        // remove old nick
     if(isOp == TRUE){
-      nickListItem *irc  = new nickListItem();
+      nickListItem *irc  = new("nickListItem") nickListItem();
       irc->setText(new_nick);
       irc->setOp(TRUE);
       top->nicks->inSort(irc);
     }
     else{
-      top->nicks->inSort(new_nick);     // add new nick in sorted poss
+      top->nicks->inSort(new_nick);     // add new("nick") nick in sorted poss
       // can't use changeItem since it
       // doesn't maintain sort order
     }
@@ -663,11 +663,11 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
       int offset = top->nicks->findNick(arg.at(i));
       if(offset >= 0){
         top->nicks->setAutoUpdate(FALSE);
-        nickListItem *irc = new nickListItem();
+        nickListItem *irc = new("nickListItem") nickListItem();
         *irc = *top->nicks->item(offset);
         top->nicks->removeItem(offset);           // remove old nick
         irc->setOp(op);
-        // add new nick in sorted pass,with colour
+        // add new("nick") nick in sorted pass,with colour
         top->nicks->inSort(irc);
         top->nicks->setAutoUpdate(TRUE);
         top->nicks->repaint(TRUE);
@@ -691,11 +691,11 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
       int offset = top->nicks->findNick(arg.at(i));
       if(offset >= 0){
         top->nicks->setAutoUpdate(FALSE);
-        nickListItem *irc = new nickListItem();
+        nickListItem *irc = new("nickListItem") nickListItem();
         *irc = *top->nicks->item(offset);
         top->nicks->removeItem(offset);           // remove old nick
         irc->setVoice(voice) ;
-        // add new nick in sorted pass,with colour
+        // add new("nick") nick in sorted pass,with colour
         top->nicks->inSort(irc);
         top->nicks->setAutoUpdate(TRUE);
         top->nicks->repaint();

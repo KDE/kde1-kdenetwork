@@ -48,7 +48,7 @@ protected slots:
   void forgetFile();
 
 signals:
-  void outputLine(QString &);
+  void outputLine(QString);
 
 private:
 //  QDict<QProgressDialog> DlgList;

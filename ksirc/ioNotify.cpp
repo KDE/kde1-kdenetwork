@@ -61,9 +61,9 @@ void KSircIONotify::control_message(int, QString)
 filterRuleList *KSircIONotify::defaultRules()
 {
   filterRule *fr;
-  filterRuleList *frl = new  filterRuleList();
+  filterRuleList *frl = new("filterRuleList") filterRuleList();
   frl->setAutoDelete(TRUE);
-  fr = new filterRule();
+  fr = new("filterRule") filterRule();
   fr->desc = "Send Nick Notifies to notifier parser";
   fr->search = "^\\*\\S?[\\(\\)]\\S?\\* ";
   fr->from = "^";

@@ -16,6 +16,7 @@
 #APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
+DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h 
 # claim, which subdirectories you want to install
 # SUBDIRS = 
 # KSTicker KSprogress

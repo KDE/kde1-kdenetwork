@@ -24,7 +24,7 @@ open_ksircData::open_ksircData
 	:
 	Inherited( parent, name, 45056 )
 {
-	PB_Connect = new QPushButton( this, "PushButton_1" );
+	PB_Connect = new("QPushButton") QPushButton( this, "PushButton_1" );
 	PB_Connect->setGeometry( 290, 100, 140, 30 );
 	PB_Connect->setMinimumSize( 10, 10 );
 	PB_Connect->setMaximumSize( 32767, 32767 );
@@ -39,7 +39,7 @@ open_ksircData::open_ksircData
 	PB_Connect->setAutoResize( FALSE );
 	PB_Connect->setAutoDefault( TRUE );
 
-	PB_Cancel = new QPushButton( this, "PushButton_2" );
+	PB_Cancel = new("QPushButton") QPushButton( this, "PushButton_2" );
 	PB_Cancel->setGeometry( 150, 100, 130, 30 );
 	PB_Cancel->setMinimumSize( 10, 10 );
 	PB_Cancel->setMaximumSize( 32767, 32767 );
@@ -47,7 +47,7 @@ open_ksircData::open_ksircData
 	PB_Cancel->setAutoRepeat( FALSE );
 	PB_Cancel->setAutoResize( FALSE );
 
-	PB_Edit = new QPushButton( this, "PushButton_3" );
+	PB_Edit = new("QPushButton") QPushButton( this, "PushButton_3" );
 	PB_Edit->setGeometry( 10, 100, 130, 30 );
 	PB_Edit->setMinimumSize( 10, 10 );
 	PB_Edit->setMaximumSize( 32767, 32767 );
@@ -55,14 +55,14 @@ open_ksircData::open_ksircData
 	PB_Edit->setAutoRepeat( FALSE );
 	PB_Edit->setAutoResize( FALSE );
 
-	ComboB_ServerGroup = new QComboBox( FALSE, this, "ComboBox_2" );
+	ComboB_ServerGroup = new("QComboBox") QComboBox( FALSE, this, "ComboBox_2" );
 	ComboB_ServerGroup->setGeometry( 10, 30, 100, 30 );
 	ComboB_ServerGroup->setMinimumSize( 10, 10 );
 	ComboB_ServerGroup->setMaximumSize( 32767, 32767 );
 	ComboB_ServerGroup->setSizeLimit( 10 );
 	ComboB_ServerGroup->setAutoResize( FALSE );
 
-	ComboB_ServerPort = new QComboBox( TRUE, this, "ComboBox_3" );
+	ComboB_ServerPort = new("QComboBox") QComboBox( TRUE, this, "ComboBox_3" );
 	ComboB_ServerPort->setGeometry( 360, 30, 70, 30 );
 	ComboB_ServerPort->setMinimumSize( 10, 10 );
 	ComboB_ServerPort->setMaximumSize( 32767, 32767 );
@@ -71,7 +71,7 @@ open_ksircData::open_ksircData
 	ComboB_ServerPort->setAutoResize( FALSE );
 
 	QLabel* dlgedit_Label_2;
-	dlgedit_Label_2 = new QLabel( this, "Label_2" );
+	dlgedit_Label_2 = new("QLabel") QLabel( this, "Label_2" );
 	dlgedit_Label_2->setGeometry( 10, 10, 100, 20 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
@@ -88,7 +88,7 @@ open_ksircData::open_ksircData
 	dlgedit_Label_2->setMargin( -1 );
 
 	QLabel* dlgedit_Label_3;
-	dlgedit_Label_3 = new QLabel( this, "Label_3" );
+	dlgedit_Label_3 = new("QLabel") QLabel( this, "Label_3" );
 	dlgedit_Label_3->setGeometry( 120, 10, 230, 20 );
 	dlgedit_Label_3->setMinimumSize( 10, 10 );
 	dlgedit_Label_3->setMaximumSize( 32767, 32767 );
@@ -105,7 +105,7 @@ open_ksircData::open_ksircData
 	dlgedit_Label_3->setMargin( -1 );
 
 	QLabel* dlgedit_Label_4;
-	dlgedit_Label_4 = new QLabel( this, "Label_4" );
+	dlgedit_Label_4 = new("QLabel") QLabel( this, "Label_4" );
 	dlgedit_Label_4->setGeometry( 360, 10, 70, 20 );
 	dlgedit_Label_4->setMinimumSize( 10, 10 );
 	dlgedit_Label_4->setMaximumSize( 32767, 32767 );
@@ -121,7 +121,7 @@ open_ksircData::open_ksircData
 	dlgedit_Label_4->setAlignment( 289 );
 	dlgedit_Label_4->setMargin( -1 );
 
-	Label_ServerDesc = new QLabel( this, "Label_5" );
+	Label_ServerDesc = new("QLabel") QLabel( this, "Label_5" );
 	Label_ServerDesc->setGeometry( 120, 70, 310, 20 );
 	Label_ServerDesc->setMinimumSize( 10, 10 );
 	Label_ServerDesc->setMaximumSize( 32767, 32767 );
@@ -132,7 +132,7 @@ open_ksircData::open_ksircData
 	Label_ServerDesc->setMargin( -1 );
 
 	QLabel* dlgedit_Label_6;
-	dlgedit_Label_6 = new QLabel( this, "Label_6" );
+	dlgedit_Label_6 = new("QLabel") QLabel( this, "Label_6" );
 	dlgedit_Label_6->setGeometry( 10, 70, 110, 20 );
 	dlgedit_Label_6->setMinimumSize( 10, 10 );
 	dlgedit_Label_6->setMaximumSize( 32767, 32767 );
@@ -148,7 +148,7 @@ open_ksircData::open_ksircData
 	dlgedit_Label_6->setAlignment( 289 );
 	dlgedit_Label_6->setMargin( -1 );
 
-	ComboB_ServerName = new EnterCombo( this, "ServerNameCombo" );
+	ComboB_ServerName = new("EnterCombo") EnterCombo( this, "ServerNameCombo" );
 	ComboB_ServerName->setGeometry( 120, 30, 230, 30 );
 	ComboB_ServerName->setMinimumSize( 10, 10 );
 	ComboB_ServerName->setMaximumSize( 32767, 32767 );
