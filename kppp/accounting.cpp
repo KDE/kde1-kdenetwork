@@ -202,8 +202,8 @@ bool Accounting::loadRuleSet(const char *name) {
    }
   
   // load from KDE directory if file is found there
-  d = KApplication::kdedir().copy();
-  d += "/share/apps/kppp/Rules/";
+  d = KApplication::kde_datadir().copy();
+  d += "/kppp/Rules/";
   d += name;
 
   QFileInfo fg(d.data());

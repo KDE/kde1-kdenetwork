@@ -100,7 +100,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   }
   */
 
-  QString pixdir = kapp->kdedir() + QString("/share/apps/kppp/pics/");  
+  QString pixdir = kapp->kde_datadir() + QString("/kppp/pics/");  
   QString tmp;
 
 #define PMERROR(pm) \
