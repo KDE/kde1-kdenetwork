@@ -1,3 +1,9 @@
+Sun Jan 25 00:45:45 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* docking.cpp: included a hide() statement to cleanly undock
+	the widget from the panel. Otherwise the window stayed invisible
+	after one dock/undock-cycle.
+
 Sat Jan 24 03:40:44 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* fixed a bug (occuring twice) that caused the if-statement for

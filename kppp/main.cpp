@@ -684,7 +684,7 @@ void XPPPWidget::connectbutton() {
     QString string;   
     string.sprintf(klocale->translate("kppp can not find:\n %s\nPlease install pppd properly "
 				      "and/or adjust\n the location of the pppd executable on "
-				      "the misc tab of\n"
+				      "the PPP tab of\n"
 				      "the setup dialog.\n Thank You"),
 		   gpppdata.pppdPath());
     QMessageBox::warning(this, klocale->translate("Error"), string.data());

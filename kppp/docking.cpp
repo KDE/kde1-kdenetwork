@@ -101,8 +101,9 @@ void DockWidget::dock() {
 
     // finally dock the widget
     this->show();
+
     docked = true;
-  }
+  } 
 }
 
 void DockWidget::undock() {
@@ -111,7 +112,10 @@ void DockWidget::undock() {
 
     // the widget's window has to be destroyed in order 
     // to undock from the panel. Simply using hide() is
-    // not enough.
+    // not enough (seems to be necessary though).
+
+    this->hide();
+
     this->destroy(true, true);
 
     // recreate window for further dockings
