@@ -98,7 +98,7 @@ int main( int argc, char **argv )
     DwInitialize();
 
     KApplication a( argc, argv, "krn" );
-    a.enableSessionManagement();
+    //a.enableSessionManagement();
 
     app=&a;
     conf=a.getConfig();
@@ -176,7 +176,11 @@ int main( int argc, char **argv )
 
     Groupdlg k;
     main_widget = &k;
-    
+
+    //insert this:
+    if (a.isRestored())
+        k.restore(1);     
+
     a.setMainWidget( &k );
     
     k.setMinimumSize( 250, 250 );
