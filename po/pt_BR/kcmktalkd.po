@@ -23,12 +23,11 @@ msgstr "Máquina de &resposta"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "&Passagem Adiante"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "uso:  kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "uso:  kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -47,7 +46,6 @@ msgid "&Play sound"
 msgstr "&Reproduzir som"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
 msgstr "Ar&quivo de Som"
 
@@ -157,15 +155,15 @@ msgstr "Mensagem deixada na máquina de responder, por %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Ativar &passagem adiante"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Destino (usuário ou usuário@máquina)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "Método de passa&gem adiante"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -180,3 +178,15 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Passagem adiante somente por anúncio. Conexão direta.\n"
+"      Não recomendado.\n"
+"FWR : Passar adiante todas as requisições, mudando informações\n"
+"      quando necessário. Conexão direta.\n" 
+"FWT : Passar adiante todas as requisições e aceitar o talk.\n"
+"      Conexão indireta.\n" 
+"\n"
+"Recomendado: FWT se você usa-o atrás de um firewall (e se\n"
+"             o ktalkd pode acessar ambas as redes); e FWR nos\n" 
+"             demais casos.\n"
+"\n"
+"Veja a Ajuda para maiores explicações.\n"
