@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-01-31 15:51+0100\n"
+"POT-Creation-Date: 1998-02-01 16:51+0100\n"
 "PO-Revision-Date: 1998-01-24 14:20 +0100\n"
 "Last-Translator: Oliver Hensel &l\n"
 
@@ -396,62 +396,49 @@ msgstr ""
 msgid "Getting Article List"
 msgstr "hole Artikelliste"
 
-#: identDlg.cpp:41
+#: identDlg.cpp:40
 msgid "KRN-Identity Configuration"
 msgstr "KRN-Identität Konfiguration"
 
-#: identDlg.cpp:50
-msgid "Here you should enter your personal information"
-msgstr ""
-
-#: identDlg.cpp:52
-msgid "You should know what these are!"
-msgstr ""
-
-#: identDlg.cpp:61
+#: identDlgData.cpp:14
 msgid "Real Name"
 msgstr "Wirklicher Name"
 
-#: identDlg.cpp:67
+#: identDlgData.cpp:22
 msgid "E-mail Address"
 msgstr "EMail Adresse"
 
-#: identDlg.cpp:73
+#: identDlgData.cpp:30
 msgid "Organization"
 msgstr "Organisation"
 
-#: NNTPConfigDlg.cpp:28
+#: NNTPConfigDlg.cpp:23
 msgid "KRN-NNTP configuration"
 msgstr "KRN-NNTP Konfiguration"
 
-#: NNTPConfigDlg.cpp:33
-#, fuzzy
-msgid "Servers"
-msgstr "NNTP Server"
-
-#: NNTPConfigDlg.cpp:35
-msgid "SMTP server"
-msgstr "SMTP server"
-
-#: NNTPConfigDlg.cpp:40
+#: NNTPConfigDlgData.cpp:30
 msgid "NNTP Server"
 msgstr "NNTP Server"
 
-#: NNTPConfigDlg.cpp:51
-msgid "Authenticate"
-msgstr "Authentifizieren"
-
-#: NNTPConfigDlg.cpp:55
+#: NNTPConfigDlgData.cpp:34
 msgid "Connect on Startup"
 msgstr "Beim Start verbinden"
 
-#: NNTPConfigDlg.cpp:60
+#: NNTPConfigDlgData.cpp:38
+msgid "Authenticate"
+msgstr "Authentifizieren"
+
+#: NNTPConfigDlgData.cpp:42
 msgid "User Name"
 msgstr "Benutzername"
 
-#: NNTPConfigDlg.cpp:64
+#: NNTPConfigDlgData.cpp:46
 msgid "Password"
 msgstr "Passwort"
+
+#: NNTPConfigDlgData.cpp:58
+msgid "SMTP server"
+msgstr "SMTP server"
 
 #: decoderDlg.cpp:21
 msgid "KRN - Decoder"
@@ -474,21 +461,21 @@ msgstr "KRN-Dekodierer"
 msgid "Unsupported encoding type: %s."
 msgstr "Nicht unterstützte Kodierung: %s."
 
-#: aboutDlg.cpp:28
+#: aboutDlg.cpp:18
 msgid "About KRN"
 msgstr "Über KRN"
 
-#: aboutDlg.cpp:37
+#: aboutDlgData.cpp:34
 msgid "Part of the KDE project."
 msgstr "Teil des KDE-Projekts."
 
-#: aboutDlg.cpp:40
-msgid "Credits & Thanks"
-msgstr "Credits & Thanks"
-
-#: aboutDlg.cpp:62
+#: aboutDlgData.cpp:57
 msgid "And Many thanks to:"
 msgstr "Vielen Dank auch an:"
+
+#: aboutDlgData.cpp:69
+msgid "Credits & Thanks"
+msgstr "Credits & Thanks"
 
 #: fontsDlg.cpp:29
 msgid "Message Display Fonts"
@@ -627,9 +614,8 @@ msgid "Mark all"
 msgstr "Alles auswählen"
 
 #: kmcomposewin.cpp:376
-#, fuzzy
 msgid "Replace..."
-msgstr "Eigenschaften..."
+msgstr "Ersetzen..."
 
 #: kmcomposewin.cpp:380
 msgid "Find..."
@@ -941,21 +927,6 @@ msgstr ""
 msgid "Sending SMTP command: %s"
 msgstr "Sende SMTP-Befehl: %s"
 
-#: findArtDlg.cpp:21
-#, fuzzy
-msgid "KRN - Article Searcher"
-msgstr "Artikel-Header:"
-
-#: findArtDlg.cpp:28
-#, fuzzy
-msgid "Find Articles With:"
-msgstr "Artikel suchen"
-
-#: findArtDlg.cpp:33
-#, fuzzy
-msgid "In Field:"
-msgstr "&Alle Felder"
-
 #: kmidentity.cpp:162
 #, c-format
 msgid ""
@@ -1237,19 +1208,19 @@ msgstr "Adressbuch"
 msgid "Addressbook Manager"
 msgstr "Adressbuch-Verwaltung"
 
-#: expireDlg.cpp:22 expireDlg.cpp:27
+#: expireDlg.cpp:19
 msgid "KRN - Expire Settings"
 msgstr "KRN - Ablaufdatums-Einstellungen"
 
-#: expireDlg.cpp:36
+#: expireDlg.cpp:27 expireDlg.cpp:52
 msgid "For how long should we keep things (in days)?"
 msgstr "Für wie lange sollten wir die Sachen behalten (in Tagen)?"
 
-#: expireDlg.cpp:45
+#: expireDlg.cpp:30
 msgid "Article Bodies:"
 msgstr "Artikel-Inhalte:"
 
-#: expireDlg.cpp:49
+#: expireDlg.cpp:40
 msgid "Article Headers:"
 msgstr "Artikel-Header:"
 
