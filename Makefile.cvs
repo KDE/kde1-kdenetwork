@@ -3,6 +3,7 @@ all:
 	@echo "I will delete it before making the distribution"
 	@echo ""
 	cp configure.in.1 configure.in
+	cat acinclude.m4.in libtool.m4.in > acinclude.m4
 	aclocal 
 	autoheader
 	cat configure.in.1 > configure.in 
@@ -23,6 +24,7 @@ all:
 
 dist:
 	@cp configure.in.1 configure.in ;\
+	cat acinclude.m4.in libtool.m4.in > acinclude.m4 ;\
 	aclocal ;\
 	autoheader ;\
 	cat configure.in.1 > configure.in ;\
