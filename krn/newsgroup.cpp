@@ -43,6 +43,12 @@ extern QDict <char> unreadDict;
 
 extern QList <Rule> ruleList;
 
+int k1;
+int k2;
+int k3;
+int k4;
+
+
 
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
@@ -721,9 +727,14 @@ void addToList(node *n,int dep,ArticleList *l)
 
 int compareArticles (Article *a1,Article *a2, int key)
 {
+    debug ("key->%d",key);
     int i=0;
     switch (key)
     {
+    case KEY_NONE:
+        {
+            break;
+        }
     case KEY_SUBJECT:
         {
             i=strcmp(noRe(a1->Subject).lower().data(),
@@ -742,14 +753,13 @@ int compareArticles (Article *a1,Article *a2, int key)
             int l2=a2->Lines.stripWhiteSpace().toInt();
             if (l1<l2)
             {
-                i=-1;
-                break;
+                return -1;
             }
-            if (l2>l1)
+            if (l1>l2)
             {
-                i=1;
-                break;
+                return 1;
             }
+            return 0;
             break;
         }
     case KEY_DATE:
@@ -767,7 +777,7 @@ int compareArticles (Article *a1,Article *a2, int key)
                 i=-1;
                 break;
             }
-            if (t2>t1)
+            if (t1>t2)
             {
                 i=1;
                 break;
@@ -785,7 +795,7 @@ int compareArticles (Article *a1,Article *a2, int key)
                 i=-1;
                 break;
             }
-            if (s2>s1)
+            if (s2<s1)
             {
                 i=1;
                 break;
@@ -796,25 +806,28 @@ int compareArticles (Article *a1,Article *a2, int key)
     return i;
 }
 
-int ThreadList::compareItems(GCI t1,GCI t2)
+
+int compareThreads(const void *t1,const void *t2)
 {
+    debug ("2->%d,%d,%d,%d",k1,k2,k3,k4);
     int i=0;
-    i=compareArticles(((ArticleList *)t1)->first(),
-                      ((ArticleList *)t2)->first(),key1);
+    i=compareArticles(((ArticleList **)t1)[0]->first(),
+                      ((ArticleList **)t2)[0]->first(),k1);
     if (i)
         return i;
-    i=compareArticles(((ArticleList *)t1)->first(),
-                      ((ArticleList *)t2)->first(),key2);
+    i=compareArticles(((ArticleList **)t1)[0]->first(),
+                      ((ArticleList **)t2)[0]->first(),k2);
     if (i)
         return i;
-    i=compareArticles(((ArticleList *)t1)->first(),
-                      ((ArticleList *)t2)->first(),key3);
+    i=compareArticles(((ArticleList **)t1)[0]->first(),
+                      ((ArticleList **)t2)[0]->first(),k3);
     if (i)
         return i;
-    i=compareArticles(((ArticleList *)t1)->first(),
-                      ((ArticleList *)t2)->first(),key4);
+    i=compareArticles(((ArticleList **)t1)[0]->first(),
+                      ((ArticleList **)t2)[0]->first(),k4);
     return i;
 }
+
 
 void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
 {
@@ -851,7 +864,7 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
                     thr->append(it.current()->art);
                 addToList(it.current(),0,thr);
                 
-                threads.inSort(thr);
+                threads.append(thr);
             }
             ++it;
         }
@@ -865,14 +878,54 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
                 ArticleList *thr=new ArticleList();
                 thr->append(it.current()->art);
                 it.current()->art->threadDepth=0;
-                threads.inSort(thr);
+                threads.append(thr);
             }
             ++it;
         }
     }
     this->clear();
-    
     QListIterator <ArticleList> thriter(threads);
+
+    int count=threads.count();
+    ArticleList **thrArr=(ArticleList **)malloc(count*sizeof(ArticleList *));
+    thriter.toFirst();
+    int c=0;
+    while (c<count)
+    {
+        thrArr[c]=thriter.current();
+        ++thriter;
+        ++c;
+    }
+
+    threads.clear();
+
+    k1=key1;
+    k2=key2;
+    k3=key3;
+    k4=key4;
+
+    debug ("1->%d,%d,%d,%d",k1,k2,k3,k4);
+    
+    qsort(thrArr,count,sizeof(ArticleList *),compareThreads);
+
+    thriter.toFirst();
+    c=0;
+    while (c<count)
+    {
+        QListIterator <Article> artiter(*(thrArr[c]));
+        while (artiter.current())
+        {
+            this->append(artiter.current());
+            ++artiter;
+        }
+        thrArr[c]->clear();
+        ++c;
+    }
+
+    free (thrArr);
+    
+    /*
+    thriter.toFirst();
     while (thriter.current())
     {
         QListIterator <Article> artiter(*thriter.current());
@@ -884,6 +937,7 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
         thriter.current()->clear();
         ++thriter;
     }
+    */
     delete d;
 }
 

@@ -133,7 +133,6 @@ public:
     int key2;
     int key3;
     int key4;
-    int compareItems(GCI,GCI);
 };
 
 class Artdlg;
