@@ -554,11 +554,7 @@ void KMSettings::createTabMisc(QWidget *parent)
   sendReceipts->setMinimumSize(sendReceipts->sizeHint());
   grid->addMultiCellWidget(sendReceipts, 2, 2, 0, 2);
 
-  QString s(i18n("C&ompact"));
-  s += " ";
-  s += i18n("Folders");
-  s += i18n(" on exit"); //sorry!
-  compactOnExit = new QCheckBox(i18n(s.data()),grp);
+  compactOnExit = new QCheckBox(i18n("Compact all folders on exit"),grp);
   compactOnExit->setMinimumSize(compactOnExit->sizeHint());
   grid->addMultiCellWidget(compactOnExit, 3, 3, 0, 2);
   

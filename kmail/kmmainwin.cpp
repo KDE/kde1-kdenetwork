@@ -1016,10 +1016,7 @@ void KMMainWin::setupMenuBar()
   fileMenu->insertItem(i18n("Print..."), this,
 		       SLOT(slotPrintMsg()), keys->print());
   fileMenu->insertSeparator();
-  QString s(i18n("C&ompact"));
-  s += " ";
-  s += i18n("Folders");
-  fileMenu->insertItem(i18n(s.data()), folderMgr,
+  fileMenu->insertItem(i18n("Compact all folders"), folderMgr,
 		       SLOT(compactAll()));
   fileMenu->insertSeparator();
   fileMenu->insertItem(i18n("Check Mail..."), this,
