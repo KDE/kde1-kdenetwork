@@ -33,7 +33,7 @@ msgstr "Ingen ny post tilgjengelig"
 msgid ""
 "Cannot modify a\n"
 "system folder."
-msgstr "Kan ikke modifisere en\"
+msgstr "Kan ikke modifisere en\n"
 "system mappe."
 
 #: kmmainwin.cpp:318
@@ -813,7 +813,7 @@ msgstr "Lukk og slett\n"
 msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
-msgstr "Offentlig nøkkel for %s ikke funnet.\"
+msgstr "Offentlig nøkkel for %s ikke funnet.\n"
 "Denne person vil ikke være i stand til dekryptere meldingen."
 
 #: kmcomposewin.cpp:823
@@ -998,11 +998,10 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr "Mappen ~/KMail eksisterer. Fra nå av, KMail bruker\n"
-mappe ~/Mail for dets meldinger.\n"
+"mappe ~/Mail for dets meldinger.\n"
 "KMail kan flytte innholdet av mappen ~/KMail inn i\n"
 "~/Mail, men denne vil erstatte eksisterende filer med samme\n"
-"navn i mappen ~/Mail (f.eks. inbox).\n
-"\n"
+"navn i mappen ~/Mail (f.eks. inbox)."
 
 #: kmacctlocal.cpp:85
 #, c-format
@@ -1087,7 +1086,7 @@ msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
 "user-name and email-address"
-msgstr ""Please set the required fields in the\n"
+msgstr "Please set the required fields in the\n"
 "identity settings:\n"
 "bruker-navn og e-post-adresse"
 
@@ -1142,7 +1141,7 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr "Kan ikke åpne SMTP forbindelse til\n"
-"vert %s for sending:\"
+"vert %s for sending:\n"
 "%s"
 
 #: kmsender.cpp:601
@@ -1334,7 +1333,7 @@ msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr "Den angitte fil eksisterer ikke:\n"
-%s"
+"%s"
 
 #: kfileio.cpp:52
 #, c-format
