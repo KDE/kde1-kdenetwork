@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfinger 0.6.0\n"
 "POT-Creation-Date: 1999-04-15 03:01+0200\n"
-"PO-Revision-Date: 1999-01-10 13:20+MET\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+"PO-Revision-Date: 1999-04-15 08:49+MET\n"
+"Last-Translator: Matthias Kiefer <matthias.kiefer@gmx.de>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kfinger.C:30
@@ -20,16 +20,15 @@ msgstr "Einrichtung"
 
 #: kfinger.C:36
 msgid "&Save Options"
-msgstr "Optionen &speichern"
+msgstr "Einstellungen &sichern"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"kfinger 0.8.0\n"
+"KFinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 
@@ -69,7 +68,7 @@ msgstr "Fehler auf Server: %s"
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "Verbindung verweigert von %s"
 
 #: kfinger.C:296
 #, c-format
@@ -77,13 +76,12 @@ msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:317
-#, fuzzy
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.8.0\n"
+"KFinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 
