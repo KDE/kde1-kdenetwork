@@ -7,6 +7,8 @@
 #include <qstrlist.h>
 #include <X11/Xlib.h>
 
+#include "fontsDlg.moc"
+
 //Prototypes for utility functions
 void addFont( QStrList &list, const char *xfont );
 void getFontList( QStrList &list, const char *pattern );
@@ -42,12 +44,12 @@ fontsDlg::fontsDlg
     connect (stdFontName,SIGNAL(activated(int)),this,SLOT(syncFonts(int)));
     
     stdFontName->setCurrentItem(stdfl.find
-                                (conf->readEntry("StandardFont",QString("helvetica"))));
+                                (conf->readEntry("StandardFont",QString("helvetica").data())));
     fixedFontName->setCurrentItem(fixedfl.find
-                                  (conf->readEntry("FixedFont",QString("courier"))));
+                                  (conf->readEntry("FixedFont",QString("courier").data())));
     syncFonts(0);
-    samp1->setText(conf->readEntry("StandardFontTest",QString("Standard Font Test")));
-    samp2->setText(conf->readEntry("FixedFontTest",QString("Fixed Font Test")));
+    samp1->setText(conf->readEntry("StandardFontTest",QString("Standard Font Test").data()));
+    samp2->setText(conf->readEntry("FixedFontTest",QString("Fixed Font Test").data()));
     bgColor->setColor(conf->readColorEntry("BackgroundColor",&QColor("white")));
     fgColor->setColor(conf->readColorEntry("ForegroundColor",&QColor("black")));
     linkColor->setColor(conf->readColorEntry("LinkColor",&QColor("blue")));

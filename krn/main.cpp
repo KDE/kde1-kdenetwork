@@ -26,7 +26,6 @@
 #include <qfile.h>
 
 #include <kapp.h>
-#include <kiconloader.h>
 #include <Kconfig.h>
 #include <kkeyconf.h>
 
@@ -34,14 +33,25 @@
 #include "groupdlg.h" 
 #include "NNTP.h"
 #include "kdecode.h"
+#include "kmsender.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
 
+// robert's cache stuff
+#include <dirent.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define SECOND 1
+#define MINUTE SECOND*60
+#define HOUR   MINUTE*60
+#define DAY    HOUR*24
+
 Groupdlg  *main_widget;
 KConfig *conf;
-
-KIconLoader *iconloader;
+KLocale *nls;
+KMSender *msgSender;
 
 ArticleDict artSpool;
 
@@ -52,6 +62,7 @@ KDecode *decoder;
 GDBM_FILE artdb;
 
 void checkConf();
+void expireCache();
 
 int main( int argc, char **argv )
 {
@@ -61,6 +72,8 @@ int main( int argc, char **argv )
     KApplication a( argc, argv, "krn" );
 
     conf=a.getConfig();
+    nls=a.getLocale();
+    msgSender=new KMSender();
 
     checkConf();
 
@@ -70,7 +83,6 @@ int main( int argc, char **argv )
     else pixpath=pixdef;
 
     decoder=new KDecode;
-    iconloader=new KIconLoader ();
     
     // Create our directory. If it exists, no problem
     // Should do some checking, though
@@ -96,14 +108,12 @@ int main( int argc, char **argv )
     a.setMainWidget( (QWidget *) &k );
     
     k.setMinimumSize( 250, 250 );
-    k.setCaption( "KRN 0.0.4 - Group list" );
-
     k.show();
     
     a.exec();
+    expireCache();
 
     gdbm_close(artdb);
-
 }
 
 void checkConf()
@@ -162,4 +172,47 @@ void checkConf()
     }
     conf->sync();
 }
+
+void expireCache()   // robert's cache stuff
+{
+
+    conf->setGroup("Cache");
+    int expireTime=conf->readNumEntry("ExpireDays",5);
+    struct dirent **cdir;
+    struct stat st;
+    int num_files;
+    char filename[255];
+    time_t currenttime = time(NULL);
+    
+    num_files = scandir(cachepath.data(), &cdir, 0, alphasort);
+    
+    // debug("%d: %s", num_files, cachepath.data());
+    
+    for(int count = 0; count < num_files; count++) {
+        sprintf(filename, "%s%s", cachepath.data(), cdir[count]->d_name);
+        
+        //    debug(filename);
+        
+        if(stat(filename, &st)) {
+            debug("couldn't stat %s", filename);
+        } else {
+            if(((currenttime-st.st_atime) > DAY*expireTime) && cdir[count]->d_name[0] != '.') {
+                Article *art = new Article();
+                
+                QString id = cdir[count]->d_name;
+                
+                art->ID = id;
+                
+                art->load();
+                
+                if(art->canExpire())
+                    //    debug("unlinking %s", filename);
+                    unlink(filename);
+                
+                delete art;
+            }
+        }
+  }
+}
+
 

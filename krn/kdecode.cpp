@@ -1,6 +1,7 @@
 #include "kdecode.h"
 #include <malloc.h>
 #include <stdio.h>
+#include <stdlib.h>
 #undef Unsorted
 #include <qfiledlg.h>
 #include <qfile.h>
@@ -11,6 +12,8 @@
 #include <uudeview.h>
 #include <mimelib/mimepp.h>
 #include "ktempfile.h"
+
+#include "kdecode.moc"
 
 void MsgCallBack(void *,char *msg, int )
 {
@@ -152,14 +155,17 @@ void KDecode::decode(int line,int)
     }
 }
 
-const char* KDecode::decodeString(const char* data, QString type)
+DwString* KDecode::decodeString(const char* data, QString type)
 {
     type=type.lower();
     debug("decoding %s",type.data());
-    if(type=="base64") DwDecodeBase64(data,data);
-    else if(type=="quoted-printable") DwDecodeQuotedPrintable(data,data);
-    else if(type=="8bit") warning("Raw 8 bit data read. Thins may look strange");
-    else if(type!="7bit")
+    DwString idata=data;
+    DwString* odata=new DwString;
+    if(type=="base64") DwDecodeBase64(idata,*odata);
+    else if(type=="quoted-printable") DwDecodeQuotedPrintable(idata,*odata);
+    else if(type=="8bit") *odata=idata;
+    else if(type=="7bit") *odata=idata;
+    else if(type!="7bit")  
     {
         KConfig* conf=kapp->getConfig();
         conf->setGroup("Decoders");
@@ -172,10 +178,10 @@ const char* KDecode::decodeString(const char* data, QString type)
             int o=tempfile.create("decode_out","");
             QFile* f=tempfile.file(i);
             f->open(IO_WriteOnly);
-            f->writeBlock(data,strlen(data));
+            f->writeBlock(idata.c_str(),idata.length());
             f->close();
-            system(plugin+" <"+tempfile.file(i)->name()+" >"+
-            tempfile.file(o)->name());
+            system((plugin+" <"+tempfile.file(i)->name()+" >"+
+            tempfile.file(o)->name()).data());
             f=tempfile.file(o);
             f->open(IO_ReadOnly);
             char* ndata=(char*)malloc(f->size());
@@ -183,13 +189,16 @@ const char* KDecode::decodeString(const char* data, QString type)
             f->close();
             tempfile.remove(i);
             tempfile.remove(o);
-            return ndata;
+            *odata=ndata;
         }
-                                                                                                                                                                                                                                                                                                                 
-        warning("KDecode::decodeString(): Unsupported encoding type: %s.",
-                type.data() );
-        return NULL;
+        else
+        {
+
+            warning("KDecode::decodeString(): Unsupported encoding type: %s.",
+                    type.data() );
+            *odata=idata;
+        }
     }
-    debug("decoded data: %s",data);
-    return data;
-}
+    //debug("decoded data: %s",odata->c_str());
+    return odata;
+}          

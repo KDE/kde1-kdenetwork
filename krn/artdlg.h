@@ -77,6 +77,7 @@ private:
     QGridLayout *gl;
     KStatusBar *status;
     bool unread;
+    bool showlocked;
 };
 
 #endif // Artdlg_included

@@ -3,6 +3,10 @@
 #include "ktoolbar.h"
 
 #include "kdecode.h"
+
+#include "decoderDlg.moc"
+
+
 #define Inherited QDialog
 
 extern QString pixpath;

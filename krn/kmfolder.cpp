@@ -3,6 +3,9 @@
 
 #include "kmfolder.h"
 #include "kmmessage.h"
+//#include "kmglobal.h"
+
+#include <klocale.h>
 
 #include <mimelib/mimepp.h>
 
@@ -12,10 +15,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <stdlib.h>
 
-
-//Fix for the weird bug!
-extern "C" {
+extern "C" 
+{
 #include <regex.h>
 }
 
@@ -27,6 +30,7 @@ extern "C" {
 
 static short msgSepLen = strlen(MSG_SEPERATOR_START);
 
+extern KLocale *nls;
 
 //-----------------------------------------------------------------------------
 KMFolder :: KMFolder(KMFolderDir* aParent, const char* aName) : 
@@ -44,6 +48,7 @@ KMFolder :: KMFolder(KMFolderDir* aParent, const char* aName) :
   mOpenCount  = 0;
   mQuiet      = 0;
   mAutoCreateToc = TRUE;
+  mType = "plain";
 }
 
 
@@ -55,12 +60,33 @@ KMFolder :: ~KMFolder()
 
 
 //-----------------------------------------------------------------------------
-const QString& KMFolder::location(void) const
+const char* KMFolder::type(void) const
 {
-  static QString sLocation;
+  return "plain";
+}
 
-  sLocation = path();
-  sLocation += "/";
+
+//-----------------------------------------------------------------------------
+const QString KMFolder::location(void) const
+{
+  QString sLocation;
+
+  sLocation = path().copy();
+  if (!sLocation.isEmpty()) sLocation += '/';
+  sLocation += name();
+
+  return sLocation;
+}
+
+
+//-----------------------------------------------------------------------------
+const QString KMFolder::tocLocation(void) const
+{
+  QString sLocation;
+
+  sLocation = path().copy();
+  if (!sLocation.isEmpty()) sLocation += '/';
+  sLocation += '.';
   sLocation += name();
 
   return sLocation;
@@ -70,28 +96,34 @@ const QString& KMFolder::location(void) const
 //-----------------------------------------------------------------------------
 int KMFolder::open(void)
 {
-  QString p = path();
-
   assert(name() != NULL);
 
   mOpenCount++;
   if (mOpenCount > 1) return 0;  // already open
 
-  mStream = fopen(p+"/"+name(), "r+"); // messages file
+  mStream = fopen(location(), "r+"); // messages file
   if (!mStream) return errno;
 
-  if (!p.isEmpty())
+  if (!path().isEmpty())
   {
-    mTocStream = fopen(p+"/."+name(), "r+"); // index file
-    if (!mTocStream) return createToc();
+    //#define TOC_DEBUG
+#ifdef TOC_DEBUG
+    createTocFromContents();
+#else
+    mTocStream = fopen(tocLocation(), "r+"); // index file
+    if (!mTocStream) return createTocFromContents();
     readToc();
+#endif
   }
   else
   {
-    debug("no path for folder "+name()+" -- Turning autoCreateToc off");
+    debug("No path specified for folder " + name() +
+	  " -- Turning autoCreateToc off");
     mAutoCreateToc = FALSE;
-    createToc();
+    createTocFromContents();
   }
+
+  mQuiet = 0;
 
   return 0;
 }
@@ -100,38 +132,40 @@ int KMFolder::open(void)
 //-----------------------------------------------------------------------------
 int KMFolder::create(void)
 {
-  QString p = path();
-  
   assert(name() != NULL);
   assert(mOpenCount == 0);
 
-  mStream = fopen(p+"/"+name(), "w");
+  mStream = fopen(location(), "w");
   if (!mStream) return errno;
 
-  if (!p.isEmpty())
+  if (!path().isEmpty())
   {
-    mTocStream = fopen(p+"/."+name(), "w");
+    mTocStream = fopen(tocLocation(), "w");
     if (!mTocStream) return errno;
   }
   else
   {
-    debug("no path for folder "+name()+" -- turning autoCreateToc off");
+    debug("folder " + name() +
+	  " has no path specified -- turning autoCreateToc off");
     mAutoCreateToc = FALSE;
   }
 
   mOpenCount++;
+  mQuiet = 0;
 
   return createTocHeader();
 }
 
 
 //-----------------------------------------------------------------------------
-void KMFolder::close(bool aForce)
+void KMFolder::close(bool aForced)
 {
   int i;
 
+  if (mTocDirty && mAutoCreateToc) writeToc();
+
   if (mOpenCount > 0) mOpenCount--;
-  if (mOpenCount > 0 && !aForce) return;
+  if (mOpenCount > 0 && !aForced) return;
 
   if (mStream) fclose(mStream);
   if (mTocStream) fclose(mTocStream);
@@ -151,15 +185,15 @@ void KMFolder::close(bool aForce)
 
 
 //-----------------------------------------------------------------------------
-int KMFolder::createToc(void)
+int KMFolder::createTocFromContents(void)
 {
   char line[MAX_LINE];
-  char status[8];
+  char status[8], subjStr[128], dateStr[80], fromStr[80];
   char* msg;
   unsigned long offs, size, pos;
   int i, msgArrNum;
-  int rc;
   bool atEof = FALSE;
+  KMMsgInfo* mi;
 
   assert(name() != NULL);
   assert(path() != NULL);
@@ -167,29 +201,17 @@ int KMFolder::createToc(void)
 
   rewind(mStream);
 
-  QString p=path()+"/."+name();
-  printf("*** creating toc for %s\n", (const char*)p);
-
-  if (mAutoCreateToc)
-  {
-    mTocStream = fopen(path()+"/."+name(), "w");
-    if (!mTocStream) return errno;
-  }
-  else mTocStream = NULL; // just to be sure
-
-  rc = createTocHeader();
-  if (rc) return rc;
+  debug("*** creating toc file %s\n", (const char*)tocLocation());
 
   offs = 0;
   size = 0;
   strcpy(status, "RO");
-  mHeaderOffset = ftell(mTocStream);
 
   msg = re_comp(MSG_SEPERATOR_REGEX);
   if (msg)
   {
-    fatal("Error parsing bultin (kmfolder.cpp)\nregular expression\n'" +
-	  QString(MSG_SEPERATOR_REGEX) + "':\n" + msg);
+    fatal("Error in kmfolder.cpp\nwhile parsing bultin\n"
+	  "regular expression\n%s\n%s", MSG_SEPERATOR_REGEX, msg);
     return -1;
   }
 
@@ -197,6 +219,9 @@ int KMFolder::createToc(void)
 
   mMsgs = -1;
   offs  = 0;
+  dateStr[0] = '\0';
+  fromStr[0] = '\0';
+  subjStr[0] = '\0';
 
   while (!atEof)
   {
@@ -215,9 +240,17 @@ int KMFolder::createToc(void)
 	  mMsgInfo.resize(msgArrNum);
 	}
 
-	mMsgInfo[mMsgs].init(status, offs, size);
+	mi = &mMsgInfo[mMsgs];
+	mi->init(KMMessage::stNew, offs, size);
+	mi->setFrom(fromStr);
+	mi->setSubject(subjStr);
+	mi->setDate(dateStr);
+	mi->setDirty(FALSE);
+
 	strcpy(status, "RO");
-	debug(mMsgInfo[mMsgs].asString());
+	dateStr[0] = '\0';
+	fromStr[0] = '\0';
+	subjStr[0] = '\0';
       }
 
       offs = ftell(mStream);
@@ -229,21 +262,52 @@ int KMFolder::createToc(void)
 	status[i] = line[i+8];
       status[i] = '\0';
     }
-  }
-
-  // write TOC file
-  if (mAutoCreateToc)
-  {
-    for (i=0; i<mMsgs; i++)
+    else if (strncmp(line, "Date: ", 6) == 0)
     {
-      fprintf(mTocStream, "%s\n", mMsgInfo[i].asString());
+      strncpy(dateStr, line+6, 59);
+      dateStr[39] ='\0';
     }
-    fflush(mTocStream);
+    else if (strncmp(line, "From: ", 6) == 0)
+    {
+      strncpy(fromStr, line+6, 59);
+      fromStr[39] ='\0';
+    }
+    else if (strncmp(line, "Subject: ", 9) == 0)
+    {
+      strncpy(subjStr, line+9, 79);
+      subjStr[79] ='\0';
+    }
   }
 
-  mUnreadMsgs = 0;
-  mActiveMsgs = mMsgs;
+  if (mAutoCreateToc) writeToc();
+  else mHeaderOffset = 0;
 
+  return 0;
+}
+
+
+//-----------------------------------------------------------------------------
+int KMFolder::writeToc(void)
+{
+  int rc, i;
+  //  int tocRecSize = KMMsgInfo::recSize();
+
+  if (mTocStream) fclose(mTocStream);
+  mTocStream = fopen(tocLocation(), "w");
+  if (!mTocStream) return errno;
+
+  rc = createTocHeader();
+  if (rc) return rc;
+
+  mHeaderOffset = ftell(mTocStream);
+
+  for (i=0; i<mMsgs; i++)
+  {
+    fprintf(mTocStream, "%s\n", mMsgInfo[i].asString());
+  }
+  fflush(mTocStream);
+
+  mTocDirty = FALSE;
   return 0;
 }
 
@@ -275,7 +339,7 @@ int KMFolder::readHeader(void)
   assert(name() != NULL);
   assert(path() != NULL);
 
-  mTocStream = fopen(path()+"/."+name(), "r+");
+  mTocStream = fopen(tocLocation(), "r+");
   if (!mTocStream) return errno;
 
   readTocHeader();
@@ -296,16 +360,12 @@ void KMFolder::readToc(void)
   assert(mTocStream != NULL);
   rewind(mTocStream);
 
-  QString p=path()+"/."+name();
-  printf("*** reading toc for %s\n", (const char*)p);
-
   mMsgs       = 0;
   mUnreadMsgs = 0;
   mActiveMsgs = 0;
 
   readTocHeader();
   mHeaderOffset = ftell(mTocStream);
-
   msgArrNum = mMsgInfo.size();
 
   for (; !feof(mTocStream); mMsgs++)
@@ -353,25 +413,17 @@ void KMFolder::quiet(bool beQuiet)
 
 
 //-----------------------------------------------------------------------------
-long KMFolder::status(long) 
-{
-  // return mail_status(mStream, MBOX(mStream), ops);
-  return 0;
-}
-
-
-//-----------------------------------------------------------------------------
 void KMFolder::setMsgStatus(KMMessage* aMsg, KMMessage::Status aStatus)
 {
   int i = indexOfMsg(aMsg);
-  if (i < 0) 
+  if (i <= 0) 
   {
     debug("KMFolder::setMsgStatus() called for a message that is not in"
 	  "this folder !");
     return;
   }
 
-  mMsgInfo[i].setStatus(aStatus);
+  mMsgInfo[i-1].setStatus(aStatus);
   if (!mQuiet) emit msgHeaderChanged(i);
 }
 
@@ -389,6 +441,14 @@ int KMFolder::indexOfMsg(const KMMessage* aMsg) const
 
 
 //-----------------------------------------------------------------------------
+void KMFolder::detachMsg(KMMessage* aMsg)
+{
+  int msgno = indexOfMsg(aMsg);
+  detachMsg(msgno);
+}
+
+
+//-----------------------------------------------------------------------------
 void KMFolder::detachMsg(int msgno)
 {
   KMMsgInfo* mi;
@@ -398,11 +458,18 @@ void KMFolder::detachMsg(int msgno)
   assert(msgno >= 1 && msgno <= mMsgs);
 
   mi = &mMsgInfo[msgno-1];
-
   msg = mi->msg();
-  msg->setOwner(NULL);
-  mi->setMsg(NULL);
-  mi->setStatus(KMMessage::stDeleted);
+
+  if (msg)
+  {
+    msg->setOwner(NULL);
+    mi->setMsg(NULL);
+  }
+  else debug("KMFolder::detachMsg() called for non-loaded message");
+
+  removeMsgInfo(msgno);
+
+  if (!mQuiet) emit msgRemoved(msgno);
 }
 
 
@@ -446,7 +513,32 @@ void KMFolder::readMsg(int msgno)
   msg->setStatus(mMsgInfo[msgno].status());
   dwmsg = DwMessage::NewMessage(msg->msgStr(), 0);
   dwmsg->Parse();
+
   msg->takeMessage(dwmsg);
+}
+
+
+//-----------------------------------------------------------------------------
+int KMFolder::moveMsg(KMMessage* aMsg, int* aIndex_ret)
+{
+  KMFolder* msgOwner;
+  int rc;
+
+  assert(aMsg != NULL);
+  msgOwner = aMsg->owner();
+
+  if (msgOwner)
+  {
+    msgOwner->open();
+    msgOwner->detachMsg(aMsg);
+    msgOwner->close();
+  }
+
+  open();
+  rc = addMsg(aMsg, aIndex_ret);
+  close();
+
+  return rc;
 }
 
 
@@ -454,14 +546,14 @@ void KMFolder::readMsg(int msgno)
 int KMFolder::addMsg(KMMessage* aMsg, int* aIndex_ret)
 {
   long offs, size, len;
-  int rc, msgArrNum = mMsgInfo.size();
+  int msgArrNum = mMsgInfo.size();
 
   assert(mStream != NULL);
   len = aMsg->msgStr().length() - 2;
 
   if (len <= 0)
   {
-    warning("KMFolder::addMsg():\nmessage contains no data !");
+    warning(nls->translate("KMFolder::addMsg():\nmessage contains no data !"));
     return 0;
   }
 
@@ -503,13 +595,6 @@ int KMFolder::addMsg(KMMessage* aMsg, int* aIndex_ret)
 
 
 //-----------------------------------------------------------------------------
-int KMFolder::rename(const char*)
-{
-  return -1;
-}
-
-
-//-----------------------------------------------------------------------------
 int KMFolder::remove(void)
 {
   int rc;
@@ -522,8 +607,8 @@ int KMFolder::remove(void)
     close();
   }
 
-  unlink(path()+"/."+name());
-  rc = unlink(path()+"/"+name());
+  unlink(tocLocation());
+  rc = unlink(location());
   if (rc) return rc;
 
   mMsgInfo.truncate(INIT_MSGS);
@@ -541,36 +626,67 @@ int KMFolder::isValid(unsigned long)
 
 
 //-----------------------------------------------------------------------------
-void KMFolder::ping()
-{
-}
-
-
-//-----------------------------------------------------------------------------
 int KMFolder::expunge(void)
 {
-  int rc;
-  QString p = path();
-  
+  int openCount = mOpenCount;
+
   assert(name() != NULL);
 
   close(TRUE);
 
-  if (mAutoCreateToc) truncate(p+"/."+name(), mHeaderOffset);
-  rc = truncate(p+"/"+name(), 0);
-  if (rc) return rc;
+  if (mAutoCreateToc) truncate(tocLocation(), mHeaderOffset);
+  else unlink(tocLocation());
+
+  if (truncate(location(), 0)) return errno;
 
   mMsgInfo.truncate(INIT_MSGS);
   mMsgs = 0;
+
+  if (openCount > 0)
+  {
+    open();
+    mOpenCount = openCount;
+  }
+
+  if (!mQuiet) emit changed();
 
   return 0;
 }
 
 
 //-----------------------------------------------------------------------------
-int KMFolder::lock(bool sharedLock)
+int KMFolder::sync(void)
+{
+  int i, rc;
+  KMMsgInfo* mi;
+  unsigned long offset = mHeaderOffset;
+  int recSize = KMMsgInfo::recSize();
+
+  if (!mTocStream) return 0;
+
+  for (i=0; i<mMsgs; i++)
+  {
+    mi = &mMsgInfo[i];
+    if (mi->dirty())
+    {
+      fseek(mTocStream, offset, SEEK_SET);
+      fprintf(mTocStream, "%s\n", mi->asString());
+      rc = errno;
+      if (rc) break;
+      mi->setDirty(FALSE);
+    }
+    offset += recSize;
+  }
+  fflush(mTocStream);
+  return rc;
+}
+
+
+//-----------------------------------------------------------------------------
+int KMFolder::lock(bool/*sharedLock*/)
 {
   assert(mStream != NULL);
+  return 0;
 }
 
 
@@ -581,4 +697,103 @@ void KMFolder::unlock(void)
 }
 
 
+//-----------------------------------------------------------------------------
+void KMFolder::removeMsgInfo(int msgId)
+{
+  int i;
+
+  assert(msgId>=1 && msgId<=mMsgs);
+  msgId--;
+
+  for (i=msgId; i<mMsgs-1; i++)
+  {
+    mMsgInfo[i] = mMsgInfo[i+1];
+  }
+  mMsgs--;
+
+  mTocDirty = TRUE;
+}
+
+
+//-----------------------------------------------------------------------------
+const char* KMFolder::msgSubject(int msgId) const
+{
+  assert(msgId>0);
+  return mMsgInfo[msgId-1].subject();
+}
+
+
+//-----------------------------------------------------------------------------
+const char* KMFolder::msgFrom(int msgId) const
+{
+  assert(msgId>0);
+  return mMsgInfo[msgId-1].from();
+}
+
+
+//-----------------------------------------------------------------------------
+const char* KMFolder::msgDate(int msgId) const
+{
+  assert(msgId>0);
+  return mMsgInfo[msgId-1].date();
+}
+
+
+//-----------------------------------------------------------------------------
+KMMessage::Status KMFolder::msgStatus(int msgId) const
+{
+  assert(msgId>0);
+  return mMsgInfo[msgId-1].status();
+}
+
+
+//-----------------------------------------------------------------------------
+static KMMsgInfoList* sortMsgInfoList;
+static KMFolder::SortField sortCriteria;
+
+int msgSortCompFunc(const void* a, const void* b)
+{
+  KMMsgInfo  *miA = &sortMsgInfoList->at(*(int*)a);
+  KMMsgInfo  *miB = &sortMsgInfoList->at(*(int*)b);
+  int        res = 0;
+
+  if (sortCriteria==KMFolder::sfSubject)
+    res = miA->compareBySubject(miB);
+
+  else if (sortCriteria==KMFolder::sfFrom)
+    res = miA->compareByFrom(miB);
+
+  if (res==0 || sortCriteria==KMFolder::sfDate)
+    res = miA->compareByDate(miB);
+
+  return res;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMFolder::sort(KMFolder::SortField aField)
+{
+  int sortIndex[mMsgs];
+  int i;
+  KMMsgInfoList newList(mMsgs);
+
+  for (i=0; i<mMsgs; i++)
+    sortIndex[i] = i;
+
+  sortMsgInfoList = &mMsgInfo;
+  sortCriteria = aField;
+
+  qsort(sortIndex, mMsgs, sizeof(int), msgSortCompFunc);
+
+  for (i=0; i<mMsgs; i++)
+    newList[i] = mMsgInfo[sortIndex[i]];
+
+  mMsgInfo  = newList;
+  mTocDirty = TRUE;
+
+  if (!mQuiet) emit changed();
+}
+
+
+//-----------------------------------------------------------------------------
 #include "kmfolder.moc"

@@ -15,6 +15,9 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
+#include <unistd.h>
+
 #include "groupdlg.h"
 
 #define Inherited KTopLevelWidget
@@ -25,17 +28,18 @@
 #include <qtstream.h>
 #include <qevent.h>
 
+#include <kapp.h>
 #include <kmsgbox.h>
 #include <Kconfig.h>
 #include <kkeyconf.h>
-
-#include "PostDialog.h"
 
 #include "artdlg.h"
 #include "identDlg.h"
 #include "NNTPConfigDlg.h"
 #include "rmbpop.h"
 #include "aboutDlg.h"
+
+#include "groupdlg.moc"
 
 #define CONNECT 1
 #define DISCONNECT 5
@@ -58,11 +62,6 @@ extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
 
 
-QPixmap *txt_xpm;
-QPixmap *folder_xpm;
-QPixmap *sub_xpm;
-QPixmap *tag_xpm;
-
 GroupList groups;
 GroupList subscr;
 
@@ -71,7 +70,7 @@ bool checkPixmap(KTreeListItem *item,void *)
     QString name(item->getText());
     if (name.right(1)==".") //it's a folder
     {
-        item->setPixmap(folder_xpm);
+        item->setPixmap(&kapp->getIconLoader()->loadIcon("folder.xpm"));
         return false;
     }
     int i=groups.find(&NewsGroup(name));
@@ -79,16 +78,16 @@ bool checkPixmap(KTreeListItem *item,void *)
     {
         if (groups.at(i)->isTagged)
         {
-            item->setPixmap(tag_xpm);
+            item->setPixmap(&kapp->getIconLoader()->loadIcon("tagged.xpm"));
             return false;
         }
     }
     if (subscr.find(&NewsGroup(name))!=-1) //it's subscribed
     {
-        item->setPixmap(sub_xpm);
+        item->setPixmap(&kapp->getIconLoader()->loadIcon("subscr.xpm"));
         return false;
     }
-    item->setPixmap(txt_xpm); //it's plain
+    item->setPixmap(&kapp->getIconLoader()->loadIcon("followup.xpm")); //it's plain
     return false;
 }
 
@@ -101,11 +100,7 @@ Groupdlg::Groupdlg
 {
     groups.setAutoDelete(false);
     subscr.setAutoDelete(false);
-    txt_xpm = new QPixmap (pixpath+"txt.xpm");
-    folder_xpm = new QPixmap (pixpath+"folder.xpm");
-    sub_xpm = new QPixmap (pixpath+"subscr.xpm");
-    tag_xpm = new QPixmap (pixpath+"tagged.xpm");
-    
+
     QPopupMenu *file = new QPopupMenu;
     file->insertItem("Connect to Server",CONNECT);
     file->insertItem("Disconnect From Server",DISCONNECT);
@@ -114,6 +109,7 @@ Groupdlg::Groupdlg
     file->insertItem("Exit",EXIT);
     connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
+    setCaption ("KRN - Group List");
 
     QPopupMenu *subscribed = new QPopupMenu;
     subscribed->insertItem("Get Subjects",GET_SUBJECTS);
@@ -166,20 +162,21 @@ Groupdlg::Groupdlg
     KToolBar *tool = new KToolBar (this, "tool");
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
     
-    pixmap.load (pixpath+"connected.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
     tool->insertButton (pixmap, CONNECT, true, "Connect to server");
     pixmap.load (pixpath+"disconnected.xpm");
     tool->insertButton (pixmap, DISCONNECT, false, "Disconnect from server");
     tool->insertSeparator ();
     
-    pixmap.load (pixpath+"previous.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, GET_ACTIVE, true, "Get list of active groups");
     tool->insertSeparator ();
     
-    tool->insertButton (*sub_xpm, SUBSCRIBE, true, "(Un)Subscribe");
+    tool->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
     addToolBar (tool);
     tool->insertSeparator ();
-    pixmap.load (pixpath+"reload.xpm");
+    
+    pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
     tool->insertButton (pixmap, CHECK_UNREAD, true, "Check for Unread Articles");
     
     
@@ -202,19 +199,27 @@ Groupdlg::Groupdlg
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
 
-    
-    show ();
-    resize (500, 400);
     actions (LOAD_FILES);
     fillTree();
     connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
 
+    conf->setGroup("NNTP");
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
+
+    readProperties();
 }
 
 Groupdlg::~Groupdlg ()
 {
+    debug ("saving groupdlg's properties");
+    saveProperties(false);
+    //check for all open groups, and close them
+    for (NewsGroup *g=groups.first();g!=0;g=groups.next())
+    {
+        if (g->isVisible)
+            debug ("%s is open, remember it",g->data());
+    }
 }
 
 void Groupdlg::openGroup (QString name)
@@ -291,9 +296,9 @@ void Groupdlg::openGroup (int index)
                     if (gname.contains('.')==c)
                     {
                         if (iter->isTagged)
-                            list->addChildItem(iter->data(),tag_xpm,index);
+                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("tagged.xpm"),index);
                         else
-                            list->addChildItem(iter->data(),txt_xpm,index);
+                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("followup.xpm"),index);
                     }
                     
                     else  //It may be a new hierarchy
@@ -308,9 +313,9 @@ void Groupdlg::openGroup (int index)
                             // and insert it as a folder
                             bases.append(iter->data());
                             if (iter->isTagged)
-                                list->addChildItem(iter->data(),tag_xpm,index);
+                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("tagged.xpm"),index);
                             else
-                                list->addChildItem(iter->data(),folder_xpm,index);
+                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("folder.xpm"),index);
                         }
                         nextdot[0]=tc;
                     }
@@ -356,7 +361,7 @@ void Groupdlg::subscribe (NewsGroup *group)
     {
         if (-1 != groups.find (group))
         {
-            list->addChildItem (group->data(), sub_xpm, 0);
+            list->addChildItem (group->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
             subscr.append (group);
         if (list->itemAt(0)->isExpanded() &&
             ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
@@ -428,7 +433,7 @@ void Groupdlg::online()
 
 void Groupdlg::fillTree ()
 {
-    list->insertItem ("Subscribed Newsgroups.", folder_xpm);
+    list->insertItem ("Subscribed Newsgroups.", &kapp->getIconLoader()->loadIcon("folder.xpm"));
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();
     NewsGroup *g;
@@ -436,10 +441,10 @@ void Groupdlg::fillTree ()
     {
         g=it.current();
         debug ("adding %s",g->data());
-        list->addChildItem (g->data(), sub_xpm, 0);
+        list->addChildItem (g->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
     }
 
-    list->insertItem ("All Newsgroups.", folder_xpm);
+    list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("folder.xpm"));
 }
 
 bool Groupdlg::needsConnect()
@@ -796,6 +801,8 @@ void Groupdlg::checkUnread()
     KPath p;
     KTreeListItem *base=list->itemAt(0); //The "Subscribed Newsgroups" item.
     p.push(new QString(base->getText()));
+    char countmessage[255];
+
     int c=base->childCount();
     for (int i=0;i<c;i++)
     {
@@ -803,11 +810,12 @@ void Groupdlg::checkUnread()
         gname=it;
         p.push(new QString(it));
         gname=gname.left(gname.find(' '));
-        server->setGroup(gname.data());
-        l=server->StatusResponse().c_str();
-        debug ("----->%s",l.data());
+	//        server->setGroup(gname.data());
+	//        l=server->StatusResponse().c_str();
+	//        debug ("----->%s",l.data());
+	sprintf(countmessage, " [%d]", subscr.at(i)->countNew(server));
 
-        l=gname+" [ BROKEN unread ]";
+        l=gname+countmessage;
         // Updating the test this way doesn't repaint properly,
         // so I have to do do the path hack.
         //        base->childAt(i)->setText(l.data());
@@ -815,6 +823,11 @@ void Groupdlg::checkUnread()
         delete p.pop();
     }
     list->repaint();
+
+    //    int groupcnt = subscr.count();
+
+    //    for(int i=0; i < groupcnt-1; i++)
+    //debug("%d", subscr.at(i)->countNew(server));
 }
 
 

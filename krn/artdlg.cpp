@@ -25,6 +25,8 @@
 #include <qfiledlg.h>
 #include <qclipbrd.h>
 
+#include <kapp.h>
+
 #include <kmsgbox.h>
 #include <kkeyconf.h>
 #include <html.h>
@@ -35,8 +37,11 @@
 #include "decoderDlg.h"
 #include "kdecode.h"
 #include "rmbpop.h"
-#include "PostDialog.h"
 #include "fontsDlg.h"
+
+#include "kmcomposewin.h"
+
+#include "artdlg.moc"
 
 #define REP_MAIL 1
 #define FOLLOWUP 2
@@ -54,8 +59,9 @@
 #define NO_READ 14
 #define PRINT_ARTICLE 15
 #define CONFIG_FONTS 16
-
-extern KIconLoader *iconloader;
+#define CATCHUP 17
+#define TOGGLE_EXPIRE 18  // robert's cache stuff
+#define NO_LOCKED 19
 
 extern QString pixpath,cachepath;
 
@@ -75,9 +81,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
+    showlocked=conf->readNumEntry("ShowLockedArticles");
     
     server = _server;
-    
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem("Save",SAVE_ARTICLE);
@@ -102,14 +108,19 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("(Un)Tag",TAG_ARTICLE);
     article->insertSeparator();
     article->insertItem("Tagged",taggedArticle);
+    article->insertSeparator(); // robert
+    article->insertItem("Don't expire", TOGGLE_EXPIRE);  // robert's cache stuff
+    article->setItemChecked(TOGGLE_EXPIRE, false);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
 
     
 
     options=new QPopupMenu;
     options->setCheckable(true);
-    options->insertItem("Only unread messages", NO_READ);
+    options->insertItem("Show Only Unread Messages", NO_READ);
     options->setItemChecked(NO_READ,unread);
+    options->insertItem("Show Locked Messages", NO_LOCKED);
+    options->setItemChecked(NO_LOCKED,showlocked);
     options->insertItem("Appearance",CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
@@ -126,37 +137,42 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
     
-    pixmap.load(pixpath+"save.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
     tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save Article");
-    pixmap.load(pixpath+"fileprint.xpm");
+    
+    pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
     tool->insertButton(pixmap,PRINT_ARTICLE,true,"Print Article");
     tool->insertSeparator ();
     
-    //    pixmap=iconloader->loadIcon("filemail.xpm");
-    pixmap.load(pixpath+"filemail.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
     tool->insertButton (pixmap, REP_MAIL, true, "Reply by Mail");
-    pixmap.load (pixpath+"txt.xpm");
+
+    pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
     tool->insertButton (pixmap, FOLLOWUP, true, "Post a Followup");
     tool->insertSeparator ();
     
-    //    pixmap=iconloader->loadIcon("left.xpm");
-    pixmap.load(pixpath+"left.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
     tool->insertButton (pixmap, PREV, true, "Previous Message");
     
-    //    pixmap=iconloader->loadIcon ("right.xpm");
-    pixmap.load(pixpath+"right.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
     tool->insertButton (pixmap, NEXT, true, "Next Message");
     
     tool->insertSeparator ();
-    //    pixmap=iconloader->loadIcon ("previous.xpm");
-    pixmap.load(pixpath+"previous.xpm");
+
+    pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, ARTLIST, true, "Get Article List");
     
-    pixmap.load(pixpath+"tagged.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("tagged.xpm");
     tool->insertButton (pixmap, TAG_ARTICLE, true, "Tag Article");
     
-    pixmap.load(pixpath+"deco.xpm");
+    pixmap=kapp->getIconLoader()->loadIcon("locked.xpm");
+    tool->insertButton (pixmap, TOGGLE_EXPIRE, true, "Lock (keep in cache)");
+
+    pixmap=kapp->getIconLoader()->loadIcon("deco.xpm");
     tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
+
+    pixmap=kapp->getIconLoader()->loadIcon("catch.xpm");
+    tool->insertButton (pixmap, CATCHUP, true, "Catchup");
     
     addToolBar (tool);
     tool->setBarPos( KToolBar::Top );
@@ -181,12 +197,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->setColumn(2, "Lines", 50);
     list->setColumn(3, "Subject", 50,KTabListBox::MixedColumn);
     
-    list->dict().insert("N",new QPixmap(pixpath+"green-bullet.xpm"));  //Unread message
-    list->dict().insert("R",new QPixmap(pixpath+"red-bullet.xpm"));    //Read message
-    list->dict().insert("T",new QPixmap(pixpath+"black-bullet.xpm"));  //Unav. message
-    list->dict().insert("M",new QPixmap(pixpath+"tagged.xpm"));  //Marked message
-
-    //and now the pixmap needed to make the tree
+    list->dict().insert("N",new QPixmap(kapp->getIconLoader()->loadIcon("green-bullet.xpm")));  //Unread message
+    list->dict().insert("R",new QPixmap(kapp->getIconLoader()->loadIcon("red-bullet.xpm")));    //Read message
+    list->dict().insert("T",new QPixmap(kapp->getIconLoader()->loadIcon("black-bullet.xpm")));    //Read message
+    list->dict().insert("M",new QPixmap(kapp->getIconLoader()->loadIcon("tagged.xpm")));    //Read message
+    list->dict().insert("L",new QPixmap(kapp->getIconLoader()->loadIcon("locked.xpm")));    //Read message
 
     list->setTabWidth(25);
     
@@ -231,12 +246,10 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
         
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
-    resize(600,400);
+    readProperties();
+    show();
     qApp->processEvents ();
-    show ();
-    resize(600,400);
-    qApp->processEvents ();
-    
+
     if (server->isConnected())
     {
         actions(ARTLIST);
@@ -273,6 +286,8 @@ void Artdlg::closeEvent(QCloseEvent *)
 Artdlg::~Artdlg ()
 {
     debug ("destroying articles window");
+    saveProperties (false);
+    conf->sync();
 }
 
 void Artdlg::fillTree ()
@@ -290,9 +305,10 @@ void Artdlg::fillTree ()
     Article *iter;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
-        if (!(iter->isRead() && unread)) // We want to see only the unread messages
+        if( (!(unread && iter->isRead())) ||
+            (showlocked && (!iter->canExpire())) )
         {
-            artList.append(iter);
+                artList.append(iter);
         }
     }
 
@@ -314,8 +330,7 @@ void Artdlg::fillTree ()
         list->insertItem (formatted.data());
     }
     list->setAutoUpdate(true);
-    if (artList.count())
-        list->repaint();
+    list->repaint();
     qApp->restoreOverrideCursor();
     statusBar()->changeItem("",1);
     qApp->processEvents ();
@@ -426,8 +441,14 @@ bool Artdlg::actions (int action)
         }
     case FOLLOWUP:
         {
-            PostDialog p(groupname,"",this);
-            p.show();
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            KMComposeWin *comp=new KMComposeWin(0,"","",0,actNoOp,true);
+            comp->show();
             break;
         }
     case SAVE_ARTICLE:
@@ -446,6 +467,17 @@ bool Artdlg::actions (int action)
             conf->writeEntry("ShowOnlyUnread",unread);
             conf->sync();
             options->setItemChecked(NO_READ, unread);
+            fillTree();
+            success = true;
+            break;
+        }
+    case NO_LOCKED:
+        {
+            showlocked = !showlocked;
+            conf->setGroup("ArticleListOptions");
+            conf->writeEntry("ShowLockedArticles",showlocked);
+            conf->sync();
+            options->setItemChecked(NO_LOCKED, showlocked);
             fillTree();
             success = true;
             break;
@@ -472,7 +504,52 @@ bool Artdlg::actions (int action)
             break;
         }
     case REP_MAIL:
-        KMsgBox::message (0,"Sorry!","Not implemented");
+        {
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            KMComposeWin *comp=new KMComposeWin(0,"",art->From,0,actNoOp,false);
+            comp->show();
+            break;
+        }
+    case CATCHUP:
+      {
+        group->catchup();
+        this->close(FALSE);
+        break;
+      }     
+
+      //
+      // robert's cache stuff
+
+    case TOGGLE_EXPIRE:
+      {
+	int index = list->currentItem();
+
+	if(index < 0)
+	  break;
+
+	Article *art=artList.at(index);
+
+	if(art->canExpire()) {
+	  article->setItemChecked(TOGGLE_EXPIRE, true);
+	  art->toggleExpire();
+        } else {
+	  article->setItemChecked(TOGGLE_EXPIRE, false);
+	  art->toggleExpire();
+        }
+        QString formatted;
+        art->formHeader(&formatted);
+        list->changeItem (formatted.data(),index);
+
+	break;
+      }
+
+      // end robert's cache stuff
+      //
     }
     qApp->restoreOverrideCursor ();
     return success;
@@ -596,6 +673,8 @@ void Artdlg::loadArt (int index,int)
         QString formatted;
         art->formHeader(&formatted);
         list->changeItem (formatted.data(),index);
+
+	article->setItemChecked(TOGGLE_EXPIRE, !art->canExpire());  // robert's cache stuff
     }
 }
 

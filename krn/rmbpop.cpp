@@ -1,5 +1,7 @@
 #include "rmbpop.h"
 
+#include "rmbpop.moc"
+
 RmbPop::RmbPop(QWidget *_parent=0,const char *name=0)
 {
     parent=_parent;

@@ -77,7 +77,11 @@ KMMessage* KMMessage::reply(void)
 {
   KMMessage* msg = new KMMessage;
 
-  warning("KMMessage::reply()\nneeds implementation !");
+
+
+
+
+  debug("KMMessage::reply() needs implementation !");
 
   return msg;
 }
@@ -93,7 +97,6 @@ void KMMessage::setAutomaticFields(void)
   if (numBodyParts() > 1)
   {
     // Set the type to 'Multipart' and the subtype to 'Mixed'
-
     DwMediaType& contentType = mMsg->Headers().ContentType();
     contentType.SetType(DwMime::kTypeMultipart);
     contentType.SetSubtype(DwMime::kSubtypeMixed);
@@ -112,7 +115,7 @@ const char* KMMessage::dateStr(void) const
   
   DwHeaders& header = mMsg->Headers();
   if (header.HasDate()) return header.Date().AsString().c_str();
-  return NULL;
+  return "";
 }
 
 

@@ -117,6 +117,9 @@ public:
   virtual void markItem (int idx, int colId=-1);
   virtual void unmarkItem (int idx);
 
+  /** Returns TRUE if item with given index is marked. */
+  virtual bool isMarked (int idx) const;
+
   /** Find item at given screen y position. */
   int findItem (int yPos) const { return (lbox.findRow(yPos)); }
 
@@ -151,6 +154,10 @@ public:
   uint tableFlags(void) { return lbox.tableFlags(); }
   bool testTableFlags(uint f) { return lbox.testTableFlags(f); }
   void setTableFlags(uint f) { lbox.setTableFlags(f); }
+  int findCol(int x) { return lbox.findCol(x); }
+  int findRow(int y) { return lbox.findRow(y); }
+  bool colXPos(int col, int* x) { return lbox.colXPos(col,x); }
+  bool rowYPos(int row, int* y) { return lbox.rowYPos(row,y); }
 
   /** Set column caption, width, and type. */
   virtual void setColumn (int col, const char* caption, 
@@ -159,6 +166,9 @@ public:
   /** Set/get column width. */
   virtual void setColumnWidth (int col, int width=0);
   int columnWidth (int col) { return lbox.cellWidth(col); }
+
+  /** Set default width of all columns. */
+  virtual void setDefaultColumnWidth(int width0, ...);
 
   /** set separator character, e.g. '\t'. */
   virtual void setSeparator (char sep);
@@ -178,6 +188,10 @@ public:
 
   QPixmap& dndPixmap(void) { return dndDefaultPixmap; }
 
+  /** Read the config file entries in the group with the name of the
+    listbox and set the column widths and those. */
+  virtual void readConfig(void);
+
 signals:
   /** emited when the current item changes (either via setCurrentItem()
     or via mouse single-click). */
@@ -186,8 +200,11 @@ signals:
   /** emitted when the user double-clicks into a line. */
   void selected (int Index, int column);
 
-  /** emitted when the user presses the right mouse button over a line */
+  /** emitted when the user presses the right mouse button over a line. */
   void popupMenu (int Index, int column);
+
+  /** emitted when the user clicks on a column header. */
+  void headerClicked (int column);
 
 protected slots:
   void horSbValue(int val);
@@ -203,6 +220,9 @@ protected:
 
   virtual void resizeEvent (QResizeEvent*);
   virtual void paintEvent (QPaintEvent*);
+  virtual void mouseMoveEvent(QMouseEvent*);
+  virtual void mousePressEvent(QMouseEvent*);
+  virtual void mouseReleaseEvent(QMouseEvent*);
 
   /** Resize item array. Per default enlarge it to double size. */
   virtual void resizeList (int newNumItems=-1);
@@ -211,6 +231,12 @@ protected:
     returns FALSE then no drag occurs. */
   virtual bool prepareForDrag (int col, int row, char** data, int* size, 
 			       int* type);
+
+  // Internal method that handles resizing of columns with the mouse.
+  virtual void doMouseResizeCol(QMouseEvent*);
+
+  // Internal method that handles moving of columns with the mouse.
+  virtual void doMouseMoveCol(QMouseEvent*);
 
   KTabListBoxColumn*	colList;
   KTabListBoxItem*	itemList;
@@ -224,8 +250,18 @@ protected:
   int			columnPadding;
   QColor		highlightColor;
   int			tabPixels;
+  bool			mResizeCol;
+  int			mSortCol;  // selected column for sorting order or -1
 
-private:  // Disabled copy constructor and operator=
+  static int		mMouseCol; // column where the mouse action started
+				   // (resize, click, reorder)
+  static int		mMouseColLeft; // left offset of mouse column
+  static int		mMouseColWidth; // width of mouse column
+  static QPoint		mMouseStart;
+  static bool		mMouseAction;
+
+private:
+  // Disabled copy constructor and operator=
   KTabListBox (const KTabListBox &) {}
   KTabListBox& operator= (const KTabListBox&) { return *this; }
 };
@@ -273,14 +309,18 @@ public:
   int width (void) const { return iwidth; }
   virtual void setWidth (int w);
 
+  int defaultWidth (void) const { return idefwidth; }
+  virtual void setDefaultWidth (int w);
+
   virtual void setType (KTabListBox::ColumnType);
   KTabListBox::ColumnType type (void) const { return colType; }
 
   virtual void paintCell (QPainter*, int row, const QString& string, 
 			  bool marked);
   virtual void paint (QPainter*);
+
 protected:
-  int iwidth;
+  int iwidth, idefwidth;
   KTabListBox::ColumnType colType;
   KTabListBox* parent;
 };

@@ -1,6 +1,7 @@
 #include "kformatter.h"
 #include "kstrtable.h"
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <qfileinf.h>
 #include <qregexp.h>
@@ -20,7 +21,7 @@ KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
     //Get the date format from the config
     QString *defFmt=new QString("%y%m%d %H:%M (%Z)");
     kapp->getConfig()->setGroup("Appearance");
-    dateFmt=new QString(kapp->getConfig()->readEntry("Dateformat",*defFmt));
+    dateFmt=new QString(kapp->getConfig()->readEntry("Dateformat",defFmt->data()));
     CHECK_PTR(dateFmt);
     if(dateFmt->isEmpty())
         dateFmt=defFmt;
@@ -192,7 +193,7 @@ QString KFormatter::htmlPart(QList<int> partno)
     CHECK_PTR(udata);
     //debug("udata: %s",udata);
 
-    const char* data=KDecode::decodeString(udata,encoding);
+    const char* data=KDecode::decodeString(udata,encoding)->c_str();
     CHECK_PTR(data);
     //debug("data: %s",data);
 
@@ -367,8 +368,8 @@ QString KFormatter::htmlPart(QList<int> partno)
             f->writeBlock(data,strlen(data));
             f->close();
 
-            system(plugin+" <"+tempfile.file(i)->name()+" >"+
-                   tempfile.file(o)->name());
+            system((plugin+" <"+tempfile.file(i)->name()+" >"+
+                   tempfile.file(o)->name()).data());
 
             f=tempfile.file(o);
             f->open(IO_ReadOnly);

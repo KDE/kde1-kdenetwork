@@ -61,6 +61,12 @@ public:
     void save();
     void load();
     int  score();
+
+    // robert's cache stuff
+    bool canExpire();
+    void setExpire(bool b);
+    void toggleExpire();
+    // end robert's cache stuff
     
     //This value is valid only for a few moments after running
     //thread() over an article list. It's not really meant to be used...
@@ -71,6 +77,7 @@ private:
     bool isavail;
     bool ismarked;
     int refcount;
+    bool expire;  // robert's cache stuff
 };
 
 typedef QListT<Article> ArticleListBase;
@@ -118,6 +125,7 @@ public:
     void getSubjects(NNTP *server);
     void getMessages(NNTP *server);
     void catchup();
+    int countNew(NNTP *server);
 private:
 };
 

@@ -20,6 +20,7 @@
 
 extern KConfig *conf;
 
+#include "identDlg.moc"
 
 #define Inherited QDialog
 

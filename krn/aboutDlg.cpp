@@ -2,6 +2,8 @@
 
 #define Inherited QDialog
 
+#include "aboutDlg.moc"
+
 aboutDlg::aboutDlg
     (
      QWidget* parent,

@@ -15,6 +15,10 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "NNTP.h"
 
 #include <kmsgbox.h>
@@ -28,6 +32,9 @@
 extern QString krnpath,cachepath,artinfopath;
 
 #include <mimelib/mimepp.h>
+
+
+#include "NNTP.moc"
 
 extern KConfig *conf;
 

@@ -4,7 +4,7 @@
 #ifndef kmmessage_h
 #define kmmessage_h
 
-#include <mimelib/mimepp.h>
+#include <mimelib/string.h>
 
 #include <time.h>
 
@@ -14,14 +14,15 @@ class KMMessagePart;
 
 class KMMessage
 {
-  friend class KMFolder;
+ friend class KMFolder;
 
 protected:
   KMMessage(KMFolder*, DwMessage* = NULL);
 
 public:
   typedef enum {
-    stUnknown=' ', stNew='N', stUnread='U', stOld='O', stDeleted='D' 
+    stUnknown=' ', stNew='N', stUnread='U', stOld='O', stDeleted='D',
+    stReplied='A'
   } Status; // see below for a conversion function to strings
 
   KMMessage();
@@ -141,6 +142,8 @@ public:
   /** Append a body part to the message. */
   virtual void addBodyPart(const KMMessagePart* aPart);
 
+  /** Owning folder or NULL if none. */
+  KMFolder* owner(void) const { return mOwner; }
 
 protected:
   void setOwner(KMFolder*);

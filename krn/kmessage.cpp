@@ -15,6 +15,9 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
+#include <unistd.h>
+
 #include <qtstream.h>
 #include <qfile.h>
 #include <qregexp.h>
@@ -32,6 +35,8 @@
 #include <Kconfig.h>
 #include <kfm.h>
 #include <kurl.h>
+
+#include "kmessage.moc"
 
 extern KConfig *conf;
 
@@ -52,14 +57,11 @@ Kmessage::Kmessage
     this->resize(400,300);
     this->begin("file:/tmp/xxx");
     this->write ("<html><head><title>Krn message view</title></head>\n"
-                 "<body><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>");
-    debug("HTML Header=\""
-          "<html><head><title>Krn message view</title></head>\n"
-          "<body><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>"
-          "\"");
+                   "<body><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE I</h4><hr>");
+    this->write("");
     this->end();
     this->parse();
-
+  
     this->loadSettings();
     kapp->processEvents();
 
@@ -93,18 +95,16 @@ void Kmessage::loadMessage( QString message, bool complete=TRUE )
 {
     format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
-    this->loadSettings();
 
-    this->begin("file:/tmp/xxx");
     QString header=format->htmlHeader();
-    this->write(header+"<hr>");
-    this->parse();
     QString body=format->htmlAll();
-    this->write(body+"</html>\n");
+    this->begin();
+    this->write(header+"<hr>"+body);
     this->end();
+    this->parse();
+    this->loadSettings();
     this->repaint();
     this->show();
-
 }
 void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 {
@@ -234,7 +234,6 @@ void Kmessage::loadSettings()
                                            conf->readColorEntry("LinkColor",&QColor("blue")),
                                            conf->readColorEntry("FollowedColor",&QColor("red"))
                                           );
-    
 }
 
                           

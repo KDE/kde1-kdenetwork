@@ -28,8 +28,14 @@ public:
   KMFolder(KMFolderDir* parent=NULL, const char* name=NULL);
   virtual ~KMFolder();
 
+  /** Type of the folder: "plain" or "account" (maybe others later). */
+  virtual const char* type(void) const;
+
   /** Returns full path to folder file */
-  const QString& location(void) const;
+  const QString location(void) const;
+
+  /** Returns full path to table of contents file */
+  const QString tocLocation(void) const;
 
   /** Read message at given index. Indexing starts at one to stay
     compatible with imap-lib */
@@ -38,26 +44,33 @@ public:
   /** Detach message from this folder. Usable to call addMsg()
     with the message for another folder. */
   virtual void detachMsg(int index);
+  virtual void detachMsg(KMMessage* msg);
 
   /** Add the given message to the folder. Usually the message
     is added at the end of the folder. Returns zero on success and
     an errno error code on failure. The index of the new message
-    is optionally returned. 
+    is stored in index_return if given.
     Please note that the message is added as is to the folder and the folder
     takes ownership of the message (deleting it in the destructor).*/
-  virtual int addMsg(KMMessage* msg, int* index = NULL);
+  virtual int addMsg(KMMessage* msg, int* index_return = NULL);
+
+  /** Detaches the given message from it's current folder and
+    adds it to this folder. Returns zero on success and an errno error
+    code on failure. The index of the new message is stored in index_return
+    if given. */
+  virtual int moveMsg(KMMessage* msg, int* index_return = NULL);
 
   /** Returns the index of the given message or -1 if not found. */
   virtual int indexOfMsg(const KMMessage*) const;
 
-  /** total number of messages in this folder (may include already deleted
+  /** Total number of messages in this folder (may include already deleted
    messages) */
   virtual long numMsgs(void) const { return mMsgs; }
 
-  /** number of unread messages */
+  /** Number of unread messages */
   virtual int numUnreadMsgs(void) const { return mUnreadMsgs; }
 
-  /** number of active (not deleted) messages in folder */
+  /** Number of active (not deleted) messages in folder */
   virtual int numActiveMsgs(void) const { return mActiveMsgs; }
 
   virtual int isValid(unsigned long);
@@ -98,6 +111,15 @@ public:
     process, whether there are others using it or not. */
   virtual int remove(void);
 
+  /** Delete contents of folder. Forces a close *but* opens the
+    folder again afterwards. Returns errno(3) error code or zero on 
+    success. */
+  virtual int expunge(void);
+
+  /** Sync all TOC-changes to file. Returns zero on success and an errno
+    on failure. */
+  virtual int sync(void);
+
   /** Returns TRUE if a table of contents file is automatically created. */
   bool autoCreateToc(void) const { return mAutoCreateToc; }
 
@@ -105,17 +127,31 @@ public:
     Default is TRUE. */
   virtual void setAutoCreateToc(bool);
 
+  /** Returns TRUE if the table of contents is dirty. This happens when
+    a message is deleted from the folder. The toc will then be re-created
+    when the folder is closed. */
+  bool tocDirty(void) const { return mTocDirty; }
+
   /** If set to quiet the folder will not emit signals. */
   virtual void quiet(bool beQuiet);
 
-  /** Delete contents of folder. Forces a close and does not open the
-    folder again. Returns errno(3) error code or zero on success. */
-  virtual int expunge(void);
+  /** Return "Subject:" of given message without reading the message.*/
+  virtual const char* msgSubject(int msgId) const;
 
-  //---| yet not implemented (and maybe not needed) are: |-------------------
-  virtual int rename(const char* fileName);
-  virtual long status(long/* = SA_MESSAGES | SA_RECENT | SA_UNSEEN*/);
-  virtual void ping();
+  /** Return "Date:" of given message without reading the message.*/
+  virtual const char* msgDate(int msgId) const;
+
+  /** Return "From:" of given message without reading the message.*/
+  virtual const char* msgFrom(int msgId) const;
+
+  /** Return "Status:" of given message without reading the message.*/
+  virtual KMMessage::Status msgStatus(int msgId) const;
+
+  /** Valid parameters for sort() */
+  typedef enum { sfSubject=1, sfFrom=2, sfDate=3 } SortField;
+
+  /** Sort folder by given field. Actually sorts the index. */
+  virtual void sort(KMFolder::SortField field=KMFolder::sfSubject);
 
 signals:
   /** Emitted when the status, name, or associated accounts of this
@@ -133,36 +169,47 @@ signals:
 
 protected:
   friend class KMMessage;
+  friend int msgSortCompFunc(const void* a, const void* b);
 
-  // Called from KMMessage::setStatus(). Do not use directly. */
+  /** Called from KMMessage::setStatus(). Do not use directly. */
   virtual void setMsgStatus(KMMessage*, KMMessage::Status);
 
-  // read message from file
+  /** Read message from file. */
   virtual void readMsg(int msgNo);
 
-  /* read table of contents file from messages file and fill the
+  /** Read table of contents file from messages file and fill the
      message-info list mMsgList. */
   virtual void readToc(void);
 
-  /* This method can be inherited to read a custom toc header. */
+  /** This method can be inherited to read a custom toc header. */
   virtual void readTocHeader(void);
 
-  /* Create table of contents file from messages file and fill the
+  /** Create table of contents file from messages file and fill the
      message-info list mMsgList. Returns 0 on success and an errno 
      value (see fopen) on failure. */
-  virtual int createToc(void);
+  virtual int createTocFromContents(void);
 
-  /* This method can be inherited to create a custom toc header.
+  /** Completely (re)write table of contents file. */
+  virtual int writeToc(void);
+
+  /** This method can be inherited to create a custom toc header.
      Returns zero on success and an errno value (see fopen) on failure.*/
   virtual int createTocHeader(void);
+
+  /** Remove msg-info from mMsgInfo array. */
+  void removeMsgInfo(int id);
+
+  /** Change the Toc-dirty flag. */
+  void setTocDirty(bool f) { mTocDirty=f; }
 
   FILE* mStream;	// file with the messages
   FILE* mTocStream;	// table of contents file
   int mMsgs, mUnreadMsgs, mActiveMsgs;
-  KMMsgInfoList mMsgInfo;
+  KMMsgInfoList mMsgInfo; // list of toc entries, one per message
   int mOpenCount, mQuiet;
-  unsigned long mHeaderOffset;
+  unsigned long mHeaderOffset; // offset of header of toc file
   bool mAutoCreateToc;  // is the automatic creation of a toc file allowed ?
+  bool mTocDirty; // if the Toc is dirty it will be recreated upon close()
 };
 
 #endif /*kmfolder_h*/

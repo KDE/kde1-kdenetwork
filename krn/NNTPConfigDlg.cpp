@@ -4,6 +4,8 @@
 
 #include <Kconfig.h>
 
+#include "NNTPConfigDlg.moc"
+
 extern KConfig *conf;
 
 

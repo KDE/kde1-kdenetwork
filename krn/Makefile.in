@@ -26,7 +26,7 @@ KDEINC = $(prefix)/include
 BINDIR = $(prefix)/bin
 LIBDIR = $(prefix)/lib
 PICSDIR = $(LIBDIR)/pics/krn
-APPSDIR = $(prefix)/apps
+APPSDIR = $(prefix)/share/applnk
 
 ########### File Formats ###########
 
@@ -42,105 +42,67 @@ APPSDIR = $(prefix)/apps
 
 OBJECTS = 	main.o\
 		NNTP.o\
-		mNNTP.o\
 		groupdlg.o\
-		mgroupdlg.o\
 		artdlg.o\
-		martdlg.o\
 		kmessage.o\
-		mkmessage.o\
 		ktablistbox.o\
 		kmmessage.o\
 		newsgroup.o\
 		kstrtable.o\
 		asker.o\
-		masker.o\
 		askerData.o\
 		identDlg.o\
-		midentDlg.o\
 		identDlgData.o\
 		NNTPConfigDlg.o\
-		mNNTPConfigDlg.o\
 		NNTPConfigDlgData.o\
 		decoderDlg.o\
-		mdecoderDlg.o\
 		kformatter.o\
-		mrmbpop.o\
 		rmbpop.o\
 		kdecode.o\
-		mkdecode.o\
 		aboutDlg.o\
-		maboutDlg.o\
 		aboutDlgData.o\
 		ktempfile.o\
 		kscorer.o\
-		PostDialog.o\
-		mPostDialog.o\
-		PostDialogData.o\
-		mPostDialogData.o\
-		NewMsgDlg.o\
-		mNewMsgDlg.o\
-		NewMsgDlgData.o\
-		mNewMsgDlgData.o\
-		PartProps.o\
-		mPartProps.o\
-		PartPropsData.o\
-		mPartPropsData.o\
                 fontsDlg.o\
-                mfontsDlg.o\
                 fontsDlgData.o\
                 kmmsgpart.o\
                 kmfolder.o\
                 kmmsginfo.o\
-                kmfoldernode.o
+                kmfoldernode.o\
+                kmcomposewin.o\
+                KEdit.o\
+                kmimemagic.o\
+                kmsender.o
 
-SRCMETA = 	mgroupdlg.o \
-		mNNTP.o \
-                martdlg.o\
-                mkmessage.o\
-                masker.o\
-                midentDlg.o\
-                mNNTPConfigDlg.o\
-		mrmbpop.o\
-		mdecoderDlg.o\
-		mkdecode.o\
-		maboutDlg.o\
-		mPostDialog.o\
-		mNewMsgDlg.o\
-		mPartProps.o\
-                mfontsDlg.o
+SRCMETA =
 
-
-METASRC =	mgroupdlg.cpp \
-		mNNTP.cpp \
-                martdlg.cpp\
-                mkmessage.cpp\
-                masker.cpp\
-                midentDlg.cpp\
-                mNNTPConfigDlg.cpp\
-                mrmbpop.cpp\
-                mdecoderDlg.cpp\
-                mkdecode.cpp\
-                maboutDlg.cpp\
-                mPostDialog.cpp\
-                mNewMsgDlg.cpp\
-                mPartProps.cpp\
-                mfontsDlg.cpp\
+METASRC =	groupdlg.moc \
+		NNTP.moc \
+                artdlg.moc\
+                kmessage.moc\
+                asker.moc\
+                identDlg.moc\
+                NNTPConfigDlg.moc\
+                rmbpop.moc\
+                decoderDlg.moc\
+                kdecode.moc\
+                aboutDlg.moc\
+                fontsDlg.moc\
                 ktablistbox.moc\
                 kmfolder.moc\
-                kmfoldernode.moc
+                kmfoldernode.moc\
+                kmcomposewin.moc\
+                KEdit.moc\
+                kmimemagic.moc\
+                kmsender.moc
 
 TARGET	=	krn
 
 SOURCES = 	main.cpp\
 		NNTP.cpp\
-                mNNTP.cpp\
 		groupdlg.cpp\
-                mgroupdlg.cpp\
 		artdlg.cpp\
-		martdlg.cpp\
 		kmessage.cpp\
-                mkmessage.cpp\
 		ktablistbox.cpp\
 		kmmessage.cpp\
                 newsgroup.cpp\
@@ -159,18 +121,16 @@ SOURCES = 	main.cpp\
                 aboutDlgData.cpp\
                 ktempfile.cpp\
                 kscorer.cpp\
-                PostDialog.cpp\
-                PostDialogData.cpp\
-                NewMsgDlg.cpp\
-                NewMsgDlgData.cpp\
-                PartProps.cpp\
-                PartPropsData.cpp\
                 fontsDlg.cpp\
                 fontsDlgData.cpp\
                 kmmsgpart.cpp\
                 kmfolder.cpp\
                 kmmsginfo.cpp\
-                kmfoldernode.cpp
+                kmfoldernode.cpp\
+                kmcomposewin.cpp\
+                KEdit.cpp\
+                kmimemagic.cpp\
+                kmsender.cpp
 
 
 HEADERS = 	NNTP.h\
@@ -195,24 +155,22 @@ HEADERS = 	NNTP.h\
 		aboutDlgData.h\
 		ktempfile.h\
 		kscorer.h\
-		PostDialog.h\
-		PostDialogData.h\
-		NewMsgDlg.h\
-		NewMsgDlgData.h\
-		PartProps.h\
-		PartPropsData.h\
                 fontsDlg.h\
                 fontsDlgData.h\
                 kmmsgpart.h\
                 kmfolder.h\
                 kmmsginfo.h\
-                kmfoldernode.h
+                kmfoldernode.h\
+                kmcomposewin.h\
+                KEdit.h\
+                kmimemagic.h\
+                kmsender.h
 
 
 ######### build rules ################
 
 all: Makefile depend $(TARGET)
-	$(INSTALL_DIR) $(LIBDIR)/pics
+#	$(INSTALL_DIR) $(LIBDIR)/pics
 
 Makefile: Makefile.in
 	cd .. && ONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
@@ -228,11 +186,10 @@ distclean: clean
 	rm -f Makefile
 
 install: all
-	$(INSTALL_DATA) krn.xpm $(LIBDIR)/pics
+	$(INSTALL_DATA) krn.xpm $(prefix)/share/icons
 	$(INSTALL_DIR) $(BINDIR)
 	$(INSTALL) $(TARGET) $(BINDIR)
-	$(INSTALL_DIR) $(APPSDIR)/Applications
-	$(INSTALL_DATA) Krn.kdelnk $(APPSDIR)/Applications
+	$(INSTALL_DATA) Krn.kdelnk $(prefix)/share/applnk
 	(cd pics && $(MAKE) install)
 
 uninstall:
@@ -240,60 +197,6 @@ uninstall:
 	(cd pics && $(MAKE) uninstall)
 
 ####### Meta objects
-
-mNNTP.cpp: NNTP.h
-	$(MOC) NNTP.h -o mNNTP.cpp
-
-mgroupdlg.cpp: groupdlg.h
-	$(MOC) groupdlg.h -o mgroupdlg.cpp
-
-martdlg.cpp: artdlg.h
-	$(MOC) artdlg.h -o martdlg.cpp
-
-mkmessage.cpp: kmessage.h
-	$(MOC) kmessage.h -o mkmessage.cpp
-
-masker.cpp: asker.h
-	$(MOC) asker.h -o masker.cpp
-
-midentDlg.cpp: identDlg.h
-	$(MOC) identDlg.h -o midentDlg.cpp
-
-mNNTPConfigDlg.cpp: NNTPConfigDlg.h
-	$(MOC) NNTPConfigDlg.h -o mNNTPConfigDlg.cpp
-
-mdecoderDlg.cpp: decoderDlg.h
-	$(MOC) decoderDlg.h -o mdecoderDlg.cpp
-
-mrmbpop.cpp: rmbpop.h
-	$(MOC) rmbpop.h -o mrmbpop.cpp
-
-mkdecode.cpp: kdecode.h
-	$(MOC) kdecode.h -o mkdecode.cpp
-
-maboutDlg.cpp: aboutDlg.h
-	$(MOC) aboutDlg.h -o maboutDlg.cpp
-
-mPostDialog.cpp: PostDialog.h
-	$(MOC) PostDialog.h -o mPostDialog.cpp
-
-mPostDialogData.cpp: PostDialogData.h
-	$(MOC) PostDialogData.h -o mPostDialogData.cpp
-
-mNewMsgDlg.cpp: NewMsgDlg.h
-	$(MOC) NewMsgDlg.h -o mNewMsgDlg.cpp
-
-mNewMsgDlgData.cpp: NewMsgDlgData.h
-	$(MOC) NewMsgDlgData.h -o mNewMsgDlgData.cpp
-
-mPartProps.cpp: PartProps.h
-	$(MOC) PartProps.h -o mPartProps.cpp
-
-mPartPropsData.cpp: PartPropsData.h
-	$(MOC) PartPropsData.h -o mPartPropsData.cpp
-
-mfontsDlg.cpp: fontsDlg.h
-	$(MOC) fontsDlg.h -o mfontsDlg.cpp
 
 depend:
 	@makedepend -I$(INCDIR) $(SOURCES) 2> /dev/null

@@ -42,6 +42,7 @@ Article::Article(void)
     refcount=0;
     Refs.setAutoDelete(true);
     threadDepth=0;
+    setExpire(true);  // robert's cache stuff
 }
 
 void Article::decref()
@@ -67,7 +68,7 @@ void Article::formHeader(QString *s)
     QString ss;
     
     if (isRead())
-    {
+   {
         ss.setStr("{R} ");
     }
     else
@@ -82,7 +83,12 @@ void Article::formHeader(QString *s)
     {
         ss.setStr("{M} ");
     }
+    if (!canExpire())
+    {
+        ss.setStr("{L} ");
+    }
 
+    ss.append(" ");
     char *tempbuf=new char[2048];
     if (From.data())
     {
@@ -148,6 +154,18 @@ void Article::save()
         _content+="1\n";
     else
         _content+="0\n";
+
+    //
+    // robert's cache stuff
+
+    if(canExpire())
+      _content+="1\n";
+    else
+      _content+="0\n";
+
+    // end robert;s cache stuff
+    //
+
     for (char *iter=Refs.first();iter!=0;iter=Refs.next())
     {
         _content+=iter;
@@ -166,19 +184,36 @@ void Article::load()
     datum content;
 
     key.dptr=ID.data();
-    key.dsize=ID.length()+1;
+    key.dsize=ID.length() + 1;
 
     content=gdbm_fetch(artdb,key);
 
     QString s;
 
     Subject=strtok ((char *)content.dptr,"\n");
+
     Lines=strtok(NULL,"\n");
     From=strtok(NULL,"\n");
     Date=strtok(NULL,"\n");
     s=strtok(NULL,"\n");
     if (s=="1")
         isread=true;
+
+    //
+    // robert's cache stuff
+
+    QString s2;
+
+    s2=strtok(NULL, "\n");
+
+    if(s2 == "1")
+      expire = true;
+    else
+      expire = false;
+
+    // end  robert's cache stuff
+    //
+
     char *p;
     while (1)
     {
@@ -193,6 +228,28 @@ int Article::score()
 {
     return 100;
 }
+
+bool Article::canExpire()  // robert's cache stuff
+{
+  return(expire);
+}
+
+void Article::setExpire(bool b)   // robert's cache stuff
+{
+  expire = b;
+  save();
+}
+
+void Article::toggleExpire()   // robert's cache stuff
+{
+  if(expire)
+    expire = false;
+  else
+    expire = true;
+
+  save();
+}
+
 
 
 ////////////////////////////////////////////////////////////////////
@@ -323,6 +380,27 @@ void NewsGroup::catchup()
             art->setRead();
         }
     }
+}
+
+int NewsGroup::countNew(NNTP *server)
+{
+  int count = 0;
+
+  load();
+  getList();
+
+  if(strcmp(server->group(), data()))
+    server->setGroup(data());
+
+  if(server->last > lastArticle)
+    count = server->last - lastArticle;
+
+  for(Article *art=artList.first(); art!=0; art=artList.next()) {
+    if(!art->isRead())
+       count++;
+  }
+
+  return(count);
 }
 
 ////////////////////////////////////////////////////////////////////
