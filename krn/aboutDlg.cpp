@@ -34,14 +34,14 @@ aboutDlg::aboutDlg
 
     l->addButton ("logo",p);
     l->newLine();
+    l->addLabel("l3","0.2.0");
+    l->newLine();
     l->addLabel("l1",klocale->translate("Part of the KDE project."));
     l->newLine();
 
     l->addLabel("l2",klocale->translate("Credits & Thanks") );
     l->newLine();
 
-    l->findWidget("l1")->setBackgroundColor("white");
-    l->findWidget("l2")->setBackgroundColor("white");
     
     QListBox* tmpQListBox=(QListBox*)(l->addListBox("list")->widget);
     QColorGroup normal( QColor( QRgb(16711680) ), QColor( QRgb(16777215) ), QColor( QRgb(16777215) ), QColor( QRgb(6316128) ), QColor( QRgb(10789024) ), QColor( QRgb(255) ), QColor( QRgb(16777215) ) );
@@ -72,11 +72,15 @@ aboutDlg::aboutDlg
     l->newLine();
     QPushButton *b1=(QPushButton *)(l->addButton("b1",klocale->translate("OK"))->widget);
 
+    l->findWidget("l1")->setBackgroundColor("white");
+    l->findWidget("l2")->setBackgroundColor("white");
+    l->findWidget("l3")->setBackgroundColor("white");
     l->setAlign("l1",AlignLeft|AlignRight);
     l->setAlign("l2",AlignLeft|AlignRight);
-
+    l->setAlign("l3",AlignLeft|AlignRight);
     ((QLabel *)l->findWidget("l1"))->setAlignment(AlignHCenter);
     ((QLabel *)l->findWidget("l2"))->setAlignment(AlignHCenter);
+    ((QLabel *)l->findWidget("l3"))->setAlignment(AlignHCenter);
     
     l->setAlign("list",AlignLeft|AlignRight|AlignTop|AlignBottom);
     l->setAlign("b1",AlignLeft|AlignRight);
