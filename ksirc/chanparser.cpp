@@ -287,7 +287,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
   throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
 }
 
-void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
+void ChannelParser::parseINFOJoin(QString string) /*fold00*/
 {
   char nick[101], channel[101];
   string.remove(0, 4);                   // strip *>* to save a few compares
