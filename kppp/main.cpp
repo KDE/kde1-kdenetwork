@@ -24,12 +24,14 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <config.h>
+
 #include <qfileinf.h>
 #include <unistd.h>
 #include <kmsgbox.h>
 #include <stdio.h>
 
-#if defined(__FreeBSD__) || defined(__NetBSD__) 
+#ifdef BSD
 #include <stdlib.h>
 #else
 #include <getopt.h>

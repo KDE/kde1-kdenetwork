@@ -24,6 +24,8 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <config.h>
+
 #include <qdir.h>
 #include <qregexp.h> 
 #include <kmsgbox.h>
@@ -1364,7 +1366,7 @@ bool ConnectWidget::execppp() {
       printf("%s \n",command.data());
 #endif
 
-#if defined(__FreeBSD__) || defined(__NetBSD__) 
+#ifdef BSD
       setpgrp(0,0);    
 #else
       setpgrp();
