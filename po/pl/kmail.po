@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-06-23 07:00+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -248,9 +248,18 @@ msgstr "W kolejce"
 msgid "Sent"
 msgstr "Wys³ana"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "&Nastêpna"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "&Poprzednia"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1735,9 +1744,6 @@ msgstr "&Cytuj nieznane znaki"
 
 #~ msgid "&Remove"
 #~ msgstr "&Usuñ"
-
-#~ msgid "&Next"
-#~ msgstr "&Nastêpna"
 
 #, fuzzy
 #~ msgid "Fonts"

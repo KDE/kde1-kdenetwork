@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
@@ -248,9 +248,18 @@ msgstr "已排队"
 msgid "Sent"
 msgstr "已发出"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "下一个[&N]"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "上一个[&P]"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1708,9 +1717,6 @@ msgstr "括起未知字符[&Q]"
 
 #~ msgid "&Remove"
 #~ msgstr "删除[&R]"
-
-#~ msgid "&Next"
-#~ msgstr "下一个[&N]"
 
 #~ msgid "Fonts"
 #~ msgstr "字体"

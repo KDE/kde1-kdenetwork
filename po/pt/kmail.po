@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-01-26 20:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -243,9 +243,18 @@ msgstr "Em espera"
 msgid "Sent"
 msgstr "Enviado"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr ""
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Próxima não lida"
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Anterior não lida"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,9 +254,18 @@ msgstr "Καθυστερούμενο"
 msgid "Sent"
 msgstr "Απεσταλμένο"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "Επόμενο"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Προηγούμενο"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1726,9 +1735,6 @@ msgstr "Εγκλεισμός άγνωστων χαρακτήρων"
 
 #~ msgid "&Remove"
 #~ msgstr "Διαγραφή"
-
-#~ msgid "&Next"
-#~ msgstr "Επόμενο"
 
 #, fuzzy
 #~ msgid "Fonts"

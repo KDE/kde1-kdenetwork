@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 
@@ -241,9 +241,18 @@ msgstr "Esperando"
 msgid "Sent"
 msgstr "Enviado"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr ""
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Próxima não lida"
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Anterior não lida"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"
@@ -1482,6 +1491,7 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Frase inválida; não foi possível decifrar"
 
 #: kpgp.cpp:873
+#, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
@@ -1591,6 +1601,7 @@ msgid ""
 msgstr ""
 "Não consegui fazer uma cópia de segurança de %s.\n"
 "Continuar de qualquer modo ?"
+
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
 msgid ""

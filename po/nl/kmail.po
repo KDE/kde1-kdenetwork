@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,9 +255,18 @@ msgstr "Klaargelegd"
 msgid "Sent"
 msgstr "Verzonden"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "Volge&nde"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Vorige"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1722,9 +1731,6 @@ msgstr "&Qute onbekende karakters"
 
 #~ msgid "&Remove"
 #~ msgstr "&Verwijder"
-
-#~ msgid "&Next"
-#~ msgstr "Volge&nde"
 
 #, fuzzy
 #~ msgid "Fonts"

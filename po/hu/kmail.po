@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -266,9 +266,18 @@ msgstr "Késõbbre halasztott"
 msgid "Sent"
 msgstr "Elküldött"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "&Következõ"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "&Elõzõ"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1822,9 +1831,6 @@ msgstr ""
 
 #~ msgid "&Remove"
 #~ msgstr "&Eltávolít"
-
-#~ msgid "&Next"
-#~ msgstr "&Következõ"
 
 #, fuzzy
 #~ msgid "Fonts"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-07-04 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -243,9 +243,18 @@ msgstr "&Wartend"
 msgid "Sent"
 msgstr "Ge&sendet"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr ""
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Nächste &ungelesene"
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Letzte un&gelesene"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"

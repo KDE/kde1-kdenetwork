@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
 "Last-Translator: Svein Olav Aasen <svein.aasen@caa.no / soaasen@online.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -251,9 +251,18 @@ msgstr "I kø"
 msgid "Sent"
 msgstr "Sendt"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr ""
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Neste ulest"
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Forrige ulest"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"

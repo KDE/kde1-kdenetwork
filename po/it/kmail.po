@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,9 +248,18 @@ msgstr "In Attesa"
 msgid "Sent"
 msgstr "Spedito"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "P&rossimo"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "&Precedente"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1709,9 +1718,6 @@ msgstr ""
 
 #~ msgid "&Remove"
 #~ msgstr "&Rimuovi"
-
-#~ msgid "&Next"
-#~ msgstr "P&rossimo"
 
 #~ msgid "Fonts"
 #~ msgstr "Caratteri"

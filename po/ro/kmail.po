@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
@@ -246,9 +246,18 @@ msgstr "În aºteptare"
 msgid "Sent"
 msgstr "Trimis"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr "&Urmãtorul"
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr ""
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "&Precedentul"
 
 #: kmmainwin.cpp:932
 #, fuzzy
@@ -1724,9 +1733,6 @@ msgstr ""
 
 #~ msgid "&Remove"
 #~ msgstr "&ªterge"
-
-#~ msgid "&Next"
-#~ msgstr "&Urmãtorul"
 
 #, fuzzy
 #~ msgid "Fonts"

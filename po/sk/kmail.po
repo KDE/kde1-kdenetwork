@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -251,9 +251,18 @@ msgstr "Pozdr¾aná"
 msgid "Sent"
 msgstr "Zaslaná"
 
+#: kmmainwin.cpp:926
+msgid "&Next"
+msgstr ""
+
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Ïal¹ia nepreèítaná"
+
+#: kmmainwin.cpp:930
+#, fuzzy
+msgid "&Previous"
+msgstr "Predchádzajúca nepreèítaná"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"
