@@ -137,7 +137,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
   setCaption("Login Terminal Window");
   setMinimumSize(300, 200);
   setMaximumSize(600, 400);
-  resize(400, 200);
+  resize(400, 300);
 
   QVBoxLayout *tl = new QVBoxLayout(this, 2);
   QGridLayout *vgr = new QGridLayout(2, 1);
@@ -146,7 +146,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
   tl->addLayout(vgr);
   vgr->addLayout(hgr, 1, 0);
   vgr->setRowStretch(0, 1);
-  vgr->addRowSpacing(1, 60);
+  vgr->addRowSpacing(1, 40);
 
   text_window = new LoginMultiLineEdit(this, "term", fd);
   text_window->setFocus();
@@ -154,12 +154,12 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
 
   cancel_b = new QPushButton(this, "cancel");
   cancel_b->setText("Ca&ncel");
-  cancel_b->setFixedHeight(35);
+  cancel_b->setFixedHeight(25);
   connect(cancel_b, SIGNAL(clicked()), SLOT(cancelbutton())); 
 
   continue_b = new QPushButton(this, "continue");
   continue_b->setText("&Continue");
-  continue_b->setFixedHeight(35);
+  continue_b->setFixedHeight(25);
   connect(continue_b, SIGNAL(clicked()), SLOT(continuebutton())); 
 
   int mwidth;
