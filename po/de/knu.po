@@ -2,8 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-10-30 12:57+0100\n"
-"PO-Revision-Date: 1997-01-03 16:14+0100\n"
-"Last-Translator: Stephan Kulow <coolo@kde.org>\n"
+"PO-Revision-Date: 1998-11-16 12:54+0100\n"
+"Translator: Stephan Kulow <coolo@kde.org>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
@@ -15,7 +16,7 @@ msgstr "&Traceroute"
 
 #: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
-msgstr "Rechner-Namen"
+msgstr "Rechner-&Namen"
 
 #: knu.cpp:178
 msgid "F&inger"
@@ -23,7 +24,7 @@ msgstr "F&inger"
 
 #: knu.cpp:187 knu.cpp:330
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:198
 msgid ""
@@ -32,7 +33,7 @@ msgid ""
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"Es ist alle Kommandos in der\n"
+"Es sind alle Kommandos in der\n"
 "Konfigurationsdatei ausgeschaltet.\n"
 "\n"
 "Dann kann das Programm nichts tun...\n"
@@ -55,7 +56,7 @@ msgstr "Lösche Ausgabe-Fenster"
 
 #: knu.cpp:263
 msgid "P&references..."
-msgstr "&Eigenschaften"
+msgstr "&Einstellungen..."
 
 #: knu.cpp:278
 #, c-format
@@ -91,8 +92,8 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Das Programm für dies Kommando wurde nicht gefunden.\n"
-"Der Pfad für dieses kann im Eigenschaften-Menu geändert werden."
+"Das Programm für dieses Kommando wurde nicht gefunden.\n"
+"Der Pfad kann in \"Bearbeiten->Einstellungen\" geändert werden."
 
 #: CommandDlg.cpp:344
 #, c-format
@@ -114,8 +115,8 @@ msgstr ""
 "In der [%s] Gruppe\n"
 "kann ich keinen gültigen \"path=\"-Eintrag finden.\n"
 "\n"
-"Bitte benutzen Sie das Bearbeiten->Einstellungen...-Menü\n"
-"um es erneut zu konfigurieren.\n"
+"Bitte benutzen Sie \"Bearbeiten->Einstellungen\",\n"
+"um neu zu konfigurieren.\n"
 
 #: CommandDlg.cpp:353
 msgid "Error in pathname"
@@ -131,7 +132,7 @@ msgstr "P&fad:"
 
 #: CommandDlg.cpp:523
 msgid "Additional &arguments:"
-msgstr "Zusätzliche Argumente:"
+msgstr "Zusätzliche &Argumente:"
 
 #: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
@@ -139,39 +140,39 @@ msgstr "Dieses Kommando wurde in der Konfigurationsdatei ausgeschaltet."
 
 #: OptionsDlg.cpp:69
 msgid " - configuration"
-msgstr " -  Einstellungen"
+msgstr " -  Konfiguration"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Rechner"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Verlust"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Empfangen"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Verschickt"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Bestes"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "Schnitt"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Schlechtestes"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
@@ -195,11 +196,11 @@ msgstr "Adresse (A)"
 
 #: HostDlg.cpp:113
 msgid "name (PTR)"
-msgstr "Namen (PTR)"
+msgstr "Name (PTR)"
 
 #: HostDlg.cpp:114
 msgid "name server (NS)"
-msgstr "Namens-Server (NS)"
+msgstr "Namen-Server (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
@@ -232,9 +233,3 @@ msgstr "Ser&ver:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Benutzer:"
-
-#~ msgid "&Matt's traceroute"
-#~ msgstr "&Matt's Traceroute"
-
-#~ msgid "&Contents"
-#~ msgstr "&Inhalt"

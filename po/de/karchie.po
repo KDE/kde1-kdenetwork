@@ -6,45 +6,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: karchie 1.1.2\n"
 "POT-Creation-Date: 1998-11-03 10:19+0100\n"
-"PO-Revision-Date: 1998-09-02 13:51+0200\n"
-"Last-Translator: Tobias Burnus <burnus@gmx.de>\n"
+"PO-Revision-Date: 1998-11-15 13:51+0100\n"
 "Language-Team: deutsch <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ios-8859-1\n"
 "Content-Transfer-Encoding: iso-8859-1\n"
 "Translator: Jörg Habenicht <j.habenicht@europemail.com>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: KAMenu.cpp:86
 msgid "O&pen in editor"
-msgstr "in E&ditor laden"
+msgstr "In E&ditor öffnen"
 
 #: KAMenu.cpp:87 KAView.cpp:155
 msgid "&Open Dir"
-msgstr "Verzeichniss &anzeigen"
+msgstr "Verzeichnis &anzeigen"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-#, fuzzy
 msgid "&Download..."
-msgstr "&herunterladen.."
+msgstr "&Herunterladen..."
 
 #: KAMenu.cpp:91
-#, fuzzy
 msgid "&Load List..."
-msgstr "Liste &laden.."
+msgstr "&Liste laden..."
 
 #: KAMenu.cpp:92
-#, fuzzy
 msgid "&Save List..."
 msgstr "Liste &speichern.."
 
 #: KAMenu.cpp:93
-#, fuzzy
 msgid "Expor&t List..."
-msgstr "Liste expor&tieren..."
+msgstr "Lis&te exportieren..."
 
 #: KAMenu.cpp:95
 msgid "&Exit"
-msgstr "&Schliessen"
+msgstr "&Schließen"
 
 #: KAMenu.cpp:111
 msgid "&Exact"
@@ -52,23 +48,23 @@ msgstr "&Exakt"
 
 #: KAMenu.cpp:112
 msgid "&Substring"
-msgstr "&Teilmenge"
+msgstr "&Teilstring"
 
 #: KAMenu.cpp:113
 msgid "Substring &case insensitive"
-msgstr "Teilmenge &ohne Groß-kleinschreibung"
+msgstr "Teilstring &ohne Groß-/Kleinschreibung"
 
 #: KAMenu.cpp:114
 msgid "&Regular expression"
-msgstr "&regulärer Ausdruck"
+msgstr "&Regulärer Ausdruck"
 
 #: KAMenu.cpp:115
 msgid "Exact, then substring"
-msgstr "Exakt, dann Teilmenge"
+msgstr "Exakt, dann Teilstring"
 
 #: KAMenu.cpp:116
 msgid "Exact, then substring case ins."
-msgstr "Exakt, dann Teil. ohne GK"
+msgstr "Exakt, dann Teil. ohne G-/K"
 
 #: KAMenu.cpp:117
 msgid "Exact, then regular expression"
@@ -111,7 +107,6 @@ msgid "&Nicelevel"
 msgstr "&Prioritätslevel"
 
 #: KAMenu.cpp:143
-#, fuzzy
 msgid "&All..."
 msgstr "&Alles.."
 
@@ -121,7 +116,7 @@ msgstr "nach &Dateinamen"
 
 #: KAMenu.cpp:151
 msgid "for &Path/Location"
-msgstr "nach &Pfad/Verzeichniss"
+msgstr "nach &Pfad/Verzeichnis"
 
 #: KAMenu.cpp:152
 msgid "for &Hostname"
@@ -129,7 +124,7 @@ msgstr "nach &Hostnamen"
 
 #: KAMenu.cpp:154
 msgid "&STOP"
-msgstr "&Stop"
+msgstr "&STOP"
 
 #: KAMenu.cpp:171
 msgid "by &Hostname"
@@ -169,44 +164,44 @@ msgstr "    0. Versuch"
 
 #: KAStatusBar.cpp:52
 msgid "Host: none                               "
-msgstr "Rechner: keiner"
+msgstr "Rechner: keiner                               "
 
 #: KAStatusBar.cpp:53
 msgid "Status: ready                        "
-msgstr "Status: fertig"
+msgstr "Status: fertig                        "
 
 #: KAStatusBar.cpp:81
 #, c-format
 msgid "Status: %s"
-msgstr ""
+msgstr "Status: %s"
 
 #: KAStatusBar.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "Hosts: %s"
-msgstr "Host"
+msgstr "Host: %s"
 
 #: KAStatusBar.cpp:101
 #, c-format
 msgid "%d hits"
-msgstr ""
+msgstr "%d Treffer"
 
 #: KAStatusBar.cpp:111
 #, c-format
 msgid "Progress: %d"
-msgstr ""
+msgstr "Fortschritt: %d"
 
 #: KAStatusBar.cpp:121
 #, c-format
 msgid "%d try."
-msgstr ""
+msgstr "%d Versuch."
 
 #: KASettings.cpp:567
 msgid "Reset"
-msgstr "Rückgängig"
+msgstr "Rücksetzen"
 
 #: KAView.cpp:69
 msgid "Search &Term"
-msgstr "Such &Muster"
+msgstr "&Such-Muster"
 
 #: KAView.cpp:135
 msgid "Host"
@@ -218,7 +213,7 @@ msgstr "Pfad"
 
 #: KAView.cpp:269
 msgid "Host:"
-msgstr "Host"
+msgstr "Host:"
 
 #: KAView.cpp:271
 msgid "Path:"
@@ -255,15 +250,15 @@ msgstr "KArchie: ungültige Datei"
 
 #: KArchie.cpp:720
 msgid "Malformed url"
-msgstr "ungültige url"
+msgstr "Fehlerhafte URL"
 
 #: KArchie.cpp:724
 msgid "Maybe bad list entry, please select an other file"
-msgstr "Anscheinend schlechter Listeneintrag, bitte einen anderen aussuchen"
+msgstr "Anscheinend unbrauchbarer Listeneintrag, bitte einen anderen aussuchen"
 
 #: KArchie.cpp:725
 msgid "KArchie: bad URL"
-msgstr "KArchie: schlechte URL"
+msgstr "KArchie: falsche URL"
 
 #: KArchie.cpp:744
 msgid "KArchie: Wrong fileselection"
@@ -271,7 +266,7 @@ msgstr "KArchie: Dateiauswahl falsch"
 
 #: KArchie.cpp:745
 msgid "The selected file is not writeable"
-msgstr "Die Datei ist nicht beschreibbar"
+msgstr "In die ausgewählte Datei kann nicht geschrieben werden"
 
 #: KArchie.cpp:752
 msgid "KArchie: Overwrite file ?"
@@ -282,8 +277,8 @@ msgid ""
 "The selected file is not write protected\n"
 "Should it be overwritten ?"
 msgstr ""
-"Die Datei ist nicht schreibgeschützt\n"
-"Soll sie überschrieben werden ?"
+"Die Datei ist nicht schreibgeschützt.\n"
+"Soll sie überschrieben werden?"
 
 #: KArchie.cpp:766
 msgid "KArchie: bad selection"
@@ -295,13 +290,10 @@ msgid ""
 "Please select a file in the list of queryresults\n"
 "or do a query."
 msgstr ""
-"Keine Datei ausgewählt !\n"
-"Bitte eine Datei aus der Liste auswählen\n"
-"oder neue Suche starten."
+"Keine Datei ausgewählt!\n"
+"Bitte Datei aus den Abfrage-Ergebnissen\n"
+"auswählen oder neue Suche starten."
 
 #: KArchie.cpp:793
 msgid "Success"
 msgstr "Erfolgreich"
-
-#~ msgid "Open &Dir"
-#~ msgstr "Öffne &Verzeichniss"

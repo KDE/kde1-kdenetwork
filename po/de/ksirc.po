@@ -2,20 +2,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
 "POT-Creation-Date: 1998-10-02 00:14+0200\n"
-"PO-Revision-Date: 1998-10-02 00:15+0200\n"
-"Last-Translator: Stephan Kulow <coolo@kde.org>\n"
+"PO-Revision-Date: 1998-11-18 00:15+0100\n"
+"Translator: Stephan Kulow <coolo@kde.org>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: toplevel.cpp:134
 msgid "Lag in seconds to the server"
-msgstr "Verzögerung (in sek.) zum Server"
+msgstr "Verzögerung (in sec.) zum Server"
 
 #: toplevel.cpp:138
 msgid "&Ticker Mode"
-msgstr "&Ticker Modus"
+msgstr "&Ticker-Modus"
 
 #: toplevel.cpp:160
 msgid "&Cut Window..."
-msgstr "Aus&schneide-Fenster"
+msgstr "Aus&schneide-Fenster..."
 
 #: toplevel.cpp:291
 msgid "&Users"
@@ -29,11 +30,11 @@ msgid ""
 "kSirc-ALPHA HAS EXPIRED!!\n"
 "Please upgrade or use a beta release"
 msgstr ""
-"kSirc Alpha-Veröffentlichung haben eine\n"
+"kSirc Alpha-Veröffentlichungen haben eine\n"
 "8 Wochen Verfallsdauer.\n"
 "\n"
-"kSirc-ALPHA ist verfallen!!\n"
-"Bitte besorgen Sie sich eine neuere Version\n"
+"kSirc-ALPHA ist abgelaufen!!\n"
+"Bitte besorgen Sie eine neuere Version,\n"
 "oder benutzen Sie eine Beta-Version"
 
 #: ksirc.cpp:64
@@ -43,14 +44,14 @@ msgid ""
 "\n"
 "THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
 msgstr ""
-"kSirc Alpha-Veröffentlichung haben eine\n"
+"kSirc Alpha-Veröffentlichungen haben eine\n"
 "8 Wochen Verfallsdauer.\n"
 "\n"
-"Diese Version wird in unter 4 Wochen verfallen!"
+"DIESE VERSION WIRD IN WENIGER ALS 4 WOCHEN ABLAUFEN!"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
-msgstr "Raum/Spitzname:"
+msgstr "Kanal/Spitzname:"
 
 #: open_ksircData.cpp:39
 msgid "Server:"
@@ -66,7 +67,7 @@ msgstr "&Neuer Server..."
 
 #: servercontroller.cpp:127
 msgid "&Join Channel..."
-msgstr "&Raum betreten..."
+msgstr "&In Kanal einschleusen..."
 
 #: servercontroller.cpp:129
 msgid "&Connections"
@@ -110,7 +111,7 @@ msgstr "Server-Kontrolle"
 
 #: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Channels"
-msgstr "Räume"
+msgstr "Kanäle"
 
 #: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Online"
@@ -134,7 +135,7 @@ msgstr "Info"
 
 #: KSircColourData.cpp:71
 msgid "Chan Messages"
-msgstr "Raum-Nachrichten"
+msgstr "Kanal-Nachrichten"
 
 #: KSircColourData.cpp:80
 msgid "Errors"
@@ -150,7 +151,7 @@ msgstr "Beschreibung:"
 
 #: FilterRuleEditorData.cpp:51
 msgid "Match:"
-msgstr "Passt auf:"
+msgstr "Paßt zu:"
 
 #: FilterRuleEditorData.cpp:69
 msgid "From:"
@@ -158,7 +159,7 @@ msgstr "Von:"
 
 #: FilterRuleEditorData.cpp:78
 msgid "To:"
-msgstr "Zu:"
+msgstr "An:"
 
 #: FilterRuleEditorData.cpp:105
 msgid "&Modify"
@@ -170,15 +171,15 @@ msgstr "&Neue Regel"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
-msgstr "Hoch"
+msgstr "Aufwärts"
 
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
-msgstr "Runter"
+msgstr "Abwärts"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
-msgstr "&Erhalten"
+msgstr "&Holen"
 
 #: dccDialogData.cpp:46
 msgid "&Forget"

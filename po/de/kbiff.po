@@ -2,8 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
 "POT-Creation-Date: 1998-10-13 13:34+0200\n"
-"PO-Revision-Date: 1998-06-04 13:10+0200\n"
-"Last-Translator: Tobias Burnus <burnus@berlin1.netsurf.de>\n"
+"PO-Revision-Date: 1998-11-15 13:10+0100\n"
+"Translator: Tobias Burnus <burnus@berlin1.netsurf.de>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -11,7 +12,7 @@ msgstr ""
 
 #: setupdlg.cpp:65
 msgid "KBiff Setup"
-msgstr "KBiff Einstellungen"
+msgstr "KBiff Einrichtung"
 
 #: setupdlg.cpp:68
 msgid "Profile:"
@@ -31,7 +32,7 @@ msgstr "Allgemein"
 
 #: setupdlg.cpp:126
 msgid "New Mail"
-msgstr "Neue Email"
+msgstr "Neue Mail"
 
 #: setupdlg.cpp:127
 msgid "Mailbox"
@@ -53,7 +54,7 @@ msgstr "Lösche Profil: %s"
 
 #: setupdlg.cpp:408
 msgid "Are you sure you wish to delete this profile?\n"
-msgstr "Sind Sie sicher, daß Sie diese Profil löschen wollen?\n"
+msgstr "Sind Sie sicher, daß Sie dieses Profil löschen wollen?\n"
 
 #: setupdlg.cpp:468
 msgid "Poll (sec):"
@@ -61,7 +62,7 @@ msgstr "Nachsehen (sec):"
 
 #: setupdlg.cpp:473
 msgid "Mail client:"
-msgstr "Email-Client"
+msgstr "Mail-Client"
 
 #: setupdlg.cpp:486
 msgid "Dock in panel"
@@ -77,15 +78,15 @@ msgstr "Symbole:"
 
 #: setupdlg.cpp:514
 msgid "No Mail:"
-msgstr "Keine Email:"
+msgstr "Keine Mail:"
 
 #: setupdlg.cpp:523
 msgid "Old Mail"
-msgstr "Alte Email"
+msgstr "Alte Mail"
 
 #: setupdlg.cpp:533
 msgid "New Mail:"
-msgstr "Neue Email:"
+msgstr "Neue Mail:"
 
 #: setupdlg.cpp:670
 msgid "Run Command"
@@ -121,11 +122,11 @@ msgstr "Port:"
 
 #: setupdlg.cpp:841
 msgid "PREAUTH"
-msgstr ""
+msgstr "PREAUTH"
 
 #: setupdlg.cpp:945 setupdlg.cpp:1238
 msgid "New Mailbox"
-msgstr "Neue Email"
+msgstr "Neue Mailbox"
 
 #: setupdlg.cpp:952
 msgid "Delete Mailbox"
@@ -133,7 +134,7 @@ msgstr "Lösche Mailbox"
 
 #: setupdlg.cpp:958
 msgid "Protocol:"
-msgstr "Protokol:"
+msgstr "Protokoll:"
 
 #: setupdlg.cpp:961
 msgid "Mailbox:"
@@ -149,11 +150,11 @@ msgstr "Benutzer:"
 
 #: setupdlg.cpp:970
 msgid "Password:"
-msgstr "Passwort:"
+msgstr "Paßwort:"
 
 #: setupdlg.cpp:1002
 msgid "Store password"
-msgstr "Speichere Passwort"
+msgstr "Speichere Paßwort"
 
 #: setupdlg.cpp:1005
 msgid "Advanced"
@@ -164,16 +165,16 @@ msgid "KBiff"
 msgstr "KBiff"
 
 #: setupdlg.cpp:1452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
-"Version 1.1\n"
+"Version %s\n"
 "\n"
-"Copyright (C) 1998\n"
+"Copyright (c) 1998\n"
 "Kurt Granroth"
 
 #: setupdlg.cpp:1501
@@ -202,12 +203,11 @@ msgstr "&Hilfe..."
 
 #: kbiff.cpp:477
 msgid "&Check mail now"
-msgstr "Mails über&prüfen"
+msgstr "&Nach Mail sehen"
 
 #: kbiff.cpp:479
-#, fuzzy
 msgid "&Read Mail now"
-msgstr "Mails über&prüfen"
+msgstr "&Mail lesen"
 
 #: kbiff.cpp:485
 msgid "&Stop"
@@ -215,74 +215,14 @@ msgstr "&Stop"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr ""
+msgstr "Neue Mail eingetroffen!"
 
 #: notify.cpp:53
 #, c-format
 msgid "New Messages: %d"
-msgstr ""
+msgstr "Neue Nachrichten: %d"
 
 #: notify.cpp:58
-#, fuzzy, c-format
+#, c-format
 msgid "Mailbox: %s"
-msgstr "Mailbox"
-
-#~ msgid "E&xit"
-#~ msgstr "Be&enden"
-
-#~ msgid "POP3 Error"
-#~ msgstr "POP3-Fehler"
-
-#~ msgid "Error accessing "
-#~ msgstr "Fehler beim Zugriff auf "
-
-#~ msgid "No such user: "
-#~ msgstr "Kein solcher Benutzer "
-
-#~ msgid "Password incorrect: "
-#~ msgstr "Passwort ungültig: "
-
-#~ msgid "Remote STAT Error.  Cannot recover."
-#~ msgstr "Server STAT-Fehler. Kann nicht fortsätzen."
-
-#~ msgid "Monitor local mailbox"
-#~ msgstr "Beobachte lokale Mailbox"
-
-#~ msgid "Monitor remote mailbox"
-#~ msgstr "Beobachte Server-Mailbox"
-
-#~ msgid "Version 0.7"
-#~ msgstr "Version 0.7"
-
-#~ msgid "Copyright (C) 1998"
-#~ msgstr "Copyright (c) 1998"
-
-#~ msgid "Kurt Granroth"
-#~ msgstr "Kurt Granroth"
-
-#~ msgid "kurt_granroth@pobox.com"
-#~ msgstr "kurt_granroth@pobox.com"
-
-#~ msgid "Help"
-#~ msgstr "Hilfe"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "&Delete"
-#~ msgstr "&Entfernen"
-
-#~ msgid "About"
-#~ msgstr "Info"
-
-#~ msgid "Inbox"
-#~ msgstr "Inbox"
-
-#~ msgid "Mailbox Name (i.e., Inbox):"
-#~ msgstr "Mailbox-Mame (z.B. Inbox):"
-
-#~ msgid "New Mailbox Profile Name"
-#~ msgstr "Neuer Mailbix Profilname"
+msgstr "Mailbox: %s"

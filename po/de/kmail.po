@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: 1998-11-14 15:55 +0100\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+
 
 #: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
 msgid ""
@@ -18,15 +19,15 @@ msgstr ""
 msgid "New Folder"
 msgstr "Ordner anlegen"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "KMail Fehler"
 
-#: kmmainwin.cpp:286 kmmainwin.cpp:319
+#: kmmainwin.cpp:285 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr "Suche bereits nach neuer Mail!"
 
-#: kmmainwin.cpp:296 kmmainwin.cpp:329
+#: kmmainwin.cpp:295 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr "Keine neue E-Mail verfügbar"
 
@@ -625,7 +626,7 @@ msgstr "POP-Postfach"
 msgid "Login:"
 msgstr "Login-Name:"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:889
+#: kmacctpop.cpp:464 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Paßwort:"
 
@@ -637,24 +638,19 @@ msgstr "Pop-Server:"
 msgid "Delete mail from server"
 msgstr "Nachrichten vom Server löschen"
 
-#: kmsettings.cpp:906
-#, fuzzy
-msgid "Retrieve all mail from server"
-msgstr "Nachrichten vom Server löschen"
-
-#: kmsettings.cpp:918
+#: kmsettings.cpp:908
 msgid "Enable interval Mail checking"
 msgstr "Posteingang regelmäßig überprüfen"
 
-#: kmsettings.cpp:928
+#: kmsettings.cpp:922
 msgid "Store new mail in account:"
 msgstr "Speichere neue Nachrichten im Postfach:"
 
-#: kmsettings.cpp:936
+#: kmsettings.cpp:930
 msgid "<none>"
 msgstr "<kein>"
 
-#: kmsettings.cpp:983
+#: kmsettings.cpp:976
 msgid "Choose Location"
 msgstr "Pfad auswählen"
 
@@ -682,58 +678,58 @@ msgstr "Betreff"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:187
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Nachrichten, %d ungelesen."
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:189
 msgid "Folder is read-only."
 msgstr "Ordner steht auf Nur-Lesen."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:234
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:237
 msgid "No Subject"
 msgstr "Kein Betreff"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:297
 msgid "order of arrival"
 msgstr "Ankunftsreihenfolge"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:306
 msgid "subject"
 msgstr "Betreff"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:307
 msgid "date"
 msgstr "Datum"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:308
 msgid "sender"
 msgstr "Absender"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:309
 msgid "status"
 msgstr "Status"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:311
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortiere Nachrichten absteigend nach %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:313
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortiere Nachrichten aufsteigend nach %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:409
 msgid "Message(s) saved."
 msgstr "Nachricht(en) gespeichert."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:411
 msgid "Failed to save message(s)."
 msgstr "Nachricht(en) speichern ist fehlgeschlagen"
 
@@ -767,7 +763,7 @@ msgstr "&Kopie:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&Bcc:"
+msgstr "&Blindkopie (Bcc):"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
@@ -859,7 +855,7 @@ msgstr "&Kopie"
 
 #: kmcomposewin.cpp:512
 msgid "&Bcc"
-msgstr "&Bcc"
+msgstr "&Blindkopie (Bcc)"
 
 #: kmcomposewin.cpp:513
 msgid "&Subject"
@@ -1064,7 +1060,7 @@ msgstr "Datum: "
 
 #: kmreaderwin.cpp:376
 msgid "Bcc: "
-msgstr "Bcc: "
+msgstr "Blindkopie (Bcc): "
 
 #: kmreaderwin.cpp:379
 msgid "Reply to: "
@@ -1179,19 +1175,7 @@ msgstr ""
 "Ordner \"s\" löschen:\n"
 "%s"
 
-#: kmacctpop.cpp:100
-msgid "Please set Password and Username"
-msgstr ""
-
-#: kmacctpop.cpp:135
-msgid "Incorrect Username"
-msgstr ""
-
-#: kmacctpop.cpp:148
-msgid "Incorrect Password"
-msgstr ""
-
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:113
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1201,19 +1185,19 @@ msgstr ""
 "Ordner in den Einstellungen an, und\n"
 "versuchen Sie es noch einmal."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:273
 msgid "Pop Mail Error"
 msgstr "POP-Mail Fehler"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:278
 msgid "Pop Mail Network Error"
 msgstr "POP-Mail Netzwerkfehler"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:294
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:299
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1224,7 +1208,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:459
+#: kmacctpop.cpp:455
 msgid "Login Name:"
 msgstr "Login-Name:"
 
@@ -1577,7 +1561,7 @@ msgstr "Paßwort speichern"
 
 #: kpgp.cpp:782
 msgid "Always encrypt to self"
-msgstr "Immer \"nach selbst\" verschlüsseln"
+msgstr "Zusätzlich eigenen Schlüssel verwenden"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
