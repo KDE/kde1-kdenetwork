@@ -1,3 +1,10 @@
+Mon Jan  5 20:59:00 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* accounting.cpp: telephone costs are stored in kppprc now.
+	  ~/.kde/share/apps/kppp/Costs is obsolete.
+	* pppdata.cpp: added totalCosts() and setTotalCosts().
+	  Several small cosmetic changes.  
+	
 Mon Jan  5 14:25:37 1998  Mario Weilguni  <mario@loki.valhalla.at>
 
 	* docs/kppp.sgml: updated the docs for the new KDE file system

@@ -665,7 +665,7 @@ bool PPPData::deleteAccount() {
   setAccountbyIndex(highcount);
   it = config->entryIterator(cgroup);
   config->setGroup(cgroup);
-  while (*it) {
+  while (it->current() != 0L) {
     key = it->currentKey();
     config->writeEntry(key, "");
     ++(*it);
@@ -723,7 +723,7 @@ int PPPData::copyaccount(int i) {
   newaccount();
 
   QString key, value;
-  while (*it) {
+  while (it->current() != 0L) {
     key = it->currentKey();
     value = it->current()->aValue;    
     config->writeEntry(key, value);
@@ -851,7 +851,7 @@ const char* PPPData::gateway() {
 
 }
 
-void PPPData::setGateway( const char *n ) {
+void PPPData::setGateway(const char *n ) {
 
   writeConfig(cgroup, GATEWAY_KEY, n);
   
@@ -861,7 +861,7 @@ void PPPData::setGateway( const char *n ) {
 const bool PPPData::defaultroute(){
 
   // default route is by default 'on'.
-  return (bool) readNumConfig(cgroup, DEFAULTROUTE_KEY,1);
+  return (bool) readNumConfig(cgroup, DEFAULTROUTE_KEY, true);
   
 };
 
@@ -903,7 +903,7 @@ const char* PPPData::domain() {
 
 }
 
-void PPPData::setDomain( const char *n ) {
+void PPPData::setDomain(const char *n ) {
 
   writeConfig(cgroup, DOMAIN_KEY, n);
 
@@ -944,11 +944,24 @@ const char *PPPData::accountingFile() {
 
 }
 
-void PPPData::setAccountingFile(const char *s) {
+void PPPData::setAccountingFile(const char *n) {
 
-  writeConfig(cgroup, ACCTFILE_KEY, s);
+  writeConfig(cgroup, ACCTFILE_KEY, n);
 
 }
+
+
+const char *PPPData::totalCosts() {
+
+  return readConfig(cgroup, TOTALCOSTS_KEY);
+}
+
+void PPPData::setTotalCosts(const char *n) {
+
+  writeConfig(cgroup, TOTALCOSTS_KEY, n);
+
+}
+
 
 const char* PPPData::pppdArgument(int i) {
 
@@ -965,7 +978,6 @@ void PPPData::setpppdArgument(int i, const char *n) {
 void PPPData::setpppdArgumentDefaults() {
 
   setpppdArgument(0, "-detach");
-  setAcctEnabled(false);
 
 }
 

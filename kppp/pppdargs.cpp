@@ -96,7 +96,7 @@ void PPPdArguments::closebutton() {
       gpppdata.setpppdArgument(i, arguments->text(i));
   }
   else {
-    gpppdata.setpppdArgument(0, 0);
+    gpppdata.setpppdArgument(0, 0L);
   }
 
   done(0);

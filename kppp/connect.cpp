@@ -1515,7 +1515,7 @@ void parseargs(char* buf, char** args){
 
 }
 
-// Lock modem device. Retruns 0 on success 1 if the modem is locked and -1 if
+// Lock modem device. Returns 0 on success 1 if the modem is locked and -1 if
 // a lock file can't be created ( permission problem )
 
 int lockdevice() {

@@ -115,6 +115,7 @@
 #define SCRIPTCOM_KEY      "ScriptCommands"
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
+#define TOTALCOSTS_KEY     "TotalCosts"
 
 class PPPData {
 public:
@@ -305,6 +306,9 @@ public:
   // functions to set/query the accounting info
   const char *accountingFile();
   void setAccountingFile(const char *);
+
+  const char *totalCosts();
+  void setTotalCosts(const char *);
 
 
 public:

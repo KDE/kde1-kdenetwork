@@ -36,7 +36,6 @@
 #include <qlabel.h>
 
 #include <kapp.h>
-#include <kconfig.h>
 #include <kprogress.h>
 
 #include "accounting.h"
@@ -286,30 +285,14 @@ double Accounting::session() {
 // set costs back to zero ( typically once per month)
 bool Accounting::resetCosts(const char *accountname){
 
-    QString s = getHomeDir();
-    s += ACCOUNTING_PATH;
-    s += "Costs";
+  QString prev_account = gpppdata.accname();
 
-    QString str;
-    str = accountname;
-    str.stripWhiteSpace();
-    if(str.isEmpty())
-      return FALSE;
+  gpppdata.setAccount(accountname);
+  gpppdata.setTotalCosts("");
 
-    QFileInfo f(s.data());
-    if(!f.exists())
-      return FALSE;
-    
-    KConfig conf(s);
-    
-    conf.setGroup(str);
-    conf.writeEntry(QString("TotalCosts"), "");
+  gpppdata.setAccount(prev_account);
 
-    conf.sync();
-
-    chown(s.data(),getuid(),getgid());
-    chmod(s.data(),S_IRUSR | S_IWUSR);    
-    return TRUE;
+  return TRUE;
 
 }
 
@@ -317,37 +300,12 @@ bool Accounting::resetCosts(const char *accountname){
 bool Accounting::saveCosts() {
 
   if(!rules.name().isNull() && (rules.name().length() > 0)) {
-
-    QString s = getHomeDir();
-    s += ACCOUNTING_PATH;
-    s += "Costs";
-
-    QFileInfo f(s.data());
-
-    if(!f.exists()){
-      // doesn't exist yet -- let's create it.
-      QFile file(s.data());
-
-      if(!file.open( IO_ReadWrite )){
-	QString string;
-	string.sprintf(klocale->translate("Cannot create\n%s\nYour online costs will not be saved."),s.data());
-	QMessageBox::warning(0,klocale->translate("Sorry"),string.data());
-	return FALSE;
-      }
-      file.close();
-    }
-
-    KConfig conf(s);
     QString val;
     val.setNum(total());
 
-    conf.setGroup(QString(gpppdata.accname()));
-    conf.writeEntry(QString("TotalCosts"), val);
+    gpppdata.setTotalCosts(val);
+    gpppdata.save();
 
-    conf.sync();
-
-    chown(s.data(),getuid(),getgid());
-    chmod(s.data(),S_IRUSR | S_IWUSR);    
     return TRUE;
 
   } else
@@ -358,20 +316,7 @@ bool Accounting::saveCosts() {
 
 bool Accounting::loadCosts() {
 
-  QString s = getHomeDir();
-  s += ACCOUNTING_PATH;
-  s += "Costs";
-
-  QFileInfo f(s.data());
-  if(!f.exists())
-    return FALSE;
-
-  KConfig conf(s);
-  QString val;
-
-  /*conf.setGroup(QString(rules.name()));*/
-  conf.setGroup(QString(gpppdata.accname()));
-  val = conf.readEntry(QString("TotalCosts"));
+  QString val = gpppdata.totalCosts();
 
   if(val.isNull()) // QString will segfault if isnull and toDouble called
     _total = 0.0;
@@ -389,28 +334,16 @@ bool Accounting::loadCosts() {
 
 QString Accounting::getCosts(const char* accountname) {
 
+  QString prev_account = gpppdata.accname();
 
-  QString s = getHomeDir();
-  s += ACCOUNTING_PATH;
-  s += "Costs";
+  gpppdata.setAccount(accountname);
+  QString val = gpppdata.totalCosts();
 
-
-  QFileInfo f(s.data());
-  if(!f.exists())
-    return FALSE;
-
-  KConfig conf(s);
-  QString val;
-
-  conf.setGroup(QString(accountname));
-  val = conf.readEntry(QString("TotalCosts"));
-
-  val.stripWhiteSpace();
-
+  gpppdata.setAccount(prev_account);
+  
   return val;
 
 }
-
 
 /*
 void Accounting::truncateLogFile() {

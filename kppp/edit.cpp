@@ -373,7 +373,7 @@ void DNSWidget::save() {
     for(uint i=0; i < dnsservers->count(); i++)
       gpppdata.setDns(i, dnsservers->text(i));
   else 
-    gpppdata.setDns(0, 0);
+    gpppdata.setDns(0, 0L);
   gpppdata.setDomain(dnsdomain->text());
   gpppdata.setExDNSDisabled(exdnsdisabled_toggle->isChecked());
 }
@@ -592,8 +592,8 @@ void ScriptWidget::save() {
       gpppdata.setScript(i, sl->text(i));
     }
   else {                
-    gpppdata.setScriptType(0, 0);
-    gpppdata.setScript(0, 0);
+    gpppdata.setScriptType(0, 0L);
+    gpppdata.setScript(0, 0L);
   }
 }                        
 
