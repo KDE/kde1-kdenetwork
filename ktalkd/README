@@ -1,0 +1,81 @@
+
+**** This is an old README file. See the html documentation for more
+                                                up-to-date documentation *****
+**** Only the TODO below is up-to-date. ***
+
+Program: ktalkd 
+Author: David Faure <David.Faure@Insa-Lyon.fr>
+First versions :
+version 0.1.0: Robert Cimrman <cimrman3@students.zcu.cz>
+version 0.1.1: Ralph Weichert <Ralph.Weichert@physik.th-darmstadt.de>
+versions 0.1.2 and later: David Faure <David.Faure@Insa-Lyon.fr>
+
+An enhanced and fixed unix talk daemon.
+
+COMPILING: 
+	'./configure'
+	'make'
+
+INSTALLING:
+	- 'make install' (it will require root privileges)
+	- Don't forget to change the line concerning ntalk in /etc/inetd.conf.
+	  For ex., on a linux system, if kde is in /opt/kde, set it to :
+"ntalk	dgram	udp	wait	root	/usr/sbin/tcpd	/opt/kde/bin/ktalkd"
+
+   for KDE users :
+	- You should install ktalkdlg too, to have a nice KDE announcement
+	  for talk requests. Next ktalk will be able to handle
+	  announcements too.
+	- ktalkdlg must be left in the kde binaries directory, or
+	  you'll have to update your ktalkdrc files.
+
+FEATURES:
+   Answering machine: If the callee isn't loggued, or doesn't answer after 
+	the second announcement, an answering machine is launched, takes the 
+	message, and mails it to the callee.
+   Sound: If desired, a sound is played with the announcement.
+   X Announce: If compiled with KDE installed, ktalkd will try to contact
+	ktalkdlg to make a KDE dialog for announcement.
+   Configuration: If KDE-compiled, it reads config from a KDE file, 
+	$KDEDIR/share/config/ktalkdrc.
+	ktalkd can also work with /etc/talkd.conf, if X/Qt/Kde not installed,
+	or if configured '--without-X'.
+   Internationalization: Under KDE, the announcement will be in any
+	language (set it in ktalkdrc).
+
+USING:
+	Very easy :-) It will be used automatically whenever you use a talk
+	program.
+
+	To change sitewide configuration, see /etc/talkd.conf for non-KDE users,
+	and $KDEDIR/share/config/ktalkdrc for KDE users.
+	For user configuration, use kcmktalkd !
+
+BUG REPORT:
+	- configure / compilation errors : please send me an error trace.
+	- runtime error : please log any daemon.* messages with syslogd
+	    and send me the result. (bug with glibc-2.0.[5/6] : syslog doesn't
+	    work if ktalkd is compiled with g++2.7.2 :( )
+
+ 	Maintainer : David.Faure@Insa-Lyon.fr
+
+TODO:
+	- a unique structure with global options (cleans code)
+	- different banners (messages displayed by answering machine) for 
+	   different reasons : absent, not loggued, don't want talk requests...
+	  (done and made configurable for 'absent')
+        - support for talk & ntalk protocols (only ntalk at the moment)
+        - a 'not here' option, which launches the answmach at once. Will be 
+            useful when a swallowed app. exists : when you leave, you switch
+            'on' the answmach
+        - if a tty is more recent than X, take the tty for announcement.
+        - insensitive case for user names (big problem).
+        - a kdelnk file, not for launching ktalkd, but to make
+             kdehelp's helpindex find ktalkd :)   - how to avoid it to appear
+           in the K menu ?
+
+	AND (out of ktalkd):
+        * a kde app. swallowed in kpanel, to choose options like "refuse talks",
+          "activate/desactivate answering machine" and to launch a talk client.
+             - could be part of ktalk.
+
