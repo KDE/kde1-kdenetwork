@@ -96,8 +96,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     group=0;
     server=0;
     FindDlg=new findArtDlg(0);
-    connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
-             this,SLOT(FindThis(const char *,const char*)));
+    connect (FindDlg,SIGNAL(FindThis(const char *,const char*,bool,bool)),
+             this,SLOT(FindThis(const char *,const char*,bool,bool)));
     
     
     conf->setGroup("ArticleListOptions");
@@ -178,7 +178,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
     tool->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
     tool->insertButton(pixmap,FIND_ARTICLE,true,klocale->translate("Find Article"));
     tool->insertSeparator ();
@@ -309,20 +309,20 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
                 conf->readNumEntry("ArtW",400),
                 conf->readNumEntry("ArtH",400));
     show();
-
+    
     qApp->processEvents ();
-
+    
     init(_group,_server);
 }
 
 
 void Artdlg::init (NewsGroup *_group, NNTP* _server)
 {
-
+    
     IDList.clear();
     if (group) //make old group know I'm not showing him
         group->isVisible=0;
-        
+    
     group=_group;
     group->isVisible=this;
     
@@ -331,17 +331,17 @@ void Artdlg::init (NewsGroup *_group, NNTP* _server)
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
     group->getList(this);
-
+    
     if (server)
     {
         disconnect (server,SIGNAL(newStatus(const char *)),
-                          this,SLOT(updateCounter(const char *)));
+                    this,SLOT(updateCounter(const char *)));
     }
     
     server = _server;
     QObject::connect (server,SIGNAL(newStatus(const char *)),
                       this,SLOT(updateCounter(const char *)));
-
+    
     if (server->isConnected())
     {
         actions(ARTLIST);
@@ -389,10 +389,10 @@ void Artdlg::fillTree ()
     qApp->setOverrideCursor(waitCursor);
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
-
+    
     list->setAutoUpdate(false);
     list->clear();
-
+    
     Article *iter;
     bool thiscached;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
@@ -400,8 +400,8 @@ void Artdlg::fillTree ()
         thiscached=server->isCached(iter->ID.data());
         if(
            (((thiscached && showcached) || (!showcached)) &&
-           (!(unread && iter->isRead()))) ||
-            (showlocked && (!iter->canExpire())))
+            (!(unread && iter->isRead()))) ||
+           (showlocked && (!iter->canExpire())))
         {
             artList.append(iter);
         }
@@ -413,7 +413,7 @@ void Artdlg::fillTree ()
     
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
-
+    
     IDList.clear();
     depths.clear();
     statusBar()->changeItem(klocale->translate("Showing Article List"),2);
@@ -452,7 +452,7 @@ void Artdlg::fillTree ()
     s.sprintf ("%d/%d",list->currentItem()+1,IDList.count());
     statusBar()->changeItem(s.data(),1);
     qApp->processEvents ();
-
+    
     artList.clear();
     group->artList.clear();
 }
@@ -462,7 +462,7 @@ bool Artdlg::taggedActions (int action)
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     int c=0;
-
+    
     if (action!=PRINT_ARTICLE)
     {
         disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
@@ -658,11 +658,11 @@ bool Artdlg::actions (int action)
             int mShowHeaders = 0xe0;
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
-
+            
             KMMessage *m=new KMMessage();
             m->initHeader();
             m->setGroups(groupname);
-
+            
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
@@ -677,14 +677,14 @@ bool Artdlg::actions (int action)
             int mShowHeaders = 0xe0;
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
-
+            
             Article *art=new Article(IDList.at(index));
             KMMessage *mm=new KMMessage();
             QString *ts=server->article(art->ID.data());
             mm->fromString(ts->data());
             delete ts;
             KMMessage *m=mm->createReply(true);
-//            m->initHeader();
+            //            m->initHeader();
             debug ("id1-->%s<--id2-->%s<--",
                    m->id().data(),
                    mm->id().data());
@@ -710,7 +710,7 @@ bool Artdlg::actions (int action)
             int mShowHeaders  = 0x2c;
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
-
+            
             Article *art=new Article(IDList.at(index));
             KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
@@ -730,7 +730,7 @@ bool Artdlg::actions (int action)
             
             if(index < 0)
                 break;
-
+            
             int mShowHeaders = 0x2c;
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
@@ -760,7 +760,7 @@ bool Artdlg::actions (int action)
             int mShowHeaders=0x6c;
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
-
+            
             KMMessage *mm=new KMMessage();
             QString *ts=server->article(art->ID.data());
             mm->fromString(ts->data());
@@ -871,9 +871,9 @@ bool Artdlg::loadArt (QString id)
     list->setEnabled(false);
     messwin->setEnabled(false);
     qApp->setOverrideCursor (waitCursor);
-
+    
     int i=list->currentItem();
-
+    
     if (id!=IDList.at(i))
     {
         int index=0;
@@ -902,7 +902,7 @@ bool Artdlg::loadArt (QString id)
     {
         goTo(i);
     }
-
+    
     debug ("ID=%s",id.data());
     
     if (!server->isConnected())
@@ -940,7 +940,7 @@ bool Artdlg::loadArt (QString id)
                        "However, if you have a functional Internet connection, you may"
                        "be able to find it at Altavista following this link:\n"
                        "%s\n\n\n",url.url().data());
-
+        
         //Now, lets create a phony article with this data.
         KMMessage *m=new KMMessage();
         m->fromString(qstrdup(buffer));
@@ -954,7 +954,7 @@ bool Artdlg::loadArt (QString id)
         messwin->setMsg(m);
     }
     delete s;
-
+    
     qApp->restoreOverrideCursor ();
     setEnabled (true);
     acc->setEnabled(true);
@@ -1026,7 +1026,7 @@ void Artdlg::saveArt (QString id)
                                        klocale->translate("Cancel"));
                     i=box->exec();
                 }
-
+                
                 QFile fi(f);
                 switch (i)
                 {
@@ -1158,7 +1158,7 @@ void Artdlg::decArt (int index,int)
     {
         art.setAvailable(false);
     }
-        QString formatted;
+    QString formatted;
     art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
     if (server->isCached(art.ID.data()))
@@ -1190,15 +1190,18 @@ void Artdlg::popupMenu(int index,int)
 }
 
 
-void Artdlg::FindThis (const char *expr,const char *field)
+void Artdlg::FindThis (const char *expr,const char *field,
+                       bool casesen,bool wildmode)
 {
     static int lastfound=-1;
     static QString lastexpr="";
     static QString lastfield="";
-
+    static bool lastwmode=false;
+    static bool lastcsen=false;
+    
     bool sameQuery=false;
     
-    QRegExp regex(expr,false);
+    QRegExp regex(expr,casesen,wildmode);
     QStrListIterator iter(IDList);
     
     int index=list->currentItem();
@@ -1212,8 +1215,15 @@ void Artdlg::FindThis (const char *expr,const char *field)
     {
         index=0;
     }
+    
+    sameQuery=(lastexpr==expr) && (lastfield==field)
+        && (wildmode==lastwmode) &&(lastcsen==casesen);
+    
+    lastexpr=expr;
+    lastfield=field;
+    lastwmode=wildmode;
+    lastcsen=casesen;
 
-    sameQuery=(lastexpr==expr) && (lastfield==field);
     if (sameQuery)
     {
         index=lastfound+1;
@@ -1227,10 +1237,7 @@ void Artdlg::FindThis (const char *expr,const char *field)
         else
             list->changeItemColor(QColor(0,0,0),lastfound);
     }
-
-    lastexpr=expr;
-    lastfield=field;
-
+    
     if (!strcmp(field,"Subject"))
     {
         for (;iter.current();++iter,++index)
@@ -1246,7 +1253,7 @@ void Artdlg::FindThis (const char *expr,const char *field)
         }
         return;
     }
-    if (!strcmp(field,"Sender"))
+    else if (!strcmp(field,"Sender"))
     {
         for (;iter.current();++iter,++index)
         {
@@ -1261,7 +1268,7 @@ void Artdlg::FindThis (const char *expr,const char *field)
         }
         return;
     }
-    if (!strcmp(field,"Cached Body" ));
+    else if (!strcmp(field,"Cached Body" ))
     {
         for (;iter.current();++iter,++index)
         {
@@ -1277,17 +1284,23 @@ void Artdlg::FindThis (const char *expr,const char *field)
             }
         }
     }
-    if (!strcmp(field,"Body" ));
+    else if (!strcmp(field,"Body" ))
     {
+        debug ("looking in body");
         for (;iter.current();++iter,++index)
         {
+            if (!server->isCached(iter.current()))
+            {
+                emit needConnection();
+            }
             QString *a=server->article(iter.current());
+            list->changeItemColor(QColor(0,0,255),index);
+            goTo(index);
             int i=regex.match(a->data());
             delete a;
             if (i>-1)
             {
                 list->changeItemColor(QColor(255,0,0),index);
-                goTo(index);
                 lastfound=index;
                 break;
             }

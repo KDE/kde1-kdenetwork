@@ -64,7 +64,7 @@ private slots:
     void saveArt (QString id);
     void copyText(bool b);
     void popupMenu(int index,int column);
-    void FindThis (const char *,const char *);
+    void FindThis (const char *,const char *,bool casesen,bool wildmode);
     void goTo (int row);
         
 signals:

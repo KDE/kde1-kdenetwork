@@ -5,6 +5,7 @@
 
 class QPushButton;
 class QComboBox;
+class QCheckBox;
 class QLineEdit;
 
 class findArtDlg : public QWidget
@@ -21,9 +22,11 @@ public:
     QPushButton* b2;
     QComboBox* field;
     QLineEdit* expr;
+    QCheckBox* casesen;
+    QCheckBox* wildmode;
 
 signals:
-    void FindThis(const char *,const char *);
+    void FindThis(const char *,const char *,bool,bool);
     
 private slots:
     void close();
