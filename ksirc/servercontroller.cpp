@@ -56,10 +56,6 @@
       Action:
           Changes the old window name to the new window name in the tree
           list box.  Call for all name change!
-   reuse()
-      Action:
-          Toggles the Global option to reuse the !default window on each
-          call.  Sets the menu item.   
  
  *********************************************************************/
 
@@ -117,10 +113,7 @@ servercontroller::servercontroller
   kConfig->setGroup("GlobalOptions");
   options = new QPopupMenu();
   options->setCheckable(TRUE);
-  //	reuse_id = options->insertItem("Seperate Message Window", 
-  //			    this, SLOT(reuse()));
-  //	reuse(); // Invert it
-  //	reuse(); // invert it again to what it should be.
+
   auto_id = options->insertItem("Auto Create Windows", 
 				this, SLOT(autocreate()));
   options->setItemChecked(auto_id, 
@@ -250,22 +243,6 @@ void servercontroller::new_toplevel(QString str)
     }
     //cerr << "Server is: " << citem->getText() << endl;
   }
-}
-
-void servercontroller::reuse()
-{
-  kConfig->setGroup("GlobalOptions");
-  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
-    options->setItemChecked(reuse_id, TRUE);
-    kConfig->writeEntry("Reuse", FALSE);
-    kSircConfig->message_window = TRUE;
-  }
-  else{
-    options->setItemChecked(reuse_id, FALSE);
-    kConfig->writeEntry("Reuse", TRUE);
-    kSircConfig->message_window = FALSE;
-  }
-  kConfig->sync();
 }
 
 void servercontroller::autocreate()
@@ -508,6 +485,50 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
 void servercontroller::slot_filters_update()
 {
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
+}
+
+void servercontroller::saveProperties(KConfig *ksc)
+{
+  // ksc hos the K Session config
+  // ksp == current KSircProcess
+  // ksm == current KSircMessageReceiver
+
+  // Ignore all !<name> windows
+  
+  QDictIterator<KSircProcess> ksp(proc_list);
+  while(ksp.current()){
+    QStrList channels;
+    QDictIterator<KSircMessageReceiver> ksm(ksp.current()->getWindowList());
+    while(ksm.current()){
+      cerr << "Might Save: " << ksm.currentKey() << endl; 
+      if(ksm.currentKey()[0] != '!') // Ignore !ksm's (system created)
+	channels.append(ksm.currentKey());
+      ++ksm;
+    }
+    ksc->writeEntry(ksp.currentKey(), channels);
+    ++ksp;
+  }
+  
+}
+
+void servercontroller::readProperties(KConfig *ksc)
+{
+  // kei == pointer to KEntryItertor
+  // ksc == K Session Config
+  KEntryIterator *kei = ksc->entryIterator(ksc->group());
+
+  while(kei->current()){
+    QStrList channels;
+    int number;
+    new_ksircprocess(kei->currentKey()); // sets up proc_list
+    cerr << kei->currentKey() << endl;
+    number = ksc->readListEntry(kei->currentKey(), channels);
+    for(int i = 0; i < number; i++){
+      cerr << "   " << channels.at(i) << endl;
+      proc_list[kei->currentKey()]->new_toplevel(channels.at(i));
+    }
+    ++(*kei);
+  }
 }
 
 scInside::scInside ( QWidget * parent=0, const char * name=0, WFlags

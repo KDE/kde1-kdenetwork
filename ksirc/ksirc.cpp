@@ -70,32 +70,32 @@ int main( int argc, char ** argv )
   kSircConfig->kdedir = getenv("KDEDIR");
   if(kSircConfig->kdedir.isEmpty()){
     kSircConfig->kdedir = "/usr/local/kde";
+    kApp->kdedir() =  kSircConfig->kdedir;
+    cerr << "KDEDIR set to: " << kApp->kdedir() << endl;
   }
 
   kConfig->setGroup("GlobalOptions");
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
 
-  //  KSircProcess proc("opus.dal.net");
-  servercontroller *control = new servercontroller();
-  control->show();
+  if(kApp->isRestored()){
+    int n = 1;
+    while (servercontroller::canBeRestored(n)) {
+      servercontroller *sc = new servercontroller();
+      CHECK_PTR(sc);
+      sc->restore(n);
+      kApp->setMainWidget(sc);
+      n++;
+    }
+  }
+  else{
+    servercontroller *control = new servercontroller();
+    control->show();
+    kApp->setMainWidget(control);
+  }
 
-  //  KSircTopLevel *toplevel = new KSircTopLevel();
-  //  TopList.insert("default", toplevel);
-  //  TopList.insert("!all", new KSircIOBroadcast());
-
-  //  ioc = new KSircIOController(sirc_stdin, sirc_stdout, sirc_stderr);
-
-  //  toplevel->show();
-  
-  kApp->setMainWidget(control);
-
-  //  kApp->connect(kApp, SIGNAL(lastWindowClosed()), kApp, SLOT(quit()));
-  
   kApp->exec();
 
   kConfig->sync();
-
-  //  kill(sirc_pid, 15);  // on normal exit, do try and kill dsirc...
 }
 
 

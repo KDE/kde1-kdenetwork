@@ -137,36 +137,27 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   QString env = "SIRCLIB=" + kSircConfig->kdedir + "/share/apps/ksirc";
   putenv(qstrdup(env.data()));
 
+  // Setup the proc now, so iocontroller can use it.  It's latter
+  // though. started bellow though.
+
   proc = new KProcess();
 
   proc->setExecutable("perl");
   *proc << kSircConfig->kdedir + QString("/bin/dsirc") << "-8" << "-r" << "-s" << server;
-  proc->start(KProcess::NotifyOnExit, KProcess::All);
+
+  // Finally start the iocontroller.
 
   iocontrol = new KSircIOController(proc, this);
-  QString command = "/eval $version .= \"+4KSIRC\"\n";
-  iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
-  iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
-  iocontrol->stdin_write(command);
 
-  // Write default commands
+  // Create toplevel before iocontroller so it has somewhere to write stuff.
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!no_channel");  // 
-  //  TopList.insert("!default", TopList["!no_channel"]);
-
-  //  kConfig->setGroup("GlobalOptions");
-  //  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
-  //  }
-  //  else{
-  //    running_window = TRUE;        // True so we do create the a new message
-  //    new_toplevel("!messages");
-  //  }
 
   running_window = FALSE;       // set false so next changes the first name
   default_follow_focus = TRUE;
+
+  // Write default commands, and open default windows.
 
   TopList.insert("!all", new KSircIOBroadcast(this));
   TopList.insert("!discard", new KSircIODiscard(this));
@@ -184,6 +175,23 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   connect(notify, SIGNAL(notify_offline(QString)),
 	  this, SLOT(notify_forw_offline(QString)));
   TopList.insert("!notify", notify);
+
+  // Now that all windows are up, start sirc.
+
+  proc->start(KProcess::NotifyOnExit, KProcess::All);
+  // Intial commands to load ASAP.
+  // turn on sirc ssfe mode
+  QString command = "/eval $ssfe=1\n";
+  iocontrol->stdin_write(command);
+  command = "/eval $version .= \"+4KSIRC\"\n";
+  iocontrol->stdin_write(command);
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
+  iocontrol->stdin_write(command);
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
+  iocontrol->stdin_write(command);
+
+  // Load all the filter rules.  Must be after /load filtes.pl so all
+  // the functions are available
 
   filters_update();
 
@@ -281,6 +289,7 @@ void KSircProcess::new_toplevel(QString str)
 	    this,SLOT(default_window(KSircTopLevel *)));
     connect(wm, SIGNAL(changeChannel(QString, QString)),
 	    this,SLOT(recvChangeChannel(QString, QString)));
+    default_window(wm); // Set it to the default window.
     emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
     wm->show(); // Pop her up
   }

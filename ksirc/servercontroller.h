@@ -121,12 +121,6 @@ public slots:
       */
     virtual void new_toplevel(QString str);
     /**
-      *  Action:
-      *     Toggles the Global option to reuse the !default window on each
-      *     call.  Sets the menu item.   
-      */
-    virtual void reuse();
-    /**
       * Action:
       *     Notify all ksircprocess' to update filters
       */
@@ -153,6 +147,9 @@ public slots:
 
 protected:
 
+    void saveProperties(KConfig *);
+    void readProperties(KConfig *);
+
 private:
 
     // La raison d'etre.  We don't run ConnectionTree outr selves, but
@@ -168,7 +165,7 @@ private:
     // name
     QDict<KSircProcess> proc_list;
     QPopupMenu *options, *connections;
-    int reuse_id, join_id, server_id, auto_id, nickc_id;
+    int join_id, server_id, auto_id, nickc_id;
     
     int open_toplevels;
 

@@ -2203,7 +2203,7 @@ while (1) {
       &yetonearg;
       &dohooks("invite", $newarg);
       $invited=$newarg;
-      &tell("~!messages~*\cbI\cb* $who$puh1 invites you to channel $newarg");  # MOD FOR KSIRC
+      &tell("~!default~*\cbI\cb* $who$puh1 invites you to channel $newarg");  # MOD FOR KSIRC
     } elsif ($cmd eq 'TOPIC') {
       &yetonearg;
       &dohooks("topic", $newarg, $args);

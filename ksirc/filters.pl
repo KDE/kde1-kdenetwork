@@ -152,3 +152,9 @@ sub kgettimeofday {
 }
 
 &addcmd("lag");
+
+sub hook_ksirc_notify_connected {
+  &print('~!all~`#ssfe#R reconnected');
+}
+
+&addhook("376", "ksirc_notify_connected");   # join on the "end of MOTD"

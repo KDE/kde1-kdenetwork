@@ -86,8 +86,6 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
   proc = _proc;              // save proc
   ksircproc = _ksircproc;    // save ksircproce
 
-  proc->writeStdin("/eval $ssfe=1\n", 14); // turn on sirc ssfe mode
-
   connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)),
           this, SLOT(stdout_read(KProcess*, char*, int))); 
                                               // Connect the data arrived

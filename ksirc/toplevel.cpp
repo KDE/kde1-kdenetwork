@@ -474,7 +474,10 @@ void KSircTopLevel::sirc_receive(QString str)
     QString string;
     bool update = FALSE;
 
-    for(pchar = LineBuffer->first(); pchar != 0; pchar=LineBuffer->next()){
+    for(pchar = LineBuffer->first(); 
+	pchar != 0; 
+	LineBuffer->removeFirst(),     // Remove the first one
+	  pchar=LineBuffer->first()){  // Get the new first one
       // Get the need list box item, with colour, etc all set
       string = pchar;
       item = parse_input(string);
@@ -509,18 +512,17 @@ void KSircTopLevel::sirc_receive(QString str)
         update = TRUE;
         while(mainw->count() > 100)
            mainw->removeItem(0);
-	mainw->update();
     }
+
+    //    if(mainw->autoUpdate() == FALSE){
+    mainw->setAutoUpdate(TRUE);
+      //      mainw->update();
+      //      mainw->repaint(TRUE);
+      //    }
 
     // If we need to scroll, we, scroll =)
     // scrollToBottom returns true if we should repaint.
     mainw->scrollToBottom();
-    if(mainw->autoUpdate() == FALSE){
-      mainw->setAutoUpdate(TRUE);
-      mainw->update();
-      //      mainw->repaint(TRUE);
-      //mainw->update();
-    }
   }
   else{
     LineBuffer->append(str);
@@ -581,7 +583,9 @@ void KSircTopLevel::sirc_line_return()
    * Parse line forcommand we handle
    */
 
-  if((strncmp(s, "/join ", 6) == 0) || (strncmp(s, "/j ", 3) == 0)){
+  if((strncmp(s, "/join ", 6) == 0) || 
+     (strncmp(s, "/j ", 3) == 0) ||
+     (strncmp(s, "/query ", 7) == 0)){
     s = s.lower();
     int pos1 = s.find(' ', 0) + 1;
     if(pos1 == -1)
@@ -591,7 +595,6 @@ void KSircTopLevel::sirc_line_return()
     int pos2 = s.length() - 1;
     if(pos1 > 2){
       QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
-      //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
       if(name[0] != '#'){
 	linee->setText("");
@@ -808,6 +811,13 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    QString prompt, caption;
 	    ssfePrompt *sp;
 	    int p1, p2;
+
+	    // Flush the screen.
+	    // First remove the prompt message from the Buffer.
+	    // (it's garunteed to be the first one)
+	    LineBuffer->removeFirst();
+	    Buffer = FALSE;
+	    sirc_receive(QString(""));
 	    
 	    caption = mainw->text(mainw->count() - 1);
 	    if(caption.length() < 3){
@@ -824,7 +834,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    else
 	      prompt = string.mid(p1, p2 - p1);
 	    prompt_active = TRUE;
-	    sp = new ssfePrompt(prompt, this);
+	    // If we use this, then it blows up
+	    // if we haven't popped up on the remote display yet.
+	    sp = new ssfePrompt(prompt, 0); 
 	    sp->setCaption(caption);
 	    if(s2[0] == 'P')
 	      sp->setPassword(TRUE);
@@ -841,6 +853,15 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  }
 	}
 	cerr << "Prompt already open!!!\n";
+	break;
+      case 'R': // Reconnect, join channels, etc if needed.
+	if(channel_name[0] == '#'){
+	  QString str = "/join " + QString(channel_name) + "\n";
+	  emit outputLine(str);
+	}
+	string.truncate(0);                // truncate string... set
+	no_output = 1;
+	break;
       default:
 	cerr << "Unkown ssfe command: " << string << endl;
 	string.truncate(0);                // truncate string... set

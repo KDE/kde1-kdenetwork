@@ -1,3 +1,12 @@
+1998-01-28  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* toplevel.cpp (parse_input): Clears screan before displaying the
+ 	prompt.  Needed minor changes everywhere.
+	(parse_input): Added ssfe 'R' message to rejoin a channel.
+
+	* servercontroller.cpp (saveProperties): Added KDE session
+ 	management.
+
 1998-01-25  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Handles +v on nicks in channels.
@@ -171,6 +180,14 @@
 $Revision$
 	
 $Log$
+Revision 1.22  1998/01/26 00:57:53  asj
+	* Handles +v on nicks in channels.
+
+	* Big fixes throughout.
+
+	* irclistbox.cpp (updateScrollBars): General cleanup of scroll
+ 	bars, they work correctly now.
+
 Revision 1.21  1998/01/25 00:31:04  asj
        * Ran ksirc through gprof and inlined a few small functions to
  	help in performance.
