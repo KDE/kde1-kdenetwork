@@ -12,10 +12,10 @@
 #include <qlayout.h>
 #include <qlined.h>
 #include <qlabel.h>
+#include <kiconloader.h>
 
 #define Inherited QDialog
 
-extern QString pixpath;
 extern KDecode *decoder;
 
 extern KConfig *conf;
@@ -35,10 +35,11 @@ decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
     list->setColumn(1,"",20,KTabListBox::PixmapColumn);
     list->setColumn(2,klocale->translate("Size"),100);
     list->setColumn(3,klocale->translate("Name"),1);
-
-    list->dict().insert("G",new QPixmap(pixpath+"green-bullet.xpm"));//GOOD
-    list->dict().insert("B",new QPixmap(pixpath+"red-bullet.xpm"));  //BAD
-    list->dict().insert("U",new QPixmap(pixpath+"black-bullet.xpm"));//UGLY
+    
+    KIconLoader *loader = kapp->getIconLoader();
+    list->dict().insert("G", &loader->loadIcon("green-bullet.xpm"));//GOOD
+    list->dict().insert("B", &loader->loadIcon("red-bullet.xpm"));  //BAD
+    list->dict().insert("U", &loader->loadIcon("black-bullet.xpm"));//UGLY
 
     QLabel *l1=new QLabel(klocale->translate("Destination directory:"),this);
     destdir=new QLineEdit(this);

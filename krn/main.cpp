@@ -72,7 +72,7 @@ QDict <char> unreadDict(17,TRUE);
 QList <Rule> ruleList;
 KSimpleConfig *ruleFile=0;
 
-QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
+QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 
 KDecode *decoder;
 
@@ -115,11 +115,6 @@ int main( int argc, char **argv )
     msgSender->readConfig();
     msgSender->setMethod(KMSender::smSMTP);
     KMMessage::readConfig();
-
-    QString pixdef=a.kdedir() + QString("/lib/pics/krn/");
-    conf->setGroup("KDE Setup");
-    if(conf->hasKey("pixpath")) pixpath=conf->readEntry("pixpath",pixdef);
-    else pixpath=pixdef;
 
     decoder=new KDecode;
     addrBook=new KMAddrBook();
