@@ -211,6 +211,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 		 "    Bernd Johannes Wuebben <wuebben@kde.org>\n"
 		 "    Harri Porten <porten@kde.org>\n"
 		 "    Mario Weilguni <mweilguni@kde.org>\n\n"
+		 "Original author: Bernd Johannes Wuebben\n"
 		 "Currently maintained by Harri Porten and Mario\n"
 		 "Weilguni. Please send all bug reports to the\n"
 		 "current maintainer.\n\n"
