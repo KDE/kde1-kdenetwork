@@ -205,7 +205,6 @@ static int kppp_xio_errhandler( Display * ) {
 
 
 #define MAX_NAME_LENGTH    64
-pid_t fpid; // TODO: use gpppdata.suidChildPid() instead
 
 int main( int argc, char **argv ) {
 
@@ -213,7 +212,7 @@ int main( int argc, char **argv ) {
   // you're doing. We're most likely running setuid root here,
   // until we drop this status a few lines below.
   int sockets[2];
-  //  pid_t fpid;
+  pid_t fpid;
   if(socketpair(AF_UNIX, SOCK_DGRAM, 0, sockets) != 0) {
     fprintf(stderr, "error creating socketpair !\n");
     exit(1);
@@ -252,6 +251,13 @@ int main( int argc, char **argv ) {
 
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
+
+  // open configuration file
+  gpppdata.open();
+
+  // store id of fork()'ed process
+  gpppdata.setSuidChildPid(fpid);
+  Debug("suidChildPid: %i\n", (int) gpppdata.suidChildPid());
 
   int c;
   opterr = 0;
@@ -354,10 +360,6 @@ int main( int argc, char **argv ) {
   KPPPWidget kppp;
   p_kppp = &kppp;
 
-  // store id of fork()'ed process
-  gpppdata.setSuidChildPid(fpid);
-  Debug("suidChildPid: %i\n", (int) gpppdata.suidChildPid());
-
   // keep user informed about recent changes
   if(!have_cmdl_account)
     showNews();
@@ -390,9 +392,6 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   : QWidget(parent, name) 
 {
   tabWindow = 0;
-
-  bool config;
-  config = gpppdata.open();
 
   // before doing anything else, run a few tests
 
@@ -513,7 +512,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   if(setup_b->sizeHint().width() > minw)
     minw = setup_b->sizeHint().width();
 
-  if (!config) 
+  if(gpppdata.access() != KApplication::APPCONFIG_READWRITE)
     setup_b->setEnabled(false);
 
   help_b = new QPushButton(i18n("Help"), this);
@@ -834,12 +833,9 @@ void dieppp(int sig) {
 	emit p_kppp->cmdl_start();
       }
     }
-    //    if(id == gpppdata.suiChildPid() && gpppdata.suidChildPid() != -1) {
-    if(id == fpid && fpid != -1) {
+    if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
       Debug("It was the setuid child that died\n");
-
-      //      gpppdata.setSuidChildPid(-1);
-      fpid = -1;
+      gpppdata.setSuidChildPid(-1);
     }
   }
 }
@@ -1251,12 +1247,10 @@ void shutDown(int status) {
 
   pid_t pid;
   Debug("shutDown(%i)", status);
-  //  pid = gpppdata.suidChildPid();
-  pid = fpid;
+  pid = gpppdata.suidChildPid();
   printf("pid=%i\n", pid);
   if(pid > 0) {
-    //  gpppdata.setSuidChildPid(-1);
-    fpid = -1;
+    gpppdata.setSuidChildPid(-1);
     //   kill(pid, SIGTERM);
     kill(pid, SIGKILL);
   }

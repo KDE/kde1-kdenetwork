@@ -81,7 +81,6 @@ int Requester::recvFD(char *filename, int size) {
   iov[0].iov_len = sizeof(struct ResponseHeader);
   iov[1].iov_base = filename;
   iov[1].iov_len = size;
-
 #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
   cmsglen = CMSG_LEN(sizeof(int));
 #else

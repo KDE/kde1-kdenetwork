@@ -1,3 +1,8 @@
+1998-11-24  Harri Porten  <porten@kde.org>
+
+	* main.cpp: store pid of setuid child in PPPData object
+        * define KERNEL_VERSION()
+
 1998-11-24  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed opener.cpp for Linux >= 2.1.0

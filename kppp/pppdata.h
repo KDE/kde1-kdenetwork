@@ -158,6 +158,7 @@ public:
   bool open();
   void save();
   void cancel();
+  int  access();       // read/write access
 
   // function to read/write date to configuration file
 

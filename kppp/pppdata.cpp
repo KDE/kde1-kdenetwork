@@ -88,6 +88,7 @@ PPPData gpppdata;
 PPPData::PPPData() {
 
   //initialize variables
+  config = 0L;
   highcount = -1;      // start out with no entries
   caccount = -1;       // set the current account index also
   cgroup = 0L;         // current group for config file
@@ -159,15 +160,23 @@ void PPPData::cancel() {
 }
 
 
+// currently differentiates between READWRITE and NONE only
+int PPPData::access() {
+
+  if(config)
+    return KApplication::APPCONFIG_READWRITE;
+  else
+    return KApplication::APPCONFIG_NONE;
+}
+
+
 // functions to read/write date to configuration file
 
 const char* PPPData::readConfig(const char* group, const char* key,
 				const char* defvalue = "") {
-  if (config) {
-    // this is a strange hack, but the only way I get it to
-    // work
-    static QString s;
+  static QString s;
 
+  if (config) {
     config->setGroup(group);
     if (!config->hasKey(key))
       config->writeEntry(key, defvalue);

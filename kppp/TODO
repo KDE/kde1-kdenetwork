@@ -8,6 +8,8 @@ o modem-setup wizard
 o provider-setup wizard
 o Create an own dialer communicating with slots. This will allow non-X kppp´s
 o Separate GUI and non-GUI code in different classes
+o Users upgrading from KDE 1.0 will have a kppprc owned by root (KConfig bug)
+  New versions won't be able to read it, so give some instruction to do a chown
 
 
 Done/Removed

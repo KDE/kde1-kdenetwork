@@ -3,6 +3,10 @@
 
 #define DEVNULL "/dev/null"
 
+#ifndef KERNEL_VERSION
+#define KERNEL_VERSION(x,y,z) (((x)<<16)+((y)<<8)+(z))
+#endif
+
 class Opener {
 
 public:
