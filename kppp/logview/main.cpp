@@ -45,7 +45,7 @@ TopWidget::TopWidget() : KTopLevelWidget("") {
     
     // create menu 
     mb = new KMenuBar(this);
-    QPopupMenu *fm = new QPopupMenu;
+    fm = new QPopupMenu;
     fm->insertItem(i18n("E&xit"), F_EXIT);
     mb->insertItem(i18n("&File"), fm);
     setMenu(mb);
@@ -69,6 +69,7 @@ TopWidget::TopWidget() : KTopLevelWidget("") {
 }
 
 TopWidget::~TopWidget() {
+  delete fm;
 }
 
 void TopWidget::menuCallback(int id) {

@@ -39,6 +39,7 @@ private:
   MonthlyWidget *mw;
   KMenuBar *mb;
   QTabDialog *td;
+  QPopupMenu *fm;
 };
 
 #endif

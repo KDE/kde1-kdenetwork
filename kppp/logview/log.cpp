@@ -31,6 +31,7 @@ QProgressDialog *dlg;
 
 int loadLogs() {
   int logsize = 0;
+  log.setAutoDelete(true);
 
   QString logdirname = kapp->localkdedir() + "/share/apps/kppp/Log/";
   QDir logdir(logdirname, "*.log");
