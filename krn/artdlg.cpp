@@ -779,11 +779,8 @@ bool Artdlg::loadArt (QString id)
         QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
         id=id.mid(1,id.length()-2);
         //    KURL::encodeURL(id);
-        debug ("encoded?-->%s",id.data());
         urldata+=id;
-        debug ("urldata-->%s",urldata.data());
         KURL url(urldata.data());
-        debug ("url-->%s",url.url().data());
         buffer.sprintf("From: KRN\n"
                        "To: You\n"
                        "Date: now\n"
@@ -1094,7 +1091,6 @@ void Artdlg::openURL (const char *s)
         {
             QString s=url.path();
             s="<"+s.right(s.length()-1)+">";
-            debug ("loading-->%s",s.data());
             loadArt(s);
         }
         else emit spawnGroup(url.path());

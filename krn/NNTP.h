@@ -191,6 +191,7 @@ public:
     void    reportCounters (bool byte=true,bool command=true);
     int     byteCounter;
     int     commandCounter;
+    int     myPost();
 signals:
     void newStatus(const char *status);
     

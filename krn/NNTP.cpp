@@ -576,3 +576,20 @@ bool NNTP::checkStatus( QString start)
         success=true;
     return success;
 }
+
+int  NNTP::myPost()
+{
+    mReplyCode = 0;
+    sprintf (mSendBuffer,"POST\r\n");
+    cout << "C: " << mSendBuffer << endl;
+    
+    int bufferLen = strlen(mSendBuffer);
+    int numSent = PSend(mSendBuffer, bufferLen);
+    if (numSent == bufferLen)
+    {
+        PGetStatusResponse();
+        
+        cout <<"S: " << StatusResponse() << endl;
+    }
+    return mReplyCode;
+}

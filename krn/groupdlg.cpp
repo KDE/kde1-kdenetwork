@@ -660,10 +660,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
 
             KMMessage *m=new KMMessage();
             m->initHeader();
-            debug ("from-->%s",m->from().data());
             m->setGroups(group->name);
-
-            debug("fulladdr-->%s",identity->fullEmailAddr().data());
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             success=true;
