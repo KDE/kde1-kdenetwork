@@ -1,3 +1,5 @@
+#include <keditcl.h>
+
 #include <qpushbt.h>
 #include <qlist.h>
 #include <qlined.h>
@@ -9,7 +11,6 @@
 
 #include <kapp.h>
 #include <ksimpleconfig.h>
-
 
 #include "typelayout.h"
 #include "tlform.h"
@@ -23,17 +24,49 @@ extern KSimpleConfig *ruleFile;
 
 rulesDlg::rulesDlg():QDialog(0,0,true)
 {
+
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("RuleNames",names);
+    QStrList gnames;
+    ruleFile->readListEntry("GlobalRules",gnames);
+
+
     TLForm *f=new TLForm("rules",
                          klocale->translate("KRN - Scoring Rules Editor"),
                          this);
     
     l=f->layout;
 
-    l->addGroup ("top","",true);
+    l->addBook ("book");
 
-    ruleFile->setGroup("Index");
-    QStrList names;
-    ruleFile->readListEntry("RuleNames",names);
+    l->addPage ("globalpage",klocale->translate("Global Rules"));
+
+    l->addGroup ("l1",klocale->translate("All Rules"),true);
+    list2=(QListBox *)(l->addListBox("allrules",&names)->widget);
+    l->endGroup();
+
+    l->addGroup ("buttons");
+    QPushButton *addglb=(QPushButton *)
+        (l->addButton("addToActive","-->")->widget);
+    l->newLine();
+    QPushButton *rmglb=(QPushButton *)
+        (l->addButton("removeFromActive","<--")->widget);
+
+    connect (addglb,SIGNAL(clicked()),this,SLOT(addGlobal()));
+    connect (rmglb,SIGNAL(clicked()),this,SLOT(deleteGlobal()));
+    
+    l->endGroup();
+    
+    l->addGroup ("l1",klocale->translate("Active Rules"),true);
+    globalList=(QListBox *)(l->addListBox("globals",&gnames)->widget);
+    l->newLine();
+    l->endGroup();
+
+    l->endGroup(); //globalpage
+    
+    l->addPage ("editpage",klocale->translate("Rule Editor"));
+
 
     list=(QListBox *)(l->addListBox("rulenames",&names)->widget);
     list->setMinimumWidth(100);
@@ -81,17 +114,23 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     delete fields;
 
     l->newLine();
+    l->addGroup("gg","",false);
+    l->addLabel ("l",klocale->translate("Weight:"));
+    l->addIntLineEdit("value","",4);
+    l->addCheckBox("neg",klocale->translate("Negative"),false);
+    l->endGroup(); //gg
+    l->newLine();
     
     l->addGroup("gg","",false);
     l->addCheckBox("casesen",klocale->translate("Case Sensitive"),false);
     l->addCheckBox("wildmode",klocale->translate("Wildcard Mode"),false);
     l->endGroup(); //gg
 
-    l->newLine();
-
     l->endGroup(); //ruleedit
+    
+    l->endGroup(); //rule editor page
 
-    l->endGroup(); //top
+    l->endGroup(); //book
     
     l->newLine();
     
@@ -100,9 +139,10 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     l->endGroup();
 
     connect (b1,SIGNAL(clicked()),SLOT(accept()));
-    
-    l->activate();
 
+    l->setAlign("value",AlignRight|AlignLeft);
+    l->activate();
+    
     list->setCurrentItem(0);
     
 }
@@ -121,7 +161,19 @@ void rulesDlg::editRule(const char *name)
     ((QComboBox *)(l->findWidget("field")))->setCurrentItem((int)rule->field);
     ((QCheckBox *)(l->findWidget("casesen")))->setChecked(rule->regex.caseSensitive());
     ((QCheckBox *)(l->findWidget("wildmode")))->setChecked(rule->regex.wildcard());
+    bool b=false;
+    QString s;
+    if (rule->value <0)
+    {
+        s.setNum(-1*rule->value);
+        b=true;
+    }
+    else
+        s.setNum(rule->value);
 
+    
+    ((KIntLineEdit *)(l->findWidget("value")))->setText(s);
+    ((QCheckBox *)(l->findWidget("neg")))->setChecked(b);
     
     delete rule;
 }
@@ -130,24 +182,34 @@ void rulesDlg::saveRuleAs()
     Asker ask;
     ask.label->setText(klocale->translate("Rule name:"));
     ask.exec();
+    int i=((KIntLineEdit *)(l->findWidget("value")))->getValue();
+    if (((QCheckBox *)(l->findWidget("neg")))->isChecked())
+        i*=-1;
     rule=new Rule(ask.entry->text(),
                   ((QLineEdit *)(l->findWidget("expr")))->text(),
                   (Rule::Field)((QComboBox *)(l->findWidget("field")))->currentItem(),
                   ((QCheckBox *)(l->findWidget("casesen")))->isChecked(),
-                  ((QCheckBox *)(l->findWidget("wildmode")))->isChecked());
+                  ((QCheckBox *)(l->findWidget("wildmode")))->isChecked(),
+                  i);
     rule->save(ask.entry->text());
+    list2->setCurrentItem(list->currentItem());
     list->insertItem(ask.entry->text());
+    list2->insertItem(ask.entry->text());
     delete rule;
 }
 
 void rulesDlg::saveRule()
 {
     QString name=list->text(list->currentItem());
+    int i=((KIntLineEdit *)(l->findWidget("value")))->getValue();
+    if (((QCheckBox *)(l->findWidget("neg")))->isChecked())
+        i*=-1;
     rule=new Rule(name,
                   ((QLineEdit *)(l->findWidget("expr")))->text(),
                   (Rule::Field)((QComboBox *)(l->findWidget("field")))->currentItem(),
                   ((QCheckBox *)(l->findWidget("casesen")))->isChecked(),
-                  ((QCheckBox *)(l->findWidget("wildmode")))->isChecked());
+                  ((QCheckBox *)(l->findWidget("wildmode")))->isChecked(),
+                  i);
     rule->save(name);
     delete rule;
 }
@@ -164,5 +226,39 @@ void rulesDlg::deleteRule()
         ruleFile->writeEntry("RuleNames",names);
     }
     ruleFile->sync();
+    list2->setCurrentItem(list->currentItem());
+    list2->removeItem(list->currentItem());
     list->removeItem(list->currentItem());
+}
+
+void rulesDlg::addGlobal()
+{
+    debug ("adding global rule");
+    QString name=list2->text(list2->currentItem());
+    globalList->insertItem(list2->text(list2->currentItem()));
+    globalList->setCurrentItem(globalList->count());
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("GlobalRules",names);
+    if (names.find(name.data())==-1)
+    {
+        debug ("saving rule %s",name.data());
+        names.append(name.data());
+        ruleFile->writeEntry("GlobalRules",names);
+    }
+    ruleFile->sync();
+}
+void rulesDlg::deleteGlobal()
+{
+    QString name=globalList->text(globalList->currentItem());
+    globalList->removeItem(globalList->currentItem());
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("GlobalRules",names);
+    if (names.find(name.data())!=-1)
+    {
+        names.remove(name);
+        ruleFile->writeEntry("GlobalRules",names);
+    }
+    ruleFile->sync();
 }

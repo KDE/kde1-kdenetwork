@@ -1,5 +1,9 @@
 #include "kdecode.h"
+
+#ifndef __FreeBSD__
 #include <malloc.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #undef Unsorted

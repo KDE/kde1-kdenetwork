@@ -1,4 +1,5 @@
 #include "rules.h"
+#include "NNTP.h"
 
 #include <qdict.h>
 #include <ksimpleconfig.h>
@@ -8,15 +9,16 @@ extern KSimpleConfig *ruleFile;
 
 
 Rule::Rule(const char *_name=0,const char *expr=0,Field _field,
-           bool casesen,bool wildmode)
+           bool casesen,bool wildmode,int _value=0)
 {
     regex=QRegExp(expr,casesen,wildmode);
     name=_name;
     field=_field;
+    value=_value;
 }
 
 Rule::Rule(const char *_name=0,const char *expr=0,const char *_field,
-           bool casesen,bool wildmode)
+           bool casesen,bool wildmode,int _value=0)
 {
     regex=QRegExp(expr,casesen,wildmode);
     name=_name;
@@ -36,6 +38,7 @@ Rule::Rule(const char *_name=0,const char *expr=0,const char *_field,
         field=All;
     else if (!strcmp(_field,"Article"))
         field=All2;
+    value=_value;
 }
 
 Rule::~Rule()
@@ -43,7 +46,7 @@ Rule::~Rule()
 }
 
 
-MessageParts Rule::missingParts()
+int Rule::missingParts()
 {
     int parts=PART_NONE;
 
@@ -53,7 +56,7 @@ MessageParts Rule::missingParts()
         parts=parts|PART_BODY;
     else if (field==All2)
         parts=parts|PART_ALL;
-    return (MessageParts)parts;
+    return parts;
 }
 
 
@@ -61,7 +64,7 @@ bool Rule::match(const Article art,NNTP *server)
 {
     bool matches=false;
     if (server)
-        server->getMissingParts(missingParts(),art.ID);
+        server->getMissingParts((MessageParts)missingParts(),art.ID);
 
     debug ("missingparts-->%d",missingParts());
 
@@ -118,6 +121,7 @@ void Rule::load(const char *name)
     regex=QRegExp(ruleFile->readEntry("Regexp",""),
                   ruleFile->readNumEntry("CaseSensitive",false),
                   ruleFile->readNumEntry("WildCard",false));
+    value=ruleFile->readNumEntry("Value",0);
     field=(Rule::Field)(ruleFile->readNumEntry("Field",0));
 }
 void Rule::save(const char *name)
@@ -136,6 +140,7 @@ void Rule::save(const char *name)
     ruleFile->writeEntry("Field",field);
     ruleFile->writeEntry("WildCard",regex.wildcard());
     ruleFile->writeEntry("CaseSensitive",regex.caseSensitive());
+    ruleFile->writeEntry("Value",value);
     ruleFile->sync();
 }
 

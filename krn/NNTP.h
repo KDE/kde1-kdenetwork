@@ -36,6 +36,9 @@
 
 #include "kmmessage.h"
 
+class Rule;
+
+typedef QList <Rule> RuleList;
 
 //These MUST match the "allkeys" combobox in sortDlg.cpp
 #define KEY_SUBJECT 0
@@ -79,6 +82,7 @@ public:
     void save();
     void load();
     int  score();
+    void reScore(RuleList rules);
     void lookupAltavista();
     bool refsLoaded;
     KMMessage *createMessage();
@@ -95,6 +99,8 @@ public:
     time_t lastAccess;
     
 private:
+    int lastScore;
+    bool scored;
     bool isread;
     bool isavail;
     bool ismarked;

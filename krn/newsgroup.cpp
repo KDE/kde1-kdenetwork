@@ -28,6 +28,7 @@
 
 #include <assert.h>
 
+#include "rules.h"
 #include "artdlg.h"
 
 #include "kfileio.h"
@@ -46,6 +47,8 @@ extern QDict <char> unreadDict;
 
 Article::Article (const char *_ID)
 {
+    scored=false;
+    lastScore=0;
     isread=false;
     isavail=true;
     ismarked=false;
@@ -62,6 +65,8 @@ Article::Article (const char *_ID)
 
 Article::Article(void)
 {
+    scored=false;
+    lastScore=0;
     isread=false;
     isavail=true;
     ismarked=false;
@@ -293,7 +298,13 @@ void Article::load()
 
 int Article::score()
 {
-    return 100;
+    return lastScore;
+}
+
+void Article::reScore(RuleList rules)
+{
+    scored=true;
+    lastScore=100;
 }
 
 void Article::setRead(bool b)
