@@ -1,7 +1,11 @@
 #include <iostream.h>
 #include <qpainter.h>
 #include <qpaintd.h>
+
+#include <kfontdialog.h>
+
 #include "ksticker.h"
+#include "speeddialog.h"
 
 
 KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0) 
@@ -10,7 +14,7 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 
   pHeight = 1;
 
-  setFont(QFont("fixed"));
+    setFont(QFont("fixed"));
   // ring = "Hi";
   ring = "";
   SInfo *si = new SInfo;
@@ -19,11 +23,19 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   setMinimumSize(100, 10);
   setFixedHeight((fontMetrics().ascent()+2)*pHeight);
   onechar = fontMetrics().width("X");
+
   tickStep = 2;
   cOffset = 0;
+
+  tickRate = 30;
+
   currentChar = 0;
   chars = this->width() / onechar;
   StrInfo.setAutoDelete( TRUE );
+
+  popup = new QPopupMenu();
+  popup->insertItem("Font...", this, SLOT(fontSelector()));
+  popup->insertItem("Scroll Rate...", this, SLOT(scrollRate()));
 }
 
 KSTicker::~KSTicker()
@@ -165,10 +177,54 @@ void KSTicker::closeEvent( QCloseEvent *)
 void KSTicker::startTicker()
 {
   killTimers();
-  startTimer(30);
+  startTimer(tickRate);
 }
 
 void KSTicker::mouseDoubleClickEvent( QMouseEvent * ) 
 {
   emit doubleClick();
+}
+
+void KSTicker::mousePressEvent( QMouseEvent *e)
+{
+  if(e->button() == RightButton){
+    popup->popup(this->cursor().pos());
+  }
+  else{
+    QFrame::mousePressEvent(e);
+  }
+}
+void KSTicker::fontSelector()
+{
+  KFontDialog *kfd = new KFontDialog();
+  kfd->setFont(font());
+  connect(kfd, SIGNAL(fontSelected(const QFont &)),
+	  this, SLOT(updateFont(const QFont &)));
+  kfd->show();
+}
+
+void KSTicker::scrollRate()
+{
+  SpeedDialog *sd = new SpeedDialog(tickRate, tickStep);
+  sd->setLimit(5, 200, 1, onechar);
+  connect(sd, SIGNAL(stateChange(int, int)),
+	  this, SLOT(setSpeed(int, int)));
+  sd->show();
+}
+
+void KSTicker::updateFont(const QFont &font){
+  setFont(font);
+  setFixedHeight((fontMetrics().ascent()+2)*pHeight);
+  resize(fontMetrics().width("X")*chars, (fontMetrics().ascent()+2)*pHeight);
+}
+
+void KSTicker::setSpeed(int _tickRate, int _tickStep){
+  tickRate = _tickRate;
+  tickStep = _tickStep;
+  startTicker();
+}
+
+void KSTicker::speed(int *_tickRate, int *_tickStep){
+  *_tickRate = tickRate;
+  *_tickStep = tickStep;
 }

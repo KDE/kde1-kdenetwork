@@ -5,6 +5,7 @@
 #include <qframe.h>
 #include <qstring.h>
 #include <qlist.h>
+#include <qpopmenu.h>
 
 struct SInfo {
   int length;
@@ -24,16 +25,27 @@ public:
   virtual void show();
   virtual void hide();
 
+  void speed(int *, int *);
+
 signals:
   void doubleClick();
   void closing();
 
+public slots:
+  virtual void setSpeed(int, int);
+
 protected slots:
+  virtual void fontSelector();
+  virtual void scrollRate();
+  virtual void updateFont(const QFont &font);
+
+protected:
   virtual void timerEvent ( QTimerEvent * );
   virtual void paintEvent ( QPaintEvent * );
   virtual void resizeEvent( QResizeEvent * );
   virtual void closeEvent( QCloseEvent * );
   virtual void mouseDoubleClickEvent( QMouseEvent * );
+  virtual void mousePressEvent ( QMouseEvent * );
   virtual void iconify();
 
 
@@ -50,11 +62,15 @@ private:
   int tickStep;
   int cOffset;
 
+  int tickRate;
+
   int pHeight;
   
   int currentChar;
 
   void startTicker();
+
+  QPopupMenu *popup;
 
 };
 

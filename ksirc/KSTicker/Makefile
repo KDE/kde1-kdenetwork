@@ -12,6 +12,10 @@ HEADERS = ksticker.h
 SOURCES = \
 		ksticker.cpp \
 		mksticker.cpp \
+		speeddialog.cpp \
+		mspeeddialog.cpp \
+		speeddialogData.cpp \
+		mspeeddialogData.cpp \
 		main.cpp \
 		mmain.h \
 
@@ -19,6 +23,10 @@ SOURCES = \
 OBJECTS = \
 	ksticker.o \
 	mksticker.o \
+	speeddialog.o \
+	mspeeddialog.o \
+	speeddialogData.o \
+	mspeeddialogData.o \
 	main.o \
 	mmain.o
 
@@ -61,4 +69,13 @@ m%.cpp: %.h
 # DO NOT DELETE
 
 mksticker.o: ksticker.h
-main.o: ksticker.h
+speeddialog.o: speeddialog.h speeddialogData.h
+mspeeddialog.o: speeddialog.h speeddialogData.h
+speeddialogData.o: speeddialogData.h
+mspeeddialogData.o: speeddialogData.h
+main.o: /usr/include/unistd.h /usr/include/features.h
+main.o: /usr/include/sys/cdefs.h /usr/include/posix_opt.h
+main.o: /usr/include/gnu/types.h /usr/include/confname.h
+main.o: /usr/include/sys/types.h /usr/include/linux/types.h
+main.o: /usr/include/linux/posix_types.h /usr/include/asm/posix_types.h
+main.o: /usr/include/asm/types.h /usr/include/sys/bitypes.h ksticker.h

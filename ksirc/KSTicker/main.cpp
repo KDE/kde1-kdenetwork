@@ -1,3 +1,5 @@
+#include <kapp.h>
+#include <kconfig.h>
 #include <qapp.h> 
 #include <qsocknot.h>
 #include <qregexp.h>
@@ -5,26 +7,28 @@
 #include <unistd.h> 
 
 #include "ksticker.h"
+#include "main.h"
 
-class StdInTicker : public KSTicker
-{
-  Q_OBJECT
-public:
-  StdInTicker();
-  ~StdInTicker();
-
-public slots:
-void readsocket(int socket);
-  
-};
+KConfig *kConfig;
 
 StdInTicker::StdInTicker()
   : KSTicker()
 {
+  kConfig->setGroup("defaults");
+  setFont(kConfig->readFontEntry("font"));
+  setSpeed(kConfig->readNumEntry("tick", 30), 
+	   kConfig->readNumEntry("step", 3));
 }
 
 StdInTicker::~StdInTicker()
 {
+  int tick, step;
+  speed(&tick, &step);
+  kConfig->setGroup("defaults");
+  kConfig->writeEntry("font", font());
+  kConfig->writeEntry("tick", tick);
+  kConfig->writeEntry("step", step);
+  kConfig->sync();
 }
 
 void StdInTicker::readsocket(int socket)
@@ -38,7 +42,9 @@ void StdInTicker::readsocket(int socket)
 
 
 int main(int argc, char **argv){
-  QApplication a(argc, argv);
+  KApplication a(argc, argv);
+
+  kConfig = a.getConfig();
 
   KSTicker *kst = new StdInTicker();
   QSocketNotifier *sn = new QSocketNotifier(0, QSocketNotifier::Read);

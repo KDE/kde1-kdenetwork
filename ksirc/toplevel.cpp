@@ -132,6 +132,11 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   contents.setAutoDelete( TRUE ); // Have contents, the line holder nuke everything on exit
 
   ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
+  ticker->setCaption(channel_name);
+  kConfig->setGroup("TickerDefaults");
+  ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
+  ticker->setSpeed(kConfig->readNumEntry("tick", 30), 
+		   kConfig->readNumEntry("step", 3));
   connect(ticker, SIGNAL(doubleClick()), 
 	  this, SLOT(unHide()));
   connect(ticker, SIGNAL(closing()), 
@@ -225,6 +230,13 @@ KSircTopLevel::~KSircTopLevel()
 
   if((channel_name[0] == '#') || (channel_name[0] == '&'))
     emit outputLine(QString("/part ") + channel_name + "\n");
+
+  int tick, step;
+  ticker->speed(&tick, &step);
+  kConfig->setGroup("TickerDefaults");
+  kConfig->writeEntry("font", font());
+  kConfig->writeEntry("tick", tick);
+  kConfig->writeEntry("step", step);
 
   //  close(sirc_stdin);  // close all the pipes
   //  close(sirc_stdout); // ditto
@@ -500,6 +512,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    opami = FALSE;                 // FALSE, were not an ops
 	  UserUpdateMenu();                // update the menu
 	  setCaption(s2);
+	  ticker->setCaption(s2);
 	  caption = qstrdup(s2);           // Make copy so we're not 
 	                                   // constantly changing the title bar
 	}
