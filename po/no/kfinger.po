@@ -10,34 +10,30 @@ msgstr ""
 "soaasen@online.no>Date: 1998-03-17\n"
 
 #: kfinger.C:29
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Finger nå"
+msgstr "F&inger nå"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "&Talk..."
-msgstr "Snakk..."
+msgstr "&Snakk..."
 
 #: kfinger.C:34
 msgid "Setup"
 msgstr "Oppsett"
 
 #: kfinger.C:35
-#, fuzzy
 msgid "&Save Options"
-msgstr "Lagre valg"
+msgstr "&Lagre valg"
 
 #: kfinger.C:37
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.8.0\n"
-"(c) av Andrea Rizzi\n"
-"rizzi@kde.org"
+"kfinger 0.8.0\n"
+"\n"
+(c) Andrea Rizzi (rizzi@kde.org)"
 
 #: kfinger.C:46
 msgid "KDE finger utility"
@@ -113,12 +109,12 @@ msgstr "Brukerliste"
 
 #: kfinger.C:449
 msgid "Timed finger"
-msgstr "Timed finger"
+msgstr "Timet finger"
 
 #: kfinger.C:464 kfinger.C:651
 #, c-format
 msgid "Finger wait: %d\""
-msgstr "Finger vent: %d"
+msgstr "Fingervent: %d"
 
 #: kfinger.C:469
 msgid "Talk Command "
@@ -130,7 +126,7 @@ msgstr "Forskjellig"
 
 #: kfinger.C:484 kfinger.C:496
 msgid "Finger Output"
-msgstr "Finger Output"
+msgstr "Finger-utmating"
 
 #: kfinger.C:488
 msgid "Finger server"
@@ -202,53 +198,8 @@ msgstr "Output format streng"
 
 #: kfinger.C:848
 msgid "Save & Quit"
-msgstr "Lagre avslutt"
+msgstr "Lagre og avslutte
 
 #: kfinger.C:858
 msgid "Output parameters "
-msgstr "Output parameters"
-
-#~ msgid "Talk.."
-#~ msgstr "Snakk..."
-
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Velkommen til KDE Finger \n"
-#~ "et program av A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Finger resultat for : %s@%s"
-
-#~ msgid "Quit"
-#~ msgstr "Avslutt"
-
-#~ msgid "Help"
-#~ msgstr "Hjelp"
-
-#~ msgid "About"
-#~ msgstr "Om"
-
-#~ msgid "&File"
-#~ msgstr "&Fil"
-
-#~ msgid "&Help"
-#~ msgstr "&Hjelp"
-
-#~ msgid "Settings"
-#~ msgstr "Oppsett"
-
-#~ msgid "&Remove"
-#~ msgstr "&Fjern"
-
-#~ msgid "Time"
-#~ msgstr "Tid"
-
-#~ msgid "Cancel"
-#~ msgstr "Kanseller"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
+msgstr "Output parameters "
