@@ -90,7 +90,13 @@ KMFolder* KMFolderDir::createFolder(const char* aFolderName, bool aSysFldr)
     return NULL;
   }
 
-  append(fld);
+  KMFolderNode *node;
+  int idx = 0;
+  for(node = first(); node; node=next(), idx++)
+  {
+     if (strcasecmp(node->name().data(),aFolderName) > 0)  break;
+  } 
+  insert(idx, fld);
 
   return fld;
 }
