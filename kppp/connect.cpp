@@ -61,7 +61,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
 
-  QVBoxLayout *tl = new QVBoxLayout(this, 15, 10);
+  QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
 
   // initalize some important varibles
 
@@ -83,14 +83,18 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   QString tit = klocale->translate("Connecting to: ");
   setCaption(tit);
 
+  QHBoxLayout *l0 = new QHBoxLayout(10);
+  tl->addLayout(l0);
+  l0->addSpacing(10);
   messg = new QLabel(this, "messg");
   messg->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   messg->setAlignment(AlignCenter);
   messg->setText(klocale->translate("Sorry, can't create modem lock file."));  
   messg->setMinimumHeight(messg->sizeHint().height() + 4);
   messg->setMinimumWidth((messg->sizeHint().width() * 12) / 10);
-  tl->addWidget(messg);
   messg->setText(klocale->translate("Looking for Modem ..."));
+  l0->addWidget(messg);
+  l0->addSpacing(10);
 
   tl->addSpacing(5);
   QHBoxLayout *l1 = new QHBoxLayout(10);
