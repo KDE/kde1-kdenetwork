@@ -1527,7 +1527,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.0");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.1");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);
@@ -1559,7 +1559,7 @@ void KBiffAboutTab::mailTo(const char* url)
 	if (mailer)
 	{
 		KProcess mailto;
-		mailto << mailer << "-s \"KBiff\"" << url;
+		mailto << mailer << "-s" << "\"KBiff\"" << url;
 		mailto.start(KProcess::DontCare);
 	}
 }

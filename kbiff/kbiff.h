@@ -52,6 +52,7 @@ protected:
 	void reset();
 	bool isRunning();
 	bool isGIF8x(const char* file);
+	void executeCommand(const QString& command);
 
 protected slots:
 	void saveYourself();

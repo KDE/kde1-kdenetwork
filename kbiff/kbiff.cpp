@@ -12,6 +12,7 @@
 #include "Trace.h"
 
 #include <qmovie.h>
+#include <qtooltip.h>
 
 #include <kiconloader.h>
 #include <kprocess.h>
@@ -74,6 +75,9 @@ TRACEF("setup->getDock() = %d", setup->getDock());
 
 	if (run)
 		start();
+
+	// add the profile as a tool tip
+	QToolTip::add(this, profile);
 
 	delete setup;
 }
@@ -139,56 +143,8 @@ TRACEINIT("KBiff::mousePressEvent()");
 	{
 		// execute the command
 		if (!mailClient.isEmpty())
-		{
-			KProcess client;
-			int index,beg;
-			char param[60];
-			const char *pom=(const char *)mailClient;
-			index=0;
-			while(pom[index])
-			{
-				// simplyfies whitespaces
-				while(pom[index] && (pom[index]==' ' || (pom[index]>=9 && pom[index]<=13)))
-					index++;
+			executeCommand(mailClient);
 
-				beg=0;
-				if(pom[index]=='"')
-				{
-					index++;
-					while(pom[index] && pom[index]!='"')
-					{
-						if(pom[index]==92 && pom[index+1])   // '\'
-							index++;
-						if(beg<59)
-						{
-							param[beg]=pom[index];
-							beg++;
-						}
-						index++;
-					}  
-					index++;
-				}	
-				else
-				{
-					while(pom[index] && pom[index]>' ')
-					{
-						if(pom[index]==92 && pom[index+1])   // '\'
-							index++;
-						if(beg<59)
-						{
-							param[beg]=pom[index];
-							beg++;
-						}
-						index++;
-					}  
-				}	
-				param[beg]=0;  
-				if(beg)
-					client << param;  
-			}
-
-			client.start(KProcess::DontCare);
-		}
 		readPop3MailNow();
 	}
 }
@@ -358,9 +314,7 @@ TRACEINIT("KBiff::haveNewMail()");
 		if (!runCommandPath.isEmpty())
 		{
 			TRACEF("Running %s", runCommandPath.data());
-			KProcess command;
-			command << runCommandPath;
-			command.start(KProcess::DontCare);
+			executeCommand(runCommandPath);
 		}
 	}
 
@@ -370,6 +324,7 @@ TRACEINIT("KBiff::haveNewMail()");
 		// make sure something is specified
 		if (!playSoundPath.isEmpty())
 		{
+		   TRACEF("Playing sound: %s", playSoundPath.data());
 			audioServer.play(playSoundPath);
 			audioServer.sync();
 		}
@@ -576,3 +531,66 @@ TRACEINIT("KBiff::isRunning()");
 	}
 	return is_running;
 }
+
+void KBiff::executeCommand(const QString& command)
+{
+TRACEINIT("KBiff::executeCommand()");
+	/**
+	 * The KProcess object expects the first param to be the
+	 * command and every param after that to be the command's params.
+	 * As a result, though, if you pass it a string with spaces in it,
+	 * then it takes the first token of the string as the command
+	 * and ignores the rest of it!  We need to pass all tokens from
+	 * the command string on as individual parameters to get around
+	 * this.
+	 */
+	KProcess process;
+	int index, beg;
+	char param[60];
+	const char *pom=(const char *)command;
+	index=0;
+	while(pom[index])
+	{
+		// simplyfies whitespaces
+		while(pom[index] && (pom[index]==' ' || (pom[index]>=9 && pom[index]<=13)))
+			index++;
+
+		beg=0;
+		if(pom[index]=='"')
+		{
+			index++;
+			while(pom[index] && pom[index]!='"')
+			{
+				if(pom[index]==92 && pom[index+1])   // '\'
+					index++;
+				if(beg<59)
+				{
+					param[beg]=pom[index];
+					beg++;
+				}
+				index++;
+			}  
+			index++;
+		}	
+		else
+		{
+			while(pom[index] && pom[index]>' ')
+			{
+				if(pom[index]==92 && pom[index+1])   // '\'
+					index++;
+				if(beg<59)
+				{
+					param[beg]=pom[index];
+					beg++;
+				}
+				index++;
+			}  
+		}	
+		param[beg]=0;  
+		if(beg)
+			process << param;  
+	}
+
+	process.start(KProcess::DontCare);
+}
+

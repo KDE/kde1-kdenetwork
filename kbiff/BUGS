@@ -1,0 +1,33 @@
+UNFIXED BUGS
+============================================================================
+Description:
+  On *some* systems, clicking on the Browse buttons will cause KBiff to
+  seg fault and dump core.  I cannot find any rhyme or reason to this.
+  It does appear that if you use KDE 1.1 and Qt 1.40, you shouldn't have
+  any problems.
+
+Status:
+  I have no clue what is going on here.  When KDE 1.1 becomes more
+  popular, this bug will quietly fade away, though...
+
+----------------------------------------------------------------------------
+Description:
+  On some systems, EVERY new email will pop up a notify box
+
+Status:
+  No clue on this one either.  I'm going to have to really study the code
+  to figure this out and I haven't found the time so far.
+
+----------------------------------------------------------------------------
+Description:
+  Having a username of 'something@somewhere' does NOT work in either pop3
+  or imap4
+
+Status:
+  I'm afraid that this may never be "fixed."  All mailbox information is
+  passed along as URLs internally.  In other words, a typical pop3
+  mailbox would look like 'pop3://user:pass@host'.  Well, if the username
+  has a '@' in it, then the URL looks like 'pop3://user@name:pass@host'
+  This is a totally invalid URL.  Unfortunately, unless I completely
+  change around how KBiff handles mailboxes internally, this will always
+  be the case
