@@ -23,7 +23,7 @@
 
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
-PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0) /*fold00*/
+PukeController::PukeController(QString sock, QObject *parent, const char *name) /*fold00*/
   : PObject(parent, name)
 {
   int len, prev_umask;

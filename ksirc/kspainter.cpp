@@ -1,5 +1,8 @@
 #include "kspainter.h"
-#include <stdlib.h>   
+#include <stdlib.h>
+#include <iostream.h>
+
+#include <qregexp.h>
 
 const int KSPainter::maxcolour = 16;
 const QColor KSPainter::brown    ( 165,  42,  42 );
@@ -35,7 +38,7 @@ int KSPainter::colour2num(const QColor &colour)
 }
 
 void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
-				 char *str, int length = -1)
+				 char *str, int length)
 {
   int offset = 0;
   int pcolour;
@@ -168,3 +171,59 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 
 }
 
+QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
+  QString noCol;
+
+  if(col.isNull() || col.isEmpty()) // Sanity check
+    return noCol;
+
+  col.detach();
+  col.replace(QRegExp("~r"), "");
+
+  if(xlate != 0x0){
+    xlate->clear();
+    xlate->setAutoDelete(TRUE);
+  }
+  debug("Processing: %s", col.data());
+  for(uint i = 0; i < col.length() ;){
+    if(((col[i] == '~') || (col[i] == 0x03)) && ((col[i+1] >= '0') && (col[i+1] <= '9'))){
+      i += 2; // Step over the ~ and the first number
+      if((col[i] >= '0') && (col[i] <= '9'))
+        i ++; // Step over the next number (~12) idea
+      if((col[i] == ',') && ((col[i+1] >= '0') && (col[i+1] <= '9'))){
+        i+=2; // Step over the , and first number
+        if((col[i] >= 0x30) && (col[i] <= 0x39)){
+          i++; // Step over the number number
+        }
+      }
+    }
+    else if((col[i] == '~') && ((col[i+1] >= 'a') || (col[i+1] <= 'z'))){ // a->z for vairous control codes
+      switch(col[i+1]){
+      case 'b':
+      case 'u':
+      case 'r':
+      case 'c':
+      case 'i':
+      case 'C':
+        i+=2; // Move ahead 2 characters (~x == 2)
+        break;
+      default:
+        i++; // Move to next character
+        break;
+      }
+    }
+    else{
+      // It's a printable character
+//      cerr << i << "-" << col.mid(i, 1) << " ";
+      noCol += col.mid(i, 1);
+      if(xlate != 0x0)
+        xlate->append(new int(i));
+
+      i++; // Move ahead to next character
+    }
+  }
+//  cerr << endl;
+//debug("NoCol: %s", noCol.data());
+  return noCol;
+  
+}

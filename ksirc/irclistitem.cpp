@@ -97,6 +97,17 @@ void ircListItem::setupPainterText()
     xPos = 3;
   }
 
+  // Copy permenant contents into temp string so we can mangle it, but always get the orignal back
+  itext = rtext;
+  itext.detach();
+
+  // Insert selection markers if turned on
+
+  if(revOne > 0){
+    itext.insert(revOne, "~r");
+    if(revTwo > 0)
+      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~r");
+  }
     
   // Wrapping code is a little slow, and a little silly, but it works.
 
@@ -106,9 +117,6 @@ void ircListItem::setupPainterText()
   //
   // We skip over all !<>,<> time constructs.
   
-
-  itext = rtext;
-  itext.detach();
   paint_text->clear();
   int max_width = parent_lb->width()-35;
   int realIndex = 0;
@@ -159,14 +167,6 @@ void ircListItem::setupPainterText()
 	  width = xPos;
 	  lastp = i;
         }
-        if(realIndex == revOne){
-          itext.insert(i, "~r");
-          i+=2; // Steps ahead over the ~r, we move a total of 3 since we'll count the current itext[i] twice if we only more two
-        }
-        if(realIndex == revTwo){
-          itext.insert(i, "~r");
-          i+=2; // ditto
-        }
       }
     }
     paint_text->append(itext.mid(lastp, i-lastp));
@@ -175,12 +175,9 @@ void ircListItem::setupPainterText()
   else{
     rows = 1;
     //    linewidth = fm.width(itext);
-    if(revOne > 0)
-      itext.insert(revOne, "~r");
-    if(revOne > 0 && revOne > 0)
-      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~r");
     paint_text->append(itext);
   }
+  
   linewidth = parent_lb->width()-35; // set out width to the parent width.
   totalheight =  rows*(lineheight) + 2;
 
@@ -256,8 +253,8 @@ void ircListItem::setupPainterText()
   }
 
   if(revOne != -1 || revTwo != -1){
-    debug("itext: %s", itext.data());
-    debug("rtext: %s", rtext.data());
+//    debug("itext: %s", itext.data());
+//    debug("rtext: %s", rtext.data());
 
   }
 }
@@ -284,10 +281,6 @@ QString ircListItem::getRev(){
        revTwo == -1)
       return QString();
     QString seltext = rtext;
-    seltext.detach();
-    seltext.replace(QRegExp("[~\003][0-9]+,*[0-9]*"), "");
-    seltext.replace(QRegExp("[~][burci]"), ""); // Doesn't work for escaped things well
-    seltext.replace(QRegExp("~~"), "~");
     if(revOne < revTwo)
       return seltext.mid(revOne, revTwo - revOne);
     else

@@ -3,6 +3,7 @@
 
 #include <qpainter.h>
 #include <qobject.h>
+#include <qlist.h>
 
 class KSPainter 
 {
@@ -11,6 +12,7 @@ class KSPainter
   static const int maxcolour;
   static const QColor num2colour[16];
   static int colour2num(const QColor &colour);
+  static QString stripColourCodes(QString col, QList<int> *xlate = 0x0);
   
   static const QColor brown;
   static const QColor orange;

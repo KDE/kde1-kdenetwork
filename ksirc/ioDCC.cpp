@@ -281,7 +281,7 @@ void KSircIODCC::forgetFile()
 filterRuleList *KSircIODCC::defaultRules()
 {
 
-  filterRule *fr;
+//  filterRule *fr;
   filterRuleList *frl = new  filterRuleList();
   frl->setAutoDelete(TRUE);
   /*

@@ -34,3 +34,4 @@ private:
 extern objFinder *objFind;
 
 #endif
+

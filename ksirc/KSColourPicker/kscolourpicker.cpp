@@ -34,8 +34,8 @@ kscolourpicker::kscolourpicker
 
   if(kSircConfig->colour_background == 0){
      kConfig->setGroup("Colours");
-     kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Backgr
-ound", new QColor(colorGroup().mid())));
+     kSircConfig->colour_background = 
+       new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
   }
  
   {

@@ -2,7 +2,7 @@
 
 #include <qlayout.h>
 
-KSPrefs::KSPrefs(QWidget * parent=0, const char * name=0)
+KSPrefs::KSPrefs(QWidget * parent, const char * name)
   : QDialog(parent, name)
 {
   setCaption("kSirc Prefrences");

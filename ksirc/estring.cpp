@@ -28,3 +28,4 @@ int EString::find ( const QRegExp &exp, int index ) const throw(estringOutOfBoun
     throw(estringOutOfBounds(*this, ret));
   return ret;
 }
+

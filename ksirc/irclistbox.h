@@ -82,5 +82,6 @@ class KSircListBox : public QListBox
    * If we are selection this is true. otherwise it's false
    */
   bool selectMode;
+  QPoint spoint; // Start point
 
 };

@@ -92,3 +92,4 @@ private:
 };
 
 #endif KSTICKER_H
+

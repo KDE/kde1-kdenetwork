@@ -496,7 +496,7 @@ void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
    * 1k is pretty safe since KProcess returns 1 k blocks, and lines don't get split between reads. This is emprical
    */
   char modes[1024], args[1024], channel[101]; // Modes holds list of modes
-  char *next_arg, *next_token;
+  char *next_arg; //, *next_token;
   int found = 0;
   
   if(string.find("for user") >= 0)

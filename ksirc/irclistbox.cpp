@@ -212,20 +212,16 @@ void KSircListBox::updateTableSize()
 }
 
 void KSircListBox::mousePressEvent(QMouseEvent *me){
-  int srow, sline, schar;
-  ircListItem *sit;
-  if(!xlateToText(me->x(), me->y(),&srow, &sline, &schar, &sit))
-    return;
-  sit->setRevOne(schar);
-  sit->setRevTwo(schar+1);
-  sit->updateSize();
-  repaint(true);
+  selectMode = FALSE;
+  spoint.setX(me->x());
+  spoint.setY(me->y());
   cerr << "Mouse press event!\n";
-  selectMode = TRUE;
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   cerr << "Mouse release event!\n";
+  if(selectMode == FALSE)
+    return;
   selectMode = FALSE;
   int row, line, rchar;
   ircListItem *it;
@@ -236,24 +232,48 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   it->setRevOne(-1);
   it->setRevTwo(-1);
   it->updateSize();
-  repaint(true);
-
+  updateItem(row, TRUE);
 
 }
 
 void KSircListBox::mouseMoveEvent(QMouseEvent *me){
-  int row, line, rchar;
+  int srow = -1, sline = -1, schar = -1;
+  int row = -2, line = -2, rchar = -2;
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
     return;
+  debug("rchar: %d", rchar);
+  if(selectMode == FALSE){
+    int xoff, yoff;
+    xoff = me->x() - spoint.x() > 0 ? me->x() - spoint.x() : spoint.x() - me->x();
+    yoff = me->y() - spoint.y() > 0 ? me->y() - spoint.y() : spoint.y() - me->y();
+    if(!(xoff > 5 || yoff > 5))
+      return;
+    ircListItem *sit;
+    if(!xlateToText(spoint.x(), spoint.y(),&srow, &sline, &schar, &sit)){
+      spoint.setX(me->x());
+      spoint.setY(me->y());
+      
+      return;
+    }
+    sit->setRevOne(schar);
+    selectMode = TRUE;
+  }
+//  if(schar == rchar)
+//    rchar++;
   it->setRevTwo(rchar);
   it->updateSize();
-  updateItem(row, TRUE);
+  updateItem(row, FALSE);
 }
 
 bool KSircListBox::xlateToText(int x, int y,
                                int *rrow, int *rline, int *rchar, ircListItem **rit){
   int row, line;
+  int top; // Index of top item in list box.
+  int lineheight; // Height in Pixels for each line
+  QString sline; // s line == sample line
+  QList<int> c2noc; // Conversion table for colour numbers to "no colour" numbers
+  
   if(x < 0)
     x = 0;
   else if(x > width())
@@ -262,10 +282,10 @@ bool KSircListBox::xlateToText(int x, int y,
     y = 0;
   else if(y > height())
     y = height();
-  cerr << "Selected: " << selectMode << " x: " << x << " y: " << y << endl;
-  int top = topItem();
+//  cerr << "Selected: " << selectMode << " x: " << x << " y: " << y << endl;
+  top = topItem();
   setTopItem(top);
-  int lineheight = fontMetrics().lineSpacing();
+  lineheight = fontMetrics().lineSpacing();
   int yoff = y;
   if(item(top) == 0x0)
     return FALSE;
@@ -277,26 +297,26 @@ bool KSircListBox::xlateToText(int x, int y,
   for(line = 0; yoff > lineheight; line++) {
     yoff -= lineheight;
   }
-  cerr << "Row: " << row << " Line: " << line << endl;
+//  cerr << "Row: " << row << " Line: " << line << endl;
   ircListItem *it = (ircListItem *) item(row);
   if(it == 0x0){
     warning("Row out of range: %d", row);
     return FALSE;
   }
-  cerr << "Line: " << it->paintText()->at(line) << endl;
-  QString sline = it->paintText()->at(line);
+//  cerr << "Line: " << it->paintText()->at(line) << endl;
+  
+  sline = KSPainter::stripColourCodes(it->paintText()->at(line), &c2noc);
   if(sline.isNull()){
     warning("No such line: %d", line);
     return FALSE;
   }
+  
   QFontMetrics fm = fontMetrics();
   int xoff = x, cchar = 0;
   if(it->pixmap() != 0x0)
     xoff -= (it->pixmap()->width() + 5);
-  sline.replace(QRegExp("[~\003][0-9]+,*[0-9]*"), "");
-  sline.replace(QRegExp("~[burci]"), ""); // Doesn't work for escaped things well
-  sline.replace(QRegExp("~~"), "~");
-  cerr << "Line: " << sline << endl;
+
+//  cerr << "Line: " << sline << endl;
   for(;  xoff > fm.width(sline[0]); cchar++){
     xoff -= fm.width(sline[0]);
     sline.remove(0, 1);
@@ -304,13 +324,16 @@ bool KSircListBox::xlateToText(int x, int y,
       return FALSE;
   }
   // Give abolute pos from start of the line
-  for(int l = line-1;  l >= 0; l --){
-    cchar += strlen(it->paintText()->at(line));
+  for(int l = line-1;  l > 0; l --){
+    cchar += KSPainter::stripColourCodes(it->paintText()->at(l)).length();
   }
-  cerr << "On char: " << sline[0] << " Index: " << cchar << endl;
+  //  cerr << "On char: " << sline[0] << " Index: " << cchar << endl;
   *rrow = row;
-  *rchar = cchar;
+  if(!c2noc.at(cchar))
+    return FALSE;
+  *rchar = *(c2noc.at(cchar)); // Convert to character offset with colour codes.
   *rline = line;
   *rit = it;
   return TRUE;
 }
+
