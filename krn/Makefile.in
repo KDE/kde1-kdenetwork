@@ -24,9 +24,6 @@ INSTALL_DIR_PRIVATE = $(install) -d -m 0700
 prefix = @prefix@
 KDEINC = $(prefix)/include
 BINDIR = $(prefix)/bin
-LIBDIR = $(prefix)/lib
-PICSDIR = $(LIBDIR)/pics/krn
-APPSDIR = $(prefix)/share/applnk
 
 ########### File Formats ###########
 
@@ -173,7 +170,7 @@ all: Makefile depend $(TARGET)
 #	$(INSTALL_DIR) $(LIBDIR)/pics
 
 Makefile: Makefile.in
-	cd .. && ONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+	cd .. && CONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 $(TARGET): $(METASRC) $(SRCMETA) $(OBJECTS) 
 	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
@@ -186,9 +183,11 @@ distclean: clean
 	rm -f Makefile
 
 install: all
+	$(INSTALL_DIR) $(prefix)/share/icons
 	$(INSTALL_DATA) krn.xpm $(prefix)/share/icons
 	$(INSTALL_DIR) $(BINDIR)
 	$(INSTALL) $(TARGET) $(BINDIR)
+	$(INSTALL_DIR) $(prefix)/share/applnk
 	$(INSTALL_DATA) Krn.kdelnk $(prefix)/share/applnk
 	(cd pics && $(MAKE) install)
 	(cd docs && $(MAKE) install)
