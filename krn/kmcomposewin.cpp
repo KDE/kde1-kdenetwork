@@ -803,7 +803,7 @@ void KMComposeView::resizeEvent(QResizeEvent *)
 KMComposeWin::~KMComposeWin()
 {
     setCaption(nls->translate("Composer"));
-    saveProperties (false);
+    // saveProperties (false); Kalle: no longer needed
 }
 
 //-----------------------------------------------------------------------------
@@ -812,7 +812,7 @@ KMComposeWin::KMComposeWin(QWidget *, const char *name, QString emailAddress,
 KTopLevelWidget(name)
 {
     setCaption(nls->translate("Composer"));
-    readProperties ();
+    // readProperties (); Kalle: no longer needed
     
     parseConfiguration();
     

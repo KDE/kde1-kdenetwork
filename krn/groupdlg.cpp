@@ -211,7 +211,7 @@ Groupdlg::Groupdlg
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
 
-    readProperties();
+    // readProperties(); Kalle: no longer needed
 
     show();
     qApp->processEvents();
@@ -221,7 +221,7 @@ Groupdlg::Groupdlg
 Groupdlg::~Groupdlg ()
 {
     debug ("saving groupdlg's properties");
-    saveProperties(false);
+//    saveProperties(false); // Kalle: No longer needed
     QStrList openwin;
     //check for all open groups, and close them
     for (NewsGroup *g=groups.first();g!=0;g=groups.next())

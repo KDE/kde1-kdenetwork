@@ -42,7 +42,6 @@ OBJECTS = 	main.o\
 		groupdlg.o\
 		artdlg.o\
 		kmessage.o\
-		ktablistbox.o\
 		kmmessage.o\
 		newsgroup.o\
 		kstrtable.o\
@@ -85,7 +84,6 @@ METASRC =	groupdlg.moc \
                 kdecode.moc\
                 aboutDlg.moc\
                 fontsDlg.moc\
-                ktablistbox.moc\
                 kmfolder.moc\
                 kmfoldernode.moc\
                 kmcomposewin.moc\
@@ -100,7 +98,6 @@ SOURCES = 	main.cpp\
 		groupdlg.cpp\
 		artdlg.cpp\
 		kmessage.cpp\
-		ktablistbox.cpp\
 		kmmessage.cpp\
                 newsgroup.cpp\
                 kstrtable.cpp\
@@ -135,7 +132,6 @@ HEADERS = 	NNTP.h\
                 kmmessage.h\
 		artdlg.h\
                 groupdlg.h\
-                ktablistbox.h\
                 kmessage.h\
                 kstrtable.h\
                 asker.h\
