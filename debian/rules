@@ -16,6 +16,7 @@ $(BUILDDIR)/build:
 	cd $(BUILDDIR) ;\
 	CFLAGS="-O2 -g -Wall" \
 	 CXXFLAGS="-O2 -g -Wall" \
+	DO_NOT_COMPILE="ksirc" \
 	$$pwd/configure --enable-debug --with-install-root=`pwd`/debian/tmp \
 	--disable-rpath \
 	--includedir="\$$(prefix)/include/kde" \
