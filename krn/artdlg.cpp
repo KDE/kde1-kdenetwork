@@ -64,6 +64,7 @@
 #define NO_LOCKED 19
 #define POSTANDMAIL 20
 #define FORWARD 21
+#define POST 22
 
 extern QString pixpath,cachepath;
 
@@ -100,6 +101,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("Save",SAVE_ARTICLE);
     article->insertSeparator();
     article->insertItem("Print",PRINT_ARTICLE);
+    article->insertItem("Post New Article",POST);
     article->insertItem("Reply by Mail",REP_MAIL);
     article->insertItem("Post Followup",FOLLOWUP);
     article->insertItem("Post & Reply",POSTANDMAIL);
@@ -152,6 +154,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     tool->insertButton(pixmap,PRINT_ARTICLE,true,"Print Article");
     tool->insertSeparator ();
     
+    pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
+    tool->insertButton (pixmap, POST, true, "Post New Article");
+
     pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
     tool->insertButton (pixmap, REP_MAIL, true, "Reply by Mail");
 
@@ -497,6 +502,12 @@ bool Artdlg::actions (int action)
 
         {
             messwin->slotVertAddLine();
+            break;
+        }
+    case POST:
+        {
+            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->data(),false);
+            comp->show();
             break;
         }
     case FOLLOWUP:
