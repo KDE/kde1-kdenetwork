@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -949,7 +949,7 @@ msgstr "Liitä tiedosto"
 msgid "Include File"
 msgstr "Liitä tiedosto"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Näytä..."
 
@@ -957,7 +957,7 @@ msgstr "Näytä..."
 msgid "Save..."
 msgstr "Tallenna..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "&Ominaisuudet..."
 
@@ -965,7 +965,7 @@ msgstr "&Ominaisuudet..."
 msgid "Attach..."
 msgstr "Liite..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Näytä Liitteet: "
 
@@ -1067,36 +1067,36 @@ msgstr "Vastaa: "
 msgid "Groups: "
 msgstr "Uutisryhmät: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Salattu viesti"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "En voi purkaa viestiä:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Viestin allekirjoitti"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Liitteet: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "En voinut luoda väliaikaistiedostoa"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "En saanut tallennettua väliaikaistiedostoa %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "En saanut tallennettua tiedostoa"
 

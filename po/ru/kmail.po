@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail 0.7.9\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-09-14 15:00+0800\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -963,7 +963,7 @@ msgstr "Подцепить файл"
 msgid "Include File"
 msgstr "Вставить файл"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Просмотреть..."
 
@@ -971,7 +971,7 @@ msgstr "Просмотреть..."
 msgid "Save..."
 msgstr "Сохранить..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Свойства..."
 
@@ -979,7 +979,7 @@ msgstr "Свойства..."
 msgid "Attach..."
 msgstr "Подцепить..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Просмотр подцепления: "
 
@@ -1082,36 +1082,36 @@ msgstr "Обратный адрес: "
 msgid "Groups: "
 msgstr "Группы: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Шифрованное сообщение"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Невозможно дешифровать сообщение:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Сообщение было подписано"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Предупреждение: Плохая подпись"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Подцепление: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Ошибка создания временнного файла"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Ошибка сохранения временного файла %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Ошибка сохранения файла"
 

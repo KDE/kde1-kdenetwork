@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-10-29 19:33+0100\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv\n"
@@ -959,7 +959,7 @@ msgstr "Bifoga fil"
 msgid "Include File"
 msgstr "Infoga fil"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Visa..."
 
@@ -967,7 +967,7 @@ msgstr "Visa..."
 msgid "Save..."
 msgstr "Spara..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Egenskaper..."
 
@@ -975,7 +975,7 @@ msgstr "Egenskaper..."
 msgid "Attach..."
 msgstr "Bifoga..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Visa bilaga: "
 
@@ -1077,36 +1077,36 @@ msgstr "Svara till:"
 msgid "Groups: "
 msgstr "Grupper:"
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Kryptera meddelande"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Kan inte dekryptera meddelande:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Meddelandet var signerat av"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Varning: Felaktig signatur av"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Bilaga:"
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Kan inte skapa temporär fil"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Kan inte spara temporära filen %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Kan inte spara filen"
 

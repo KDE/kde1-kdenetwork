@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-02-25 22:31 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -962,7 +962,7 @@ msgstr "Joindre un fichier"
 msgid "Include File"
 msgstr "Insérer un fichier"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Afficher..."
 
@@ -970,7 +970,7 @@ msgstr "Afficher..."
 msgid "Save..."
 msgstr "Enregistrer..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Propriétés..."
 
@@ -978,7 +978,7 @@ msgstr "Propriétés..."
 msgid "Attach..."
 msgstr "Joindre..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Afficher les pièces jointes :"
 
@@ -1083,36 +1083,36 @@ msgstr "Répondre à : "
 msgid "Groups: "
 msgstr "Groupes : "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Message chiffré"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Déchiffrage du message impossible :"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Le message a été signé par"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Attention : mauvaise signature de"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Pièces jointes : "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Impossible de créer un fichier temporaire"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Impossible d'enregistrer le fichier temporaire %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Impossible d'enregistrer le fichier"
 

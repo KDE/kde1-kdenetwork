@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -955,7 +955,7 @@ msgstr "Pøilo¾it soubor"
 msgid "Include File"
 msgstr "Vlo¾it soubor"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Pohled..."
 
@@ -963,7 +963,7 @@ msgstr "Pohled..."
 msgid "Save..."
 msgstr "Ulo¾it..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Vlastnosti..."
 
@@ -971,7 +971,7 @@ msgstr "Vlastnosti..."
 msgid "Attach..."
 msgstr "Pøilo¾it..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Zobrazit pøílohu: "
 
@@ -1074,36 +1074,36 @@ msgstr "Odpovìdìt autorovi: "
 msgid "Groups: "
 msgstr "Diskuzní skupiny: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Za¹ifrovaná zprávu"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Není mo¾né dekódovat zprávu:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Zpráva byla podepsána"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Pozor: Vadný podpis od"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Pøíloha: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Není mo¾né vytvoøit doèasný soubor"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Není mo¾né ulo¾it doèasný soubor %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Není mo¾né ulo¾it soubor"
 

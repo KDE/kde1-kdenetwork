@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
@@ -968,7 +968,7 @@ msgstr "Ataºeazã fiºier"
 msgid "Include File"
 msgstr "&Insereazã fiºier"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "View..."
 
@@ -976,7 +976,7 @@ msgstr "View..."
 msgid "Save..."
 msgstr "Salveazã..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Proprietãþi..."
 
@@ -984,7 +984,7 @@ msgstr "Proprietãþi..."
 msgid "Attach..."
 msgstr "Ataºeazã..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "View ataºament: "
 
@@ -1087,36 +1087,36 @@ msgstr "Rãspunde la: "
 msgid "Groups: "
 msgstr "Newsgroups: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Mesaj encrypted"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Nu pot sã decryptez mesajul:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Mesajul a fost semnat la"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Warning: Bad signature from"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Ataºament: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Nu pot sã creez fiºier temporar"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Nu pot sã salvez fiºierul temporar %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Nu pot sa salvez fiºierul"
 

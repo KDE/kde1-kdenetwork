@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -970,7 +970,7 @@ msgstr "Προσθήκη αρχείου ως συνημμένου"
 msgid "Include File"
 msgstr "Εισαγωγή αρχείου"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Προβολή..."
 
@@ -978,7 +978,7 @@ msgstr "Προβολή..."
 msgid "Save..."
 msgstr "Αποθήκευση..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Ιδιότητες..."
 
@@ -986,7 +986,7 @@ msgstr "Ιδιότητες..."
 msgid "Attach..."
 msgstr "Προσθήκη συνημμένου..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Προβολή συνημμένου: "
 
@@ -1091,36 +1091,36 @@ msgstr "Απάντηση προς: "
 msgid "Groups: "
 msgstr "Ομάδες: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Κρυπτογραφημένο μήνυμα"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Δεν μπορώ να αποκρυπτογραφήσω το μήνυμα:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Το μήνυμα είναι υπογεγραμμένο από"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Προσοχή: ’κυρη υπογραφή από"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Συνημμένο: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Δεν μπορώ να δημιουργήσω προσωρινό αρχείο"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Δεν μπορώ να αποθηκεύσω το προσωρινό αρχείο %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Δεν μπορώ να αποθηκεύσω το αρχείο"
 

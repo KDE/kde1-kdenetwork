@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -1035,7 +1035,7 @@ msgstr "File csatolása"
 msgid "Include File"
 msgstr "File &beszúrása"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 #, fuzzy
 msgid "View..."
 msgstr "Nézet..."
@@ -1045,7 +1045,7 @@ msgstr "Nézet..."
 msgid "Save..."
 msgstr "Át&helyez..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 #, fuzzy
 msgid "Properties..."
 msgstr "Tulajdonságok..."
@@ -1055,7 +1055,7 @@ msgstr "Tulajdonságok..."
 msgid "Attach..."
 msgstr "Csatolás..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 #, fuzzy
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
@@ -1168,39 +1168,39 @@ msgstr "Válasz másik címre: "
 msgid "Groups: "
 msgstr "Csoportok: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 #, fuzzy
 msgid "Encrypted message"
 msgstr "Kódolt üzenet"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Az üzenet nem dekódolható:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Üzenet aláírója:"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 #, fuzzy
 msgid "Attachment: "
 msgstr "Csatolt file: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 #, fuzzy
 msgid "Could not create temporary file"
 msgstr "Ideiglenes file nem hozható létre"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "%s nevû deiglenes file-ba nem lehet menteni"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "File-ba mentés nem sikerült"
 

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-10-18 15:38+0200\n"
 "Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
 
@@ -948,7 +948,7 @@ msgstr "Adjuntar Archivo"
 msgid "Include File"
 msgstr "Incluír Archivo"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Ver..."
 
@@ -956,7 +956,7 @@ msgstr "Ver..."
 msgid "Save..."
 msgstr "Guardar..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Propiedades..."
 
@@ -964,7 +964,7 @@ msgstr "Propiedades..."
 msgid "Attach..."
 msgstr "Adjuntar..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Ver Adjuntos: "
 
@@ -1067,36 +1067,36 @@ msgstr "Reply to: "
 msgid "Groups: "
 msgstr "Grupos de noticias: "
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Mensaje encriptado"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "No se pudo desencriptar mensaje:"
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Mensaje firmado por"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Advertencia: Firma del emisor errónea"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Adjuntos: "
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "No se pudo crear archivo temporal"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "No se pudo guardar archivo temporal %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "No se pudo guardar archivo"
 

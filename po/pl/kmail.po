@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"POT-Creation-Date: 1998-11-09 02:23+0100\n"
 "PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -974,7 +974,7 @@ msgstr "Za³±cz plik"
 msgid "Include File"
 msgstr "Wstaw &plik..."
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Widok..."
 
@@ -982,7 +982,7 @@ msgstr "Widok..."
 msgid "Save..."
 msgstr "Zapisz..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "W³a¶ciwo¶ci..."
 
@@ -990,7 +990,7 @@ msgstr "W³a¶ciwo¶ci..."
 msgid "Attach..."
 msgstr "Za³±cz..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Poka¿ za³±czniki: "
 
@@ -1095,36 +1095,36 @@ msgstr "Adres zwrotny: "
 msgid "Groups: "
 msgstr "Grupy dyskusyjne:"
 
-#: kmreaderwin.cpp:423
+#: kmreaderwin.cpp:424
 msgid "Encrypted message"
 msgstr "Wiadomo¶æ zaszyfrowana"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:430
 msgid "Cannot decrypt message:"
 msgstr "Nie mo¿na odszyfrowaæ wiadomo¶ci: "
 
-#: kmreaderwin.cpp:447
+#: kmreaderwin.cpp:439
 msgid "Message was signed by"
 msgstr "Wiadomo¶æ zosta³a podpisana przez"
 
-#: kmreaderwin.cpp:448
+#: kmreaderwin.cpp:440
 msgid "Warning: Bad signature from"
 msgstr "Ostrzerzenie: Z³y podpis od"
 
-#: kmreaderwin.cpp:670
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Za³±cznik:"
 
-#: kmreaderwin.cpp:782
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Nie mo¿na utworzyæ pliku tymczasowego"
 
-#: kmreaderwin.cpp:803
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Nie mo¿na zapisaæ pliku tymczasowego %s"
 
-#: kmreaderwin.cpp:832
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Nie mo¿na zapisaæ pliku"
 
