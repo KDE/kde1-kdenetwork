@@ -61,7 +61,6 @@ Article::Article (const char *_ID)
     refsLoaded=false;
     Refs.setAutoDelete(true);
     ID=_ID;
-    lastAccess=0;
     load();
 }
 
@@ -76,7 +75,6 @@ Article::Article(void)
     threadDepth=0;
     expire=true;  // robert's cache stuff
     refsLoaded=false;
-    lastAccess=0;
     Refs.setAutoDelete(true);
 }
 
@@ -201,7 +199,7 @@ void Article::save()
         _content+="0\n";
     
     QString tt;
-    tt.setNum(lastAccess);
+    tt.setNum(time(NULL));
     _content+=tt;
     _content+="\n";
     
@@ -227,7 +225,7 @@ void Article::save()
     }
     
 }
-void Article::load()
+bool Article::load()
 //gets the article info and data from the cache
 {
     QStrList tl;
@@ -246,7 +244,7 @@ void Article::load()
     if (!content.dptr)
     {
         debug ("couldn't load");
-        return; //Couldn't load it
+        return false; //Couldn't load it
     }
     
     QString s=(char *)content.dptr;
@@ -288,8 +286,6 @@ void Article::load()
     else
         ismarked=false;
     
-    lastAccess=atoi(tl.at(8));
-    
     for (unsigned int i=9;i<tl.count();i++)
     {
         if(0<strlen(tl.at(i)))
@@ -299,6 +295,7 @@ void Article::load()
     }
     free (content.dptr);
     refsLoaded=true;
+    return true;
 }
 
 int Article::score()
@@ -439,8 +436,10 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
     {
         Article *art=new Article();
         art->ID=ID;
-        art->load();
-        artList.append(art);
+        if(art->load())
+            artList.append(art);
+        else
+            delete art;
     }
 }
 

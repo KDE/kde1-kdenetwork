@@ -199,6 +199,8 @@ int main( int argc, char **argv )
 
     gdbm_reorganize(artdb);
     gdbm_reorganize(old_artdb);
+    gdbm_sync(artdb);
+    gdbm_sync(old_artdb);
     gdbm_close(artdb);
     gdbm_close(old_artdb);
     unlink((krnpath+"krn_lock").data());
@@ -323,6 +325,97 @@ void expireCache()   // robert's cache stuff
         }
     }
     delete files;
+
+    datum key,nextkey;
+    datum content;
+    int index;
+    
+    QStrList tl;
+    tl.setAutoDelete(true);
+    QString t,s;
+
+    time_t threshold;
+
+    // Expire old articles
+    conf->setGroup("Cache");
+    threshold=time(NULL)-24*60*conf->readNumEntry("ExpireReadHeaders",5);
+    debug ("threshold->%ld",threshold);
+    key= gdbm_firstkey(old_artdb);
+    while (key.dptr)
+    {
+        nextkey=gdbm_nextkey (old_artdb,key);
+
+        content=gdbm_fetch(old_artdb,key);
+        s=(char *)content.dptr;
+
+        while (1)
+        {
+            index=s.find("\n");
+            if (index==-1)
+            {
+                tl.append(s);
+                break;
+            }
+            t=s.left (index);
+            s=s.right(s.length()-index-1);
+            if (t.isEmpty())
+                continue;
+            tl.append (t.data());
+        }
+        
+        time_t lastAccess=atoi(tl.at(8));
+        debug ("%ld",lastAccess);
+
+        if (threshold>lastAccess)
+        {
+            debug ("deleting");
+            gdbm_delete(old_artdb,key);
+            free (key.dptr);
+        }
+
+        tl.clear();
+        key=nextkey;
+    }
+
+    // Expire new articles
+
+    conf->setGroup("Cache");
+    threshold=time(NULL)-24*60*conf->readNumEntry("ExpireUnreadHeaders",5);
+    debug ("threshold->%ld",threshold);
+    key= gdbm_firstkey(artdb);
+    while (key.dptr)
+    {
+        nextkey=gdbm_nextkey (artdb,key);
+
+        content=gdbm_fetch(artdb,key);
+        s=(char *)content.dptr;
+
+        while (1)
+        {
+            index=s.find("\n");
+            if (index==-1)
+            {
+                tl.append(s);
+                break;
+            }
+            t=s.left (index);
+            s=s.right(s.length()-index-1);
+            if (t.isEmpty())
+                continue;
+            tl.append (t.data());
+        }
+        
+        time_t lastAccess=atoi(tl.at(8));
+        
+        if (threshold>lastAccess)
+        {
+            debug ("deleting");
+            gdbm_delete(artdb,key);
+            free (key.dptr);
+        }
+        tl.clear();
+        key=nextkey;
+    }
 }
 
 

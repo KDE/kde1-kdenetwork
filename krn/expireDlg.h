@@ -16,6 +16,8 @@ public slots:
 private:
     KIntLineEdit *bodies;
     KIntLineEdit *headers;
+    KIntLineEdit *bodies2;
+    KIntLineEdit *headers2;
 };
 
 #endif

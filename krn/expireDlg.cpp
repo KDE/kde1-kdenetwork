@@ -42,12 +42,19 @@ ExpireDlg::ExpireDlg() :
 
     l->addGroup("entries","",true);
 
+    l->skip();
+    l->addLabel("l2",klocale->translate("Read:"));
+    l->addLabel("l2",klocale->translate("Unread:"));
+    l->newLine();
+    
     l->addLabel("l2",klocale->translate("Article Bodies:"));
-    bodies=(KIntLineEdit *)(l->addIntLineEdit("bodies",conf->readEntry("ExpireBodies","5"),3)->widget);
+    bodies=(KIntLineEdit *)(l->addIntLineEdit("bodies",conf->readEntry("ExpireReadBodies","5"),3)->widget);
+    bodies2=(KIntLineEdit *)(l->addIntLineEdit("bodies2",conf->readEntry("ExpireUnreadBodies","5"),3)->widget);
     l->newLine();
 
     l->addLabel("l3",klocale->translate("Article Headers:"));
-    headers=(KIntLineEdit *)(l->addIntLineEdit("headers",conf->readEntry("ExpireHeaders","5"),3)->widget);
+    headers=(KIntLineEdit *)(l->addIntLineEdit("headers",conf->readEntry("ExpireReadHeaders","5"),3)->widget);
+    headers2=(KIntLineEdit *)(l->addIntLineEdit("headers2",conf->readEntry("ExpireUnreadHeaders","5"),3)->widget);
     l->newLine();
 
     l->endGroup();
@@ -69,8 +76,10 @@ ExpireDlg::ExpireDlg() :
 void ExpireDlg::save()
 {
     conf->setGroup("Cache");
-    conf->writeEntry("ExpireBodies",bodies->text());
-    conf->writeEntry("ExpireHeaders",headers->text());
+    conf->writeEntry("ExpireReadBodies",bodies->text());
+    conf->writeEntry("ExpireReadHeaders",headers->text());
+    conf->writeEntry("ExpireUnreadBodies",bodies2->text());
+    conf->writeEntry("ExpireUnreadHeaders",headers2->text());
     accept();
 }
 
