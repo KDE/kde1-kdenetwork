@@ -8,8 +8,8 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/faure@kde.org/
-<date>Version 0.9.0, November 11, 1998
-<abstract>This Handbook describes ktalkd Version 0.9.0
+<date>Version 0.9.0, November 14, 1998
+<abstract>This handbook describes ktalkd version 0.9.0
 
 <!-- Table of contents -->
 <toc>
@@ -19,10 +19,10 @@
 <sect>Introduction
 <p>
 
-<tt/ktalkd/ is an enhanced talk daemon - the program that handles incoming talk requests,
-announces them and lets you respond to it with a talk client.
-GLOSSARY : In those pages, if somebody wants to talk to you, you are designated
-as the "callee".
+<tt/ktalkd/ is an enhanced talk daemon - a program to handle incoming talk requests,
+announce them and allow you to respond to it using a talk client.
+GLOSSARY : In this document, if somebody wants to talk to you, you are 
+designated as the "callee".
 
 <tt/ktalkd/ has the following features :
 
@@ -30,11 +30,12 @@ as the "callee".
 <tag/KDE or not KDE/
 That is the question. :) More seriously, this means that
 <tt/ktalkd/ is able to be compiled with or without KDE support.
-To use without KDE, the compilation stage will detect if X or Qt or KDE is not installed,
-but you can force a non-KDE daemon if you use the configure option '--without-X'.
+To use it without KDE, the compilation stage will detect if X or Qt 
+or KDE is not installed, but you can force a non-KDE daemon if you 
+use the configure option '--without-X'.
 
 <tag/Answering machine/
-If the callee isn't loggued, or doesn't answer after
+If the callee isn't logged on, or doesn't answer after
 the second announcement, an answering machine is launched, takes the
 message, and mails it to the callee.
 
@@ -52,15 +53,15 @@ If you are logged remotely (e.g. with an
 <tt/"export DISPLAY=..."/ command), the X announcement will be made on
 this display too. Answer on the one you want !
 If you're also logged in a text terminal, and if you're NOT using xterms
-(internal restriction), then you'll see a text announce too, in case you're
-using the text terminal at the time of the announce.
+(internal restriction), then you'll see a text announcement too, in case 
+you're using the text terminal at the time of the announcement.  
 
 <tag/Forwarding   <it/(New since 0.8.0)//
 You can set up a forward to another user even to another host
 if you're away. There are 3 different forwarding methods. See section 'Usage'.
 
 <tag/Configuration/
-If KDE-compiled, it reads config from KDE config files,
+If ktalkd is compiled for KDE, it reads config from KDE config files,
 the sitewide ($KDEDIR/share/config/ktalkdrc) and the user one, in its home directory.
 The sitewide one has to be manually edited by the administrator, but there is now
 a configuration dialog for the user one. It's called <bf/kcmktalkd/ and can 
@@ -70,10 +71,11 @@ On non-KDE systems, <tt/ktalkd/ will read /etc/talkd.conf.
 <tag/Internationalization/
 Under KDE, the announcement will be in your language provided that
 you set it in the KDE menus and that someone translated <bf/ktalkdlg/ to your
-language. Same for the configuration dialog, <bf/kcmktalkd/.
+language. The same goes for the configuration dialog, <bf/kcmktalkd/.
 
 <tag/Support for otalk and ntalk   <it/(New since 0.8.1)//
-ktalkd now supports both protocols, even when forwarding. ktalk supports both too.
+ktalkd now supports both protocols, even when forwarding. 
+ktalk supports both protocols as well.
 </descrip>
 
 <p>I hope you will enjoy this talk daemon,
@@ -165,13 +167,13 @@ Not much to say about ktalkd : it is a daemon. No user interface for it.
 <p>The configuration dialog should be rather straight forward, except for setting up a
 forward to another user (or even to another host).
 
-<sect1>Choosing a forward method
+<sect1>Choosing a forwarding method
 <p>
 None is perfect, they all have pros (+) and cons (-).
 
 <p><bf/FWA/ : Forward announcement only. Direct connection. Not recommended.
 <itemize>
-<item>       (+) You know who is the caller, but
+<item>       (+) You know who the caller is, but
 <item>       (-) Caller will have to respond to an announcement from you. Annoying.
 <item>       (-) Don't use if you have an answering machine on your 'away' location.
   (The answering machine can't popup an announcement, it would be confusing!)
@@ -179,12 +181,12 @@ None is perfect, they all have pros (+) and cons (-).
 <p><bf/FWR/ : Forward all requests, changing info when necessary. Direct connection.
 <itemize>
 <item>       (+) Caller won't know that you're away, but
-<item>       (-) You won't really know who's the caller - only his username, 
+<item>       (-) You won't really know who the caller is - only his username, 
 (so you might see "talk from Wintalk@my_host")
 </itemize>
 <p><bf/FWT/ : Forward all requests and take the talk. No direct connection.
 <itemize>
-<item>       (+) Same as above, but works also if you and caller can't be in
+<item>       (+) Same as above, but also works if you and caller can't be in
 direct contact one with the other (e.g. firewall).
 <item>       (+) You'll be told who's really talking to you when you accept the talk
 <item>       (-) But as in FWR, you won't know his machine name in the announcement
@@ -202,7 +204,7 @@ You can bypass the limitation by adding two lines in xdm config files
 Note : the S.u.S.E linux distribution includes those lines by default.
 
 <p>
-Those config files are situated in a directory such as /etc/X11/xdm,
+Those config files are normally in a directory such as /etc/X11/xdm,
 or /usr/X11R6/lib/X11/xdm on other systems. The following supposes
 that they are in /etc/X11/xdm, so you might have to translate them
 for another directory.
@@ -236,7 +238,7 @@ thing to do. It's not up to kvt, nor xterm, to log the user, but to
 xdm and kdm, in my opinion. However, this will not log the user as a X 
 user when using startx... Any hint about that ?
 
-<sect1>Why don't I, as a normal user, receive KDE announcements ?
+<sect1>Why Don't I, as a Normal User, Receive KDE Announcements ?
 <p>
 If you're running a linux system (with /proc enabled), this behaviour is a
 bug. Please send me a description of it so that I correct it.</p>
@@ -249,7 +251,7 @@ The solution is the same as in section 5.1, provided that you run kdm
 or xdm to log into X.
 Another solution is to make sure you always have a xterm running.
 
-<sect1>How to get debug output from ktalkd ?
+<sect1>How Do I Get Debug Output from Ktalkd ?
 <P>
 As it is a daemon, there is no debug output on standard output. To get 
 debugging output (for instance before submitting me a bug report !), update 
