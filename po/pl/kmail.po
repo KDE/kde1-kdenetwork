@@ -22,7 +22,7 @@ msgstr "Nowy folder"
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:334
 #, fuzzy
 msgid "KMail error"
-msgstr "Powa¿ny b³±d"
+msgstr "B³±d programu KMail"
 
 #: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
@@ -58,9 +58,8 @@ msgid "Confirmation"
 msgstr "Potwierdzenie"
 
 #: kmmainwin.cpp:392
-#, fuzzy
 msgid "Moved all messages into trash"
-msgstr "Usuniêto wszystkie wiadomo¶ci ¶mietnika"
+msgstr "Usuniêto wszystkie wiadomo¶ci do ¶mietnika"
 
 #: kmmainwin.cpp:412
 msgid ""
@@ -181,12 +180,11 @@ msgstr "&Drukuj..."
 
 #: kmmainwin.cpp:865
 msgid "Check Mail..."
-msgstr "&Sprawd¼ pocztê..."
+msgstr "Sprawd¼ pocztê..."
 
 #: kmmainwin.cpp:874
-#, fuzzy
 msgid "Check Mail in..."
-msgstr "Sp&rawd¼ pocztê na koncie..."
+msgstr "Sprawd¼ pocztê na koncie..."
 
 #: kmmainwin.cpp:876
 msgid "Send Queued"
@@ -257,17 +255,14 @@ msgid "Next unread"
 msgstr "Nastêpna nieprzeczytana"
 
 #: kmmainwin.cpp:931
-#, fuzzy
 msgid "&Previous"
 msgstr "&Poprzednia"
 
 #: kmmainwin.cpp:933
-#, fuzzy
 msgid "Previous unread"
 msgstr "Poprzednia nieprzeczytana"
 
 #: kmmainwin.cpp:943
-#, fuzzy
 msgid "Edi&t..."
 msgstr "&Edytuj..."
 
@@ -276,7 +271,6 @@ msgid "&Set Status"
 msgstr "&Zmieñ status"
 
 #: kmmainwin.cpp:948
-#, fuzzy
 msgid "Mar&k all"
 msgstr "Zaznacz wszystkie"
 
@@ -478,7 +472,6 @@ msgid "Message Body Font:"
 msgstr "Czcionka cia³a wiadomo¶ci"
 
 #: kmsettings.cpp:331
-#, fuzzy
 msgid "Message List Font:"
 msgstr "Czcionka listy wiadomo¶ci"
 
@@ -601,7 +594,6 @@ msgid "Message Body Font"
 msgstr "Czcionka cia³a wiadomo¶ci"
 
 #: kmsettings.cpp:596
-#, fuzzy
 msgid "Message List Font"
 msgstr "Czcionka listy wiadomo¶ci"
 
@@ -703,12 +695,10 @@ msgid "Folder is read-only."
 msgstr "Folder tylko do odczytu."
 
 #: kmheaders.cpp:264
-#, fuzzy
 msgid "Unknown"
-msgstr "Nieznany b³±d"
+msgstr "Nieznany"
 
 #: kmheaders.cpp:267
-#, fuzzy
 msgid "No Subject"
 msgstr "Brak tematu"
 
@@ -717,17 +707,14 @@ msgid "order of arrival"
 msgstr "kolejno¶ci otrzymania"
 
 #: kmheaders.cpp:336
-#, fuzzy
 msgid "subject"
 msgstr "tematu"
 
 #: kmheaders.cpp:337
-#, fuzzy
 msgid "date"
 msgstr "daty"
 
 #: kmheaders.cpp:338
-#, fuzzy
 msgid "sender"
 msgstr "nadawcy"
 
@@ -826,14 +813,12 @@ msgid "Find..."
 msgstr "Szukaj..."
 
 #: kmcomposewin.cpp:476 kmcomposewin.cpp:706
-#, fuzzy
 msgid "Replace..."
 msgstr "Zamieñ..."
 
 #: kmcomposewin.cpp:479
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Sprawdzanie pisowni"
+msgstr "&Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:486
 msgid "&Urgent"
@@ -848,12 +833,10 @@ msgid "&Confirm read"
 msgstr "Potwierd¼ prze&czytanie"
 
 #: kmcomposewin.cpp:493
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Sprawdzanie pisowni"
+msgstr "&Sprawdzanie pisowni..."
 
 #: kmcomposewin.cpp:496
-#, fuzzy
 msgid "&Charsets..."
 msgstr "Ko&dowanie..."
 
@@ -906,9 +889,8 @@ msgid "&Attach..."
 msgstr "Z&a³±cz..."
 
 #: kmcomposewin.cpp:532
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Za³±cz plik"
+msgstr "Do³±cz klucz &publiczny"
 
 #: kmcomposewin.cpp:534
 msgid "Attach My &Public Key"
@@ -927,7 +909,6 @@ msgid "&Attach"
 msgstr "Za³±czni&ki"
 
 #: kmcomposewin.cpp:568
-#, fuzzy
 msgid "Send message"
 msgstr "Wysy³anie wiadomo¶ci:"
 
@@ -936,7 +917,6 @@ msgid "Cut selection"
 msgstr "Wytnij zaznaczone"
 
 #: kmcomposewin.cpp:595
-#, fuzzy
 msgid "Copy selection"
 msgstr "Kopiuj zaznaczone"
 
@@ -945,7 +925,6 @@ msgid "Paste clipboard contents"
 msgstr "Wklej zawarto¶æ schowka"
 
 #: kmcomposewin.cpp:603
-#, fuzzy
 msgid "Attach file"
 msgstr "Za³±cz plik"
 
@@ -962,7 +941,6 @@ msgid "Column"
 msgstr "Kolumna"
 
 #: kmcomposewin.cpp:637 kmcomposewin.cpp:650
-#, fuzzy
 msgid "Line"
 msgstr "Linia"
 
@@ -983,9 +961,8 @@ msgid "Attach File"
 msgstr "Za³±cz plik"
 
 #: kmcomposewin.cpp:1214
-#, fuzzy
 msgid "Include File"
-msgstr "Wstaw &plik..."
+msgstr "Wstaw plik"
 
 #: kmcomposewin.cpp:1246
 msgid "my pgp key"
@@ -1029,7 +1006,7 @@ msgstr "Data:"
 
 #: kmcomposewin.cpp:2074
 msgid "Spellcheck - KMail"
-msgstr "Sprawdzanie pisowni - KMail"
+msgstr "Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:2100
 msgid ""
@@ -1211,7 +1188,6 @@ msgid "Unknown command line option: %s"
 msgstr "Nieznana opcja linii poleceñ: %s"
 
 #: kmacctlocal.cpp:76
-#, fuzzy
 msgid "Cannot open file:"
 msgstr "Nie mo¿na otworzyæ pliku:"
 
@@ -1440,7 +1416,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:32
-#, fuzzy
 msgid "Select folder"
 msgstr "Wybierz folder"
 
@@ -1540,9 +1515,8 @@ msgid "The pass phrase is missing."
 msgstr "Brakuje has³a PGP"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "ostrze¿enie"
+msgstr "ostrze¿enie PGP"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1622,7 +1596,6 @@ msgid "Please select the public key to insert"
 msgstr "Proszê wybraæ, który klucz publiczny nale¿y wstawiæ"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
 msgstr "Wybierz klucz"
 
@@ -1663,7 +1636,6 @@ msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr "??? (brak pliku ~/.pgp/pubring.pgp)"
 
 #: kpgpbase.cpp:590
-#, fuzzy
 msgid "The passphrase you entered is invalid."
 msgstr "Podane has³o PGP jest niew³a¶ciwe"
 
@@ -1800,9 +1772,8 @@ msgid "Could only write %d bytes of %d."
 msgstr "Mo¿na by³o zapisaæ tylko %d bajtów z %d"
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
-msgstr "powa¿ny b³±d"
+msgstr "B³±d programu KMail"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
@@ -1817,7 +1788,6 @@ msgid "Addressbook Manager"
 msgstr "Zarz±dzanie ksia¿k± adresow±"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
 msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê"
 
@@ -1826,12 +1796,10 @@ msgid "&Abort"
 msgstr "&Przerwij"
 
 #: kmnewiostatuswdg.cpp:41
-#, fuzzy
 msgid "Sending messages to "
 msgstr "Wysy³anie wiadomo¶ci do "
 
 #: kmnewiostatuswdg.cpp:44
-#, fuzzy
 msgid "Retrieving messages from "
 msgstr "Pobieranie wiadomo¶ci z "
 
@@ -1856,7 +1824,6 @@ msgid "KMail - Charset Settings"
 msgstr "KMail - Ustawienia kodowania"
 
 #: charsetsDlg.cpp:39
-#, fuzzy
 msgid "Message charset"
 msgstr "Kodowanie wiadomo¶ci"
 
