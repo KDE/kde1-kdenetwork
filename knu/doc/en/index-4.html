@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
-<TITLE>KDE network utilities: The host resolution tab</TITLE>
+<TITLE>The Knu Handbook: The Host resolution tab</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
 <META NAME="keywords" CONTENT="KDE, utilities">
 <META NAME="description" CONTENT="Network Utilities">
@@ -18,17 +18,21 @@
 <A HREF="index-3.html">Previous</A>
 <A HREF="index.html#toc4">Table of Contents</A>
 </P>
-<H3><A NAME="s4">4. The <I>host resolution</I> tab</A></H3>
+<H3><A NAME="s4">4. The <I>Host resolution</I> tab</A></H3>
 
 <P>
 <H3><A NAME="ss4.1">4.1 What is it?</A>
 </H3>
 
-<P>The <I>host resolution</I> tab allows the execution of a host resolution
-program (<CODE>
-<A HREF="man:host">host (1)</A></CODE> or <CODE>
-<A HREF="man:nslookup">nslookup (8)</A></CODE>.  This host resolution program will
-asks the Domain Name Server the answer to the question asked.
+<P>The <I>Host resolution</I> tab allows the execution of a host
+resolution program (<CODE>
+<A HREF="man:host">host(1)</A></CODE>
+or <CODE>
+<A HREF="man:nslookup">nslookup(8)</A></CODE>).  This
+host resolution program will asks the Domain Name Server the answer to
+the question asked.
+<P>
+<IMG SRC="knu-host.gif">
 <P>
 <H3><A NAME="ss4.2">4.2 Description</A>
 </H3>
@@ -38,11 +42,12 @@ gets this information from a set of interconnected servers that are spread
 across the world. This set of interconnected servers are called the Domain
 Name Servers (DNS). The information is stored in the form of <I>resource
 records</I> belonging to hierarchically organized <I>zones</I>.
-<P>By default, the command simply converts between host names and Internet
-addresses. However, with the <I>Search for</I> options, it can be used to find
-all of the information about domain names that is maintained by the domain
-name­server system. The information printed consists of various fields of the
-associated resource records that were retrieved.
+<P>By default, the command simply converts between host names and
+Internet addresses. However, with the <I>Search for</I> options, it
+can be used to find all of the information about domain names that is
+maintained by the domain name­server system. The information printed
+consists of various fields of the associated resource records that
+were retrieved.
 <P>The host field can be either host names (domain names) or numeric Internet
 addresses.
 <P>A numeric Internet address consists of four decimal numbers separated by dots,
@@ -57,11 +62,11 @@ other cases, the name is tried unchanged.  Single names with trailing dot are
 considered top-level domain specifications, e.g. <CODE>nl.</CODE>
 <P>For a more precise description of the behaviour of this command, please see the
 underlying program's man-page <CODE>
-<A HREF="man:host">host (1)</A></CODE>
+<A HREF="man:host">host(1)</A></CODE>
 or <CODE>
-<A HREF="man:nslookup">nslookup (8)</A></CODE>.
+<A HREF="man:nslookup">nslookup(8)</A></CODE>.
 <P>
-<H3><A NAME="ss4.3">4.3 Options:</A>
+<H3><A NAME="ss4.3">4.3 Options</A>
 </H3>
 
 <P>
@@ -72,28 +77,27 @@ be looked up.  Supported types are listed below.
 <DT><B>Server</B><DD><P>This is the name (or the address) of the domain name server to ask.
 </DL>
 <P>
-<H3><A NAME="ss4.4">4.4 The resource type possible are:</A>
-</H3>
+<H4>Resource type</H4>
 
-<P>A ___ the host's Internet address.
-<P>PTR _ the host name.
-<P>NS __ the name server for the named zone.
-<P>MX __ the mail exchanger.
-<P>CNAME the canonical name for an alias.
-<P>SOA _ the domain's ``start-of-authority'' information.
-<P>ANY _ all informations available.
+<P>The resource type possible are:
+<P><CODE>A</CODE> ___ the host's Internet address.
+<P><CODE>PTR</CODE> _ the host name.
+<P><CODE>NS</CODE> __ the name server for the named zone.
+<P><CODE>MX</CODE> __ the mail exchanger.
+<P><CODE>CNAME</CODE> the canonical name for an alias.
+<P><CODE>SOA</CODE> _ the domain's ``start-of-authority'' information.
+<P><CODE>ANY</CODE> _ all informations available.
 <P>
 <P>
-<H3><A NAME="ss4.5">4.5 <I>Host's authors</I></A>
-</H3>
+<H4><I>Host's authors</I></H4>
 
 <P>This program is originally from Rutgers University. It has been rewritten by
 Eric Wassenaar, NIKHEF, &lt;e07@nikhef.nl&gt;.
 <P>
-<H3><A NAME="ss4.6">4.6 <I>NsLookup's authors</I></A>
-</H3>
+<H4><I>NsLookup's authors</I></H4>
 
 <P>Andrew Cherenson
+<P>
 <P>
 <P ALIGN="RIGHT">
 

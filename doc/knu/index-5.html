@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
-<TITLE>KDE network utilities: Configuration</TITLE>
+<TITLE>The Knu Handbook: The Finger tab</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
 <META NAME="keywords" CONTENT="KDE, utilities">
 <META NAME="description" CONTENT="Network Utilities">
@@ -18,16 +18,34 @@
 <A HREF="index-4.html">Previous</A>
 <A HREF="index.html#toc5">Table of Contents</A>
 </P>
-<H3><A NAME="s5">5. Configuration</A></H3>
+<H3><A NAME="s5">5. The <I>Finger</I> tab</A></H3>
 
-<P>You can configure the pathname of the command used by <I>KDE network utilities</I> if you don't want the command found in the <CODE>PATH</CODE> variable to be
-used or if the command in not found the the <CODE>PATH</CODE>. This can be done in
-the Edit -&gt; Preferences... menu. You can also add arguments to the program.
-For example, on Sun Solaris computers, you can add <CODE>-s</CODE> as argument.
-<P>For the host resolution tab, you will have to choose the type of the underlying
-command used, <CODE>host</CODE> or <CODE>nslookup</CODE>.
-<P>You can disable a command by editing the configuration file (by hand) and in
-the corresponding group, just modify to read <CODE>enable = 0</CODE>.
+<P>
+<H3><A NAME="ss5.1">5.1 What is it?</A>
+</H3>
+
+<P>The <I>Finger</I> tab allows the execution of the <CODE>
+<A HREF="man:finger">finger(1)</A></CODE> command. The <CODE>finger</CODE>
+command displays information about the system users.
+<P>The command output will depends on the server which will make the reply.
+<P>
+<IMG SRC="knu-finger.gif">
+<P>
+<H3><A NAME="ss5.2">5.2 Options</A>
+</H3>
+
+<P>
+<DL>
+<DT><B>Server</B><DD><P>This is the name (or the address) of the finger server to ask.
+</DL>
+<P>
+<P>
+<H3><A NAME="ss5.3">5.3 History</A>
+The <I>finger</I> command appeared in 3.0BSD.</H3>
+
+<P>
+<P>
+<P>
 <P>
 <P ALIGN="RIGHT">
 
