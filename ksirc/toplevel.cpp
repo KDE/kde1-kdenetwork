@@ -157,7 +157,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   kmenu->setAccel(Key_F, 2);
 
   edit = new QPopupMenu();
-  edit->insertItem(i18n("&Cut WIndow..."), this, SLOT(openCutWindow()), CTRL + Key_X);
+  edit->insertItem(i18n("&Cut Window..."), this, SLOT(openCutWindow()), CTRL + Key_X);
   edit->insertItem(i18n("&Paste"), this, SLOT(pasteToWindow()), CTRL + Key_V);
   kmenu->insertItem(i18n("&Edit"), edit, -1, -1);
 
