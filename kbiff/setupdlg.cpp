@@ -9,8 +9,6 @@
  */
 #include "setupdlg.h"
 
-//#include "convert.h"
-
 #include "Trace.h"
 
 #if QT_VERSION < 140
@@ -1529,7 +1527,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.6");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.0");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);

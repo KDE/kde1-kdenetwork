@@ -141,15 +141,51 @@ TRACEINIT("KBiff::mousePressEvent()");
 		if (!mailClient.isEmpty())
 		{
 			KProcess client;
-			// we need to munge mailClient to have client + params
-			int index;
-			QString cmd(mailClient.simplifyWhiteSpace());
-			while ((index = cmd.find(' ')) > 0)
+			int index,beg;
+			char param[60];
+			const char *pom=(const char *)mailClient;
+			index=0;
+			while(pom[index])
 			{
-				client << cmd.left(index);
-				cmd = cmd.mid(index+1, cmd.length());
+				// simplyfies whitespaces
+				while(pom[index] && (pom[index]==' ' || (pom[index]>=9 && pom[index]<=13)))
+					index++;
+
+				beg=0;
+				if(pom[index]=='"')
+				{
+					index++;
+					while(pom[index] && pom[index]!='"')
+					{
+						if(pom[index]==92 && pom[index+1])   // '\'
+							index++;
+						if(beg<59)
+						{
+							param[beg]=pom[index];
+							beg++;
+						}
+						index++;
+					}  
+					index++;
+				}	
+				else
+				{
+					while(pom[index] && pom[index]>' ')
+					{
+						if(pom[index]==92 && pom[index+1])   // '\'
+							index++;
+						if(beg<59)
+						{
+							param[beg]=pom[index];
+							beg++;
+						}
+						index++;
+					}  
+				}	
+				param[beg]=0;  
+				if(beg)
+					client << param;  
 			}
-			client << cmd;
 
 			client.start(KProcess::DontCare);
 		}
