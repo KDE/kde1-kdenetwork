@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
 "POT-Creation-Date: 1999-01-13 01:58+0100\n"
-"PO-Revision-Date: 1998-11-05 09:04+01:00\n"
+"PO-Revision-Date: 1999-02-04 11:08+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,19 +75,19 @@ msgstr "n&ormální"
 
 #: KAMenu.cpp:115
 msgid "&nice"
-msgstr ""
+msgstr "&pomalý"
 
 #: KAMenu.cpp:116
 msgid "&very nice"
-msgstr ""
+msgstr "&velmi pomalý"
 
 #: KAMenu.cpp:117
 msgid "&even more nice"
-msgstr ""
+msgstr "&je¹tì pomalej¹í"
 
 #: KAMenu.cpp:118
 msgid "n&icest"
-msgstr ""
+msgstr "&nejpomalej¹í"
 
 #: KAMenu.cpp:125
 msgid "Show &File discription"
@@ -103,7 +103,7 @@ msgstr "Mód &hledání"
 
 #: KAMenu.cpp:130
 msgid "&Nicelevel"
-msgstr ""
+msgstr "Priorita"
 
 #: KAMenu.cpp:132
 msgid "&All..."
@@ -157,6 +157,18 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
+"KArchie ver. %s\n"
+"\n"
+"napsal Jörg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"zalo¾eno na pracích:\n"
+"  - archie prospero klient napsaný\n"
+"      Cliffordem Neumanem a\n"
+"      Brendanem Kehoem (brendan@cygnus.com)\n"
+"  - a xarchie napsaném\n"
+"      Georgem Fergusonem (ferguson@cs.rochester.edu)\n"
+"(Nahlédnìte do souborù README a copyright.h).\n"
+"Mùj vlastní kód je pod GPL"
 
 #: KAMenu.cpp:190
 msgid "&Settings"
@@ -172,11 +184,11 @@ msgstr "&Tøídìní"
 
 #: KAQuery.cpp:180
 msgid "Query setup"
-msgstr ""
+msgstr "Nastavení dotazu"
 
 #: KAQuery.cpp:289
 msgid "Query aborted"
-msgstr ""
+msgstr "Dotaz pøeru¹en"
 
 #: KAQuery.cpp:296 KArchie.cpp:793
 msgid "Success"
@@ -184,277 +196,267 @@ msgstr "Úspìch"
 
 #: KAQuery.cpp:297
 msgid "Port unknown"
-msgstr ""
+msgstr "Neznámý port"
 
 #: KAQuery.cpp:298
 msgid "Can't open local UDP port"
-msgstr ""
+msgstr "Není mo¾né otevøít lokální UDP port"
 
 #: KAQuery.cpp:299
 msgid "Can't resolve hostname"
-msgstr ""
+msgstr "Není mo¾né zjistit jnéno hostitele"
 
 #: KAQuery.cpp:300
 msgid "Didn't send entire message"
-msgstr ""
+msgstr "Neposlal jsem kompletní zprávu"
 
 #: KAQuery.cpp:301
 msgid "Timed out"
-msgstr ""
+msgstr "Pøekroèen èasový limit"
 
 #: KAQuery.cpp:302
 msgid "Recvfrom failed"
-msgstr ""
+msgstr "Selhání pøíjmu"
 
 #: KAQuery.cpp:303
 msgid "Reply: sendto failed"
-msgstr ""
+msgstr "Odpovìï: selhání \"sendto\""
 
 #: KAQuery.cpp:304
 msgid "Link exists with same name"
-msgstr ""
+msgstr "Existuje odkaz se stejným jménem"
 
 #: KAQuery.cpp:306
 msgid "Link already exists"
-msgstr ""
+msgstr "Odkaz ji¾ existuje"
 
 #: KAQuery.cpp:307
 msgid "Replacing existing link"
-msgstr ""
+msgstr "Nahazuji existující odkaz"
 
 #: KAQuery.cpp:308
 msgid "Prv entry not in dir->ulinks"
-msgstr ""
+msgstr "Záznam Prv není v dir->ulinks"
 
 #: KAQuery.cpp:309
 msgid "Temporary not found"
-msgstr ""
+msgstr "Nenalezen doèasný soubor"
 
 #: KAQuery.cpp:310
 msgid "Namespace not closed w/ object::"
-msgstr ""
+msgstr "Jmenný prostor není uzavøen objektem:"
 
 #: KAQuery.cpp:311
 msgid "No alias for namespace NS#:"
-msgstr ""
+msgstr "®ádný alias pro jmenný prostor NS#:"
 
 #: KAQuery.cpp:312
 msgid "Specified namespace not found"
-msgstr ""
+msgstr "Zadaný jmenný prostor není podporován"
 
 #: KAQuery.cpp:313
 msgid "File access method not supported"
-msgstr ""
+msgstr "Metoda pøístupu k souboru není podporována"
 
 #: KAQuery.cpp:314
 msgid "Delete cached copy on close"
-msgstr ""
+msgstr "Zmazat cacheovanou kopii nebo zavøít"
 
 #: KAQuery.cpp:315
 msgid "Unable to retrieve file"
-msgstr ""
+msgstr "Není mo¾né pøenést soubor"
 
 #: KAQuery.cpp:317
 msgid "Directory already exists"
-msgstr ""
+msgstr "Adresáø ji¾ existuje"
 
 #: KAQuery.cpp:319 KAQuery.cpp:337
 msgid "Link with name already exists"
-msgstr ""
+msgstr "Odkaz s tímto jménem ji¾ existuje"
 
 #: KAQuery.cpp:320
 msgid "Not a virtual system"
-msgstr ""
+msgstr "Toto není virtuální systém"
 
 #: KAQuery.cpp:321
 msgid "Can't find directory"
-msgstr ""
+msgstr "Není mo¾né nalézt adresáø"
 
 #: KAQuery.cpp:322
 msgid "Not a directory name"
-msgstr ""
+msgstr "Toto není jméno adresáøe"
 
 #: KAQuery.cpp:323
 msgid "Object not found"
-msgstr ""
+msgstr "Objekt nenalezen"
 
 #: KAQuery.cpp:324
 msgid "Object has moved"
-msgstr ""
+msgstr "Objekt se pøesunul"
 
 #: KAQuery.cpp:325
 msgid "File not found"
-msgstr ""
+msgstr "Soubor nenalezen"
 
 #: KAQuery.cpp:326
 msgid "Directory in path not found"
-msgstr ""
+msgstr "Adresáø v cestì nebyl nalezen"
 
 #: KAQuery.cpp:327
 msgid "Symbolic links nested too deep"
-msgstr ""
+msgstr "Symbolický odkaz je vnoøen pøíli¹ hluboko"
 
 #: KAQuery.cpp:328
 msgid "Can't read environment"
-msgstr ""
+msgstr "Není mo¾né èíst prostøedí"
 
 #: KAQuery.cpp:329
 msgid "Can't traverse an external file"
-msgstr ""
+msgstr "Není mo¾né pøedat externí soubor"
 
 #: KAQuery.cpp:330
 msgid "Exceeded max forward depth"
-msgstr ""
+msgstr "Vyèerpán maximální poèet pøedání"
 
 #: KAQuery.cpp:331
 msgid "Authentication required"
-msgstr ""
+msgstr "Po¾adována autentikace"
 
 #: KAQuery.cpp:332
 msgid "Not authorized"
-msgstr ""
+msgstr "Neautorizován"
 
 #: KAQuery.cpp:333
 msgid "Not found"
-msgstr ""
+msgstr "Nenalezen"
 
 #: KAQuery.cpp:334
 msgid "Bad version number"
-msgstr ""
+msgstr "Chybné èíslo verze"
 
 #: KAQuery.cpp:335
 msgid "Not a directory"
-msgstr ""
+msgstr "Není adrsáøem"
 
 #: KAQuery.cpp:336
 msgid "Identical link already exists"
-msgstr ""
+msgstr "Ji¾ existuje identický odkaz"
 
 #: KAQuery.cpp:338
 msgid "Command not implemented on server"
-msgstr ""
+msgstr "Pøíkaz není implementován na serveru"
 
 #: KAQuery.cpp:339
 msgid "Bad format for response"
-msgstr ""
+msgstr "Chybný formát pro odezvu"
 
 #: KAQuery.cpp:340
 msgid "Protocol error"
-msgstr ""
+msgstr "Chyba protokolu"
 
 #: KAQuery.cpp:341
 msgid "Unspecified server failure"
-msgstr ""
+msgstr "Nespecifikované selhání serveru"
 
 #: KAQuery.cpp:343
 msgid "Generic Failure"
-msgstr ""
+msgstr "Obecné selhání"
 
 #: KAQuery.cpp:347
 msgid "No warning"
-msgstr ""
+msgstr "®ádné varování"
 
 #: KAQuery.cpp:348
 msgid "You are using an old version of this program"
-msgstr ""
+msgstr "Pou¾íváte starou verzi tohoto programu"
 
 #: KAQuery.cpp:349
 msgid "From server: "
-msgstr ""
+msgstr "Od serveru: "
 
 #: KAQuery.cpp:351
 msgid "Unrecognized line in response from server"
-msgstr ""
+msgstr "Nerozpoznaná øádka v odpovìdi od serveru"
 
 #: KAQuery.cpp:409
 msgid "Query running"
-msgstr ""
+msgstr "Bì¾í dotaz"
 
 #: KAQuery.cpp:453
 msgid "Query finished"
-msgstr ""
+msgstr "Dotaz dokonèen"
 
 #: KASettings.cpp:59
-#, fuzzy
 msgid "&Host"
-msgstr "Hostitel"
+msgstr "&Hostitel"
 
 #: KASettings.cpp:72
 msgid "&Timeout (seconds)"
-msgstr ""
+msgstr "Æasový limi&t (sekundy)"
 
 #: KASettings.cpp:83
 msgid "Maximal &retries"
-msgstr ""
+msgstr "Ma&x. poèet opakování"
 
 #: KASettings.cpp:284
 msgid "&Nice Level"
-msgstr ""
+msgstr "&Priorita"
 
 #: KASettings.cpp:291
 msgid "max. &Hits"
-msgstr ""
+msgstr "Max. poèet &zásahù"
 
 #: KASettings.cpp:418
-#, fuzzy
 msgid "Exact"
-msgstr "&Doslovnì"
+msgstr "Doslovnì"
 
 #: KASettings.cpp:419
-#, fuzzy
 msgid "Substring"
-msgstr "&Podøe»ezec"
+msgstr "Podøe»ezec"
 
 #: KASettings.cpp:420
-#, fuzzy
 msgid "Substring case insensitive"
-msgstr "Podøe»ezec s &rozli¹ováním velikosti"
+msgstr "Podøe»ezec bez rozli¹ování velikosti"
 
 #: KASettings.cpp:421
-#, fuzzy
 msgid "Regular expression"
-msgstr "R&egulární výraz"
+msgstr "Regulární výraz"
 
 #: KASettings.cpp:423
-#, fuzzy
 msgid "Exact, then substring case insensitive"
 msgstr "Doslovnì, a pak podøe»ezec bez rozli¹ování velikosti"
 
 #: KASettings.cpp:427
-#, fuzzy
 msgid "Normal"
-msgstr "n&ormální"
+msgstr "Normální"
 
 #: KASettings.cpp:428
 msgid "Nice"
-msgstr ""
+msgstr "Pomalu"
 
 #: KASettings.cpp:429
 msgid "Very nice"
-msgstr ""
+msgstr "Velmi pomalu"
 
 #: KASettings.cpp:430
 msgid "Even more nice"
-msgstr ""
+msgstr "Je¹tì pomaleji"
 
 #: KASettings.cpp:431
 msgid "Nicest"
-msgstr ""
+msgstr "Nejpomaleji"
 
 #: KASettings.cpp:525
-#, fuzzy
 msgid "KArchie Settings"
 msgstr "N&astavení"
 
 #: KASettings.cpp:536
-#, fuzzy
 msgid "Archie server settings"
-msgstr "Archie &server"
+msgstr "Nastavení Archie serveru"
 
 #: KASettings.cpp:543
-#, fuzzy
 msgid "Search init"
-msgstr "Hledat &výraz"
+msgstr "Inicialize hledání"
 
 #: KASettings.cpp:567
 msgid "Reset"
@@ -503,7 +505,7 @@ msgstr "%d pokus."
 
 #: KAView.cpp:66
 msgid "Searchstring, press <ENTER> to start search"
-msgstr ""
+msgstr "Hledaný øetìzec, stisknìte <ENTER> ke startu hledání"
 
 #: KAView.cpp:68
 msgid "Search &Term"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1999-01-30 02:00+0100\n"
-"PO-Revision-Date: 1999-01-18 08:46+01:00\n"
+"PO-Revision-Date: 1999-02-04 10:44+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -464,9 +464,8 @@ msgid "Message List Font:"
 msgstr "Font pro seznam zpráv:"
 
 #: kmsettings.cpp:357
-#, fuzzy
 msgid "Long folder list"
-msgstr "D&louhá hlavièka"
+msgstr "Dlouhý seznam slo¾ek"
 
 #: kmsettings.cpp:386
 msgid "Phrases"
@@ -670,7 +669,7 @@ msgstr "Datum"
 
 #: kmheaders.cpp:215
 msgid "Receiver"
-msgstr ""
+msgstr "Pøíjemce"
 
 #: kmheaders.cpp:218
 #, c-format
@@ -992,9 +991,8 @@ msgid "Date:"
 msgstr "Datum:"
 
 #: kmcomposewin.cpp:1670
-#, fuzzy
 msgid "Spellcheck complete."
-msgstr "&Kontrola pravopisu..."
+msgstr "Kontrola pravopisu hotova"
 
 #: kmcomposewin.cpp:2076
 msgid "Spellcheck - KMail"
@@ -1589,7 +1587,7 @@ msgstr "Ulo¾it klíè"
 
 #: kpgp.cpp:844
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Stále kryptovat sebe"
 
 #: kpgpbase.cpp:320
 msgid "Bad pass Phrase; couldn't sign"
@@ -1826,24 +1824,3 @@ msgstr "&7 bitové je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Oznaè neznámé znaky"
-
-#~ msgid ""
-#~ "Cannot modify a\n"
-#~ "system folder."
-#~ msgstr ""
-#~ "Není mo¾né zmìnit \n"
-#~ "systémový adresáø."
-
-#~ msgid ""
-#~ "Are you sure you want to discard the\n"
-#~ "contents of the folder \"%s\" ?"
-#~ msgstr ""
-#~ "Jeste si jist(a), ¾e chcete odstranit obsah\n"
-#~ "poøadaèe \"%s\"?"
-
-#~ msgid ""
-#~ "Changing fonts currently only occurs when a new\n"
-#~ "window is opened or kmail is restarted"
-#~ msgstr ""
-#~ "Zmìna fontu se projeví a¾ po otevøení\n"
-#~ "nového okna nebo po restartu kmailu"
