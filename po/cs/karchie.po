@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: karchie\n"
+"POT-Creation-Date: 1998-10-26 11:11+0100\n"
+"PO-Revision-Date: 1998-10-28 21:14 CET\n"
+"Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: KAMenu.cpp:86
+msgid "O&pen in editor"
+msgstr "&Otevøít v editoru"
+
+#: KAMenu.cpp:87 KAView.cpp:155
+msgid "&Open Dir"
+msgstr "O&tevøít adresáø"
+
+#: KAMenu.cpp:88 KAView.cpp:156
+msgid "&Download.."
+msgstr "&Pøijmout..."
+
+#: KAMenu.cpp:91
+msgid "&Load List.."
+msgstr "&Nahrát seznam..."
+
+#: KAMenu.cpp:92
+msgid "&Save List.."
+msgstr "U&lo¾it seznam..."
+
+#: KAMenu.cpp:93
+msgid "Expor&t List.."
+msgstr "&Exportovat seznam..."
+
+#: KAMenu.cpp:95
+msgid "&Exit"
+msgstr "&Ukonèit"
+
+#: KAMenu.cpp:111
+msgid "&Exact"
+msgstr "&Doslovnì"
+
+#: KAMenu.cpp:112
+msgid "&Substring"
+msgstr "&Podøe»ezec"
+
+#: KAMenu.cpp:113
+msgid "Substring &case insensitive"
+msgstr "Podøe»ezec s &rozli¹ováním velikosti"
+
+#: KAMenu.cpp:114
+msgid "&Regular expression"
+msgstr "R&egulární výraz"
+
+#: KAMenu.cpp:115
+msgid "Exact, then substring"
+msgstr "Doslovnì, a pak podøe»ezec"
+
+#: KAMenu.cpp:116
+msgid "Exact, then substring case ins."
+msgstr "Doslovnì, a pak podøe»ezec bez rozli¹ování velikosti"
+
+#: KAMenu.cpp:117
+msgid "Exact, then regular expression"
+msgstr "Doslovnì, apak regulární výraz"
+
+#: KAMenu.cpp:125
+msgid "n&ormal"
+msgstr "n&ormální"
+
+#: KAMenu.cpp:126
+msgid "&nice"
+msgstr ""
+
+#: KAMenu.cpp:127
+msgid "&very nice"
+msgstr ""
+
+#: KAMenu.cpp:128
+msgid "&even more nice"
+msgstr ""
+
+#: KAMenu.cpp:129
+msgid "n&icest"
+msgstr ""
+
+#: KAMenu.cpp:136
+msgid "Show &File discription"
+msgstr "Zobrazit &popis souboru"
+
+#: KAMenu.cpp:139
+msgid "Archie&server"
+msgstr "Archie &server"
+
+#: KAMenu.cpp:140
+msgid "Search&mode"
+msgstr "Mód &hledání"
+
+#: KAMenu.cpp:141
+msgid "&Nicelevel"
+msgstr ""
+
+#: KAMenu.cpp:143
+msgid "&All.."
+msgstr "&V¹e..."
+
+#: KAMenu.cpp:150
+msgid "for &Filename"
+msgstr "na &soubor"
+
+#: KAMenu.cpp:151
+msgid "for &Path/Location"
+msgstr "na &cestu/umístìní"
+
+#: KAMenu.cpp:152
+msgid "for &Hostname"
+msgstr "na jméno &hostitele"
+
+#: KAMenu.cpp:154
+msgid "&STOP"
+msgstr "&STOP"
+
+#: KAMenu.cpp:171
+msgid "by &Hostname"
+msgstr "podle jména &hostitele"
+
+#: KAMenu.cpp:172
+msgid "by &Domain"
+msgstr "podle &domény"
+
+#: KAMenu.cpp:173
+msgid "by D&ate"
+msgstr "podle &data"
+
+#: KAMenu.cpp:174
+msgid "by &Filesize"
+msgstr "podle &velikosti souboru"
+
+#: KAMenu.cpp:190
+msgid "&Settings"
+msgstr "N&astavení"
+
+#: KAMenu.cpp:191
+msgid "&Query"
+msgstr "&Dotaz"
+
+#: KAMenu.cpp:192
+msgid "S&ort"
+msgstr "&Tøídìní"
+
+#: KAStatusBar.cpp:57
+msgid "    0 hits"
+msgstr "    0 nalezených"
+
+#: KAStatusBar.cpp:58
+msgid "    0. try"
+msgstr "    0. pokus"
+
+#: KAStatusBar.cpp:59
+msgid "Host: none                               "
+msgstr "Hostitel: ¾ádný                           "
+
+#: KAStatusBar.cpp:60
+msgid "Status: ready                        "
+msgstr "Stav: pøipraven                       "
+
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Obnovit"
+
+#: KAView.cpp:69
+msgid "Search &Term"
+msgstr "Hledat &výraz"
+
+#: KAView.cpp:135
+msgid "Host"
+msgstr "Hostitel"
+
+#: KAView.cpp:136
+msgid "Path"
+msgstr "Cesta"
+
+#: KAView.cpp:269
+msgid "Host:"
+msgstr "Hostitel:"
+
+#: KAView.cpp:271
+msgid "Path:"
+msgstr "Cesta:"
+
+#: KAView.cpp:273
+msgid "File:"
+msgstr "Soubor:"
+
+#: KAView.cpp:277
+msgid "Mode:"
+msgstr "Mód:"
+
+#: KArchie.cpp:441 KArchie.cpp:483
+#, c-format
+msgid ""
+"Couldn't open \n"
+"\"%s\""
+msgstr ""
+"Není mo¾né otevøít \n"
+"\"%s\""
+
+#: KArchie.cpp:446 KArchie.cpp:488
+msgid "KArchie: bad file"
+msgstr "KArchie: chybný soubor"
+
+#: KArchie.cpp:720
+msgid "Malformed url"
+msgstr "Chybný formát URL"
+
+#: KArchie.cpp:724
+msgid "Maybe bad list entry, please select an other file"
+msgstr "Pravdìpodobnì chybná polo¾ka seznamu, prosím vyberte jiný soubor"
+
+#: KArchie.cpp:725
+msgid "KArchie: bad URL"
+msgstr "KArchie: chybné URL"
+
+#: KArchie.cpp:744
+msgid "KArchie: Wrong fileselection"
+msgstr "KArchie: chybný výbìr souboru"
+
+#: KArchie.cpp:745
+msgid "The selected file is not writeable"
+msgstr "Do vybraného souboru nelze zapisovat"
+
+#: KArchie.cpp:752
+msgid "KArchie: Overwrite file ?"
+msgstr "KArchie: pøepsat soubor"
+
+#: KArchie.cpp:753
+msgid ""
+"The selected file is not write protected\n"
+"Should it be overwritten ?"
+msgstr ""
+"Vybraný soubor není chránìn proti zápisu.\n"
+"Má být pøepsán ?"
+
+#: KArchie.cpp:766
+msgid "KArchie: bad selection"
+msgstr "KArchie: chybný výbìr"
+
+#: KArchie.cpp:767
+msgid ""
+"No file selected !\n"
+"Please select a file in the list of queryresults\n"
+"or do a query."
+msgstr ""
+"Není vybrán ¾ádný soubor !\n"
+"Prosím vyberte soubor v seznamu výsledkù dotazu\n"
+"nebo probeïte dotaz."
+
+#: KArchie.cpp:793
+msgid "Success"
+msgstr "Úspìch"

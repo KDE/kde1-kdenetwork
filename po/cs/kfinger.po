@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
-"POT-Creation-Date: 1998-10-12 14:17+0200\n"
-"PO-Revision-Date: 1998-06-20 23:38 CEST\n"
+"POT-Creation-Date: 1998-10-26 11:11+0100\n"
+"PO-Revision-Date: 1998-10-28 20:23 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: czech <flidr@kky.zcu.cz>\n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,8 @@ msgid "Setup"
 msgstr "Nastavení"
 
 #: kfinger.C:19
-#, fuzzy
 msgid "Save Options"
-msgstr "&Mo¾nosti"
+msgstr "Ulo¾it nastavení"
 
 #: kfinger.C:38
 msgid "Finger"
@@ -36,7 +35,7 @@ msgstr "Finger"
 
 #: kfinger.C:39
 msgid "Stop current finger"
-msgstr ""
+msgstr "Zastavit souèasný finger"
 
 #: kfinger.C:41
 msgid "Talk..."
@@ -44,18 +43,17 @@ msgstr "Rozhovor..."
 
 #: kfinger.C:42
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "Automatický finger zap./vyp."
 
 #: kfinger.C:54
-#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
 "program by A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 msgstr ""
 "Vitejte v programu KDE Finger\n"
-"napsal A.Rizzi bilibao@ouverture.it\n"
-"18. 9. 1997 \n"
+"napsal A.Rizzi rizzi@kde.org\n"
+"18/09/1997 \n"
 
 #: kfinger.C:55
 msgid "Finger result"
@@ -72,15 +70,14 @@ msgid "Finger result for : %s@%s"
 msgstr "Výsledok pro : %s@%s"
 
 #: kfinger.C:301
-#, fuzzy
 msgid ""
 "Kfinger 0.7.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.7.0\n"
 "napsal Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"rizzi@kde.org"
 
 #: kfinger.C:345
 msgid "Kfinger Setup"
@@ -111,17 +108,13 @@ msgid "Timed finger"
 msgstr "Èasovaný finger"
 
 #: kfinger.C:459 kfinger.C:644
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Èekání: %d"
+msgstr "Èekání fingeru: %d\""
 
 #: kfinger.C:464
 msgid "Talk Command "
-msgstr ""
-
-#: kfinger.C:474
-msgid "Misc"
-msgstr ""
+msgstr "Pøíkaz talku "
 
 #: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"

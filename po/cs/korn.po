@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korn\n"
+"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"PO-Revision-Date: 1998-10-28 20:16 CET\n"
+"Last-Translator: Miroslav Flídr <flidrL@kky.zcu.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: shell.cpp:226
+msgid "About KOrn"
+msgstr "Informace o aplikaci KOrn"
+
+#: optdlg.cpp:113 shell.cpp:236
+msgid "&Setup.."
+msgstr "Na&stavení..."
+
+#: shell.cpp:239
+msgid "&About.."
+msgstr "&Informace o aplikaci..."
+
+#: shell.cpp:250
+msgid "Welcome to KOrn"
+msgstr "Vítejte v programu KOrn"
+
+#: shell.cpp:251
+msgid ""
+"You do not appear to have used KOrn before. Would you like a basic "
+"configuration created for you?"
+msgstr ""
+"Zdá se, ¾e jste dosud KOrn nepou¾ívali. Chcete vytvoøit\n"
+"základní konfiguraci?"
+
+#: shell.cpp:253
+msgid "No, Exit"
+msgstr "Ne, ukonèit"
+
+#: dropman.cpp:185
+msgid "Inbox"
+msgstr "Inbox"
+
+#: dropman.cpp:191
+msgid "Can't find mailbox"
+msgstr "Není mo¾né nalézt po¹tovní schránku"
+
+#: dropman.cpp:192
+msgid ""
+"Unable to find $MAIL environment variable. You'll have to configure the "
+"mailboxes yourself."
+msgstr ""
+"Není mo¾né nalézt promìnnou prostøedí $MAIL. Musíte nastavit sami\n"
+"po¹tovní scgránky."
+
+#: dropman.cpp:254
+msgid " (clone)"
+msgstr " (klon)"
+
+#: typedlg.cpp:28
+msgid "Select a mailbox type..."
+msgstr "Vyberte typ po¹tovní schránky..."
+
+#: typedlg.cpp:44
+msgid "O&K"
+msgstr "O&K"
+
+#: optdlg.cpp:30
+msgid "Korn: Options"
+msgstr "Korn: nastavení"
+
+#: optdlg.cpp:42
+msgid "Horizontal"
+msgstr "Horizontální"
+
+#: optdlg.cpp:45
+msgid "Vertical"
+msgstr "Vertikální"
+
+#: optdlg.cpp:48
+msgid "Docked"
+msgstr "Dokovaný"
+
+#: optdlg.cpp:51
+msgid "&Layout"
+msgstr "&Rozvr¾ení"
+
+#: optdlg.cpp:80
+msgid "&Modify Box"
+msgstr "&Modifikovat schránku"
+
+#: optdlg.cpp:89
+msgid "&New Box"
+msgstr "&Nová schránka"
+
+#: optdlg.cpp:95
+msgid "&Delete Box"
+msgstr "&Smazat schránku"
+
+#: optdlg.cpp:104
+msgid "&Clone Box"
+msgstr "&Smazat schránku"
+
+#: optdlg.cpp:121
+msgid "&Boxes"
+msgstr "S&chránky"
+
+#: optdlg.cpp:243
+msgid "New Monitor"
+msgstr "Nový detektor"
+
+#: dropdlg.cpp:22
+msgid "Korn Monitor"
+msgstr "Korn detektor"
+
+#: gencfg.cpp:28
+msgid "Caption"
+msgstr "Záhlaví"
+
+#: gencfg.cpp:31
+msgid "On Receipt"
+msgstr "Pøi pøíjmu"
+
+#: gencfg.cpp:34
+msgid "On Click"
+msgstr "Pøi kliknutí"
+
+#: gencfg.cpp:42
+msgid "General"
+msgstr "V¹eobecné"
+
+#: pollcfg.cpp:26
+msgid "Poll"
+msgstr "Dotázat"
+
+#: pollcfg.cpp:40
+msgid "Check Frequency (sec)"
+msgstr "Frekvence kontroly (sec)"
+
+#: unixcfg.cpp:26
+msgid "Mailbox"
+msgstr "Po¹tovní schránka"
+
+#: unixcfg.cpp:41
+msgid "Mbox Path"
+msgstr "Cesta k po¹tovní schránce"
+
+#: qmailcfg.cpp:26
+msgid "Maildir"
+msgstr "Adresáø po¹ty"
+
+#: qmailcfg.cpp:38
+msgid "Maildir Path"
+msgstr "Cesta k adresáøi po¹ty"
+
+#: newscfg.cpp:38 popcfg.cpp:44
+msgid "Server"
+msgstr "Server"
+
+#: popcfg.cpp:49
+msgid "Port"
+msgstr "Port"
+
+#: popcfg.cpp:52
+msgid "Username"
+msgstr "U¾ivatelské jméno"
+
+#: popcfg.cpp:55
+msgid "Password"
+msgstr "Heslo"
+
+#: popcfg.cpp:60
+msgid "Save Password"
+msgstr "Ulo¾it heslo"
+
+#: newscfg.cpp:26
+msgid "News"
+msgstr "Diskuzní skupiny"
+
+#: newscfg.cpp:41
+msgid "Group"
+msgstr "Skupina"
+
+#: kfbrowsebtn.cpp:18
+msgid "Browse.."
+msgstr "Listovat..."

@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbiff\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"PO-Revision-Date: 1998-10-28 20:50 CET\n"
+"Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: setupdlg.cpp:65
+msgid "KBiff Setup"
+msgstr "Nastavení programu KBiff"
+
+#: setupdlg.cpp:68
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:84
+msgid "&New..."
+msgstr "&Nový..."
+
+#: setupdlg.cpp:91
+msgid "&Rename..."
+msgstr "&Pøejmenovat..."
+
+#: setupdlg.cpp:125
+msgid "General"
+msgstr "V¹eobecný"
+
+#: setupdlg.cpp:126
+msgid "New Mail"
+msgstr "Nová zpráva"
+
+#: setupdlg.cpp:127
+msgid "Mailbox"
+msgstr "Po¹tovní schránka"
+
+#: setupdlg.cpp:335
+msgid "New Profile"
+msgstr "Nový profil"
+
+#: setupdlg.cpp:367
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Pøejmenovat profil: %s"
+
+#: setupdlg.cpp:407
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Smazat profil: %s"
+
+#: setupdlg.cpp:408
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Jste si jisti, ¾e chcete smazat tento profil?\n"
+
+#: setupdlg.cpp:468
+msgid "Poll (sec):"
+msgstr "Dotazování (sec):"
+
+#: setupdlg.cpp:473
+msgid "Mail client:"
+msgstr "Po¹tovní klient:"
+
+#: setupdlg.cpp:486
+msgid "Dock in panel"
+msgstr "Pohlcovat v panelu"
+
+#: setupdlg.cpp:491
+msgid "Use session management"
+msgstr "Pou¾ívat správu sezení"
+
+#: setupdlg.cpp:496
+msgid "Icons:"
+msgstr "Ikony:"
+
+#: setupdlg.cpp:514
+msgid "No Mail:"
+msgstr "®ádná po¹ta:"
+
+#: setupdlg.cpp:523
+msgid "Old Mail"
+msgstr "Stará po¹ta:"
+
+#: setupdlg.cpp:533
+msgid "New Mail:"
+msgstr "Nová po¹ta:"
+
+#: setupdlg.cpp:670
+msgid "Run Command"
+msgstr "Provést pøíkaz:"
+
+#: setupdlg.cpp:677 setupdlg.cpp:690 setupdlg.cpp:985
+msgid "Browse"
+msgstr "Listovat"
+
+#: setupdlg.cpp:683
+msgid "Play Sound"
+msgstr "Hrát zvuk"
+
+#: setupdlg.cpp:696
+msgid "System Beep"
+msgstr "Pípnutí"
+
+#: setupdlg.cpp:701
+msgid "Notify"
+msgstr "Upozoròovat"
+
+#: setupdlg.cpp:829
+msgid "Advanced Options"
+msgstr "Pokroèilá nastavení"
+
+#: setupdlg.cpp:833
+msgid "Mailbox URL:"
+msgstr "URL po¹tovní schránky:"
+
+#: setupdlg.cpp:837
+msgid "Port:"
+msgstr "Port:"
+
+#: setupdlg.cpp:841
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:945 setupdlg.cpp:1238
+msgid "New Mailbox"
+msgstr "Nová po¹tovní schránka"
+
+#: setupdlg.cpp:952
+msgid "Delete Mailbox"
+msgstr "Smazat po¹tovní schránku"
+
+#: setupdlg.cpp:958
+msgid "Protocol:"
+msgstr "Protokol:"
+
+#: setupdlg.cpp:961
+msgid "Mailbox:"
+msgstr "Po¹tovní schránka:"
+
+#: setupdlg.cpp:964
+msgid "Server:"
+msgstr "Server:"
+
+#: setupdlg.cpp:967
+msgid "User:"
+msgstr "U¾ivatel:"
+
+#: setupdlg.cpp:970
+msgid "Password:"
+msgstr "Heslo:"
+
+#: setupdlg.cpp:1002
+msgid "Store password"
+msgstr "Ulo¾it heslo"
+
+#: setupdlg.cpp:1005
+msgid "Advanced"
+msgstr "Pokroèilé"
+
+#: setupdlg.cpp:1430
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1452
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Verze %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1501
+msgid "New Name:"
+msgstr "Nové jm0no:"
+
+#: setupdlg.cpp:1527
+msgid "New Name"
+msgstr "Nové jméno"
+
+#: kbiff.cpp:468
+msgid "&UnDock"
+msgstr "&Vypnout pohlcení"
+
+#: kbiff.cpp:470
+msgid "&Dock"
+msgstr "&Pohltit"
+
+#: kbiff.cpp:471
+msgid "&Setup..."
+msgstr "Na&stavit"
+
+#: kbiff.cpp:473
+msgid "&Help..."
+msgstr "&Nápovìda"
+
+#: kbiff.cpp:477
+msgid "&Check mail now"
+msgstr "&Zkontrolovat po¹tu teï"
+
+#: kbiff.cpp:479
+msgid "&Read Mail now"
+msgstr "Pøeèíst p&o¹tu teï"
+
+#: kbiff.cpp:485
+msgid "&Stop"
+msgstr "Z&astavit"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Máte novou po¹tu"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Nových zpráv: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Po¹tovní schránka: %s"
