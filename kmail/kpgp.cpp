@@ -77,7 +77,13 @@ Kpgp::init()
   readConfig();
 
   // get public keys
-  publicKeys = pgp->pubKeys();
+  // No! This takes time since pgp takes some ridicules
+  // time to start, blocking everything (pressing any key _on_
+  // _the_ _machine_ _where_ _pgp_ _runs: helps; ???)
+  // So we will ask for keys when we need them.
+  
+  //publicKeys = pgp->pubKeys(); This can return 0!!!
+  needPublicKeys = true;
 }
 
 void 
@@ -424,6 +430,11 @@ bool
 Kpgp::havePublicKey(QString _person)
 {
   if(!havePgp) return true;
+  if (needPublicKeys)
+  {
+    publicKeys = pgp->pubKeys();
+    needPublicKeys=false;
+  }
 
   // do the checking case insensitive
   QString str;
@@ -452,7 +463,11 @@ Kpgp::getPublicKey(QString _person)
 {
   // just to avoid some error messages
   if(!havePgp) return true;
-
+  if (needPublicKeys)
+  {
+    publicKeys = pgp->pubKeys();
+    needPublicKeys=false;
+  }
   // do the search case insensitive, but return the correct key.
   QString adress,str;
   adress = _person.lower();
