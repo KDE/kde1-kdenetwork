@@ -1,6 +1,5 @@
-prefix = @prefix@
 
-FILES = black-bullet.xpm\
+pics_DATA = black-bullet.xpm\
 	filemail.xpm\
 	previous.xpm\
 	right.xpm\
@@ -29,20 +28,5 @@ FILES = black-bullet.xpm\
         send.xpm
 
 
-DESTDIR = $(prefix)/share/apps/krn/toolbar
-INSTALL_DIR = @INSTALL@ -d -m 0755
-INSTALL_DATA = @INSTALL@ -m 644
+picsdir = $(kde_datadir)/krn/toolbar
 
-all:
-
-install:
-	$(INSTALL_DIR) $(DESTDIR)
-	@for i in $(FILES); do \
-	 echo "$(INSTALL_DATA) $$i $(DESTDIR)"; \
-	 $(INSTALL_DATA) "$$i" $(DESTDIR); \
-	done
-
-uninstall:
-	for i in $(FILES); do \
-	 rm -f $(DESTDIR)/"$$i"; \
-	done

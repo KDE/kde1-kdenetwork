@@ -8,7 +8,6 @@ AC_INIT(acinclude.m4) dnl a source file from your sub dir
 dnl AC_MSG_WARN("This Code is alpha. It may not even compile.  Use at your own risk.")
 AC_CANONICAL_SYSTEM 
 AC_ARG_PROGRAM
-AC_ISC_POSIX
 
 dnl Automake doc recommends to do this only here. (Janos)
 AM_INIT_AUTOMAKE(kdenetwork, 0.1) dnl searches for some needed programs
@@ -19,22 +18,9 @@ AC_PREFIX_DEFAULT(${KDEDIR:-/usr/local/kde})
 dnl generate the config header
 AM_CONFIG_HEADER(config.h) dnl at the distribution this done
 
-dnl checks, if the debug code is wanted
-AC_CHECK_FLAGS
-
-dnl Checks for programs.
-AC_PROG_CC
-AC_PROG_CPP
-test "$CCC" = "" && CCC="xlC DCC"
-AC_PROG_CXX
-AC_PROG_LN_S
-
-dnl libtool is only for C, so I must force him
-dnl to find the correct flags for C++
-ac_save_cc=$CC
-CC=$CXX
-AM_PROG_LIBTOOL dnl for libraries
-CC=$ac_save_cc    
+AC_CHECK_COMPILERS
+KDE_PROG_LIBTOOL
+AC_CHECK_RPATH
 
 dnl for NLS support. Call them in this order!
 dnl WITH_NLS is for the po files
@@ -45,13 +31,7 @@ AC_CHECK_LIB(socket, socket, [LIBSOCKET="-lsocket -lnsl"]) dnl for Solaris
 AC_SUBST(LIBSOCKET)
 AC_PATH_KDE
 
-KDE_RPATH="-rpath \$(kde_libraries)"
-if test -n "$qt_libraries"; then
- KDE_RPATH="$KDE_RPATH -rpath \$(qt_libraries)"
-fi
-AC_SUBST(KDE_RPATH)
-
-AC_LANG_CPLUSPLUS
+AC_LANG_C
 dnl Checks for libraries. 
 AC_CHECK_LIB(compat, main, [LIBCOMPAT="-lcompat"]) dnl for FreeBSD
 AC_SUBST(LIBCOMPAT)
@@ -63,6 +43,7 @@ AC_SUBST(LIBKHTMLW)
 AC_FIND_GIF
 AC_FIND_JPEG
 
+AC_LANG_CPLUSPLUS
 dnl Checks for header files.
 AC_HEADER_DIRENT
 AC_HEADER_STDC
