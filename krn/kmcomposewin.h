@@ -216,6 +216,18 @@ protected:
 private:
   /** Get message including signing and encrypting it */
   virtual const QString pgpProcessedMsg(void);
+  
+#ifdef CHARSETS  
+  /** Convert message text for editing.
+      Converts message to mComposeCharset charset (if neccessary).*/
+  QString convertToLocal(const QString str,const QString charset);
+  
+  /** Converts message text for sending. */
+  QString convertToSend(const QString str,QString& charset);
+ 
+  /** Test if string has any 8-bit characters */
+  bool is8Bit(const QString str);
+#endif  
 
 protected:
   QWidget   mMainWidget;
@@ -251,6 +263,12 @@ protected:
   KSpell* mKSpell;
   KSpellConfig* mKSpellConfig;
 #endif
+#ifdef CHARSETS
+  int m7BitAscii;
+  QString mDefaultCharset;
+  QString mDefComposeCharset; 
+  QString mComposeCharset; 
+#endif  
 
 private:
   QColor foreColor,backColor;

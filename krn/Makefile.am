@@ -1,6 +1,7 @@
 
 INCLUDES = $(all_includes)
-DEFS += -DKRN
+#DEFS += -DKRN
+DEFS += -DKRN -DCHARSETS
 
 LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) -lgif -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
 
