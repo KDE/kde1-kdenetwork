@@ -282,11 +282,11 @@ void Article::toggleExpire()   // robert's cache stuff
 ////////////////////////////////////////////////////////////////////
 
 
-NewsGroup::NewsGroup(const char *name)
+NewsGroup::NewsGroup(const char *_name)
 {
     isVisible=0;
     sconf=0;
-    setStr(name);
+    name=qstrdup(_name);
 }
 
 
@@ -297,6 +297,7 @@ NewsGroup::~NewsGroup()
         save();
         delete sconf;
     }
+    free (name);
 }
 void NewsGroup::addArticle(QString ID)
 {
@@ -324,7 +325,7 @@ void NewsGroup::getList()
     int c=0;
     QString ID;
     QString ac;
-    ac=krnpath+data();
+    ac=krnpath+name;
     QFile f(ac);
     if (!f.exists())
         return;
@@ -364,7 +365,7 @@ void NewsGroup::load()
 
 int NewsGroup::lastArticle(NNTP *server)
 {
-    QString p=groupinfopath+data();
+    QString p=groupinfopath+name;
     if (!sconf)
     {
         QString q=p+".conf";
@@ -377,7 +378,7 @@ int NewsGroup::lastArticle(NNTP *server)
 
 void NewsGroup::saveLastArticle(NNTP *server,int i)
 {
-    QString p=groupinfopath+data();
+    QString p=groupinfopath+name;
     if (!sconf)
     {
         QString q=p+".conf";
@@ -392,7 +393,7 @@ void NewsGroup::saveLastArticle(NNTP *server,int i)
 void NewsGroup::getSubjects(NNTP *server)
 {
     load();
-    server->setGroup(data());
+    server->setGroup(name);
     if (server->last>lastArticle(server))
     {
         debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
@@ -404,7 +405,7 @@ void NewsGroup::getSubjects(NNTP *server)
 
 void NewsGroup::getMessages(NNTP *server)
 {
-    debug ("getting articles in %s",data());
+    debug ("getting articles in %s",name);
     load();
     getSubjects(server);
     getList();
@@ -440,8 +441,8 @@ int NewsGroup::countNew(NNTP *server)
   load();
   getList();
 
-  if(strcmp(server->group(), data()))
-    server->setGroup(data());
+  if(strcmp(server->group(), name))
+    server->setGroup(name);
 
   if(server->last > lastArticle(server))
     count = server->last - lastArticle(server);
@@ -625,7 +626,7 @@ GroupList::~GroupList()
 }
 int GroupList::compareItems(GCI item1,GCI item2)
 {
-    return strcmp(((NewsGroup *)item1)->data(),((NewsGroup *)item2)->data());
+    return strcmp(((NewsGroup *)item1)->name,((NewsGroup *)item2)->name);
 }
 
 

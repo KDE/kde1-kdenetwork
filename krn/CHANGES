@@ -1,4 +1,11 @@
 -----------------------------------------------------------------------------
+Changes made Nov 18
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed (I think) a couple more leaks as reported by purify.
+            not so impressive results, though (maybe saved .5MB)
+
+-----------------------------------------------------------------------------
 Changes made Nov 17
 -----------------------------------------------------------------------------
 
@@ -8,8 +15,7 @@ Changes made Nov 17
             SIZE yesterday:	21252
             SIZE today:		13204
             Saved--------------->8MB!!!!
-* [Roberto] A little lower: 12824. That's another 0.5MB :-)
-            
+* [Roberto] A little lower: 12824. That's another 0.5MB :-)            
 
 -----------------------------------------------------------------------------
 Changes made Nov 15

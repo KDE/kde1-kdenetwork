@@ -432,7 +432,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             grouplist->clear();
             return;
         };
-//        TextResponse();
+        TextResponse();
         if (!mTextResponse.length())
         {
             grouplist->clear();
@@ -451,21 +451,20 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
     }
     else //read it from the active file
     {
-        char *buffer=new char[2048]; // I hope no group has over 2000 chars in it's name ;-)
         if(f.open (IO_ReadOnly))
         {
+            QTextStream st(&f);
             while (1)
             {
-                if (!f.readLine(buffer,2040))
+                QString s=st.readLine();
+                if (s.isEmpty())
                     break;
-                QString s(buffer);
-                int t=s.find(' ');
-                NewsGroup *gr=new NewsGroup(s.left(t).data());
+                // I hope no group has over 2000 chars in it's name ;-)
+                NewsGroup *gr=new NewsGroup(s.left(s.find(' ')));
                 grouplist->append(gr);
             };
             f.close();
         }
-        delete[] buffer;
     };
     resetCounters (true,true);
 }

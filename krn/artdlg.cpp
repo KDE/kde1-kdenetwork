@@ -81,7 +81,7 @@ extern KConfig *conf;
 findArtDlg *FindDlg;
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
-    :Inherited (_group->data())
+    :Inherited (_group->name)
 {
     FindDlg=new findArtDlg(0);
     connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
@@ -89,8 +89,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     group=_group;
     group->isVisible=this;
-    setCaption (group->data());
-    groupname=group->data();
+    setCaption (group->name);
+    groupname=group->name;
     
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
@@ -545,7 +545,7 @@ bool Artdlg::actions (int action)
         }
     case POST:
         {
-            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->data(),false);
+            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->name,false);
             comp->show();
             break;
         }

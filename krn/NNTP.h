@@ -107,7 +107,7 @@ public:
 
 class Artdlg;
 
-class NewsGroup: public QString
+class NewsGroup
 {
 public:
     NewsGroup(const char *name);
@@ -130,6 +130,7 @@ public:
     void catchup();
     void addArticle(QString ID);
     int countNew(NNTP *server);
+    char *name;
 private:
     KSimpleConfig *sconf;
 };

@@ -102,8 +102,9 @@ Groupdlg::Groupdlg
 :
 Inherited (name)
 {
-    groups.setAutoDelete(false);
-    subscr.setAutoDelete(false);
+    groups.setAutoDelete(true);
+    subscr.setAutoDelete(true);
+    tagged.setAutoDelete(true);
     
     QPopupMenu *file = new QPopupMenu;
     file->insertItem(klocale->translate("Connect to Server"),CONNECT);
@@ -234,7 +235,7 @@ Groupdlg::~Groupdlg ()
     {
         if (g->isVisible)
         {
-            openwin.append (g->data());
+            openwin.append (g->name);
             delete g->isVisible;
         }
     }
@@ -308,29 +309,29 @@ void Groupdlg::openGroup (int index)
             {
                 iter=it.current();
                 //this group's name matches the base
-                if (!strncmp(base.data(),iter->data(),l))
+                if (!strncmp(base.data(),iter->name,l))
                 {
-                    QString gname=iter->data();
+                    QString gname=iter->name;
                     //Check the dot count.
                     //If it's the same, then it's a group
                     //Add it as a child
                     if (gname.contains('.')==c)
                     {
-                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("followup.xpm"),index);
+                            list->addChildItem(iter->name,&kapp->getIconLoader()->loadIcon("followup.xpm"),index);
                     }
                     
                     else  //It may be a new hierarchy
                     {
                         //take what the new base would be
-                        char *nextdot=strchr(iter->data()+l+1,'.')+1;
+                        char *nextdot=strchr(iter->name+l+1,'.')+1;
                         tc=nextdot[0];
                         nextdot[0]=0;
-                        if (bases.find(iter->data())==-1)
+                        if (bases.find(iter->name)==-1)
                         {
                             // It's new, so add it to the base list
                             // and insert it as a folder
-                            bases.append(iter->data());
-                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
+                            bases.append(iter->name);
+                            list->addChildItem(iter->name,&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
                         }
                         nextdot[0]=tc;
                     }
@@ -362,7 +363,7 @@ void Groupdlg::subscribe (NewsGroup *group)
     {
         subscr.remove ();
         path.push (new QString ("Subscribed Newsgroups."));
-        path.push (new QString (group->data()));
+        path.push (new QString (group->name));
         int l=list->currentItem();
         list->setCurrentItem(0);
         list->removeItem (&path);
@@ -376,7 +377,7 @@ void Groupdlg::subscribe (NewsGroup *group)
     {
         if (-1 != groups.find (group))
         {
-            list->addChildItem (group->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
+            list->addChildItem (group->name, &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
             subscr.append (group);
             if (list->itemAt(0)->isExpanded() &&
                 ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
@@ -460,7 +461,7 @@ void Groupdlg::fillTree ()
     for (;it.current();++it)
     {
         g=it.current();
-        list->addChildItem (g->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
+        list->addChildItem (g->name, &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
     }
     
     list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
@@ -510,7 +511,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         }
     case OPENGROUP:
         {
-            openGroup (group->data());
+            openGroup (group->name);
             break;
         }
     case TAGGROUP:
@@ -648,7 +649,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         {
             if (!group)
                 break;
-            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->data(),false);
+            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->name,false);
             comp->show();
             success=true;
             break;
@@ -702,7 +703,7 @@ bool Groupdlg::saveSubscribed()
         QListIterator <NewsGroup>it(subscr);
         for (;it.current();++it)
         {
-            f.writeBlock(it.current()->data(),it.current()->length());
+            f.writeBlock(it.current()->name,strlen(it.current()->name));
             f.writeBlock("\n",1);
         }
         f.close ();
@@ -718,31 +719,33 @@ bool Groupdlg::saveSubscribed()
 bool Groupdlg::loadActive()
 {
     bool success=false;
-    QString ac;
-    //check if the "active" file exists
-    ac=krnpath+"/active";
+    QString ac=krnpath+"/active";
     QFile f (ac.data ());
-    if (!f.open (IO_ReadOnly))	//can't open file
-        
+    if (!f.exists())	//doesn't have an active file
     {
+        
         qApp->setOverrideCursor (arrowCursor);
         int i = KMsgBox::yesNo (0, klocale->translate("Error"),
                                 klocale->translate("You don't have an active groups list.\n get it from server?"));
+        if (!needsConnect())
+            return false;
         qApp->restoreOverrideCursor ();
         if (1 == i)
         {
-            if (actions (GET_ACTIVE))
-                success = true;
-            else
-                success = false;
+            server->groupList(&groups,true);
+            success=true;
+        }
+        else
+        {
+            return false;
         }
     }
-    else			// active file opens
+    else			// active file not exists
     {
-        f.close ();
         statusBar ()->changeItem (klocale->translate("Listing active newsgroups"), 2);
         qApp->processEvents ();
         server->groupList (&groups,false);
+        success=true;
     };
     statusBar ()->changeItem ("", 2);
     return success;
@@ -893,7 +896,7 @@ void Groupdlg::getArticles(NewsGroup *group)
     {
         QString s;
         s=klocale->translate("Getting messages in ");
-        s+=group->data();
+        s+=group->name;
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
         group->getMessages(server);
@@ -906,7 +909,7 @@ void Groupdlg::getSubjects(NewsGroup *group)
     {
         QString s;
         s=klocale->translate("Getting list of messages in ");
-        s+=group->data();
+        s+=group->name;
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
         group->getSubjects(server);

@@ -17,7 +17,8 @@ KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
 {
     saveWidgetName=sWN;
     viewWidgetName=vWN;
-    message=new DwMessage(s.data());
+    message=new DwMessage(qstrdup(s.data()));
+    s="";
     message->Parse();
 
     //Get the date format from the config
