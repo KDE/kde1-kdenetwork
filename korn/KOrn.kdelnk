@@ -3,6 +3,7 @@
 BinaryPattern=korn;
 Protocols=
 Comment=Multi-folder new mail monitor
+Comment[fi]=Monen kansion uutta postia seuraava ohjelma
 Exec=korn %f
 Icon=korn.xpm
 TerminalOptions=

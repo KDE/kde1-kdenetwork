@@ -77,46 +77,43 @@ msgstr "Joidenkin jonossa olleiden viestien lähetys epäonnistui."
 
 #: kmmainwin.cpp:537
 msgid "Opening URL..."
-msgstr ""
+msgstr "Avaan URL:ää..."
 
 #: kmmainwin.cpp:598
 msgid "Address added to addressbook."
-msgstr ""
+msgstr "Osoite lisätty osoitekirjaan"
 
 #: kmmainwin.cpp:610
 msgid "Address copied to clipboard."
-msgstr ""
+msgstr "Osoite kopioitu leikepöydälle"
 
 #: kmmainwin.cpp:615
 msgid "URL copied to clipboard."
-msgstr ""
+msgstr "URL kopioitu leikepöydälle"
 
 #: kmmainwin.cpp:642
-#, fuzzy
 msgid "Send to..."
-msgstr "Lähetä nyt"
+msgstr "Lähetä..."
 
 #: kmmainwin.cpp:644
 msgid "Send reply to..."
-msgstr ""
+msgstr "Lähetä vastaus..."
 
 #: kmmainwin.cpp:646
-#, fuzzy
 msgid "Forward to..."
-msgstr "Lähetä &eteenpäin"
+msgstr "Lähetä eteenpäin..."
 
 #: kmmainwin.cpp:649
-#, fuzzy
 msgid "Add to addressbook"
-msgstr "Osoite&kirja"
+msgstr "&Lisää osoitekirjaan"
 
 #: kmmainwin.cpp:651 kmmainwin.cpp:660
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopioi leikepöydälle"
 
 #: kmmainwin.cpp:658
 msgid "Open URL..."
-msgstr ""
+msgstr "Avaa URL..."
 
 #: kmmainwin.cpp:668 kmmainwin.cpp:764
 msgid "&Reply..."
@@ -255,9 +252,8 @@ msgid "&Long Headers"
 msgstr "&Pitkät otsikot"
 
 #: kmmainwin.cpp:795
-#, fuzzy
 msgid "&All Headers"
-msgstr "&Näytä/Piilota kaikki otsikot"
+msgstr "&Kaikki otsikot"
 
 #: kmmainwin.cpp:798
 msgid "Iconic Attachments"
@@ -312,9 +308,8 @@ msgid "Delete message"
 msgstr "Tuhoa viesti"
 
 #: kmmainwin.cpp:875
-#, fuzzy
 msgid "Open addressbook..."
-msgstr "Osoite&kirja"
+msgstr "Avaa osoitekirja..."
 
 #: kmmainwin.cpp:887
 msgid "Initializing..."
@@ -358,9 +353,8 @@ msgid "Signature File:"
 msgstr "Allekirjoitustiedosto:"
 
 #: kmsettings.cpp:138
-#, fuzzy
 msgid "PGP User Identity:"
-msgstr "Identiteetti"
+msgstr "PGP Identiteetti:"
 
 #: kmsettings.cpp:147
 msgid "Identity"
@@ -372,7 +366,7 @@ msgstr "Postin lähetys"
 
 #: kmsettings.cpp:174
 msgid "Sendmail"
-msgstr ""
+msgstr "Sendmail"
 
 #: kmsettings.cpp:179 kmsettings.cpp:614
 msgid "Location:"
@@ -380,7 +374,7 @@ msgstr "Sijainti:"
 
 #: kmsettings.cpp:184
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 #: kmsettings.cpp:189
 msgid "Server:"
@@ -451,9 +445,8 @@ msgid "Indentation:"
 msgstr "Keskitys:"
 
 #: kmmessage.cpp:1123 kmsettings.cpp:308
-#, fuzzy
 msgid "On %D, you wrote:"
-msgstr "Viestissä %D, %F kirjoitti:"
+msgstr "Viestissä %D, kirjoitit:"
 
 #: kmmessage.cpp:1124 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
@@ -473,7 +466,7 @@ msgstr "Automaattisesti lisää allekirjoitus"
 
 #: kmsettings.cpp:333
 msgid "Automatically sign messages using PGP"
-msgstr ""
+msgstr "Automaattisesti allekirjoita viestit PGP:llä"
 
 #: kmsettings.cpp:338
 msgid "Word wrap at column:"
@@ -723,12 +716,11 @@ msgstr "&Liitä"
 #: kmcomposewin.cpp:464
 #, fuzzy
 msgid "sign message"
-msgstr "Tulosta viesti"
+msgstr "allekirjoita viesti"
 
 #: kmcomposewin.cpp:469
-#, fuzzy
 msgid "encrypt message"
-msgstr "Tulosta viesti"
+msgstr "salaa viesti"
 
 #: kmcomposewin.cpp:531
 msgid "Send now"
@@ -760,10 +752,12 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"julkista avainta %s ei löydy.\n"
+"Tämä käyttäjä ei voi purkaa salattuja viestejä."
 
 #: kmcomposewin.cpp:706
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Virhe PGP:n aikana:"
 
 #: kmcomposewin.cpp:870 kmcomposewin.cpp:891
 msgid "Attach File"
@@ -833,7 +827,7 @@ msgstr "Base 64"
 
 #: kmmsgpartdlg.cpp:80
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:253 kmreaderwin.cpp:269 kmreaderwin.cpp:290
 msgid "From: "
@@ -856,28 +850,24 @@ msgid "Date: "
 msgstr "Päivä:"
 
 #: kmreaderwin.cpp:298
-#, fuzzy
 msgid "Bcc: "
-msgstr "&Tiedoksi:"
+msgstr "&Tiedoksi: "
 
 #: kmreaderwin.cpp:301
-#, fuzzy
 msgid "Reply to: "
-msgstr "Vastaa:"
+msgstr "Vastaa: "
 
 #: kmreaderwin.cpp:308
-#, fuzzy
 msgid "Groups: "
-msgstr "&Uutisryhmät"
+msgstr "Uutisryhmät: "
 
 #: kmreaderwin.cpp:344
-#, fuzzy
 msgid "Encrypted message"
-msgstr "Tulosta viesti"
+msgstr "Salattu viesti"
 
 #: kmreaderwin.cpp:350
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "En voi purkaa viestiä:"
 
 #: kmreaderwin.cpp:367
 msgid "Message was signed by"
@@ -888,9 +878,8 @@ msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
 #: kmreaderwin.cpp:533
-#, fuzzy
 msgid "Attachment: "
-msgstr "Älykkäät liitteet"
+msgstr "Liitteet: "
 
 #: kmreaderwin.cpp:593
 msgid "Could not create temporary file"
@@ -1038,17 +1027,15 @@ msgstr "Lähetys vielä käynnissä"
 
 #: kmsender.cpp:192
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Alustan lähettävää prosessia..."
 
 #: kmsender.cpp:208
-#, fuzzy
 msgid "Sending message: "
-msgstr "Postin lähetys epäonnistui:"
+msgstr "Lähetän viestiä: "
 
 #: kmsender.cpp:230
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Tuhoa viesti"
+msgstr "Viestien lähetys tehty."
 
 #: kmsender.cpp:249
 msgid "Sending failed:"
@@ -1074,7 +1061,7 @@ msgstr "Viestin putkitus postiohjelmaan %s epäonnistui"
 
 #: kmsender.cpp:465
 msgid "connecting to server"
-msgstr ""
+msgstr "yhdistän palvelimeen"
 
 #: kmsender.cpp:470
 #, c-format
@@ -1092,9 +1079,8 @@ msgid "Cannot close SMTP connection."
 msgstr "En saa suljettua SMTP yhteyttä."
 
 #: kmsender.cpp:565
-#, fuzzy
 msgid "transmitting message"
-msgstr "Tulosta viesti"
+msgstr "lähetän viestiä"
 
 #: kmsender.cpp:583
 msgid "network error"
@@ -1108,11 +1094,15 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"SMTP virhe tapahtui.\n"
+"Komento: %s\n"
+"Vastaus: %s\n"
+"Paluukoodi: %d"
 
 #: kmsender.cpp:600
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Lähetän SMTP komentoa: %s"
 
 #: kmacctseldlg.cpp:26
 msgid "Account Type"
@@ -1206,7 +1196,7 @@ msgstr "ei sisällä"
 
 #: kmfilterdlg.cpp:455
 msgid "regular expression"
-msgstr ""
+msgstr "vertailulauseke"
 
 #: kmfilterdlg.cpp:461
 msgid "<message>"
@@ -1229,7 +1219,6 @@ msgstr ""
 "Tarkista että PATH on asetettu oikein."
 
 #: kpgp.cpp:157
-#, fuzzy
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1239,7 +1228,7 @@ msgstr ""
 
 #: kpgp.cpp:167
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Salasana puuttuu."
 
 #: kpgp.cpp:439
 msgid "Message signed by"
@@ -1262,15 +1251,14 @@ msgid "Bad pass Phrase; couldn't sign"
 msgstr "Väärä salasana; en voi allekirjoittaa"
 
 #: kpgp.cpp:795
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Anna salasana"
+msgstr "Anna PGP salasanasi"
 
 #: kpgp.cpp:822
 msgid "PGP Security Check"
-msgstr ""
+msgstr "PGP turvallisuustarkastus"
 
 #: kfileio.cpp:26
 msgid "File I/O Error"
@@ -1398,238 +1386,10 @@ msgid "Addressbook"
 msgstr "Osoite&kirja"
 
 #: kmaddrbookdlg.cpp:94
-#, fuzzy
 msgid "Addressbook Manager"
-msgstr "Osoite&kirja"
+msgstr "Osoite&kirjan hallinta"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Poistu"
 
-#~ msgid ""
-#~ "Failed to send mail message\n"
-#~ "because a SMTP error occured\n"
-#~ "during the \"%s\" command.\n"
-#~ "\n"
-#~ "Return code: %d\n"
-#~ "Response: `%s'"
-#~ msgstr ""
-#~ "Viestin lähetys epäonnistui\n"
-#~ "koska SMTP virhe tapahtui\n"
-#~ "komennon \"%s\" aikana.\n"
-#~ "\n"
-#~ "Paluukoodi: %d\n"
-#~ "Vastaus: `%s'"
-
-#~ msgid "No Pass Phrase. Couldn't decrypt."
-#~ msgstr "Ei salasanaa. En voi purkaa."
-
-#~ msgid "No Passphrase. Can't sign message"
-#~ msgstr "Ei salasanaa. En voi allekirjoittaa viestiä"
-
-#, fuzzy
-#~ msgid "Sorry:"
-#~ msgstr "Anteeksi:"
-
-#, fuzzy
-#~ msgid "Warning:"
-#~ msgstr "varoitus"
-
-#, fuzzy
-#~ msgid "Find"
-#~ msgstr "Etsi..."
-
-#, fuzzy
-#~ msgid "Find:"
-#~ msgstr "Etsi..."
-
-#, fuzzy
-#~ msgid "Replace All"
-#~ msgstr "Vastaa &kaikille..."
-
-#, fuzzy
-#~ msgid "&Cancel"
-#~ msgstr "Peruuta"
-
-#~ msgid "&Delete"
-#~ msgstr "&Tuhoa"
-
-#~ msgid "&Undo"
-#~ msgstr "K&umoa"
-
-#~ msgid "Undo"
-#~ msgstr "Kumoa"
-
-#~ msgid "&Close"
-#~ msgstr "&Sulje"
-
-#~ msgid "&Quit"
-#~ msgstr "&Lopeta"
-
-#~ msgid "&Copy"
-#~ msgstr "&Kopioi"
-
-#, fuzzy
-#~ msgid "New"
-#~ msgstr "Verkko"
-
-#, fuzzy
-#~ msgid "&File"
-#~ msgstr "Tiedosto"
-
-#~ msgid "&Edit"
-#~ msgstr "&Muokkaa"
-
-#~ msgid "&Help"
-#~ msgstr "&Ohje"
-
-#~ msgid "Delete"
-#~ msgstr "Poista"
-
-#~ msgid "&Print..."
-#~ msgstr "Tul&osta..."
-
-#~ msgid "Cut"
-#~ msgstr "Leikkaa"
-
-#~ msgid "Copy"
-#~ msgstr "Kopioi"
-
-#~ msgid "Paste"
-#~ msgstr "Liitä"
-
-#, fuzzy
-#~ msgid "Remove"
-#~ msgstr "&Poista"
-
-#, fuzzy
-#~ msgid "Done"
-#~ msgstr "<ei mikään>"
-
-#~ msgid ""
-#~ "Directory\n"
-#~ "%s\n"
-#~ "does not exist.\n"
-#~ "\n"
-#~ "KMail will create it now."
-#~ msgstr ""
-#~ "Hakemistoa:\n"
-#~ "%s\n"
-#~ "ei ole olemassa.\n"
-#~ "\n"
-#~ "KMail luo sen nyt."
-
-#~ msgid ""
-#~ "Cannot enter directory:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Hakemistoon:\n"
-#~ "%ssiirtyminen epäonnistui."
-
-#~ msgid ""
-#~ "Directory is unreadable:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Hakemisto on lukukelvoton:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot read configuration of account '%s'\n"
-#~ "from broken file %s\n"
-#~ "Account type: %s\n"
-#~ msgstr ""
-#~ "Asetuksien lukeminen epäonnistui osoitteelle: '%s'\n"
-#~ "rikkoutuneesta tiedostosta %s\n"
-#~ "Osoitteen tyyppi: %s\n"
-
-#~ msgid ""
-#~ "Cannot rename account file\n"
-#~ "%s to %s\n"
-#~ "in directory %s"
-#~ msgstr ""
-#~ "Osoitetiedoston uudelleen nimeäminen epäonnistui\n"
-#~ "vanhasta %s uuteen %s\n"
-#~ "hakemistossa %s"
-
-#~ msgid "Filename"
-#~ msgstr "Tiedosto"
-
-#~ msgid "Size"
-#~ msgstr "Koko"
-
-#~ msgid "No recipients defined."
-#~ msgstr "Vastaanottajia ei ole määritetty"
-
-#~ msgid "New Mail&reader"
-#~ msgstr "Uusi &ikkuna"
-
-#~ msgid "Edit"
-#~ msgstr "Muokkaa"
-
-#~ msgid "Normal"
-#~ msgstr "Normaali"
-
-#~ msgid "Toggle T&oolbar"
-#~ msgstr "Näytä/Piilota painikkeet"
-
-#~ msgid "Change &Font"
-#~ msgstr "Vaihda &Fonttia"
-
-#~ msgid "Options"
-#~ msgstr "Asetukset"
-
-#~ msgid "Help"
-#~ msgstr "Ohje"
-
-#~ msgid "About"
-#~ msgstr "Tietoja"
-
-#~ msgid "KMail Folders"
-#~ msgstr "KMail kansiot"
-
-#~ msgid "KMail Message List"
-#~ msgstr "KMail viestilista"
-
-#~ msgid "&Paste"
-#~ msgstr "L&iitä"
-
-#~ msgid "&Undelete"
-#~ msgstr "&Palauta"
-
-#~ msgid "Inline"
-#~ msgstr "Viestissä"
-
-#~ msgid "Separate"
-#~ msgstr "Erikseen"
-
-#~ msgid "Pr&int..."
-#~ msgstr "Tul&osta..."
-
-#~ msgid ""
-#~ "The folder `%s' does not exist in the\n"
-#~ "mail folder directory. The mail sender depends\n"
-#~ "on this folder and will not work without it.\n"
-#~ "Therefore the folder will now be created."
-#~ msgstr ""
-#~ "Kansio `%s' ei sisällä postikansiota.\n"
-#~ "Lähetysohjelma on riippuvainen tästä kansiosta\n"
-#~ "ja siksi se luodaan nyt."
-
-#~ msgid "outbox"
-#~ msgstr "Lähetetyt"
-
-#~ msgid "Default"
-#~ msgstr "Oletus"
-
-#~ msgid "Are you sure you want to remove the account"
-#~ msgstr "Oletko varma että haluat poistaa osoitteen?"
-
-#~ msgid ""
-#~ "The folder `%s'\n"
-#~ "does not exist in the\n"
-#~ "mail folder directory\n"
-#~ "but will be created now."
-#~ msgstr ""
-#~ "Kansiota '%s'\n"
-#~ "ei ole olemassa postikansiossa.\n"
-#~ "Se luodaan nyt."

@@ -56,9 +56,8 @@ msgid "Get Active File"
 msgstr "Nouda aktiiviset tiedosto"
 
 #: groupdlg.cpp:127
-#, fuzzy
 msgid "Post Queued Messages"
-msgstr "N‰yt‰ lukitut viestit"
+msgstr "L‰het‰ jonossa olevat viestit"
 
 #: groupdlg.cpp:129
 msgid "Exit"
@@ -157,14 +156,12 @@ msgstr ""
 " Krn ei osaa t‰s‰ t‰ll‰hetkell‰"
 
 #: groupdlg.cpp:322 groupdlg.cpp:503 groupdlg.cpp:824
-#, fuzzy
 msgid "All Newsgroups."
-msgstr "&Uutisryhm‰t"
+msgstr "Kaikki uutisryhm‰t"
 
 #: groupdlg.cpp:397 groupdlg.cpp:491
-#, fuzzy
 msgid "Subscribed Newsgroups."
-msgstr "&Tilattu"
+msgstr "Tilatut uutisryhm‰t."
 
 #: groupdlg.cpp:446
 msgid "Disconnected"
@@ -248,7 +245,7 @@ msgstr "Haen viestien listaa ryhm‰st‰ "
 
 #: artdlg.cpp:112 artdlg.cpp:122
 msgid "Download"
-msgstr ""
+msgstr "Lataa"
 
 #: artdlg.cpp:114 artdlg.cpp:132
 msgid "Decode"
@@ -283,9 +280,8 @@ msgid "Show Only Unread Messages"
 msgstr "N‰yt‰ vain lukemattomat viestit"
 
 #: artdlg.cpp:147
-#, fuzzy
 msgid "Show Only Cached Messages"
-msgstr "N‰yt‰ vain lukemattomat viestit"
+msgstr "N‰yt‰ vain v‰limuistin viestit"
 
 #: artdlg.cpp:149
 msgid "Show Locked Messages"
@@ -667,7 +663,6 @@ msgid "Append S&ignature"
 msgstr "Lis‰‰ &Allekirjoitus"
 
 #: kmcomposewin.cpp:396
-#, fuzzy
 msgid "&Insert File"
 msgstr "Lis‰‰ &Tiedosto"
 
@@ -704,14 +699,12 @@ msgid "Print message"
 msgstr "Tulosta viesti"
 
 #: kmcomposewin.cpp:465
-#, fuzzy
 msgid "sign message"
-msgstr "Tulosta viesti"
+msgstr "allekirjoita viesti"
 
 #: kmcomposewin.cpp:470
-#, fuzzy
 msgid "encrypt message"
-msgstr "Tulosta viesti"
+msgstr "salaa viesti"
 
 #: kmcomposewin.cpp:532
 msgid "Send now"
@@ -743,10 +736,12 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"julkista avainta %s ei lˆytynyt.\n"
+"T‰m‰ k‰ytt‰j‰ ei voi purkaa salattua viesti‰."
 
 #: kmcomposewin.cpp:707
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Virhe PGP:n aikana:"
 
 #: kmcomposewin.cpp:871 kmcomposewin.cpp:892
 msgid "Attach File"
@@ -814,33 +809,31 @@ msgstr ""
 
 #: kmsender.cpp:127
 msgid "You must specify a receiver"
-msgstr ""
+msgstr "Sinun pit‰‰ m‰‰ritell‰ vastaanottaja"
 
 #: kmsender.cpp:138
 msgid "Cannot add message to outbox folder"
-msgstr ""
+msgstr "En voi lis‰t‰ viestej‰ outbox kansioon"
 
 #: kmsender.cpp:160
 msgid "Sending still in progress"
-msgstr ""
+msgstr "L‰hetys viel‰ k‰ynniss‰"
 
 #: kmsender.cpp:212
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Alustan l‰hett‰j‰prosessia..."
 
 #: kmsender.cpp:228
-#, fuzzy
 msgid "Sending message: "
-msgstr "Haen viestej‰ ryhm‰st‰ "
+msgstr "L‰het‰n viesti‰: "
 
 #: kmsender.cpp:252
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Haen viestej‰ ryhm‰st‰ "
+msgstr "Viestit l‰hetetty."
 
 #: kmsender.cpp:272
 msgid "Sending failed:"
-msgstr ""
+msgstr "L‰hetys ep‰onnistui:"
 
 #: kmsender.cpp:393
 msgid ""
@@ -851,22 +844,17 @@ msgstr ""
 "asetuksista."
 
 #: kmsender.cpp:431
-#, fuzzy, c-format
 msgid "Failed to execute mailer program %s"
-msgstr ""
-"Allekirjoitus skriptin suoritus ep‰onnistui\n"
-"%s\n"
-"%s"
+msgstr "Postiohjelman k‰ynnistys ep‰onnistui %s"
 
 #: kmsender.cpp:439
 #, c-format
 msgid "Failed to pipe mail message into mailer program %s"
-msgstr ""
+msgstr "Viestin putkitus postiohjelmaan %s ep‰onnistui"
 
 #: kmsender.cpp:488
-#, fuzzy
 msgid "connecting to server"
-msgstr "Yhdist‰n palvelimeen"
+msgstr "yhdist‰n palvelimeen"
 
 #: kmsender.cpp:493
 #, c-format
@@ -884,13 +872,12 @@ msgid "Cannot close SMTP connection."
 msgstr "En saa suljettua SMTP yhteytt‰."
 
 #: kmsender.cpp:588
-#, fuzzy
 msgid "transmitting message"
-msgstr "Tulosta viesti"
+msgstr "l‰het‰n viesti‰"
 
 #: kmsender.cpp:606
 msgid "network error"
-msgstr ""
+msgstr "verkkovirhe"
 
 #: kmsender.cpp:608
 #, c-format
@@ -900,11 +887,15 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"SMTP virhe tapahtui.\n"
+"Komento: %s\n"
+"Vastaus: %s\n"
+"Paluukoodi: %d"
 
 #: kmsender.cpp:623
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "L‰het‰n SMTP komennon: %s"
 
 #: kmidentity.cpp:159
 #, c-format
@@ -986,10 +977,12 @@ msgid ""
 "File %s exists.\n"
 "Do you want to replace it ?"
 msgstr ""
+"Tiedosto %s on olemassa.\n"
+"Halutako korvata sen ?"
 
 #: kfileio.cpp:124 kfileio.cpp:142
 msgid "&Ok"
-msgstr ""
+msgstr "&Ok"
 
 #: kfileio.cpp:141
 #, c-format
@@ -997,6 +990,8 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
+"Varmmuskopio tiedostosta %s ep‰onnistui.\n"
+"Jatka kuitenkin ?"
 
 #: kfileio.cpp:153 kfileio.cpp:170
 #, c-format
@@ -1008,21 +1003,21 @@ msgstr ""
 "%s"
 
 #: kfileio.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
-"En saanut avattua tiedostoa:\n"
+"En saanut avattua tiedostoa kirjoitettavaksi:\n"
 "%s"
 
 #: kfileio.cpp:160
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
-"Tiedoston luvun aikana tapahtui virhe:\n"
+"Tiedoston kirjoituksen aikana tapahtui virhe:\n"
 "%s"
 
 #: kfileio.cpp:176
@@ -1052,11 +1047,11 @@ msgstr "ei mik‰‰n (8bit)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:276 kmreaderwin.cpp:292 kmreaderwin.cpp:313
 msgid "From: "
@@ -1079,28 +1074,24 @@ msgid "Date: "
 msgstr "P‰iv‰:"
 
 #: kmreaderwin.cpp:321
-#, fuzzy
 msgid "Bcc: "
-msgstr "&Tiedoksi"
+msgstr "Tiedoksi: "
 
 #: kmreaderwin.cpp:324
-#, fuzzy
 msgid "Reply to: "
-msgstr "V&astaa:"
+msgstr "Vastaa: "
 
 #: kmreaderwin.cpp:331
-#, fuzzy
 msgid "Groups: "
-msgstr "&Uutisryhm‰t"
+msgstr "Uutisryhm‰t: "
 
 #: kmreaderwin.cpp:367
-#, fuzzy
 msgid "Encrypted message"
-msgstr "Tulosta viesti"
+msgstr "Salattu viesti"
 
 #: kmreaderwin.cpp:373
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "En voi purkaa viesti‰:"
 
 #: kmreaderwin.cpp:390
 msgid "Message was signed by"
@@ -1111,14 +1102,12 @@ msgid "Warning: Bad signature from"
 msgstr "Varoitus: V‰‰r‰ allekirjoitus"
 
 #: kmreaderwin.cpp:556
-#, fuzzy
 msgid "Attachment: "
-msgstr "&Liit‰"
+msgstr "Liiteet: "
 
 #: kmreaderwin.cpp:616
-#, fuzzy
 msgid "Could not create temporary file"
-msgstr "En saanut tallennettua v‰liaikaistiedostoa %s"
+msgstr "En saanut tallennettua v‰liaikaistiedostoa"
 
 #: kmreaderwin.cpp:636
 #, c-format
@@ -1138,7 +1127,6 @@ msgstr ""
 "Tarkista ett‰ PATH on asetettu oikein."
 
 #: kpgp.cpp:157
-#, fuzzy
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1148,7 +1136,7 @@ msgstr ""
 
 #: kpgp.cpp:167
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Salasana puuttuu"
 
 #: kpgp.cpp:439
 msgid "Message signed by"
@@ -1171,42 +1159,20 @@ msgid "Bad pass Phrase; couldn't sign"
 msgstr "V‰‰r‰ salasana; en saa allekirjoitettua"
 
 #: kpgp.cpp:795
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Anna salasana"
+msgstr "Anna PGP salasanasi"
 
 #: kpgp.cpp:822
 msgid "PGP Security Check"
-msgstr ""
+msgstr "PGP turvallisuustarkistus"
 
 #: kmaddrbookdlg.cpp:20
-#, fuzzy
 msgid "Addressbook"
-msgstr "&Osoitekirja"
+msgstr "Osoitekirja"
 
 #: kmaddrbookdlg.cpp:94
 msgid "Addressbook Manager"
-msgstr ""
+msgstr "Osoitekirjan hallinta"
 
-#~ msgid ""
-#~ "Failed to send mail message\n"
-#~ "because a SMTP error occured\n"
-#~ "during the \"%s\" command.\n"
-#~ "\n"
-#~ "Return code: %d\n"
-#~ "Response: `%s'"
-#~ msgstr ""
-#~ "Viestin l‰hetys ep‰onnistui\n"
-#~ "koska tapahtui SMTP virhe\n"
-#~ "komennon \"%s\" aikana.\n"
-#~ "\n"
-#~ "Paluukoodi: %d\n"
-#~ "Vastaus: `%s'"
-
-#~ msgid "No Pass Phrase. Couldn't decrypt."
-#~ msgstr "Ei salasanaa. En saa purettua."
-
-#~ msgid "No Passphrase. Can't sign message"
-#~ msgstr "Ei salasanaa. En voi allekirjoittaa viesti‰"

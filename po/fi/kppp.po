@@ -192,13 +192,12 @@ msgid "Prompting "
 msgstr "Kysyn "
 
 #: connect.cpp:546
-#, fuzzy
 msgid "PW Prompt "
 msgstr "Salasana "
 
 #: connect.cpp:572
 msgid "Loop Start "
-msgstr ""
+msgstr "Loopin alku "
 
 #: connect.cpp:576
 msgid "ERROR: Nested too deep, ignored."
@@ -253,9 +252,8 @@ msgid "Sorry, can't open modem."
 msgstr "En saa avattua modeemia."
 
 #: connect.cpp:996
-#, fuzzy
 msgid "Sorry, the modem is not ready."
-msgstr "Modeemi on jo käytössä"
+msgstr "Modeemi ei ole valmis"
 
 #: connect.cpp:1004 connect.cpp:1045 modeminfo.cpp:377
 msgid "Sorry, the modem is busy."
@@ -330,7 +328,6 @@ msgid "Store password"
 msgstr "Tallenna salasana"
 
 #: edit.cpp:86
-#, fuzzy
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -339,18 +336,16 @@ msgstr ""
 "yhdistettäessä:"
 
 #: edit.cpp:98
-#, fuzzy
 msgid ""
 "Execute program\n"
 "upon disconnect:"
 msgstr ""
 "Käynnistä ohjelma\n"
-"yhdistettäessä:"
+"katkaistaessa:"
 
 #: edit.cpp:110
-#, fuzzy
 msgid "Edit pppd arguments:"
-msgstr "Kustomoi pppd:n argumentteja"
+msgstr "Muuta pppd:n argumentteja"
 
 #: edit.cpp:116
 msgid "Arguments"
@@ -477,7 +472,6 @@ msgid "About kppp"
 msgstr "Tietoja kppp:ta"
 
 #: general.cpp:183
-#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -490,11 +484,10 @@ msgstr ""
 "Soittaja ja edustaohjelma pppd:lle\n"
 "\n"
 "Copyright (c) 1997\n"
-"\tBernd Johannes Wuebben\n"
-"\twuebben@math.cornell.edu"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
 
 #: general.cpp:199
-#, fuzzy
 msgid ""
 "With contributions from:\n"
 "\n"
@@ -505,11 +498,11 @@ msgid ""
 "Peter Silva"
 msgstr ""
 "Kehitystyössä avustaneet myös:\n"
-"   Mario Weilguni\n"
-"   Markus Wuebben\n"
-"   Jesus Fuentes Saavedra\n"
-"   Harri Porten\n"
-"   Peter Silva"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
 
 #: general.cpp:223
 msgid "Serial device"
@@ -525,7 +518,7 @@ msgstr "Vuonohjaus:"
 
 #: general.cpp:253
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: general.cpp:261
 msgid "Line Termination:"
@@ -557,7 +550,7 @@ msgstr "Modeemi sietää nopean asetuksen."
 
 #: general.cpp:472
 msgid "Modem Asserts CD Line."
-msgstr ""
+msgstr "Modeemi välittää CD linjasta."
 
 #: general.cpp:488
 msgid "Modem Commands"
@@ -991,5 +984,3 @@ msgstr "kppp: sääntötiedosto ei sisällä \"name=...\" riviä\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: sääntötiedosto on OK\n"
 
-#~ msgid "Edit default pppd:"
-#~ msgstr "Editoi oletus pppd:tä:"
