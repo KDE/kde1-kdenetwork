@@ -79,9 +79,6 @@ bool FingerProtocol::connection(  const char * host,int port)
   FD_ZERO(&wr);
   FD_SET(sock, &rd);
   FD_SET(sock, &wr);
-    unsigned int len;
-    int  val; 
-
       struct rlimit rlp;
 
   while(n-- && stopFlag){
@@ -90,7 +87,6 @@ bool FingerProtocol::connection(  const char * host,int port)
       getrlimit(RLIMIT_NOFILE, &rlp); 
       retval=select(rlp.rlim_cur, (fd_set *)&rd, (fd_set *)&wr, (fd_set *)0,
                    (struct timeval *)&timeout);
-    getsockopt(sock,SOL_SOCKET,SO_ERROR,&val,&len );                   
 //      warning("retval %i, val %i",retval,val);
       if(retval){
 //	warning("connected");    
