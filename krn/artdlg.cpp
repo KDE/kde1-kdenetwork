@@ -536,7 +536,15 @@ bool Artdlg::actions (int action)
         }
     case POST:
         {
-            KMComposeWin *comp=new KMComposeWin();
+            conf->setGroup("Composer");
+            int mShowHeaders = conf->readNumEntry("headers", 0x60);
+            mShowHeaders = mShowHeaders & 0xfb;
+            conf->writeEntry("headers",mShowHeaders);
+
+            KMMessage *m=new KMMessage();
+            m->setGroups(groupname);
+
+            KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
         }
@@ -548,14 +556,25 @@ bool Artdlg::actions (int action)
                 break;
             
             Article *art=artList.at(index);
-            DwMessage *m=new DwMessage();
-            QString *ts=server->article(art->ID.data());
-            m->FromString(ts->data());
-            delete ts;
-            m->Parse();
             
-            KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(mm->createReply(true));
+            KMMessage *mm=new KMMessage();
+            QString *ts=server->article(art->ID.data());
+            mm->fromString(ts->data());
+            delete ts;
+            KMMessage *m=mm->createReply(true);
+            QString refs=mm->references();
+            refs+=" ";
+            refs+=mm->id();
+            m->setReferences(refs);
+            m->setGroups(mm->groups());
+            m->setTo("");
+            delete mm;
+            
+            conf->setGroup("Composer");
+            int mShowHeaders = conf->readNumEntry("headers", 0x60);
+            mShowHeaders = mShowHeaders & 0xfb;
+            conf->writeEntry("headers",mShowHeaders);
+            KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
         }
@@ -567,14 +586,18 @@ bool Artdlg::actions (int action)
                 break;
             
             Article *art=artList.at(index);
-            DwMessage *m=new DwMessage();
+            KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
-            m->FromString(ts->data());
+            m->fromString(ts->data());
             delete ts;
-            m->Parse();
+            KMMessage *mm=m->createReply();
+            mm->setGroups("");
             
-            KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(mm->createReply());
+            conf->setGroup("Composer");
+            int mShowHeaders = conf->readNumEntry("headers", 0x60);
+            mShowHeaders = mShowHeaders | 0x04;
+            conf->writeEntry("headers",mShowHeaders);
+            KMComposeWin *comp=new KMComposeWin(mm);
             comp->show();
             break;
         }
@@ -586,14 +609,19 @@ bool Artdlg::actions (int action)
                 break;
             
             Article *art=artList.at(index);
-            DwMessage *m=new DwMessage();
+            KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
-            m->FromString(ts->data());
+            m->fromString(ts->data());
             delete ts;
-            m->Parse();
             
-            KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(mm->createForward());
+            KMMessage *mm=m->createForward();
+            mm->setGroups("");
+            
+            conf->setGroup("Composer");
+            int mShowHeaders = conf->readNumEntry("headers", 0x60);
+            mShowHeaders = mShowHeaders | 0x04;
+            conf->writeEntry("headers",mShowHeaders);
+            KMComposeWin *comp=new KMComposeWin(mm);
             comp->show();
             break;
         }
@@ -603,18 +631,28 @@ bool Artdlg::actions (int action)
             
             if(index < 0)
                 break;
-            
             Article *art=artList.at(index);
-            DwMessage *m=new DwMessage();
-            QString *ts=server->article(art->ID.data());
-            m->FromString(ts->data());
-            delete ts;
-            m->Parse();
             
-            KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(mm->createReply(true));
+            KMMessage *mm=new KMMessage();
+            QString *ts=server->article(art->ID.data());
+            mm->fromString(ts->data());
+            delete ts;
+            KMMessage *m=mm->createReply(true);
+            QString refs=mm->references();
+            refs+=" ";
+            refs+=mm->id();
+            m->setReferences(refs);
+            m->setGroups(mm->groups());
+            delete mm;
+            
+            conf->setGroup("Composer");
+            int mShowHeaders = conf->readNumEntry("headers", 0x60);
+            mShowHeaders = mShowHeaders & 0xfb;
+            conf->writeEntry("headers",mShowHeaders);
+            KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
+            
         }
         
     case CATCHUP:

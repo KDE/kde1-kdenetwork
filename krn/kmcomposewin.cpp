@@ -64,10 +64,15 @@ extern KMIdentity *identity;
 #define HDR_CC       0x08
 #define HDR_BCC      0x10
 #define HDR_SUBJECT  0x20
+#define HDR_NEWSGROUPS  0x40
+#define HDR_FOLLOWUP_TO 0x80
+#define HDR_ALL      0xff
+
+#ifdef KRN
+#define HDR_STANDARD (HDR_SUBJECT|HDR_NEWSGROUPS)
+#else
 #define HDR_STANDARD (HDR_SUBJECT|HDR_TO|HDR_CC)
-#define HDR_ALL      0x3f
-
-
+#endif
 
 //-----------------------------------------------------------------------------
 KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
@@ -76,6 +81,10 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mEdtCc(&mMainWidget), mEdtBcc(&mMainWidget), mEdtSubject(&mMainWidget),
   mLblFrom(&mMainWidget), mLblReplyTo(&mMainWidget), mLblTo(&mMainWidget),
   mLblCc(&mMainWidget), mLblBcc(&mMainWidget), mLblSubject(&mMainWidget)
+    /* start added for KRN */
+    ,mEdtNewsgroups(&mMainWidget),mEdtFollowupTo(&mMainWidget),
+    mLblNewsgroups(&mMainWidget),mLblFollowupTo(&mMainWidget)
+    /* end added for KRN */
 {
 
   mGrid = NULL;
@@ -224,6 +233,10 @@ void KMComposeWin::rethinkFields(void)
 		    &mLblBcc, &mEdtBcc);
   rethinkHeaderLine(showHeaders,HDR_SUBJECT, row, nls->translate("&Subject:"),
 		    &mLblSubject, &mEdtSubject);
+  rethinkHeaderLine(showHeaders,HDR_NEWSGROUPS, row, nls->translate("&Newsgroups:"),
+		    &mLblNewsgroups, &mEdtNewsgroups);
+  rethinkHeaderLine(showHeaders,HDR_FOLLOWUP_TO, row, nls->translate("&Followup-To:"),
+		    &mLblFollowupTo, &mEdtFollowupTo);
   assert(row<=mNumHeaders);
 
   mGrid->addMultiCellWidget(mEditor, row, mNumHeaders, 0, 2);
@@ -352,6 +365,8 @@ void KMComposeWin::setupMenuBar(void)
   menu->insertItem(nls->translate("&Cc"), HDR_CC);
   menu->insertItem(nls->translate("&Bcc"), HDR_BCC);
   menu->insertItem(nls->translate("&Subject"), HDR_SUBJECT);
+  menu->insertItem(nls->translate("&Newsgroups"), HDR_NEWSGROUPS); //added for KRN
+  menu->insertItem(nls->translate("&Followup-To"), HDR_FOLLOWUP_TO); //added for KRN
   mMenuBar->insertItem(nls->translate("&View"), menu);
 
   //---------- Menu: Attach
@@ -481,6 +496,8 @@ void KMComposeWin::setMsg(KMMessage* newMsg)
   mEdtSubject.setText(mMsg->subject());
   mEdtReplyTo.setText(mMsg->replyTo());
   mEdtBcc.setText(mMsg->bcc());
+  mEdtNewsgroups.setText(mMsg->groups());
+  mEdtFollowupTo.setText(mMsg->followup());
 
   num = mMsg->numBodyParts();
   if (num > 0)
@@ -514,6 +531,8 @@ void KMComposeWin::applyChanges(void)
   if (!subject().isEmpty()) mMsg->setSubject(subject());
   if (!replyTo().isEmpty()) mMsg->setReplyTo(replyTo());
   if (!bcc().isEmpty()) mMsg->setBcc(bcc());
+  if (!followupTo().isEmpty()) mMsg->setFollowup(followupTo());
+  if (!newsgroups().isEmpty()) mMsg->setGroups(newsgroups());
 
   // we should do some multipart work here (attachments)
   mMsg->setBody(mEditor->text());
