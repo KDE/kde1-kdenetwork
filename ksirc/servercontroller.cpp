@@ -62,7 +62,7 @@
 #include <qpopmenu.h>
 
 #include "servercontroller.h"
-#include "open_ksirc.h"
+#include "KSOpenkSirc/open_ksirc.h"
 #include "open_top.h"
 #include "KSircColour.h"
 #include "config.h"

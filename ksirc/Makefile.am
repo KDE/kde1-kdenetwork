@@ -18,7 +18,7 @@ APPSDIR = $(kde_appsdir)/Internet
 INCLUDES= @all_includes@
 DEFS = @DEFS@ -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc pws-0.5
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker KSOpenkSirc pws-0.5 puke img doc
 
 ####### This part is very ksirc specific
 # you can add here more. This one gets installed 
@@ -51,7 +51,7 @@ open_top.cpp open_topData.cpp mopen_top.cpp mopen_topData.cpp \
 messageReceiver.cpp \
 ioBroadcast.cpp \
 ksircprocess.cpp mksircprocess.cpp \
-open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
+#open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
 servercontroller.cpp mservercontroller.cpp \
 KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
 FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
@@ -79,7 +79,7 @@ ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(LIBDL)  $(KDE_RPATH)
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(LIBDL)  $(KDE_RPATH)
 
 ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a
 

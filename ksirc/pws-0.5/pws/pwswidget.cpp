@@ -321,7 +321,7 @@ void PWSWidget::slotRestart(){
                                     "Do you want to save your changes and\n\n",
                                     "&Save+Restart Server", "&Cancel", "",
                                     0, // Enter == button 0
-                                    2)) { // Escape == button 2
+                                    1)) { // Escape == button 2
                                     case 0:
                                       accept();
                                       restart();
