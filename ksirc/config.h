@@ -4,6 +4,10 @@
 #include <qcolor.h>
 #include <qfont.h>
 
+#if (__GNUC__ < 2 || (__GNUC__ == 2 && __GNUC_MINOR__ <= 7))
+#error "You need GCC 2.8 or EGCS to compile kSirc"
+#endif
+
 class global_config {
  public:
   QColor *colour_text;
