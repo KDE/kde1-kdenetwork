@@ -26,12 +26,15 @@ install-data-local:
 	$(mkinstalldirs) $(kde_appsdir)/Network
 	$(mkinstalldirs) $(kde_htmldir)/en/korn
 	$(mkinstalldirs) $(kde_icondir)
+	$(mkinstalldirs) $(kde_minidir)
 	$(INSTALL_DATA) KOrn.kdelnk $(kde_appsdir)/Network
 	$(INSTALL_DATA) doc/index.html $(kde_htmldir)/en/korn
 	$(INSTALL_DATA) korn.xpm $(kde_icondir)
+	$(INSTALL_DATA) mini-korn.xpm $(kde_minidir)/korn.xpm
 
 uninstall-local:
 	rm -f $(kde_icondir)/korn.xpm
+	rm -f $(kde_minidir)/korn.xpm
 	rm -f $(kde_htmldir)/en/korn/index.html
 	rm -f $(kde_appsdir)/Network/KOrn.kdelnk
 	-rmdir $(kde_htmldir)/en/korn

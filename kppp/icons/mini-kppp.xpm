@@ -1,28 +1,30 @@
 /* XPM */
-static char *magick[] = {
-/* columns rows colors chars-per-pixel */
-"16 16 6 1",
-"  c #000000",
-". c #303030",
-"X c #595959",
-"o c #a0a0a4",
-"O c #c0c0c0",
-"+ c None",
-/* pixels */
-"++++++++++++++++",
-"++++++++++++++++",
-"++++++++++++++++",
-"++++++++++++++++",
-"+++++++oo. +++++",
-"+++++oOOOoO. +++",
-"+++oOOOoOOOOO. +",
-"+oOOOoOOOOOOoOO.",
-"+  oOOOOOOoOOoX.",
-"+    OOOoOOoXXo+",
-"++     OOoXXo+++",
-"++++    XXo+++++",
-"++++++  o+++++++",
-"++++++++++++++++",
-"++++++++++++++++",
-"++++++++++++++++"
-};
+/* Drawn for the K Desktop Environment */
+/* See http://www.kde.org */
+static char*kppp[]={
+"16 16 8 1",
+"a c #ffffff",
+"# c #000000",
+"b c #c0c0ff",
+"c c #008000",
+"e c #808080",
+"d c #c0c0c0",
+"f c #ff0000",
+". c None",
+".....#####......",
+"....#abbcc#.....",
+"...#aabcccc#....",
+"..#cabcccbcc#...",
+"..#cbbbbcbbc#...",
+"..#bbbcccccc#...",
+"..#cbbcc###b#...",
+"...#bb##ddd##...",
+"...###ddddddd##.",
+".###ddddddddde#.",
+".#eadddddddeee#.",
+".#fdeadddeeee##.",
+".##ffdeeeee##...",
+"...##ffde##.....",
+".....####.......",
+"................"};
+
