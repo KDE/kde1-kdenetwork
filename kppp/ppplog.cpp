@@ -59,7 +59,7 @@ const char *PPPL_findLogFile() {
     return "/var/log/messages";
   }
 
-  if((f = fopen("/var/log/syslog.ppp", "r")) == 0) {
+  if((f = fopen("/var/log/syslog.ppp", "r")) != 0) {
     fclose(f);
     return "/var/log/syslog.ppp";
   }
@@ -136,8 +136,48 @@ int PPPL_MakeLog(QStrList &list) {
   return 0;
 }
 
+
+void PPPL_AnalyseLog(QStrList &list, QStrList &result) {
+  QString msg;
+  const char *rmsg = "Remote message: ";
+
+  result.clear();
+
+  // scan the log for keywords and try to offer any help
+  for(char *line = list.first(); line; line = list.next()) {
+    // look for remote message      
+    char *p = strstr(line, rmsg);
+    if(p) {
+      p += strlen(rmsg);
+      if(strlen(p)) {
+        msg.sprintf(i18n("Notice that the remote system has sent the following"
+                         " message:\n\"%s\"\nThis may give you a hint why the"
+                         " the connection has failed."), p);
+        result.append(msg.data());
+      }
+    }
+    if(strstr(line, "Receive serial link is not 8-bit clean"))
+      result.append(i18n("You have launched pppd before the remote server "
+                         "was ready to establish a PPP connection.\n"
+                         "Please use the terminal-based login to verify "
+                         "your login procedure."));
+    if(strstr(line, "Serial line is looped back"))
+      result.append(i18n("Do you use /dev/modem ? If so, you should specify "
+                         "the real device instead, e.g. /dev/ttyS1 (COM2)."));
+    if(strstr(line, "PAP authentication failed"))
+      result.append(i18n("Verify your password."));
+    if(strstr(line, "is locked by pid"))
+      result.append(i18n("You shouldn't pass 'lock' as an argument to pppd. "
+                         "Check /etc/ppp/options and ~/.ppprc"));
+  }
+
+  if (result.isEmpty())
+    result.append(i18n("Sorry. Can't help you here."));
+}
+
+
 void PPPL_ShowLog() {
-  QStrList sl;
+  QStrList sl, result;
 
   PPPL_MakeLog(sl);
 
@@ -171,29 +211,7 @@ void PPPL_ShowLog() {
     //    return;
   }
 
-  // scan for remote messages
-  const char *rmsg = "Remote message: ";
-  for(uint i = 0; i < sl.count() ; i++) {
-    char *p = strstr(sl.at(i), rmsg);
-
-    if(p) {
-      p += strlen(rmsg);
-      if(strlen(p)) {
-        // found a remote message
-        QString msg(2048);
-        msg.sprintf(i18n("The remote system system has sent the following message:\n"
-			 "\n"
-			 "\"%s\"\n"
-			 "\n"
-			 "This may give you a hint why the connection has failed."), p);
-      
-        KMsgBox::message(0,
-                         i18n("Error"),
-                         msg.data(),
-                         KMsgBox::STOP);
-      }
-    }
-  }
+  PPPL_AnalyseLog(sl, result);
 
   QDialog *dlg = new QDialog(0, "", TRUE);
 
@@ -201,19 +219,28 @@ void PPPL_ShowLog() {
   QVBoxLayout *tl = new QVBoxLayout(dlg, 10, 10);
   QMultiLineEdit *edit = new QMultiLineEdit(dlg);
   edit->setReadOnly(TRUE);
+  QLabel *label = new QLabel(i18n("kppp's diagnosis (just guessing):"), dlg);
+  QMultiLineEdit *diagnosis = new QMultiLineEdit(dlg);
+  diagnosis->setReadOnly(TRUE);
   KButtonBox *bbox = new KButtonBox(dlg);
   bbox->addStretch(1);
   QPushButton *write = bbox->addButton(i18n("Write to file"));
   QPushButton *close = bbox->addButton(i18n("Close"));
   bbox->layout();
   edit->setMinimumSize(600, 250);
+  label->setMinimumSize(600, 15);
+  diagnosis->setMinimumSize(600, 60);
 
   tl->addWidget(edit, 1);
+  tl->addWidget(label);
+  tl->addWidget(diagnosis, 1);
   tl->addWidget(bbox);
   tl->freeze();
 
   for(uint i = 0; i < sl.count(); i++)
     edit->append(sl.at(i));
+  for(uint i = 0; i < result.count(); i++)
+    diagnosis->append(result.at(i));
   
   dlg->connect(close, SIGNAL(clicked()),
 	       dlg, SLOT(reject()));
