@@ -32,3 +32,4 @@ public:
 typedef QList <Rule> RuleList;
 
 #endif
+
