@@ -243,6 +243,8 @@ install: $(TARGET)
 	@echo "I am mainting an archive on the kppp page at"
 	@echo "http://math.cornell.edu/~wuebben/kde.html"
 	@echo "WARNING: kppp is by default installed with SETUID bit on!"
+	@echo  "If you are concerned about the SETUID bit, create a modem"
+	@echo "group instead."
 	@echo ""
 	@echo "Happy Dialing! -- Bernd Wuebben"
 	@echo ""
