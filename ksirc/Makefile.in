@@ -126,7 +126,7 @@ APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress img
+SUBDIRS = KSTicker KSProgress KSCutDialog img
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -161,13 +161,13 @@ linelistitem.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/
+ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/
 
 ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 ksircstatic_LDADD = $(ksirc_LDADD)
 

@@ -99,6 +99,8 @@ protected slots:
    void lostFocus();
    void showTicker();
    void unHide();
+   void openCutWindow();
+   void pasteToWindow();
 
 protected:
    virtual void closeEvent(QCloseEvent *);

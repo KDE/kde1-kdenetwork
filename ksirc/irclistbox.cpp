@@ -1,6 +1,10 @@
 #include "irclistbox.h"
 #include <iostream.h>
 
+#include <qevent.h>
+
+#include "KSCutDialog/KSCutDialog.h"
+
 static const int fudge = 5;
 
 KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) : QListBox(parent,name,f)
@@ -112,3 +116,4 @@ void KSircListBox::lineDown()
 //{
 //  verticalScrollBar()->setUpdatesEnabled(update);
 //}
+

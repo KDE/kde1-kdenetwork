@@ -1,0 +1,71 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {KSCutDialog.h}
+	ClassSource {KSCutDialog.cpp}
+	ClassName {KSCutDialog}
+	DataHeader {KSCutDialogData.h}
+	DataSource {KSCutDialogData.cpp}
+	DataName {KSCutDialogData}
+	WindowBaseClass {QDialog}
+	IsModal {TRUE}
+	WindowCaption {Cut Window}
+	WindowFlags {0}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {590 370}
+MinSize {0 0}
+MaxSize {32767 32767}
+Grid {10}
+
+MultiLineEdit {
+		Line {}
+		ReadOnly {FALSE}
+		OverwriteMode {FALSE}
+		Rect {5 5 580 315}
+		Name {MultiLineEdit_2}
+		Variable {IrcMLE}
+		LayoutStatus {InLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {TRUE}
+		Text {&Close}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {475 5 100 30}
+		Name {PushButton_3}
+		Signal {[Protected]  clicked --> terminate  ()}
+		LayoutStatus {InLayout}
+		MinimumSize {100 30}
+		MaximumSize {100 30}
+}
+Layout {Box}
+Box_Layout-1{
+		Direction {TopToBottom}
+		Border {5}
+		AutoBorder {5}
+		Name {}
+		Strut {0}
+}
+Box_Widget-1.1{
+		Widget {MultiLineEdit_2}
+		Stretch {1}
+		Alignment {36}
+}
+Box_Layout-1.2{
+		Direction {TopToBottom}
+		AutoBorder {5}
+		Name {}
+		Strut {40}
+		Stretch {1}
+}
+Box_Widget-1.2.1{
+		Widget {PushButton_3}
+		Stretch {1}
+		Alignment {18}
+}
+}

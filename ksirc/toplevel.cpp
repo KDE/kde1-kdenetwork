@@ -12,10 +12,14 @@
 #include "open_top.h"
 #include "control_message.h"
 #include "config.h"
+#include "KSCutDialog/KSCutDialog.h"
+
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>
 #include <string.h>
+
+#include <qclipbrd.h> 
 
 #include <knewpanner.h>
 #include <kiconloader.h>
@@ -77,6 +81,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   KMenuBar *menu = new KMenuBar(this, "menubar");
   menu->insertItem("&File", file, 2, -1);
+
+  QPopupMenu *edit = new QPopupMenu();
+  edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
+  edit->insertItem("&Paste", this, SLOT(pasteToWindow()), CTRL + Key_V);
+  menu->insertItem("&Edit", edit, -1, -1);
+
   setMenu(menu);
 
   /*
@@ -109,6 +119,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   mainw = new KSircListBox(pan, "mle");
   mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
+  //mainw->setFocusPolicy(QWidget::StrongFocus); // Background and base colour of
   mainw->setEnabled(FALSE);                // the lb to be the same as the main
   mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
   mainw->setFont(kSircConfig->defaultfont);// Since we don't use KDE requested
@@ -127,6 +138,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   nicks = new aListBox(pan, "qlb");          // Make the users list box.
   //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
   //  nicks->setMinimumWidth(100);             // matched the main text window
+  nicks->setFocusPolicy(QWidget::ClickFocus);
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
   nicks->setFont(kSircConfig->defaultfont);
   //  gm2->addWidget(nicks, 0);
@@ -185,7 +197,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
     kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons");
     pix_info = new QPixmap(kicl->loadIcon("info.gif"));
     pix_star = new QPixmap(kicl->loadIcon("star.gif"));
-    pix_bball = new QPixmap(kicl->loadIcon(".blueball.gif"));
+    pix_bball = new QPixmap(kicl->loadIcon("blueball.gif"));
     pix_greenp = new QPixmap(kicl->loadIcon("greenpin.gif"));
     pix_bluep = new QPixmap(kicl->loadIcon("bluepin.gif"));
     pix_madsmile = new QPixmap(kicl->loadIcon("madsmiley.gif"));
@@ -1250,4 +1262,27 @@ QString KSircTopLevel::findNick(QString part)
   }
   return part;
     
+}
+
+void KSircTopLevel::openCutWindow()
+{
+  static KSCutDialog *kscd;
+  if(!KSCutDialog::open){
+    kscd = new KSCutDialog();
+  }
+  QString buffer;
+  for(uint i = 0; i < mainw->count(); i++){
+    buffer += mainw->text(i);
+    buffer += "\n";
+  }
+  kscd->setText(buffer);
+  kscd->show();
+  kscd->scrollToBot();
+}
+
+void KSircTopLevel::pasteToWindow()
+{
+  QString text = kApp->clipboard()->text();
+  text += "\n";
+  sirc_write(text);
 }

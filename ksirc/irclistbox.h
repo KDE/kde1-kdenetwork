@@ -29,6 +29,7 @@ class KSircListBox : public QListBox
  protected:
   virtual void resizeEvent(QResizeEvent *);
 //  virtual void paintEvent ( QPaintEvent * );
+
  private:
 
   QScrollBar *vertScroll;
