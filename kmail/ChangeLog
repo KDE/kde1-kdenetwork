@@ -1,3 +1,8 @@
+1999-07-20  Sven Radej <radej@kde.org> (KMail-1.0.27)
+
+        * Fixed a bug reported by Hasso Tepper <hasso@ewsound.estnet.ee>:
+          KMail used to die just after deleting a filter.
+
 1999-07-20  Sven Radej <radej@kde.org> (KMail-1.0.26)
 
         * Fixed bug reported by jbb <jb.nz@writeme.com>: Start kmail,
@@ -10,7 +15,7 @@
           <jacek@mer.chemia.polsl.gliwice.pl>: kmail could create attachment
           dirs with zero permissions and then couldn use them.
 
-        * Strengthen security: unlink lock and message files before writing
+        * Improved security (hope): unlink lock and message files before writing
           to them (in case user is root and those files are symlinks to
           something)
 

@@ -427,18 +427,17 @@ void KMFilterDlg::slotActionTypeSelected(KMFaComboBox* cbx, int idx)
 //-----------------------------------------------------------------------------
 void KMFilterDlg::slotFilterSelected(int idx)
 {
-  KMFilter* filter;
 
   if (mFilter) applyFilterChanges();
   if ((uint)idx < filterMgr->count())
   {
-    filter = filterMgr->at(idx);
-    if (filter) showFilter(filter);
+    mFilter = filterMgr->at(idx);
+    if (mFilter) showFilter(mFilter);
   }
   else
   {
     clear();
-    mFilter = NULL;
+    mFilter = 0;
   }
 }
 
@@ -448,7 +447,7 @@ void KMFilterDlg::slotBtnUp()
 {
   int idx = mFilterList->currentItem();
   KMFilter* filter;
-
+  
   if (idx < 1) return;
 
   updown_move_semaphore = 0;
@@ -503,6 +502,8 @@ void KMFilterDlg::slotBtnNew()
   mFilterList->insertItem(filter->name(), idx);
   mFilterList->setCurrentItem(idx);
   slotFilterSelected(idx);
+
+  mFilter=filter;
 }
 
 
@@ -513,14 +514,17 @@ void KMFilterDlg::slotBtnDelete()
   if (idx < 0) return;
 
   mFilter = 0;
+  //debug ("I zeroed filter, cross my heart!");
 
   mFilterList->removeItem(idx);
-  filterMgr->remove(idx);
+  filterMgr->remove(idx); //this is one true autoDelete
 
   if (idx >= (int)filterMgr->count())
     idx = (int)filterMgr->count()-1;
 
   if (idx >= 0) mFilterList->setCurrentItem(idx);
+  mFilter = filterMgr->at(idx);
+  if (mFilter) showFilter(mFilter);
 }
 
 
@@ -532,7 +536,7 @@ void KMFilterDlg::slotBtnOk()
     applyFilterChanges();
     filterMgr->writeConfig();
   }
-    accept();
+  accept();
 }
 
 
