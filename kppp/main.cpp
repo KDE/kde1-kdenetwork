@@ -160,8 +160,10 @@ void showNews() {
 			    "click a mouse button or a hit a key.\n")));
 
     dlg.exec();
-    if(cb->isChecked())
-      gpppdata.writeConfig(GENERAL_GRP, QUICKHELP_HINT, 1);   
+    if(cb->isChecked()) {
+      gpppdata.writeConfig(GENERAL_GRP, QUICKHELP_HINT, 1);
+      gpppdata.save();
+    }
   }
 }
 
