@@ -35,7 +35,7 @@ bool KTempFile::autoDelete()
     return madel;
 }
 
-void KTempFile::setAutoDelete(bool s=FALSE)
+void KTempFile::setAutoDelete(bool s)
 {
     madel=s;
 }
