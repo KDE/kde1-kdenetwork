@@ -1,5 +1,8 @@
 1998-01-20  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
+	* ksircprocess.cpp (KSircProcess): Added sirc.help.gz and
+ 	SIRCLIBDIR infor so help now works correctly!!!!  ADDED /help!!
+
 	* Moved all UserMenu support into the prefrences list box, and all
  	that it entails.  Not 100% clean, but it's pretty good.
 
@@ -130,6 +133,16 @@
 $Revision$
 	
 $Log$
+Revision 1.17  1998/01/19 16:15:39  asj
+	* Moved all UserMenu support into the prefrences list box, and all
+ 	that it entails.  Not 100% clean, but it's pretty good.
+
+	* toplevel.cpp (control_message): Added support for changing the
+ 	font size of the line edit.
+
+	* cleaned up support for the user menu in toplevel, and remove all
+ 	the extra classes.
+
 Revision 1.16  1998/01/18 17:19:11  asj
 	* KSPrefs/ksprefs.cpp: New Preferences and settings window.  The
 	basic window and idea has been set out, it simply needs more pages

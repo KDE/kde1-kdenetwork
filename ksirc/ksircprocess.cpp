@@ -133,6 +133,9 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
     putenv(qstrdup(env.data()));
   }
 
+  QString env = "SIRCLIB=" + kSircConfig->kdedir + "/share/apps/ksirc";
+  putenv(qstrdup(env.data()));
+
   proc = new KProcess();
 
   proc->setExecutable("perl");
