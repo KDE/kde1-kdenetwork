@@ -259,7 +259,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
         
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
-    // readProperties(); Kalle: no longer needed
     show();
     qApp->processEvents ();
 
@@ -299,7 +298,6 @@ void Artdlg::closeEvent(QCloseEvent *)
 Artdlg::~Artdlg ()
 {
     debug ("destroying articles window");
-    // saveProperties (false); // kalle: no longer needed
     conf->sync();
 }
 

@@ -349,8 +349,8 @@ int NNTP::listXover(int from,int to)
                             }
                             else
                             {
-                                art.Refs.append(refsdata.left(index-1));
-                                refsdata=refsdata.right(refsdata.length()-index-1);
+			        art.Refs.append(refsdata.left(index));
+			        refsdata=refsdata.right(refsdata.length()-index-1);
                             }
                         }
                     }
