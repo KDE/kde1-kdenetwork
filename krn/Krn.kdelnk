@@ -16,6 +16,7 @@ Comment[cs]=Klient pro ètení diskusních skupin (NEWS)
 Comment[sv]=Program för att läsa diskussionsgrupper
 Comment[hr]=Program za èitanje USENet grupa
 Comment[ro]=Program pentru citit ºtiri (NEWS)
+Comment[ca]=Lector de grups de notícies
 MimeType=
 Exec=krn  -caption "%c" %i %m
 TerminalOptions=
@@ -37,4 +38,9 @@ Name[cs]=NEWS klient
 Name[sv]=Usenet klient
 Name[hr]=USENet èitaè
 Name[ro]=Client de ªtiri
+Name[ca]=Lector de notícies
 Terminal=0
+
+
+
+

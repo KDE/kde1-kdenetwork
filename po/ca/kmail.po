@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-06-18 23:38+0200\n"
+"POT-Creation-Date: 1998-07-20 15:18+0200\n"
 "PO-Revision-Date: 1998-07-03 16:01+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: kmcomposewin.cpp:1414 kmmainwin.cpp:248 kpgp.cpp:350
+#: kmcomposewin.cpp:1442 kmmainwin.cpp:249 kpgp.cpp:364
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,23 +21,23 @@ msgstr ""
 "Ho sento, pero encara no hi és\n"
 "aquesta característica"
 
-#: kmmainwin.cpp:257
+#: kmmainwin.cpp:258
 msgid "New Folder"
 msgstr "Carpeta Nova"
 
-#: kmmainwin.cpp:269 kmmainwin.cpp:299
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:270 kmmainwin.cpp:303 main.cpp:321
 msgid "KMail error"
 msgstr "Error KMail"
 
-#: kmmainwin.cpp:270 kmmainwin.cpp:300
+#: kmmainwin.cpp:271 kmmainwin.cpp:304
 msgid "Already checking for mail!"
 msgstr "Ja estic comprovant el correu!"
 
-#: kmmainwin.cpp:280 kmmainwin.cpp:310
+#: kmmainwin.cpp:281 kmmainwin.cpp:314
 msgid "No new mail available"
 msgstr "No hi ha correu nou disponible"
 
-#: kmmainwin.cpp:335
+#: kmmainwin.cpp:339
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -45,28 +45,28 @@ msgstr ""
 "No es pot modificar\n"
 "una carpeta del sistema."
 
-#: kmmainwin.cpp:340
+#: kmmainwin.cpp:344
 msgid "Modify Folder"
 msgstr "Modificar Carpeta"
 
-#: kmmainwin.cpp:355
+#: kmmainwin.cpp:359
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
 "De veres voleu llençar el\n"
-"contingut de la carpeta \"%s\" ?" 
+"contingut de la carpeta \"%s\" ?"
 
-#: kmmainwin.cpp:358 kmmainwin.cpp:396
+#: kmmainwin.cpp:362 kmmainwin.cpp:401
 msgid "Confirmation"
 msgstr "Confirmació"
 
-#: kmmainwin.cpp:375
+#: kmmainwin.cpp:374
 msgid "Moved all messages into trash"
 msgstr "S'han llençat tots els missatges a la paperera"
 
-#: kmmainwin.cpp:389
+#: kmmainwin.cpp:394
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -74,7 +74,7 @@ msgstr ""
 "No es pot eliminar una\n"
 "carpeta del sistema."
 
-#: kmmainwin.cpp:393
+#: kmmainwin.cpp:398
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -83,267 +83,272 @@ msgstr ""
 "De veres voleu eliminar la carpeta\n"
 "\"%s\", i llençar el seu contingut ?"
 
-#: kmmainwin.cpp:466
+#: kmmainwin.cpp:471
 msgid "Message as Plain Text"
 msgstr "Missatge com Text planer"
 
-#: kmmainwin.cpp:473 kmmainwin.cpp:493
+#: kmmainwin.cpp:478 kmmainwin.cpp:498
 msgid "Select Folder"
 msgstr "Seleccionar carpeta"
 
-#: kmmainwin.cpp:514
+#: kmmainwin.cpp:521
 msgid "Queued messages successfully sent."
 msgstr "S'han enviat amb èxit els missatges de la cua."
 
-#: kmmainwin.cpp:516
+#: kmmainwin.cpp:523
 msgid "Failed to send (some) queued messages."
 msgstr "S'ha fallat en enviar missatges de la cua."
 
-#: kmmainwin.cpp:625
+#: kmmainwin.cpp:644
 msgid "Opening URL..."
 msgstr "Obrint URL..."
 
-#: kmmainwin.cpp:686
+#: kmmainwin.cpp:699
 msgid "Address added to addressbook."
 msgstr "S'afegit l'adreça al llibre d'adreces."
 
-#: kmmainwin.cpp:698
+#: kmmainwin.cpp:711
 msgid "Address copied to clipboard."
 msgstr "Adreça copiada a la taula d'enganxar."
 
-#: kmmainwin.cpp:703
+#: kmmainwin.cpp:716
 msgid "URL copied to clipboard."
 msgstr "URL copiada a la taula d'enganxar."
 
-#: kmmainwin.cpp:730
+#: kmmainwin.cpp:743
 msgid "Send to..."
 msgstr "Enviar a..."
 
-#: kmmainwin.cpp:732
+#: kmmainwin.cpp:745
 msgid "Send reply to..."
 msgstr "Enviar resposta a..."
 
-#: kmmainwin.cpp:734
+#: kmmainwin.cpp:747
 msgid "Forward to..."
 msgstr "Transmetre a..."
 
-#: kmmainwin.cpp:737
+#: kmmainwin.cpp:750
 msgid "Add to addressbook"
 msgstr "Afegir al llibre d'adreces"
 
-#: kmmainwin.cpp:739 kmmainwin.cpp:748
+#: kmmainwin.cpp:752 kmmainwin.cpp:761
 msgid "Copy to clipboard"
 msgstr "Copiar a la taula d'enganxar"
 
-#: kmmainwin.cpp:746
+#: kmmainwin.cpp:759
 msgid "Open URL..."
 msgstr "Obrir URL..."
 
-#: kmmainwin.cpp:756 kmmainwin.cpp:870
+#: kmmainwin.cpp:769 kmmainwin.cpp:884
 msgid "&Reply..."
 msgstr "&Resposta..."
 
-#: kmmainwin.cpp:758 kmmainwin.cpp:872
+#: kmmainwin.cpp:771 kmmainwin.cpp:886
 msgid "Reply &All..."
 msgstr "Resposta a t&ots..."
 
-#: kmmainwin.cpp:760 kmmainwin.cpp:874
+#: kmmainwin.cpp:773 kmmainwin.cpp:888
 msgid "&Forward..."
 msgstr "&Transmetre..."
 
-#: kmmainwin.cpp:763 kmmainwin.cpp:879
+#: kmmainwin.cpp:776 kmmainwin.cpp:895
 msgid "&Move..."
 msgstr "&Moure..."
 
-#: kmmainwin.cpp:765 kmmainwin.cpp:881
+#: kmmainwin.cpp:778 kmmainwin.cpp:897
 msgid "&Copy..."
 msgstr "&Copiar..."
 
-#: kmmainwin.cpp:790
+#: kmmainwin.cpp:803
 msgid "New Composer"
 msgstr "Missatge nou"
 
-#: kmcomposewin.cpp:448 kmmainwin.cpp:792
+#: kmcomposewin.cpp:449 kmmainwin.cpp:805
 msgid "New Mailreader"
 msgstr "Lector de correu nou"
 
-#: kmmainwin.cpp:795
+#: kmmainwin.cpp:808
 msgid "Save As..."
 msgstr "Desar com..."
 
-#: kmmainwin.cpp:797
+#: kmmainwin.cpp:810
 msgid "Print..."
 msgstr "Imprimir..."
 
-#: kmmainwin.cpp:800
+#: kmmainwin.cpp:813
 msgid "Check Mail..."
 msgstr "Comprovar correu..."
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:822
 msgid "Check Mail in..."
 msgstr "Comprovar correu a..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:824
 msgid "Send Queued"
 msgstr "Enviar la cua"
 
-#: kmmainwin.cpp:814
+#: kmmainwin.cpp:827
 msgid "&Settings..."
 msgstr "A&rranjament..."
 
-#: kmcomposewin.cpp:441 kmmainwin.cpp:816
+#: kmcomposewin.cpp:441 kmmainwin.cpp:829
 msgid "&Addressbook..."
 msgstr "Llibre d'&adreces..."
 
-#: kmmainwin.cpp:818
+#: kmmainwin.cpp:831
 msgid "&Filter..."
 msgstr "&Filtres..."
 
-#: kmmainwin.cpp:832
+#: kmmainwin.cpp:845
 msgid "&Find..."
 msgstr "&Buscar..."
 
-#: kmmainwin.cpp:837
+#: kmmainwin.cpp:850
 msgid "&Create..."
 msgstr "&Crear..."
 
-#: kmmainwin.cpp:839
+#: kmmainwin.cpp:852
 msgid "&Modify..."
 msgstr "&Modificar..."
 
-#: kmmainwin.cpp:841
+#: kmmainwin.cpp:854
 msgid "C&ompact"
 msgstr "C&ompactar"
 
-#: kmmainwin.cpp:843
+#: kmmainwin.cpp:857
 msgid "&Empty"
 msgstr "&Buidar"
 
-#: kmmainwin.cpp:853
+#: kmmainwin.cpp:867
 msgid "Unread"
 msgstr "Sense llegir"
 
-#: kmmainwin.cpp:854
+#: kmmainwin.cpp:868
 msgid "Read"
 msgstr "Llegits"
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:869
 msgid "Replied"
 msgstr "Contestats"
 
-#: kmmainwin.cpp:856
+#: kmmainwin.cpp:870
 msgid "Queued"
 msgstr "En cua"
 
-#: kmmainwin.cpp:857
+#: kmmainwin.cpp:871
 msgid "Sent"
 msgstr "Enviats"
 
-#: kmmainwin.cpp:863
+#: kmmainwin.cpp:877
 msgid "Next unread"
 msgstr "Següent sense llegir"
 
-#: kmmainwin.cpp:867
+#: kmmainwin.cpp:881
 msgid "Previous unread"
 msgstr "Prèvi sense llegir"
 
-#: kmmainwin.cpp:877
+#: kmmainwin.cpp:891
 msgid "&Set Status"
 msgstr "Establir &Estat"
 
-#: kmmainwin.cpp:886
+#: kmmainwin.cpp:893
+#, fuzzy
+msgid "Mar&k all"
+msgstr "Marcar tot"
+
+#: kmmainwin.cpp:902
 msgid "Send again..."
 msgstr "Tornar a enviar..."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:904
 msgid "Apply filters"
 msgstr "Aplicar filtres"
 
-#: kmmainwin.cpp:891
+#: kmmainwin.cpp:907
 msgid "View Source..."
 msgstr "Veure font..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:914
 msgid "&Brief Headers"
 msgstr "Capçaleres &breus"
 
-#: kmmainwin.cpp:900
+#: kmmainwin.cpp:916
 msgid "&Fancy Headers"
 msgstr "Capçaleres de &fantasia"
 
-#: kmmainwin.cpp:902
+#: kmmainwin.cpp:918
 msgid "&Standard Headers"
 msgstr "Capçaleres e&stàndard"
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:920
 msgid "&Long Headers"
 msgstr "Capçaleres &llarges"
 
-#: kmmainwin.cpp:906
+#: kmmainwin.cpp:922
 msgid "&All Headers"
 msgstr "&Totes les capçaleres"
 
-#: kmmainwin.cpp:909
+#: kmmainwin.cpp:925
 msgid "Iconic Attachments"
 msgstr "Adjunts icònics"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:926
 msgid "Smart Attachments"
 msgstr "Adjunts astuts"
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:927
 msgid "Inlined Attachments"
 msgstr "Adjunts immediats"
 
-#: kmmainwin.cpp:922
+#: kmmainwin.cpp:938
 msgid "F&older"
 msgstr "&Carpeta"
 
-#: kmmainwin.cpp:923
+#: kmmainwin.cpp:939
 msgid "&Message"
 msgstr "&Missatge"
 
-#: kmcomposewin.cpp:549 kmmainwin.cpp:942
+#: kmcomposewin.cpp:551 kmmainwin.cpp:958
 msgid "Compose new message"
 msgstr "Composar un missatge nou"
 
-#: kmcomposewin.cpp:554 kmmainwin.cpp:947
+#: kmcomposewin.cpp:556 kmmainwin.cpp:963
 msgid "Save message to file"
 msgstr "Desar missatge al fitxer"
 
-#: kmcomposewin.cpp:559 kmmainwin.cpp:952
+#: kmcomposewin.cpp:561 kmmainwin.cpp:968
 msgid "Print message"
 msgstr "Imprimir missatge"
 
-#: kmmainwin.cpp:959
+#: kmmainwin.cpp:975
 msgid "Get new mail"
 msgstr "Recuperar correu nou"
 
-#: kmmainwin.cpp:965
+#: kmmainwin.cpp:981
 msgid "Reply to author"
 msgstr "Resposta a l'autor"
 
-#: kmmainwin.cpp:970
+#: kmmainwin.cpp:986
 msgid "Reply to all recipients"
 msgstr "Resposta a tots els destinataris"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:991
 msgid "Forward message"
 msgstr "Transmetre missatge"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:996
 msgid "Delete message"
 msgstr "Esborrar missatge"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:986
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1002
 msgid "Open addressbook..."
 msgstr "Obrir el llibre d'adreces"
 
-#: kmmainwin.cpp:998
+#: kmmainwin.cpp:1014
 msgid "Initializing..."
 msgstr "Inicialitzant..."
 
-#: kmcomposewin.cpp:1422 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1450 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "sense nom"
 
@@ -391,7 +396,7 @@ msgstr "Enviament de correu"
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:218 kmsettings.cpp:856
+#: kmsettings.cpp:218 kmsettings.cpp:857
 msgid "Location:"
 msgstr "Localització:"
 
@@ -403,7 +408,7 @@ msgstr "SMTP"
 msgid "Server:"
 msgstr "Servidor:"
 
-#: kmsettings.cpp:230 kmsettings.cpp:877
+#: kmsettings.cpp:230 kmsettings.cpp:878
 msgid "Port:"
 msgstr "Port:"
 
@@ -415,7 +420,7 @@ msgstr "Correu d'entrada"
 msgid "Accounts:   (add at least one account!)"
 msgstr "Comptes:    (afegiu almenys un compte!)"
 
-#: kmcomposewin.cpp:134 kmsettings.cpp:262
+#: kmcomposewin.cpp:137 kmsettings.cpp:262
 msgid "Type"
 msgstr "Tipus"
 
@@ -479,15 +484,15 @@ msgstr "Transmetre:"
 msgid "Indentation:"
 msgstr "Entrada:"
 
-#: kmmessage.cpp:1251 kmsettings.cpp:404
+#: kmmessage.cpp:1260 kmsettings.cpp:404
 msgid "On %D, you wrote:"
 msgstr "A %D, vàreu escriure:"
 
-#: kmmessage.cpp:1252 kmsettings.cpp:408
+#: kmmessage.cpp:1261 kmsettings.cpp:408
 msgid "On %D, %F wrote:"
 msgstr "A %D, %F va escriure:"
 
-#: kmmessage.cpp:1253 kmsettings.cpp:412
+#: kmmessage.cpp:1262 kmsettings.cpp:412
 msgid "Forwarded Message"
 msgstr "Missatge transmés"
 
@@ -559,7 +564,7 @@ msgstr "Font de la llista de missatges"
 msgid "Select Account"
 msgstr "Seleccionar compte"
 
-#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:648
+#: kmaccount.cpp:76 kmfilterdlg.cpp:456 kmsettings.cpp:648
 msgid "Unnamed"
 msgstr "Sense nom"
 
@@ -567,55 +572,55 @@ msgstr "Sense nom"
 msgid "Choose Sendmail Location"
 msgstr "Escollir la localització de Sendmail"
 
-#: kmcomposewin.cpp:1529 kmsettings.cpp:676
+#: kmcomposewin.cpp:1549 kmsettings.cpp:676
 msgid "Choose Signature File"
 msgstr "Escollir el fitxer de signatura"
 
-#: kmsettings.cpp:854
+#: kmsettings.cpp:855
 msgid "Local Account"
 msgstr "Compte local"
 
-#: kmsettings.cpp:863
+#: kmsettings.cpp:864
 msgid "Pop Account"
 msgstr "Compte POP"
 
-#: kmsettings.cpp:865
+#: kmsettings.cpp:866
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:436 kmsettings.cpp:868
+#: kmacctpop.cpp:465 kmsettings.cpp:869
 msgid "Password:"
 msgstr "Paraula de pas:"
 
-#: kmsettings.cpp:872
+#: kmsettings.cpp:873
 msgid "Host:"
 msgstr "Host:"
 
-#: kmsettings.cpp:880
+#: kmsettings.cpp:881
 msgid "Delete mail from server"
 msgstr "Esborrar el correu del servidor"
 
-#: kmsettings.cpp:892
+#: kmsettings.cpp:893
 msgid "Store new mail in account:"
 msgstr "Desar el correu nou al compte:"
 
-#: kmsettings.cpp:900
+#: kmsettings.cpp:901
 msgid "<none>"
 msgstr "<cap>"
 
-#: kmsettings.cpp:945
+#: kmsettings.cpp:946
 msgid "Choose Location"
 msgstr "Escollir localització"
 
-#: kmaccount.cpp:109
+#: kmaccount.cpp:115
 msgid "Receipt: "
 msgstr "Recepció:"
 
-#: kmaccount.cpp:138
+#: kmaccount.cpp:146
 msgid "Failed to add message:"
 msgstr "S'ha fallat en afegir el missatge:"
 
-#: kmcomposewin.cpp:130 kmheaders.cpp:39
+#: kmcomposewin.cpp:133 kmheaders.cpp:39
 msgid "F"
 msgstr "T"
 
@@ -627,66 +632,66 @@ msgstr "Remitent"
 msgid "Subject"
 msgstr "Assumpte"
 
-#: kmheaders.cpp:183
+#: kmheaders.cpp:185
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Missatges, %d sense llegir."
 
-#: kmheaders.cpp:185
+#: kmheaders.cpp:187
 msgid "Folder is read-only."
 msgstr "La carpeta és de només lectura."
 
-#: kmheaders.cpp:229
+#: kmheaders.cpp:232 kpgp.cpp:692
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: kmheaders.cpp:232
+#: kmheaders.cpp:235
 msgid "No Subject"
 msgstr "Cap assumpte"
 
-#: kmheaders.cpp:279
+#: kmheaders.cpp:282
 msgid "order of arrival"
 msgstr "ordre d'arribada"
 
-#: kmheaders.cpp:288
+#: kmheaders.cpp:291
 msgid "subject"
 msgstr "assumpte"
 
-#: kmheaders.cpp:289
+#: kmheaders.cpp:292
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:290
+#: kmheaders.cpp:293
 msgid "sender"
 msgstr "remitent"
 
-#: kmheaders.cpp:291
+#: kmheaders.cpp:294
 msgid "status"
 msgstr "estat"
 
-#: kmheaders.cpp:293
+#: kmheaders.cpp:296
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "S'estàn ordenant els missatges descendent per %s"
 
-#: kmheaders.cpp:294
+#: kmheaders.cpp:297
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "S'estàn ordenant els missatges ascendent per %s"
 
-#: kmheaders.cpp:384
+#: kmheaders.cpp:387
 msgid "Message(s) saved."
 msgstr "Missatge(s) desat(s)."
 
-#: kmheaders.cpp:386
+#: kmheaders.cpp:389
 msgid "Failed to save message(s)."
 msgstr "S'ha fallat en desar el(s) missatge(s)."
 
-#: kmcomposewin.cpp:119
+#: kmcomposewin.cpp:122
 msgid "KMail Composer"
 msgstr "Compositor KMail"
 
-#: kmcomposewin.cpp:133
+#: kmcomposewin.cpp:136
 msgid "Encoding"
 msgstr "Codificació"
 
@@ -742,131 +747,131 @@ msgstr "&Insertar fitxer..."
 msgid "&New Composer..."
 msgstr "&Nou compositor..."
 
-#: kmcomposewin.cpp:467 kmcomposewin.cpp:676 kmcomposewin.cpp:1897
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
 msgid "Mark all"
 msgstr "Marcar tot"
 
-#: kmcomposewin.cpp:470 kmcomposewin.cpp:678
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:680
 msgid "Find..."
 msgstr "Buscar..."
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:679
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:681
 msgid "Replace..."
 msgstr "Substituir..."
 
-#: kmcomposewin.cpp:479
+#: kmcomposewin.cpp:481
 msgid "&Urgent"
 msgstr "&Urgent"
 
-#: kmcomposewin.cpp:481
+#: kmcomposewin.cpp:483
 msgid "&Confirm delivery"
 msgstr "&Confirmació de lliurament"
 
-#: kmcomposewin.cpp:483
+#: kmcomposewin.cpp:485
 msgid "&Confirm read"
 msgstr "Confirmació de &lectura"
 
-#: kmcomposewin.cpp:486
+#: kmcomposewin.cpp:488
 msgid "&Charsets..."
 msgstr "&Conjunts de caràcters..."
 
-#: kmcomposewin.cpp:499
+#: kmcomposewin.cpp:501
 msgid "&All Fields"
 msgstr "&Tots els camps"
 
-#: kmcomposewin.cpp:501
+#: kmcomposewin.cpp:503
 msgid "&From"
 msgstr "&De"
 
-#: kmcomposewin.cpp:502
+#: kmcomposewin.cpp:504
 msgid "&Reply to"
 msgstr "&Resposta a"
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:505
 msgid "&To"
 msgstr "&A"
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:506
 msgid "&Cc"
 msgstr "&Cc"
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:507
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:506
+#: kmcomposewin.cpp:508
 msgid "&Subject"
 msgstr "A&ssumpte"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:510
 msgid "&Newsgroups"
 msgstr "Grups de &notícies:"
 
-#: kmcomposewin.cpp:509
+#: kmcomposewin.cpp:511
 msgid "&Followup-To"
 msgstr "Segona &carta a:"
 
-#: kmcomposewin.cpp:514
+#: kmcomposewin.cpp:516
 msgid "Append S&ignature"
 msgstr "Afegir s&ignatura"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:518
 msgid "&Insert File"
 msgstr "&Insertar fitxer"
 
-#: kmcomposewin.cpp:518
+#: kmcomposewin.cpp:520
 msgid "&Attach..."
 msgstr "&Adjuntar..."
 
-#: kmcomposewin.cpp:521
+#: kmcomposewin.cpp:523
 msgid "&Save..."
 msgstr "&Desar..."
 
-#: kmcomposewin.cpp:522
+#: kmcomposewin.cpp:524
 msgid "Pr&operties..."
 msgstr "Pr&opietats..."
 
-#: kmcomposewin.cpp:524
+#: kmcomposewin.cpp:526
 msgid "&Attach"
 msgstr "&Adjuntar"
 
-#: kmcomposewin.cpp:568
+#: kmcomposewin.cpp:570
 msgid "Cut selection"
 msgstr "Tallar la selecció"
 
-#: kmcomposewin.cpp:571
+#: kmcomposewin.cpp:573
 msgid "Copy selection"
 msgstr "Copiar la selecció"
 
-#: kmcomposewin.cpp:574
+#: kmcomposewin.cpp:576
 msgid "Paste clipboard contents"
 msgstr "Enganxar el contingut de la taula"
 
-#: kmcomposewin.cpp:579
+#: kmcomposewin.cpp:581
 msgid "Attach file"
 msgstr "Adjuntar fitxer"
 
-#: kmcomposewin.cpp:592
+#: kmcomposewin.cpp:594
 msgid "sign message"
 msgstr "signar el missatge"
 
-#: kmcomposewin.cpp:597
+#: kmcomposewin.cpp:599
 msgid "encrypt message"
 msgstr "encriptar el missatge"
 
-#: kmcomposewin.cpp:609 kmcomposewin.cpp:625
+#: kmcomposewin.cpp:611 kmcomposewin.cpp:627
 msgid "Column"
 msgstr "Columna"
 
-#: kmcomposewin.cpp:610 kmcomposewin.cpp:623
+#: kmcomposewin.cpp:612 kmcomposewin.cpp:625
 msgid "Line"
 msgstr "Línia"
 
-#: kmcomposewin.cpp:871
+#: kmcomposewin.cpp:891
 msgid "KMail Confirm"
 msgstr "Confirmació KMail"
 
-#: kmcomposewin.cpp:872
+#: kmcomposewin.cpp:892
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -874,7 +879,7 @@ msgstr ""
 "Cal tancar i llençar\n"
 "el missatge editat?"
 
-#: kmcomposewin.cpp:917
+#: kmcomposewin.cpp:937
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -883,71 +888,72 @@ msgstr ""
 "la clau pública per %s no s'ha trobat.\n"
 "Aquesta persona no podrà desencriptar el missatge."
 
-#: kmcomposewin.cpp:938
+#: kmcomposewin.cpp:958
 msgid "Error during PGP:"
 msgstr "Error al PGP:"
 
-#: kmcomposewin.cpp:1153
+#: kmcomposewin.cpp:1178
 msgid "Attach File"
 msgstr "Adjuntar fitxer"
 
-#: kmcomposewin.cpp:1175
+#: kmcomposewin.cpp:1200
 msgid "Include File"
 msgstr "Incloure fitxer"
 
-#: kmcomposewin.cpp:1198 kmreaderwin.cpp:683
+#: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
 msgid "View..."
 msgstr "Veure..."
 
-#: kmcomposewin.cpp:1199
+#: kmcomposewin.cpp:1224
 msgid "Save..."
 msgstr "Desar..."
 
-#: kmcomposewin.cpp:1200 kmreaderwin.cpp:686
+#: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
 msgid "Properties..."
 msgstr "Propietats..."
 
-#: kmcomposewin.cpp:1204
+#: kmcomposewin.cpp:1229
 msgid "Attach..."
 msgstr "Adjuntar..."
 
-#: kmcomposewin.cpp:1246 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
 msgid "View Attachment: "
 msgstr "Veure adjunt: "
 
-#: kmcomposewin.cpp:1437
+#: kmcomposewin.cpp:1465
 msgid "To:"
 msgstr "A:"
 
-#: kmcomposewin.cpp:1441
+#: kmcomposewin.cpp:1469
 msgid "Subject:"
 msgstr "Assumpte:"
 
-#: kmcomposewin.cpp:1559
+#: kmcomposewin.cpp:1579
 msgid "KMail: Spellcheck"
 msgstr "KMail: Ortografia"
 
-#: kmcomposewin.cpp:1583
+#: kmcomposewin.cpp:1603
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
-"Error en engegar KSpell. Assegureu-vos de tenir ISpell configurat correctament."
+"Error en engegar KSpell. Assegureu-vos de tenir ISpell configurat "
+"correctament."
 
-#: kmfolder.cpp:144
+#: kmfolder.cpp:145
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "La carpeta `%s' ha canviat. S'està tornant a crear l'índex."
 
-#: kmfolder.cpp:364
+#: kmfolder.cpp:379
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "S'està creant el fitxer índex: s'han processat %d missatges"
 
-#: kmfolder.cpp:444
+#: kmfolder.cpp:461
 msgid "Writing index file"
 msgstr "S'està escrivint el fitxer índex"
 
-#: kmfolder.cpp:870
+#: kmfolder.cpp:894
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "S'està compactant la carpeta: s'han processat %d missatges"
@@ -976,52 +982,52 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:307 kmreaderwin.cpp:320 kmreaderwin.cpp:339
-#: kmreaderwin.cpp:360
+#: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
+#: kmreaderwin.cpp:362
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
 msgid "To: "
 msgstr "A: "
 
-#: kmreaderwin.cpp:324 kmreaderwin.cpp:345 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
 msgid "References: "
 msgstr "Referències: "
 
-#: kmreaderwin.cpp:341 kmreaderwin.cpp:354
+#: kmreaderwin.cpp:343 kmreaderwin.cpp:356
 msgid "Date: "
 msgstr "Data: "
 
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:365
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:368
 msgid "Reply to: "
 msgstr "Resposta a: "
 
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:375
 msgid "Groups: "
 msgstr "Grups: "
 
-#: kmreaderwin.cpp:410
+#: kmreaderwin.cpp:412 kpgp.cpp:456 kpgp.cpp:482
 msgid "Encrypted message"
 msgstr "Missatge encriptat"
 
-#: kmreaderwin.cpp:416
+#: kmreaderwin.cpp:418 kpgp.cpp:458
 msgid "Cannot decrypt message:"
 msgstr "No es pot desencriptar el missatge:"
 
-#: kmreaderwin.cpp:434
+#: kmreaderwin.cpp:436
 msgid "Message was signed by"
 msgstr "Missatge signat per"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:437
 msgid "Warning: Bad signature from"
 msgstr "Avís: signatura dolenta de"
 
@@ -1038,11 +1044,11 @@ msgstr "No s'ha pogut crear un fitxer temporal"
 msgid "Could not save temporary file %s"
 msgstr "No s'ha pogut desar el fitxe temporal %s"
 
-#: kmreaderwin.cpp:811
+#: kmreaderwin.cpp:809
 msgid "Could not save file"
 msgstr "No s'ha pogut desar el fitxer"
 
-#: kmacctmgr.cpp:193 kmacctmgr.cpp:239
+#: kmacctmgr.cpp:194 kmacctmgr.cpp:240
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1051,15 +1057,25 @@ msgstr ""
 "Heu d'afegir un compte a la secció de xarxa\n"
 "de l'arranjament per tal de poder rebre correu."
 
-#: main.cpp:102 main.cpp:220
+#: main.cpp:103 main.cpp:226
 msgid "warning"
 msgstr "avís"
 
-#: main.cpp:109 main.cpp:110
+#: main.cpp:110 main.cpp:111
 msgid "fatal error"
 msgstr "error fatal"
 
-#: main.cpp:222
+#: main.cpp:161
+msgid "KMail notification"
+msgstr ""
+
+#: main.cpp:162
+msgid ""
+"$HOME is not set!\n"
+"KMail cannot start without it.\n"
+msgstr ""
+
+#: main.cpp:228
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1077,12 +1093,16 @@ msgstr ""
 "\n"
 "KMail ha de moure les carpetes de correu ara ?"
 
-#: main.cpp:382
+#: main.cpp:322
+msgid "Loading addressbook failed"
+msgstr ""
+
+#: main.cpp:392
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Opció de línia de comanda desconeguda: %s"
 
-#: kmacctlocal.cpp:91
+#: kmacctlocal.cpp:90
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1093,7 +1113,7 @@ msgstr ""
 "de la bústia `%s':\n"
 "%s"
 
-#: kmacctpop.cpp:114
+#: kmacctpop.cpp:113
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1103,19 +1123,19 @@ msgstr ""
 "carpeta de destí a l'arranjament\n"
 "i torneu a provar."
 
-#: kmacctpop.cpp:253
+#: kmacctpop.cpp:276
 msgid "Pop Mail Error"
 msgstr "Error de correu Pop"
 
-#: kmacctpop.cpp:258
+#: kmacctpop.cpp:281
 msgid "Pop Mail Network Error"
 msgstr "Error de xarxa de correu Pop"
 
-#: kmacctpop.cpp:274
+#: kmacctpop.cpp:297
 msgid "Unknown error"
 msgstr "Error desconegut"
 
-#: kmacctpop.cpp:279
+#: kmacctpop.cpp:302
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1126,7 +1146,7 @@ msgstr ""
 "A %s:\n"
 "%s"
 
-#: kmacctpop.cpp:427
+#: kmacctpop.cpp:456
 msgid "Login Name:"
 msgstr "Nom de login:"
 
@@ -1177,35 +1197,35 @@ msgstr ""
 "l'arranjament d'identitat:\n"
 "nom d'usuari i adreça de correu"
 
-#: kmsender.cpp:134
+#: kmsender.cpp:139
 msgid "You must specify a receiver"
 msgstr "Heu d'especificar un destinatari"
 
-#: kmsender.cpp:145
+#: kmsender.cpp:150
 msgid "Cannot add message to outbox folder"
 msgstr "No es pot afegir un missatge a la carpeta de sortida"
 
-#: kmsender.cpp:168
+#: kmsender.cpp:173
 msgid "Sending still in progress"
 msgstr "Encara s'està enviant"
 
-#: kmsender.cpp:220
+#: kmsender.cpp:225
 msgid "Initiating sender process..."
 msgstr "S'està iniciant el procés d'enviament..."
 
-#: kmsender.cpp:236
+#: kmsender.cpp:241
 msgid "Sending message: "
 msgstr "S'està enviant el missatge:"
 
-#: kmsender.cpp:262
+#: kmsender.cpp:269
 msgid "Done sending messages."
 msgstr "Ja s'han enviat els missatges."
 
-#: kmsender.cpp:282
+#: kmsender.cpp:288
 msgid "Sending failed:"
 msgstr "Ha fallat l'enviament."
 
-#: kmsender.cpp:439
+#: kmsender.cpp:441
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1213,16 +1233,16 @@ msgstr ""
 "Si us plau, especifiqueu un programa\n"
 "per enviar correu a l'arranjament."
 
-#: kmsender.cpp:479
+#: kmsender.cpp:481
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "No s'ha pogut executar el programa per enviar correu %s"
 
-#: kmsender.cpp:567
+#: kmsender.cpp:569
 msgid "connecting to server"
 msgstr "s'està connectant al servidor"
 
-#: kmsender.cpp:572
+#: kmsender.cpp:574
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1233,19 +1253,19 @@ msgstr ""
 "host %s per enviar:\n"
 "%s"
 
-#: kmsender.cpp:601
+#: kmsender.cpp:603
 msgid "Cannot close SMTP connection."
 msgstr "No s'ha pogut tancar la connexió SMTP."
 
-#: kmsender.cpp:651
+#: kmsender.cpp:653
 msgid "transmitting message"
 msgstr "s'està transmetent el missatge"
 
-#: kmsender.cpp:685
+#: kmsender.cpp:687
 msgid "network error"
 msgstr "error de xarxa"
 
-#: kmsender.cpp:687
+#: kmsender.cpp:689
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1258,7 +1278,7 @@ msgstr ""
 "Resposta: %s\n"
 "Codi de retorn: %d"
 
-#: kmsender.cpp:702
+#: kmsender.cpp:704
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "S'està enviant l'ordre SMTP: %s"
@@ -1298,7 +1318,7 @@ msgstr ""
 msgid "Select folder"
 msgstr "Seleccioneu carpeta"
 
-#: kmfilter.cpp:190
+#: kmfilter.cpp:197
 #, c-format
 msgid ""
 "Unknown filter action `%s'\n"
@@ -1321,59 +1341,59 @@ msgstr "Amunt"
 msgid "Down"
 msgstr "Avall"
 
-#: kmfilterdlg.cpp:531
+#: kmfilterdlg.cpp:526
 msgid "<nothing>"
 msgstr "<no res>"
 
-#: kmfilterdlg.cpp:542
+#: kmfilterdlg.cpp:537
 msgid "ignore"
 msgstr "ignorar"
 
-#: kmfilterdlg.cpp:543
+#: kmfilterdlg.cpp:538
 msgid "and"
 msgstr "i"
 
-#: kmfilterdlg.cpp:544
+#: kmfilterdlg.cpp:539
 msgid "unless"
 msgstr "a menys que"
 
-#: kmfilterdlg.cpp:545
+#: kmfilterdlg.cpp:540
 msgid "or"
 msgstr "o"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:546
 msgid "equals"
 msgstr "igual"
 
-#: kmfilterdlg.cpp:552
+#: kmfilterdlg.cpp:547
 msgid "not equal"
 msgstr "no és igual"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:548
 msgid "contains"
 msgstr "conté"
 
-#: kmfilterdlg.cpp:554
+#: kmfilterdlg.cpp:549
 msgid "doesn't contain"
 msgstr "no conté"
 
-#: kmfilterdlg.cpp:555
+#: kmfilterdlg.cpp:550
 msgid "regular expression"
 msgstr "expressió regular"
 
-#: kmfilterdlg.cpp:562
+#: kmfilterdlg.cpp:557
 msgid "<message>"
 msgstr "<missatge>"
 
-#: kmfilterdlg.cpp:563
+#: kmfilterdlg.cpp:558
 msgid "<body>"
 msgstr "<cos>"
 
-#: kmfilterdlg.cpp:564
+#: kmfilterdlg.cpp:559
 msgid "<any header>"
 msgstr "<qualsevol capçalera>"
 
-#: kpgp.cpp:110
+#: kpgp.cpp:111
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1381,7 +1401,7 @@ msgstr ""
 "No s'ha pogut trobar l'executable PGP.\n"
 "Si us plau, comproveu que PATH té un valor correcte."
 
-#: kpgp.cpp:156
+#: kpgp.cpp:161
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1389,31 +1409,31 @@ msgstr ""
 "No s'ha pogut trobar l'executable PGP.\n"
 "Si us plau, comproveu que PATH té un valor correcte."
 
-#: kpgp.cpp:166
+#: kpgp.cpp:171
 msgid "The pass phrase is missing."
 msgstr "No hi és la frase de pas."
 
-#: kpgp.cpp:438
+#: kpgp.cpp:464
 msgid "Message signed by"
 msgstr "Missatge signat per"
 
-#: kpgp.cpp:442
+#: kpgp.cpp:468
 msgid "Message has a bad signature from"
 msgstr "El missatge té una signatura dolenta de"
 
-#: kpgp.cpp:450
+#: kpgp.cpp:481
 msgid "End PGP signed message"
 msgstr "Fi del missatge signat PGP"
 
-#: kpgp.cpp:644
+#: kpgp.cpp:647
 msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Frase de pas roïna; no s'ha pogut desencriptar"
 
-#: kpgp.cpp:733
+#: kpgp.cpp:736
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Frase de pas roïna; no s'ha pogut signar"
 
-#: kpgp.cpp:790
+#: kpgp.cpp:793
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1421,15 +1441,15 @@ msgstr ""
 "Si us plau, informeu\n"
 "la vostra frase de pas PGP"
 
-#: kpgp.cpp:817
+#: kpgp.cpp:820
 msgid "PGP Security Check"
 msgstr "Comprovació de seguretat PGP"
 
-#: kfileio.cpp:26 kmaddrbook.cpp:150
+#: kfileio.cpp:26 kmaddrbook.cpp:159
 msgid "File I/O Error"
 msgstr "Error E/S al fitxer"
 
-#: kfileio.cpp:45
+#: kfileio.cpp:47
 #, c-format
 msgid ""
 "The specified file does not exist:\n"
@@ -1438,7 +1458,7 @@ msgstr ""
 "El fitxer especificat no existeix:\n"
 "%s"
 
-#: kfileio.cpp:52
+#: kfileio.cpp:54
 #, c-format
 msgid ""
 "This is a directory and not a file:\n"
@@ -1447,7 +1467,7 @@ msgstr ""
 "Això és un directori i no un fitxer:\n"
 "%s"
 
-#: kfileio.cpp:59
+#: kfileio.cpp:61
 #, c-format
 msgid ""
 "You do not have read permissions to the file:\n"
@@ -1456,7 +1476,7 @@ msgstr ""
 "No teniu permís de lectura del fitxer:\n"
 "%s"
 
-#: kfileio.cpp:70 kmaddrbook.cpp:140
+#: kfileio.cpp:72 kmaddrbook.cpp:149
 #, c-format
 msgid ""
 "Could not read file:\n"
@@ -1465,7 +1485,7 @@ msgstr ""
 "No s'ha pogut llegir el fitxer:\n"
 "%s"
 
-#: kfileio.cpp:73 kmaddrbook.cpp:143
+#: kfileio.cpp:75 kmaddrbook.cpp:152
 #, c-format
 msgid ""
 "Could not open file:\n"
@@ -1474,7 +1494,7 @@ msgstr ""
 "No s'ha pogut obrir el fitxer:\n"
 "%s"
 
-#: kfileio.cpp:76
+#: kfileio.cpp:78
 #, c-format
 msgid ""
 "Error while reading file:\n"
@@ -1483,12 +1503,12 @@ msgstr ""
 "Error en llegir el fitxer:\n"
 "%s"
 
-#: kfileio.cpp:93
+#: kfileio.cpp:95
 #, c-format
 msgid "Could only read %u bytes of %u."
 msgstr "Només s'han pogut llegir %u bytes de %u."
 
-#: kfileio.cpp:123
+#: kfileio.cpp:124
 #, c-format
 msgid ""
 "File %s exists.\n"
@@ -1497,7 +1517,7 @@ msgstr ""
 "El fitxer %s ja existeix.\n"
 "El voleu substituir ?"
 
-#: kfileio.cpp:143
+#: kfileio.cpp:144
 #, c-format
 msgid ""
 "Failed to make a backup copy of %s.\n"
@@ -1506,7 +1526,7 @@ msgstr ""
 "Ha fallat la còpia de seguretat de %s.\n"
 "He de continuar malgrat tot?"
 
-#: kfileio.cpp:155 kfileio.cpp:173
+#: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1515,7 +1535,7 @@ msgstr ""
 "No s'ha pogut escriure al fitxer:\n"
 "%s"
 
-#: kfileio.cpp:158
+#: kfileio.cpp:159
 #, c-format
 msgid ""
 "Could not open file for writing:\n"
@@ -1524,7 +1544,7 @@ msgstr ""
 "No s'ha pogut obrir el fitxer per escriure:\n"
 "%s"
 
-#: kfileio.cpp:162 kmaddrbook.cpp:146
+#: kfileio.cpp:163 kmaddrbook.cpp:155
 #, c-format
 msgid ""
 "Error while writing file:\n"
@@ -1533,10 +1553,19 @@ msgstr ""
 "Error en escriure al fitxer:\n"
 "%s"
 
-#: kfileio.cpp:179
+#: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Només s'han pogut escriure %d bytes de %d."
+
+#: kmaddrbook.cpp:25
+#, fuzzy
+msgid "KMail Error"
+msgstr "Error KMail"
+
+#: kmaddrbook.cpp:26
+msgid "Storing the addressbook failed!\n"
+msgstr ""
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1546,27 +1575,32 @@ msgstr "Llibreta d'adreces"
 msgid "Addressbook Manager"
 msgstr "Gestor de la llibreta d'adreces"
 
+#: kmaddrbookdlg.cpp:179
+#, fuzzy
+msgid "Storing addressbook failed"
+msgstr "Afegir al llibre d'adreces"
+
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Abortar"
 
-#: kmnewiostatuswdg.cpp:37
+#: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
 msgstr "S'estan enviant missatges a "
 
-#: kmnewiostatuswdg.cpp:40
+#: kmnewiostatuswdg.cpp:44
 msgid "Retrieving messages from "
 msgstr "S'estan recuperant missatges de "
 
-#: kmnewiostatuswdg.cpp:50
+#: kmnewiostatuswdg.cpp:54
 msgid "Preparing transmission..."
 msgstr "S'està preparant la transmissió..."
 
-#: kmnewiostatuswdg.cpp:56
+#: kmnewiostatuswdg.cpp:60
 msgid "Transmission completed..."
 msgstr "S'ha acabat la transmissió..."
 
-#: kmnewiostatuswdg.cpp:91
+#: kmnewiostatuswdg.cpp:95
 msgid "Aborting transmission...\n"
 msgstr "S'està abortant la transmissió...\n"
 
