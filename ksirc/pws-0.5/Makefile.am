@@ -1,2 +1,2 @@
 # These will be the subdirectories of this directory
-SUBDIRS = pws po mathopd-1.1
+SUBDIRS = pws mathopd-1.1
