@@ -333,7 +333,6 @@ void Artdlg::fillTree ()
     qApp->setOverrideCursor(waitCursor);
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
-    group->getList();
 
     debug ("flag!!!");
     list->setAutoUpdate(false);

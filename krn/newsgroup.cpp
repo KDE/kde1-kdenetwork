@@ -228,7 +228,7 @@ void Article::load()
     else
         setExpire(false);
 
-    for (int i=7;i<tl.count();i++)
+    for (unsigned int i=7;i<tl.count();i++)
     {
         if(0<strlen(tl.at(i)))
         {
@@ -526,7 +526,6 @@ assert (a->art==art);
         b=d->find(ref);
         if (b==0)
         {
-            debug ("flag");
             b=new node;
             b->art=0;
             b->parent=0;
