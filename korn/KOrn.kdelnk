@@ -3,6 +3,7 @@
 BinaryPattern=korn;
 Protocols=
 Comment=Multi-folder new mail monitor
+Comment[ca]=Monitor de correu multi carpeta
 Comment[cs]=Indikátor novì do¹lých zpráv
 Comment[da]=Viser ny post i flere foldere på een gang
 Comment[es]=Monitor de nuevo correo multi-carpeta
@@ -29,6 +30,7 @@ Extensions=
 Type=Application
 Terminal=0
 Name=Mail monitor
+Name[ca]=Monitor de correu
 Name[cs]=Detektor po¹ty
 Name[da]=E-post overvåger
 Name[de]=Korn
