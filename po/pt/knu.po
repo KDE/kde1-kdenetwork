@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-04-16 18:09+0200\n"
+"POT-Creation-Date: 1998-05-30 17:38+0200\n"
 "PO-Revision-Date: 1998-01-22 00:00+0100\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -61,19 +61,19 @@ msgstr "Acerca do &Qt"
 msgid "About..."
 msgstr "Acerca..."
 
-#: CommandDlg.cpp:116
+#: CommandDlg.cpp:120
 msgid "H&ost:"
 msgstr "H&ost:"
 
-#: CommandDlg.cpp:125
+#: CommandDlg.cpp:129
 msgid "&Go!"
 msgstr "&Começar!"
 
-#: CommandDlg.cpp:135
+#: CommandDlg.cpp:139
 msgid "&Stop"
 msgstr "&Parar"
 
-#: CommandDlg.cpp:151
+#: CommandDlg.cpp:155
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -81,7 +81,7 @@ msgstr ""
 "O executável deste comando não foi encontrado. \n"
 "Pode inserir a sua localização no menu Editar->Preferências."
 
-#: CommandDlg.cpp:336
+#: CommandDlg.cpp:340
 #, c-format
 msgid ""
 "\n"
@@ -102,23 +102,23 @@ msgstr ""
 "encontrar uma entrada \"path=\" válida.\n"
 "\n"
 
-#: CommandDlg.cpp:345
+#: CommandDlg.cpp:349
 msgid "Error in pathname"
 msgstr "Erro no caminho"
 
-#: CommandDlg.cpp:478
+#: CommandDlg.cpp:482
 msgid "Binary"
 msgstr "Executável"
 
-#: CommandDlg.cpp:486
+#: CommandDlg.cpp:490
 msgid "Path&name:"
 msgstr "&Localização:"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:499
 msgid "Additional &arguments:"
 msgstr "&Argumentos adicionais:"
 
-#: CommandDlg.cpp:520
+#: CommandDlg.cpp:524
 msgid "This command had been disabled in the configuration file."
 msgstr "Este comando foi desactivado no ficheiro de configuração"
 

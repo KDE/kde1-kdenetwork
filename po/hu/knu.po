@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-04-16 18:09+0200\n"
+"POT-Creation-Date: 1998-05-30 17:38+0200\n"
 "PO-Revision-Date: 1998-01-12 12:21+CET\n"
 "Last-Translator: John Zero <johnzero@telnet.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -69,19 +69,19 @@ msgstr "A &Qt-rõl"
 msgid "About..."
 msgstr "A programról..."
 
-#: CommandDlg.cpp:116
+#: CommandDlg.cpp:120
 msgid "H&ost:"
 msgstr "Gép:"
 
-#: CommandDlg.cpp:125
+#: CommandDlg.cpp:129
 msgid "&Go!"
 msgstr "&Mehet!"
 
-#: CommandDlg.cpp:135
+#: CommandDlg.cpp:139
 msgid "&Stop"
 msgstr "&Allj"
 
-#: CommandDlg.cpp:151
+#: CommandDlg.cpp:155
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -89,7 +89,7 @@ msgstr ""
 "A parancsnak megfelelõ binárist nem találom.Az elérési útvonalát a "
 "Szerkesztés->Beállítások alatt adhatod meg."
 
-#: CommandDlg.cpp:336
+#: CommandDlg.cpp:340
 #, c-format
 msgid ""
 "\n"
@@ -103,23 +103,23 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 
-#: CommandDlg.cpp:345
+#: CommandDlg.cpp:349
 msgid "Error in pathname"
 msgstr ""
 
-#: CommandDlg.cpp:478
+#: CommandDlg.cpp:482
 msgid "Binary"
 msgstr "Bináris"
 
-#: CommandDlg.cpp:486
+#: CommandDlg.cpp:490
 msgid "Path&name:"
 msgstr "&Utvonal:"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:499
 msgid "Additional &arguments:"
 msgstr "&További paraméterek:"
 
-#: CommandDlg.cpp:520
+#: CommandDlg.cpp:524
 msgid "This command had been disabled in the configuration file."
 msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
 

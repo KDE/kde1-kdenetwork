@@ -5,200 +5,200 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-04-16 18:09+0200\n"
+"POT-Creation-Date: 1998-05-30 17:38+0200\n"
 "PO-Revision-Date: 1998-04-21 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
-#: main.cpp:227 main.cpp:239 main.cpp:251 main.cpp:266 main.cpp:278
+#: main.cpp:223 main.cpp:235 main.cpp:247 main.cpp:262 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Information über fehlende Konfiguration"
 
-#: main.cpp:228
+#: main.cpp:224
 msgid "Please enter your email adress"
 msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein"
 
-#: main.cpp:240
+#: main.cpp:236
 msgid "Please enter your real name"
 msgstr "Bitte geben Sie Ihren wirklichen Namen ein"
 
-#: main.cpp:252
+#: main.cpp:248
 msgid "Please enter your organization's name"
 msgstr "Bitte geben Sie den Namen Ihrer Organisation ein"
 
-#: main.cpp:267
+#: main.cpp:263
 msgid "Please enter your NNTP server name"
 msgstr "Bitte geben Sie Ihren NNTP-Servernamen ein"
 
-#: main.cpp:279
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Bitte geben Sie Ihren SMTP-Servernamen ein"
 
-#: NNTP.cpp:74
+#: NNTP.cpp:76
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "%.2f Kb empfangen"
 
-#: NNTP.cpp:552
+#: NNTP.cpp:555
 msgid "Getting Article"
 msgstr "Hole Artikel"
 
-#: NNTP.cpp:638
+#: NNTP.cpp:641
 msgid "Article Received"
 msgstr "Artikel empfangen"
 
-#: groupdlg.cpp:125
+#: groupdlg.cpp:129
 msgid "Connect to Server"
 msgstr "Verbinde mit Server"
 
-#: groupdlg.cpp:126
+#: groupdlg.cpp:130
 msgid "Disconnect From Server"
 msgstr "Verbindung trennen"
 
-#: groupdlg.cpp:127
+#: groupdlg.cpp:131
 msgid "Get Active File"
 msgstr "Gruppenliste holen"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:133
 msgid "Post Queued Messages"
 msgstr "Artikel in Warteschlange senden"
 
-#: groupdlg.cpp:131
+#: groupdlg.cpp:135
 msgid "Exit"
 msgstr "Beenden"
 
-#: groupdlg.cpp:134
+#: groupdlg.cpp:138
 msgid "KRN - Group List"
 msgstr "KRN - Gruppenliste"
 
-#: groupdlg.cpp:137 groupdlg.cpp:143
+#: groupdlg.cpp:141 groupdlg.cpp:147
 msgid "Get Subjects"
 msgstr "Überschriften holen"
 
-#: groupdlg.cpp:138 groupdlg.cpp:144
+#: groupdlg.cpp:142 groupdlg.cpp:148
 msgid "Get Articles"
 msgstr "Artikel holen"
 
-#: groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
+#: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
 msgid "Catchup"
 msgstr "Alle Artikel als gelesen markieren"
 
-#: groupdlg.cpp:145 groupdlg.cpp:153
+#: groupdlg.cpp:149 groupdlg.cpp:157
 msgid "(un)Subscribe"
 msgstr "Abonnieren an/aus"
 
-#: artdlg.cpp:143 groupdlg.cpp:146
+#: artdlg.cpp:151 groupdlg.cpp:150
 msgid "Untag"
 msgstr "Markierung aus"
 
-#: artdlg.cpp:163 groupdlg.cpp:154
+#: artdlg.cpp:171 groupdlg.cpp:158
 msgid "(Un)Tag"
 msgstr "Markierung an/aus"
 
-#: artdlg.cpp:156 artdlg.cpp:213 groupdlg.cpp:157 groupdlg.cpp:209
+#: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
 msgid "Post New Article"
 msgstr "Neuen Artikel veröffentlichen"
 
-#: groupdlg.cpp:158
+#: groupdlg.cpp:162
 msgid "Post All Queued Articles"
 msgstr "Alle Artikel in der Warteschlange senden"
 
-#: groupdlg.cpp:160
+#: groupdlg.cpp:164
 msgid "&Subscribed"
 msgstr "&Abonnierte"
 
-#: artdlg.cpp:197 groupdlg.cpp:161
+#: artdlg.cpp:205 groupdlg.cpp:165
 msgid "&Tagged"
 msgstr "&Markierte"
 
-#: groupdlg.cpp:166
+#: groupdlg.cpp:170
 msgid "Identity..."
 msgstr "Identität..."
 
-#: groupdlg.cpp:167
+#: groupdlg.cpp:171
 msgid "NNTP Options..."
 msgstr "NNTP Optionen..."
 
-#: groupdlg.cpp:168
+#: groupdlg.cpp:172
 msgid "Expire Options..."
 msgstr "Ablaufdatum-Optionen..."
 
-#: groupdlg.cpp:169
+#: groupdlg.cpp:173
 msgid "Printing Options..."
 msgstr "Druckeinstellungen..."
 
-#: groupdlg.cpp:176
+#: groupdlg.cpp:180
 msgid "About Krn..."
 msgstr "Über Krn..."
 
-#: groupdlg.cpp:188
+#: groupdlg.cpp:192
 msgid "&Newsgroup"
 msgstr "&Newsgroup"
 
-#: groupdlg.cpp:195
+#: groupdlg.cpp:199
 msgid "Connect to server"
 msgstr "Verbinde mit Server"
 
-#: groupdlg.cpp:197
+#: groupdlg.cpp:201
 msgid "Disconnect from server"
 msgstr "Verbindung trennen"
 
-#: groupdlg.cpp:200
+#: groupdlg.cpp:204
 msgid "Get list of active groups"
 msgstr "Liste der aktiven Newsgroups holen"
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Suche Newsgroup"
 
-#: groupdlg.cpp:207
+#: groupdlg.cpp:211
 msgid "Check for Unread Articles"
 msgstr "Nach ungelesenen Artikeln suchen"
 
-#: groupdlg.cpp:337 groupdlg.cpp:362 groupdlg.cpp:565 groupdlg.cpp:901
+#: groupdlg.cpp:335 groupdlg.cpp:360 groupdlg.cpp:578 groupdlg.cpp:914
 msgid "All Newsgroups."
 msgstr "Alle Newsgroups."
 
-#: groupdlg.cpp:456 groupdlg.cpp:550
+#: groupdlg.cpp:467 groupdlg.cpp:561
 msgid "Subscribed Newsgroups."
 msgstr "Abonnierte Newsgroups."
 
-#: groupdlg.cpp:505
+#: groupdlg.cpp:516
 msgid "Disconnected"
 msgstr "nicht verbunden"
 
-#: groupdlg.cpp:512
+#: groupdlg.cpp:523
 msgid "Connecting to server"
 msgstr "Verbinde mit Server"
 
-#: groupdlg.cpp:517
+#: groupdlg.cpp:528
 msgid "Connected to server - Posting not allowed"
 msgstr "verbunden - Veröffentlichung nicht erlaubt"
 
-#: groupdlg.cpp:519
+#: groupdlg.cpp:530
 msgid "Connected to server - Posting allowed"
 msgstr "verbunden - Veröffentlichung erlaubt"
 
-#: groupdlg.cpp:525
+#: groupdlg.cpp:536
 msgid "Can't connect to server"
 msgstr "Kann nicht mit Server verbinden"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:538
 msgid "Connection to server failed"
 msgstr "Fehler bei der Verbindung zum Server"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:547
 msgid "Authentication Failed"
 msgstr "Authentifizierung fehlgeschlagen"
 
-#: groupdlg.cpp:539
+#: groupdlg.cpp:550
 msgid "Connection to server failed: Authentication problem"
 msgstr "Verbindung zum Server fehlgeschlagen: Authentifizierungsproblem"
 
-#: groupdlg.cpp:584
+#: groupdlg.cpp:597
 msgid "Krn-Question"
 msgstr "Krn-Frage"
 
-#: groupdlg.cpp:585
+#: groupdlg.cpp:598
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -206,7 +206,7 @@ msgstr ""
 "Die gewünschte Operation benötigt eine Verbindung zum News-Server\n"
 "Soll ich dies versuchen?"
 
-#: groupdlg.cpp:847
+#: groupdlg.cpp:860
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -214,207 +214,207 @@ msgstr ""
 "Sie haben keine Liste der aktiven Newsgroups.\n"
 " soll ich sie vom Server holen?"
 
-#: groupdlg.cpp:863
+#: groupdlg.cpp:876
 msgid "Listing active newsgroups"
 msgstr "Liste die aktiven Newsgroups auf"
 
-#: groupdlg.cpp:875
+#: groupdlg.cpp:888
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Suche eine Newsgroup"
 
-#: groupdlg.cpp:876
+#: groupdlg.cpp:889
 msgid "Enter the name of the Newsgroup"
 msgstr "Geben sie den Namen der Newsgroup ein"
 
-#: groupdlg.cpp:961
+#: groupdlg.cpp:974
 msgid "Krn - Message"
 msgstr "Krn - Nachricht"
 
-#: groupdlg.cpp:962
+#: groupdlg.cpp:975
 msgid "I can't find the group you want!"
 msgstr "Ich kann die Gruppe, die sie möchten, nicht finden!"
 
-#: groupdlg.cpp:1053
+#: groupdlg.cpp:1068
 msgid "Getting messages in "
 msgstr "Hole Nachrichten aus "
 
-#: groupdlg.cpp:1066
+#: groupdlg.cpp:1081
 msgid "Getting list of messages in "
 msgstr "Hole die Liste der Nachrichten aus "
 
-#: artdlg.cpp:136 artdlg.cpp:151
+#: artdlg.cpp:144 artdlg.cpp:159
 msgid "Download"
 msgstr "Herunterladen"
 
-#: artdlg.cpp:138 artdlg.cpp:260
+#: artdlg.cpp:146 artdlg.cpp:268
 msgid "Mark Read"
 msgstr "Als gelesen markieren"
 
-#: artdlg.cpp:139
+#: artdlg.cpp:147
 msgid "Mark Unread"
 msgstr "Als ungelesen markieren"
 
-#: artdlg.cpp:141 artdlg.cpp:155
+#: artdlg.cpp:149 artdlg.cpp:163
 msgid "Print"
 msgstr "Drucken"
 
-#: artdlg.cpp:142 artdlg.cpp:162
+#: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
 msgstr "Dekodieren"
 
-#: artdlg.cpp:144 artdlg.cpp:164
+#: artdlg.cpp:152 artdlg.cpp:172
 msgid "Don't expire"
 msgstr "Behalten"
 
-#: artdlg.cpp:153
+#: artdlg.cpp:161
 msgid "Lookup in Altavista"
 msgstr "Suche bei Altavista"
 
-#: artdlg.cpp:157 artdlg.cpp:244
+#: artdlg.cpp:165 artdlg.cpp:252
 msgid "Reply by Mail"
 msgstr "Anwort per Mail"
 
-#: artdlg.cpp:158
+#: artdlg.cpp:166
 msgid "Post Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:159
+#: artdlg.cpp:167
 msgid "Post & Reply"
 msgstr "Veröffentlichen und Antworten"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:174
 msgid "Tagged"
 msgstr "Markierte"
 
-#: artdlg.cpp:177
+#: artdlg.cpp:185
 msgid "Show Only Unread Messages"
 msgstr "Nur ungelesene anzeigen"
 
-#: artdlg.cpp:179
+#: artdlg.cpp:187
 msgid "Show Only Cached Messages"
 msgstr "Nur Zwischengespeicherte anzeigen"
 
-#: artdlg.cpp:181
+#: artdlg.cpp:189
 msgid "Show Locked Messages"
 msgstr "Gesperrte anzeigen"
 
-#: artdlg.cpp:183
+#: artdlg.cpp:191
 msgid "Expunge"
 msgstr "Löschen"
 
-#: artdlg.cpp:184
+#: artdlg.cpp:192
 msgid "Appearance..."
 msgstr "Eigenschaften..."
 
-#: artdlg.cpp:185
+#: artdlg.cpp:193
 msgid "Sorting..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:189
+#: artdlg.cpp:197
 msgid "Edit Rules"
 msgstr "Regeln bearbeiten"
 
-#: artdlg.cpp:190
+#: artdlg.cpp:198
 msgid "Update"
 msgstr "Erneuern"
 
-#: artdlg.cpp:199
+#: artdlg.cpp:207
 msgid "&Scoring"
 msgstr "&Bewertung"
 
-#: artdlg.cpp:206
+#: artdlg.cpp:214
 msgid "Previous Message"
 msgstr "Vorherige Nachricht"
 
-#: artdlg.cpp:208
+#: artdlg.cpp:216
 msgid "Next Message"
 msgstr "Nächste Nachricht"
 
-#: artdlg.cpp:210
+#: artdlg.cpp:218
 msgid "Find Article"
 msgstr "Artikel suchen"
 
-#: artdlg.cpp:215
+#: artdlg.cpp:223
 msgid "Get Article List"
 msgstr "Artikelliste holen"
 
-#: artdlg.cpp:217
+#: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Anzeige erneuern"
 
-#: artdlg.cpp:240
+#: artdlg.cpp:248
 msgid "Save Article"
 msgstr "Artikel speichern"
 
-#: artdlg.cpp:242
+#: artdlg.cpp:250
 msgid "Print Article"
 msgstr "Artikel drucken"
 
-#: artdlg.cpp:246
+#: artdlg.cpp:254
 msgid "Post a Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:248
+#: artdlg.cpp:256
 msgid "Post & Mail"
 msgstr "Veröffentlichen & Antworten"
 
-#: artdlg.cpp:254
+#: artdlg.cpp:262
 msgid "Tag Article"
 msgstr "Artikel markieren"
 
-#: artdlg.cpp:256
+#: artdlg.cpp:264
 msgid "Lock (keep in cache)"
 msgstr "Sperren (im Zwischenspeicher behalten)"
 
-#: artdlg.cpp:258
+#: artdlg.cpp:266
 msgid "Decode Article"
 msgstr "Artikel dekodieren"
 
-#: artdlg.cpp:262
+#: artdlg.cpp:270
 msgid "Mark UnRead"
 msgstr "Als ungelesen markieren"
 
-#: artdlg.cpp:284 sortDlg.cpp:34
+#: artdlg.cpp:292 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Von"
 
-#: artdlg.cpp:286 sortDlg.cpp:36
+#: artdlg.cpp:294 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Zeilen"
 
-#: artdlg.cpp:287 sortDlg.cpp:33
+#: artdlg.cpp:295 sortDlg.cpp:33
 msgid "Score"
 msgstr "Punktzahl"
 
-#: artdlg.cpp:288 sortDlg.cpp:32
+#: artdlg.cpp:296 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Thema"
 
-#: artdlg.cpp:451
+#: artdlg.cpp:463
 msgid "Threading..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:460
+#: artdlg.cpp:472
 msgid "Showing Article List"
 msgstr "Zeige Artikelliste"
 
-#: artdlg.cpp:1273
+#: artdlg.cpp:1313
 msgid "KRN - Existing File"
 msgstr "KRN - Datei existiert"
 
-#: artdlg.cpp:1274
+#: artdlg.cpp:1314
 msgid "The File you selected already exists"
 msgstr "Die gewählte Datei existiert bereits"
 
-#: artdlg.cpp:1280
+#: artdlg.cpp:1320
 msgid "OverWrite"
 msgstr "Überschreiben"
 
-#: artdlg.cpp:1282
+#: artdlg.cpp:1322
 msgid "Append"
 msgstr "Anhängen"
 
-#: artdlg.cpp:1317
+#: artdlg.cpp:1357 artdlg.cpp:1422
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -428,7 +428,7 @@ msgstr ""
 "Fehler beim Artikelholen.\n"
 "Server antwortete:\n"
 
-#: artdlg.cpp:1417
+#: artdlg.cpp:1524
 msgid "Getting Article List"
 msgstr "hole Artikelliste"
 
@@ -456,66 +456,41 @@ msgstr "E-Mail Adresse"
 msgid "Organization"
 msgstr "Organisation"
 
-#: NNTPConfigDlg.cpp:28
+#: NNTPConfigDlg.cpp:29
 msgid "KRN-NNTP configuration"
 msgstr "KRN-NNTP Konfiguration"
 
-#: NNTPConfigDlg.cpp:33
+#: NNTPConfigDlg.cpp:34
 msgid "Servers"
 msgstr "Server"
 
-#: NNTPConfigDlg.cpp:35
+#: NNTPConfigDlg.cpp:36
 msgid "SMTP server"
 msgstr "SMTP server"
 
-#: NNTPConfigDlg.cpp:40
+#: NNTPConfigDlg.cpp:41
 msgid "NNTP Server"
 msgstr "NNTP Server"
 
-#: NNTPConfigDlg.cpp:52
+#: NNTPConfigDlg.cpp:66
 msgid "Connect on Startup"
 msgstr "Beim Start verbinden"
 
-#: NNTPConfigDlg.cpp:56
+#: NNTPConfigDlg.cpp:70
 msgid "Connect without asking"
 msgstr "Ohne Nachfrage verbinden"
 
-#: NNTPConfigDlg.cpp:60
+#: NNTPConfigDlg.cpp:74
 msgid "Authenticate"
 msgstr "Authentifizieren"
 
-#: NNTPConfigDlg.cpp:65
+#: NNTPConfigDlg.cpp:79
 msgid "User Name"
 msgstr "Benutzername"
 
-#: NNTPConfigDlg.cpp:69
+#: NNTPConfigDlg.cpp:83
 msgid "Password"
 msgstr "Passwort"
-
-#: decoderDlg.cpp:31
-msgid "KRN - Decoder"
-msgstr "KRN - Dekodierer"
-
-#: decoderDlg.cpp:34
-msgid "ID"
-msgstr "ID"
-
-#: decoderDlg.cpp:44
-msgid "Destination directory:"
-msgstr "Zielverzeichnis:"
-
-#: decoderDlg.cpp:47
-msgid "Decode All"
-msgstr "Alle dekodieren"
-
-#: kdecode.cpp:29
-msgid "KRN-Decoder"
-msgstr "KRN-Dekodierer"
-
-#: kdecode.cpp:208
-#, c-format
-msgid "Unsupported encoding type: %s."
-msgstr "Nicht unterstützte Kodierung: %s."
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -641,7 +616,7 @@ msgstr "Im Feld:"
 msgid "Wildcard Mode"
 msgstr "Platzhalter-Modus"
 
-#: krnsender.cpp:48
+#: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
 msgstr "Sie haben bei diesem Server keine Veröffentlichungserlaubnis!"
 
@@ -741,7 +716,7 @@ msgstr "Artikel suchen mit:"
 msgid "Negative"
 msgstr "Negativ"
 
-#: rulesDlg.cpp:189
+#: rulesDlg.cpp:190
 msgid "Rule name:"
 msgstr "Regelname:"
 
@@ -760,3 +735,21 @@ msgstr "Sortiert nach:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Nach Threads"
+
+#~ msgid "KRN - Decoder"
+#~ msgstr "KRN - Dekodierer"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Destination directory:"
+#~ msgstr "Zielverzeichnis:"
+
+#~ msgid "Decode All"
+#~ msgstr "Alle dekodieren"
+
+#~ msgid "KRN-Decoder"
+#~ msgstr "KRN-Dekodierer"
+
+#~ msgid "Unsupported encoding type: %s."
+#~ msgstr "Nicht unterstützte Kodierung: %s."

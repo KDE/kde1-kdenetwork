@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-04-16 18:09+0200\n"
+"POT-Creation-Date: 1998-05-30 17:38+0200\n"
 "PO-Revision-Date: 1998-03-01 20:15 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -69,19 +69,19 @@ msgstr "A propos de &Qt"
 msgid "About..."
 msgstr "&A propos ..."
 
-#: CommandDlg.cpp:116
+#: CommandDlg.cpp:120
 msgid "H&ost:"
 msgstr "&Machine :"
 
-#: CommandDlg.cpp:125
+#: CommandDlg.cpp:129
 msgid "&Go!"
 msgstr "&Go !"
 
-#: CommandDlg.cpp:135
+#: CommandDlg.cpp:139
 msgid "&Stop"
 msgstr "&Stop"
 
-#: CommandDlg.cpp:151
+#: CommandDlg.cpp:155
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -89,7 +89,7 @@ msgstr ""
 "L'application correspondant à cette commande n'a pas été trouvée.\n"
 "Vous pouvez donner son chemin par le menu Edition->Préférences ..."
 
-#: CommandDlg.cpp:336
+#: CommandDlg.cpp:340
 #, c-format
 msgid ""
 "\n"
@@ -111,23 +111,23 @@ msgstr ""
 "Veuillez utiliser le menu Edition->Préférences ...\n"
 "pour le configurer à nouveau.\n"
 
-#: CommandDlg.cpp:345
+#: CommandDlg.cpp:349
 msgid "Error in pathname"
 msgstr "Erreur dans le chemin du fichier"
 
-#: CommandDlg.cpp:478
+#: CommandDlg.cpp:482
 msgid "Binary"
 msgstr "Application"
 
-#: CommandDlg.cpp:486
+#: CommandDlg.cpp:490
 msgid "Path&name:"
 msgstr "&Chemin du programme :"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:499
 msgid "Additional &arguments:"
 msgstr "&Paramètres additionnels :"
 
-#: CommandDlg.cpp:520
+#: CommandDlg.cpp:524
 msgid "This command had been disabled in the configuration file."
 msgstr "Cette commande a été désactivée dans le fichier de configuration."
 
