@@ -18,7 +18,7 @@ $(BUILDDIR)/build-stamp:
 	../configure --enable-debug --with-install-root=`pwd`/../debian/tmp \
 	--disable-rpath \
 	--includedir="\$$(prefix)/include/kde" \
-	--libdir="\$$(prefix)/X11R6/lib" 
+	--libdir="\$$(prefix)/lib" --prefix=/usr
 
 	make -C $(BUILDDIR)
 
