@@ -96,7 +96,6 @@ int i;
     connect (b2,SIGNAL(clicked()),SLOT(reject()));
 
     mainl->activate();
-    buttonsl->activate();
 }
 
 void CharsetsDlg::save()
