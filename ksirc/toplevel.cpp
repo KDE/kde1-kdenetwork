@@ -10,6 +10,7 @@
 #include "toplevel.h"
 #include "iocontroller.h"
 #include "open_top.h"
+#include "control_message.h"
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>
@@ -221,17 +222,17 @@ KSircTopLevel::~KSircTopLevel()
 
 }
 
-void KSircTopLevel::sirc_stop(bool STOP = FALSE)
-{
-  if(STOP == TRUE){
-    Buffer = TRUE;
-  }
-  else{
-    Buffer = FALSE;
-    if(LineBuffer->isEmpty() == FALSE)
-      sirc_receive(QString(""));
-  }
-}
+//void KSircTopLevel::sirc_stop(bool STOP = FALSE)
+//{
+//  if(STOP == TRUE){
+//    Buffer = TRUE;
+//  }
+//  else{
+//    Buffer = FALSE;
+//    if(LineBuffer->isEmpty() == FALSE)
+//      sirc_receive(QString(""));
+//  }
+//}
   
 void KSircTopLevel::sirc_receive(QString str)
 {
@@ -957,7 +958,7 @@ void KSircTopLevel::control_message(QString str)
     int pos2;
     QString s;
     switch(command){
-    case 001: // 001 is defined as changeChannel
+    case CHANGE_CHANNEL: // 001 is defined as changeChannel
       s = str.mid(3, str.length() - 3);
       //      s.remove(s.length()-1, 1);
       pos2 = s.find(' ', 0);
@@ -968,6 +969,14 @@ void KSircTopLevel::control_message(QString str)
       cerr << "Channel name now: " << channel_name << endl;
       have_focus = 0;
       emit changeChannel("!default", channel_name);
+      break;
+    case STOP_UPDATES:
+      Buffer = TRUE;
+      break;
+    case RESUME_UPDATES:
+      Buffer = FALSE;
+      if(LineBuffer->isEmpty() == FALSE)
+	sirc_receive(QString(""));
       break;
     default:
       cerr << "Unkown control message: " << str << endl;

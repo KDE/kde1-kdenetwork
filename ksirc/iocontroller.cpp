@@ -2,6 +2,7 @@
 #include "toplevel.h"
 #include <iostream.h>
 #include "ksircprocess.h"
+#include "control_message.h"
 
 extern KApplication *kApp;
 
@@ -63,7 +64,9 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     holder.truncate(0);
   }
   pos = pos2 = 0;
-  ksircproc->TopList["!all"]->sirc_stop(TRUE);
+  QString control;
+  control.setNum(STOP_UPDATES);
+  ksircproc->TopList["!all"]->control_message(control);
   do{
     pos2 = buffer.find('\n', pos);
     //      cerr << "Pos1/2: " << pos << '/' << pos2 << endl;
@@ -92,7 +95,9 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   } while((uint) pos < buffer.length());
 
   holder = tmp;
-  ksircproc->TopList["!all"]->sirc_stop(FALSE);
+  control.truncate(0);
+  control.setNum(RESUME_UPDATES);
+  ksircproc->TopList["!all"]->control_message(control);
 
 }
 
