@@ -32,7 +32,7 @@ knu_LDFLAGS = @all_libraries@
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-knu_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+knu_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET) $(KDE_RPATH)
 
 ## this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h \
