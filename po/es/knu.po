@@ -1,12 +1,10 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: kdenetwork\n"
 "POT-Creation-Date: 1998-04-16 18:09+0200\n"
-"Content-Type: text/plain; charset=\n"
-"Date: 1997-10-28 22:45:13+0100\n"
-"From: Bertrand Leconte,,, <leconteb@arthur>\n"
-"Xgettext-Options: -C -k_\n"
-"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp "
-"TracerouteDlg.cpp HostDlg.cpp\n"
+"PO-Revision-Date: 1998-04-18 13:23+0200\n"
+"First-Translator: Bertrand Leconte\n"
+"Last-Translator: Boris Wesslowski <bwess@gmx.net>\n"
 
 #: knu.cpp:132 knu.cpp:275
 msgid "&Ping"
@@ -14,16 +12,15 @@ msgstr "&Ping"
 
 #: knu.cpp:141 knu.cpp:281
 msgid "&Traceroute"
-msgstr "&Tracear Ruta"
+msgstr "&Buscar ruta"
 
 #: knu.cpp:150 knu.cpp:287
 msgid "Host &resolution"
-msgstr "&Resolver Máquina"
+msgstr "&Resolver nombres"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -35,7 +32,7 @@ msgstr ""
 "No hay ningún comando disponible\n"
 "en el fichero de configuración.\n"
 "\n"
-"Imposible realizar ninguna operación.\n"
+"Imposible realizar alguna operación.\n"
 
 #: knu.cpp:219
 msgid "&New window"
@@ -82,7 +79,7 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"El fichero binario del comando no se encontró. \n"
+"El ejecutable del comando no se encontró. \n"
 "Puede indicar su ubicación en el menú Editar->Preferencias..."
 
 #: CommandDlg.cpp:336
@@ -98,10 +95,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Tiene un problema en su fichero\n"
+"%s/%src\n"
+"No se pudo encontrar una linea\n"
+"\"path=\" válida en el grupo\n"
+"[%s]\n"
+"\n"
+"Use el menú Editar->Preferencias...\n"
+"para configurarlo de nuevo.\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Error en el nombre de la ruta"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
@@ -129,7 +135,7 @@ msgstr "Resolver el nombre del servidor"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
-msgstr "Número máximo de saltos:"
+msgstr "Número máximo de intermediarios:"
 
 #: HostDlg.cpp:105
 msgid "address (A)"
@@ -173,22 +179,8 @@ msgstr "Ser&vidor:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "Usuario:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Ser&vidor:"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Existe un problema en su fichero de configuración ~/.kde/share/config/knurc\n"
-#~ "En el grupo ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "], imposible encontrar una entrada correcta \"path=\"."
-
-#~ msgid "&Contents"
-#~ msgstr "&Contenidos"
+msgstr "Servidor:"
