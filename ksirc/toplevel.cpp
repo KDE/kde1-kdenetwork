@@ -286,21 +286,21 @@ KSircTopLevel::~KSircTopLevel()
 {
 
   // Cleanup and shutdown
-  writePopUpMenu();
+  //  writePopUpMenu();
   //  if(this == proc->getWindowList()["default"])
   //    write(sirc_stdin, "/quit\n", 7); // tell dsirc to close
   //
   //  if(proc->getWindowList()[channel_name])
   //    proc->getWindowList().remove(channel_name);
 
-  if((channel_name[0] == '#') || (channel_name[0] == '&')){
-    QString str = QString("/part ") + channel_name + "\n";
-    emit outputLine(str);
-  }
+  //  if((channel_name[0] == '#') || (channel_name[0] == '&')){
+  //    QString str = QString("/part ") + channel_name + "\n";
+  //    emit outputLine(str);
+  //  }
 
   if(ticker)
     delete ticker;
-  delete gm; // Deletes everthing bellow it I guess...
+  //  delete gm; // Deletes everthing bellow it I guess...
   //  delete gm2; 
   //  delete pan; // Should be deleted by gm2
   //  delete linee; // ditto
@@ -508,13 +508,13 @@ void KSircTopLevel::sirc_line_return()
    * Parse line forcommand we handle
    */
 
-  if(strncmp(s, "/join ", 6) == 0){
+  if((strncmp(s, "/join ", 6) == 0) || (strncmp(s, "/j ", 3) == 0)){
     s = s.lower();
     int pos1 = s.findRev(' ', -1) + 1;
     if(pos1 == -1)
       return;
     int pos2 = s.length() - 1;
-    if(pos1 > 5){
+    if(pos1 > 2){
       QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
       //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
@@ -533,7 +533,7 @@ void KSircTopLevel::sirc_line_return()
   else if((strncmp(s, "/part", 5) == 0) ||
 	  (strncmp(s, "/leave", 6) == 0) ||
 	  (strncmp(s, "/hop", 4) == 0) ||
-	  (strncmp(s, "/quit", 6) == 0)){
+	  (strncmp(s, "/quit", 5) == 0)){
     QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
     linee->setText("");
     s.truncate(0);
@@ -1225,7 +1225,12 @@ void KSircTopLevel::newWindow()
 void KSircTopLevel::closeEvent(QCloseEvent *)
 {
   emit closing(this, channel_name);
-  delete this;
+  if((channel_name[0] == '#') || (channel_name[0] == '&')){
+    QString str = QString("/part ") + channel_name + "\n";
+    emit outputLine(str);
+  }
+
+  //  delete this;
 }
 
 void KSircTopLevel::resizeEvent(QResizeEvent *e)

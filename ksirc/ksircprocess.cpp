@@ -104,6 +104,7 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
   QDict<KSircMessageReceiver> nTopList(17, FALSE);
   TopList = nTopList;
+  //  TopList.setAutoDelete(TRUE);
 
   proc = new KProcess();
 
@@ -205,6 +206,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
   }
 
   if(TopList[name]){  // Delete window
+    delete TopList[name];
     TopList.remove(name);
   }
   else // If the window wasn't found warn, something's going wrong.

@@ -33,7 +33,8 @@ void KSircIOBroadcast::sirc_receive(QString str)
   QDictIterator<KSircMessageReceiver> it(proc->getWindowList());
 
   KSircMessageReceiver *dflt = (proc->getWindowList())["!default"];
-  dflt->sirc_receive(str);
+  if(dflt->getBroadcast() == TRUE)
+    dflt->sirc_receive(str);
 
   it.toFirst();
 
