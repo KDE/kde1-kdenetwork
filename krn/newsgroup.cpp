@@ -28,6 +28,8 @@
 
 #include "artdlg.h"
 
+#include "kfileio.h"
+
 extern ArticleDict artSpool;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
@@ -334,40 +336,35 @@ void NewsGroup::addArticle(QString ID)
 
 void NewsGroup::getList(Artdlg *dialog)
 {
-    char *buffer=new char[100];
-    int c=0;
     QString ID;
     QString ac;
+    QString status;
     ac=krnpath+name;
-    QFile f(ac);
-    if (!f.exists())
+
+    if (!QFile::exists(ac))
         return;
-    QByteArray arr(f.size());
-    
-    if (f.open(IO_ReadOnly))
+
+    QString buffer=kFileToString (ac,true,true);
+    if (buffer.isNull())
+        return;
+
+    int index=0;
+    int oldindex=0;
+
+    while (1)
     {
-        f.readBlock(arr.data(),f.size());
-        f.close();
-        QBuffer b(arr);
-        b.open(IO_ReadOnly);
-        QTextStream st(&b);
-        while (!st.eof())
+        index=buffer.find ('\n',oldindex);
+        ID=buffer.mid(oldindex,index-oldindex);
+        if (ID.isEmpty())
+            break;
+        oldindex=index+1;
+        addArticle (ID);
+        if (dialog && !(artList.count()%50))
         {
-            c++;
-            if (!(c%100))
-                qApp->processEvents();
-            ID=st.readLine();
-            addArticle (ID);
-            if (dialog && !(artList.count()%10))
-            {
-                sprintf (buffer,"Received %d articles",artList.count());
-                dialog->updateCounter(buffer);
-            }
+            status.sprintf ("Received %d articles",artList.count());
+            dialog->updateCounter(status);
         }
-        b.close();
-        arr.resize(0);
     }
-    delete[] buffer;
 }
 
 void NewsGroup::updateList()
