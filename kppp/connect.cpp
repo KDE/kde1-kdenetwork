@@ -229,26 +229,29 @@ void ConnectWidget::init() {
   if(opentty()){
     messg->setText(modemMessage());
     kapp->processEvents();
-    hangup();
+    if(hangup()) {
 
-    kapp->processEvents();
+      kapp->processEvents();
 
-    // this timer reads from the modem
-    semaphore = false;
-    readtimer->start(10);
-    
-    // if we are stuck anywhere we will time out
-    timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
+      // this timer reads from the modem
+      semaphore = false;
+      readtimer->start(10);
       
-    // this timer will run the script etc.
-    main_timer_ID = startTimer(1);
-    
+      // if we are stuck anywhere we will time out
+      timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
+      
+      // this timer will run the script etc.
+      main_timer_ID = startTimer(1);
+
+      return;
+    }
   }
-  else {
-    messg->setText(modemMessage());
-    vmain = 20; // wait until cancel is pressed
-    unlockdevice();
-  }
+
+  // initialization failed
+  messg->setText(modemMessage());
+  vmain = 20; // wait until cancel is pressed
+  unlockdevice();
+  
 }                  
 
 

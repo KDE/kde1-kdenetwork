@@ -162,22 +162,25 @@ void MiniTerm::init() {
 
     writeline(gpppdata.modemHangupStr());
     usleep(100000);  // wait 0.1 secs
-    hangup();
-    writeline(gpppdata.modemInitStr());
-    usleep(100000);
+    if(hangup()) {
+      writeline(gpppdata.modemInitStr());
+      usleep(100000);
+      
+      statusbar->setText(i18n("Modem Ready"));
+      terminal->setFocus();
+      
+      kapp->processEvents();
+      kapp->processEvents();
+      readtimer->start(1);
 
-
-    statusbar->setText(i18n("Modem Ready"));
-    terminal->setFocus();
-
-    kapp->processEvents();
-    kapp->processEvents();
-    readtimer->start(1);
+      return;
+    }
   }
-  else {
-    statusbar->setText(modemMessage());
-    unlockdevice();
-  }
+  
+  // opentty() or hangup() failed 
+  statusbar->setText(modemMessage());
+  unlockdevice();
+  
 }                  
 
 

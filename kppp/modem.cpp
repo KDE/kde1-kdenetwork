@@ -26,13 +26,15 @@
 
 #include <errno.h>
 #include <sys/ioctl.h>
+#include <setjmp.h>
 
 #include "modem.h"
 #include "pppdata.h"
 
 QString lockfile;
 bool    modem_is_locked = false;
-
+bool    expect_alarm = false;
+static jmp_buf jmp_buffer;
 
 Modem::Modem() {
 
@@ -212,7 +214,7 @@ bool Modem::writeline(const char *buf) {
 }
 
 
-void Modem::hangup() {
+bool Modem::hangup() {
 
   // this should really get the modem to hang up and go into command mode
   // If anyone sees a fault in the following please let me know, since
@@ -233,7 +235,22 @@ void Modem::hangup() {
     
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
-    tcsendbreak(modemfd, 0);
+    if (setjmp(jmp_buffer) == 0) {
+      // set alarm in case tcsendbreak() hangs 
+      signal(SIGALRM, alarm_handler);
+      alarm(2);
+      expect_alarm = true;
+      
+      tcsendbreak(modemfd, 0);
+      
+      expect_alarm = false;
+      alarm(0);
+      signal(SIGALRM, SIG_IGN);
+    } else {
+      // we reach this point if the alarm handler got called
+      errmsg = i18n("Sorry, the modem doesn't respond.");
+      return false;
+    }
 
     tcgetattr(modemfd, &temptty);
     cfsetospeed(&temptty, B0);
@@ -246,7 +263,10 @@ void Modem::hangup() {
     cfsetispeed(&temptty, modemspeed());
     tcsetattr(modemfd, TCSAFLUSH, &temptty);
    
-  }
+    return true;
+
+  } else
+    return false;
 
 }
 
@@ -388,6 +408,18 @@ void unlockdevice() {
   }
 
 }  
+
+void alarm_handler(int) {
+
+#ifdef MY_DEBUG
+  printf("alarm_handler(): Received SIGALRM\n");
+#endif
+
+  // jump 
+  if (expect_alarm)
+    longjmp(jmp_buffer, 1);
+
+}
 
 
 #ifndef HAVE_USLEEP

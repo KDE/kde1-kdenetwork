@@ -38,6 +38,7 @@
 
 int     lockdevice();
 void    unlockdevice();
+void    alarm_handler(int);
 
 class Modem {
 
@@ -50,7 +51,7 @@ public:
   bool    closetty();
   speed_t modemspeed();
   bool    writeline(const char *);
-  void    hangup();
+  bool    hangup();
   void    escape_to_command_mode();
   char    *modemMessage();
   // private:
@@ -69,3 +70,5 @@ void usleep (long);
 #endif
 
 #endif
+
+

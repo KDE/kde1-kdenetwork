@@ -150,23 +150,23 @@ void ModemTransfer::init() {
 
     writeline(gpppdata.modemHangupStr());
     usleep(100000);  // wait 0.1 secs
-    hangup();
-    usleep(100000);  // wait 0.1 secs
-    writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
+    if(hangup()) {
+      usleep(100000);  // wait 0.1 secs
+      writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
 
-    statusBar->setText(i18n("Modem Ready"));
-    kapp->processEvents();
+      statusBar->setText(i18n("Modem Ready"));
+      kapp->processEvents();
 
-    kapp->processEvents();
-    //    readtimer->start(1); 		// this one read from the modem
-    scripttimer->start(1000);	 	// this one does the ati query
-
+      kapp->processEvents();
+      scripttimer->start(1000);	 	// this one does the ati query
+    }
   }
-  else {
-    statusBar->setText(modemMessage());
-    step = 99; // wait until cancel is pressed
-    unlockdevice();
-  }
+  
+  // opentty() or hangup() failed 
+  statusBar->setText(modemMessage());
+  step = 99; // wait until cancel is pressed
+  unlockdevice();
+  
 }                  
 
 

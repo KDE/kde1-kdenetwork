@@ -1,3 +1,8 @@
+1998-08-08  Harri Porten  <porten@tu-harburg.de>
+
+	* modem.cpp: fixed hangup that occured if the modem power was off.
+	hangup() aborts after 2 seconds if it doesn't suceed. 
+
 1998-08-06  Harri Porten  <porten@tu-harburg.de>
 
 	* runtests.cpp: scan up to 100 lines when searching for the
