@@ -55,8 +55,8 @@ sub new {
   $menu->installMenu($menu_online, sub { &::say("online " . $self->{'list_box'}->currentText() . "\n"); });
   my $menu_info = $menu->insertText("User Information");
   $menu->installMenu($menu_info, sub { my $exec = "$WHO info " . $self->{'list_box'}->currentText(); print `$exec`; });
-  my $menu_info = $menu->insertText("Remove User From List");
-  $menu->installMenu($menu_info, sub {
+  my $menu_rem = $menu->insertText("Remove User From List");
+  $menu->installMenu($menu_rem, sub {
      my $user = $self->{'list_box'}->currentText();
      my $count = $self->{'list_box'}->current();
      $self->{'list_box'}->removeItem($count);
@@ -267,13 +267,14 @@ sub hook_get_users {
 &addhook("msg", "get_users");
 
 sub cmd_refresh_users {
-    my $output = `/home/action/who_online.pl list`;
+    my $output = `$WHO list`;
     my @users = split(/\n/, $output);
     %users_online = ();
     while($online->count() > 0){
         $online->removeItem(0);
     }
     foreach $user (@users){
+      $user =~ s/(\S+)\@\S+/$1/g;
       next if $user eq '';
       next if $user =~ /administrator/;
       $users_online{$user}++;
