@@ -1,0 +1,770 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Theodore J. Soldatos <theodore@eexi.gr>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: main.cpp:221 main.cpp:233 main.cpp:245 main.cpp:260 main.cpp:272
+msgid "KRN-Missing Configuration info"
+msgstr "KRN-Δεν υπάρχουν πληροφορίες ρυθμίσεων"
+
+#: main.cpp:222
+msgid "Please enter your email adress"
+msgstr "Παρακαλώ εισάγετε την ηλεκτρονική σας διεύθυνση"
+
+#: main.cpp:234
+msgid "Please enter your real name"
+msgstr "Παρακαλώ εισάγετε το όνομά σας"
+
+#: main.cpp:246
+msgid "Please enter your organization's name"
+msgstr "Παρακαλώ εισάγετε το όνομα οργανισμού"
+
+#: main.cpp:261
+msgid "Please enter your NNTP server name"
+msgstr "Παρακαλώ εισάγετε το όνομα του NNTP εξυπηρετητή σας"
+
+#: main.cpp:273
+msgid "Please enter your SMTP server name"
+msgstr "Παρακαλώ εισάγετε το όνομα του SMTP εξυπηρετητή σας"
+
+#: NNTP.cpp:70
+#, c-format
+msgid "Received %.2f Kb"
+msgstr "Παρελήφθησαν %.2f Kb"
+
+#: NNTP.cpp:620
+msgid "Article Received"
+msgstr "Το άρθρο παρελήφθη"
+
+#: groupdlg.cpp:130
+msgid "Connect to Server"
+msgstr "Σύνδεση με τον εξυπηρετητή"
+
+#: groupdlg.cpp:131
+msgid "Disconnect From Server"
+msgstr "Αποσύνδεση από τον εξυπηρετητή"
+
+#: groupdlg.cpp:132
+msgid "Get Active File"
+msgstr "Παραλαβή αρχείου ενεργών ομάδων"
+
+#: groupdlg.cpp:134
+msgid "Post Queued Messages"
+msgstr "Αποστολή καθυστερούμενων μηνυμάτων"
+
+#: groupdlg.cpp:136
+msgid "Exit"
+msgstr "Έξοδος"
+
+#: groupdlg.cpp:139
+msgid "KRN - Group List"
+msgstr "KRN - Κατάλογος ομάδων"
+
+#: groupdlg.cpp:142 groupdlg.cpp:148
+msgid "Get Subjects"
+msgstr "Παραλαβή επικεφαλίδων"
+
+#: groupdlg.cpp:143 groupdlg.cpp:149
+msgid "Get Articles"
+msgstr "Παραλαβή άρθρων"
+
+#: artdlg.cpp:247 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
+msgid "Catchup"
+msgstr "Σήμανση όλων των άρθρων ως αναγνωσμένα"
+
+#: groupdlg.cpp:150 groupdlg.cpp:158
+msgid "(un)Subscribe"
+msgstr "Εγγραφή/Τέλος εγγραφής"
+
+#: artdlg.cpp:136 groupdlg.cpp:151
+msgid "Untag"
+msgstr "Αποσήμανση"
+
+#: artdlg.cpp:156 groupdlg.cpp:159
+msgid "(Un)Tag"
+msgstr "(Απο)σήμανση"
+
+#: artdlg.cpp:149 artdlg.cpp:217 groupdlg.cpp:162 groupdlg.cpp:224
+msgid "Post New Article"
+msgstr "Δημοσίευση νέου άρθρου"
+
+#: groupdlg.cpp:163
+msgid "Post All Queued Articles"
+msgstr "Δημοσίευση όλων των καθυστερούμενων άρθρων"
+
+#: groupdlg.cpp:165
+msgid "&Subscribed"
+msgstr "Εγγεγραμμένος"
+
+#: artdlg.cpp:187 groupdlg.cpp:166
+msgid "&Tagged"
+msgstr "Σεσημασμένο (sic)"
+
+#: groupdlg.cpp:171
+msgid "Identity..."
+msgstr "Ταυτότητα..."
+
+#: groupdlg.cpp:172
+msgid "NNTP Options..."
+msgstr "Επιλογές NNTP..."
+
+#: groupdlg.cpp:173
+msgid "Expire Options..."
+msgstr "Επιλογές Λήξης..."
+
+#: groupdlg.cpp:174
+msgid "Printing Options..."
+msgstr "Επιλογές Εκτύπωσης..."
+
+#: groupdlg.cpp:181
+msgid "About Krn..."
+msgstr "Για το Krn..."
+
+#: groupdlg.cpp:191
+msgid "&Newsgroup"
+msgstr "Ομάδα"
+
+#: groupdlg.cpp:204
+msgid "Connect to server"
+msgstr "Σύνδεση στον Εξυπηρετητή"
+
+#: groupdlg.cpp:207
+msgid "Disconnect from server"
+msgstr "Αποσύνδεση από τον εξυπηρετητή"
+
+#: groupdlg.cpp:211
+msgid "Get list of active groups"
+msgstr "Κατέβασμα καταλόγου ενεργών ομάδων"
+
+#: groupdlg.cpp:213
+msgid "Find group"
+msgstr "Εύρεση ομάδας"
+
+#: groupdlg.cpp:221
+msgid "Check for Unread Articles"
+msgstr "Έλεγχος για μη αναγνωσμένα άρθρα"
+
+#: groupdlg.cpp:334
+msgid "Sorry!"
+msgstr "Λυπάμαι!"
+
+#: groupdlg.cpp:335
+msgid ""
+"That newsgroup is not in the current active file\n"
+" Krn can't handle this gracefully right now"
+msgstr ""
+"Αυτή η ομάδα δεν βρίσκεται στον τρέχοντα κατάλογο ενεργών ομάδων\n"
+"Το Krn δεν μπορεί να κάνει σωστό χειρισμό αυτή τη στιγμή"
+
+#: groupdlg.cpp:367 groupdlg.cpp:570 groupdlg.cpp:906
+msgid "All Newsgroups."
+msgstr "Όλες οι ομάδες."
+
+#: groupdlg.cpp:461 groupdlg.cpp:555
+msgid "Subscribed Newsgroups."
+msgstr "Εγγεγραμμένες ομάδες"
+
+#: groupdlg.cpp:510
+msgid "Disconnected"
+msgstr "Αποσύνδεση"
+
+#: groupdlg.cpp:517
+msgid "Connecting to server"
+msgstr "Σύνδεση στον εξυπηρετητή"
+
+#: groupdlg.cpp:522
+msgid "Connected to server - Posting not allowed"
+msgstr "Συνδέθηκα στον αξυπηρετητή - Η δημοσίευση δεν επιτρέπεται"
+
+#: groupdlg.cpp:524
+msgid "Connected to server - Posting allowed"
+msgstr "Συνδέθηκα στον εξυπηρετητή - η δημοσίευση επιτρέπεται"
+
+#: groupdlg.cpp:530
+msgid "Can't connect to server"
+msgstr "Δεν μπορώ να συνδεθώ στον εξυπηρετητή"
+
+#: groupdlg.cpp:532
+msgid "Connection to server failed"
+msgstr "Η σύνδεση στον εξυπηρετητή απέτυχε"
+
+#: groupdlg.cpp:541
+msgid "Authentication Failed"
+msgstr "Η πιστοποίηση απέτυχε"
+
+#: groupdlg.cpp:544
+msgid "Connection to server failed: Authentication problem"
+msgstr "Η σύνδεση στον εξυπηρετητή απέτυχε: Πρόβλημα πιστοποίησης"
+
+#: groupdlg.cpp:589
+msgid "Krn-Question"
+msgstr "Krn-Ερώτηση"
+
+#: groupdlg.cpp:590
+msgid ""
+"The operation you requested needs a connection to the News server\n"
+"Should I attempt one?"
+msgstr ""
+"Η λειτουργία αυτή απαιτεί σύνδεση με έναν εξυπηρετητή νέων\n"
+"Να επιχειρήσω σύνδεση;"
+
+#: groupdlg.cpp:852
+msgid ""
+"You don't have an active groups list.\n"
+" get it from server?"
+msgstr ""
+"Δεν έχετε λίστα ενεργών αρχείων.\n"
+"Να την κατεβάσω από τον εξυπηρετητή;"
+
+#: groupdlg.cpp:868
+msgid "Listing active newsgroups"
+msgstr "Κατάλογος ενεργών ομάδων"
+
+#: groupdlg.cpp:880
+msgid "KRN - Find a Newsgroup"
+msgstr "KRN - Εύρεση ομάδων"
+
+#: groupdlg.cpp:881
+msgid "Enter the name of the Newsgroup"
+msgstr "Εισάγετε το όνομα της ομάδας"
+
+#: groupdlg.cpp:966
+msgid "Krn - Message"
+msgstr "Krn - Μήνυμα"
+
+#: groupdlg.cpp:967
+msgid "I can't find the group you want!"
+msgstr "Δεν μπορώ να βρώ την ομάδα που ζητάτε!"
+
+#: groupdlg.cpp:1058
+msgid "Getting messages in "
+msgstr "Κατέβασμα μηνυμάτων στο "
+
+#: groupdlg.cpp:1071
+msgid "Getting list of messages in "
+msgstr "Κατέβασμα καταλόγου μηνυμάτων στο "
+
+#: artdlg.cpp:129 artdlg.cpp:144
+msgid "Download"
+msgstr "Κατέβασμα"
+
+#: artdlg.cpp:131
+msgid "Mark Read"
+msgstr "Σήμανση ως αναγνωσμένο"
+
+#: artdlg.cpp:132
+msgid "Mark Unread"
+msgstr "Σήμανση ως μη αναγνωσμένο"
+
+#: artdlg.cpp:134 artdlg.cpp:148
+msgid "Print"
+msgstr "Εκτύπωση"
+
+#: artdlg.cpp:135 artdlg.cpp:155
+msgid "Decode"
+msgstr "Αποκωδικοποίηση"
+
+#: artdlg.cpp:137 artdlg.cpp:160
+msgid "Don't expire"
+msgstr "Δεν λήγει"
+
+#: artdlg.cpp:146
+msgid "Lookup in Altavista"
+msgstr "Ψάξιμο στο Altavista"
+
+#: artdlg.cpp:150 artdlg.cpp:220
+msgid "Reply by Mail"
+msgstr "Απάντηση με αλληλογραφία"
+
+#: artdlg.cpp:151
+msgid "Post Followup"
+msgstr "Δημοσίευση απάντησης"
+
+#: artdlg.cpp:152
+msgid "Post & Reply"
+msgstr "Δημοσίευση και απάντηση με αλληλογραφία"
+
+#: artdlg.cpp:158
+msgid "Tagged"
+msgstr "Σεσημασμένο (sic)"
+
+#: artdlg.cpp:169
+msgid "Show Only Unread Messages"
+msgstr "Προβολή μόνο αδιάβαστων μηνυμάτων"
+
+#: artdlg.cpp:171
+msgid "Show Only Cached Messages"
+msgstr "Προβολή μόνο τοπικά αποθηκευμένων μηνυμάτων"
+
+#: artdlg.cpp:173
+msgid "Show Locked Messages"
+msgstr "Προβολή κλειδωμένων μηνυμάτων"
+
+#: artdlg.cpp:175
+msgid "Expunge"
+msgstr "Αποβολή"
+
+#: artdlg.cpp:176
+msgid "Appearance..."
+msgstr "Εμφάνιση..."
+
+#: artdlg.cpp:177
+msgid "Sorting..."
+msgstr "Ταξινόμηση..."
+
+#: artdlg.cpp:181
+msgid "Edit Rules"
+msgstr "Επεξεργασία κανόνων"
+
+#: artdlg.cpp:182
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: artdlg.cpp:185
+msgid "menu"
+msgstr "Μενού"
+
+#: artdlg.cpp:189
+msgid "&Scoring"
+msgstr ""
+
+#: artdlg.cpp:199
+msgid "Previous Message"
+msgstr "Προηγούμενο μήνυμα"
+
+#: artdlg.cpp:202
+msgid "Next Message"
+msgstr "Επόμενο μήνυμα"
+
+#: artdlg.cpp:207
+msgid "Save Article"
+msgstr "Αποθήκευση άρθρου"
+
+#: artdlg.cpp:210
+msgid "Print Article"
+msgstr "Εκτύπωση άρθρου"
+
+#: artdlg.cpp:213
+msgid "Find Article"
+msgstr "Εύρεση άρθρου"
+
+#: artdlg.cpp:223
+msgid "Post a Followup"
+msgstr "Δημοσίευση απάντησης"
+
+#: artdlg.cpp:226
+msgid "Post & Mail"
+msgstr "Δημοσίευση και αποστολή αλληλογραφίας"
+
+#: artdlg.cpp:235
+msgid "Get Article List"
+msgstr "Κατέβασμα καταλόγου άρθρων"
+
+#: artdlg.cpp:238
+msgid "Tag Article"
+msgstr "Σήμανση άρθρου"
+
+#: artdlg.cpp:241
+msgid "Lock (keep in cache)"
+msgstr "Κλείδωμα (να κρατηθεί τοπικά)"
+
+#: artdlg.cpp:244
+msgid "Decode Article"
+msgstr "Αποκωδικοποίηση άρθρου"
+
+#: artdlg.cpp:273 sortDlg.cpp:34
+msgid "Sender"
+msgstr "Αποστολέας"
+
+#: artdlg.cpp:274 sortDlg.cpp:35
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: artdlg.cpp:275 sortDlg.cpp:36
+msgid "Lines"
+msgstr "Γραμμές"
+
+#: artdlg.cpp:276 sortDlg.cpp:33
+msgid "Score"
+msgstr ""
+
+#: artdlg.cpp:277 sortDlg.cpp:32
+msgid "Subject"
+msgstr "Θέμα"
+
+#: artdlg.cpp:453
+msgid "Threading..."
+msgstr "Διαχωρισμός..."
+
+#: artdlg.cpp:462
+msgid "Showing Article List"
+msgstr "Προβολή καταλόγου άρθρων"
+
+#: artdlg.cpp:1153
+msgid "KRN - Existing File"
+msgstr "KRN - Υπαρκτό αρχείο"
+
+#: artdlg.cpp:1154
+msgid "The File you selected already exists"
+msgstr "Το αρχείο που επιλέξατε υπάρχει ήδη"
+
+#: artdlg.cpp:1160
+msgid "OverWrite"
+msgstr "Διαγραφή υπάρχοντος αρχείου"
+
+#: artdlg.cpp:1162
+msgid "Append"
+msgstr "Επικόλληση στο υπάρχον αρχείο"
+
+#: artdlg.cpp:1197
+msgid ""
+"From: Krn\n"
+"To: You\n"
+"\n"
+"Error getting article.\n"
+"Server said:\n"
+msgstr ""
+"Από: Krn\n"
+"Προς: Εσάς\n"
+"\n"
+"Σφάλμα κατά το κατέβασμα αρχείου.\n"
+"Ο εξυπηρετητής απάντησε:\n"
+
+#: artdlg.cpp:1297
+msgid "Getting Article List"
+msgstr "Κατέβασμα καταλόγου άρθρων"
+
+#: identDlg.cpp:41
+msgid "KRN-Identity Configuration"
+msgstr "KRN-Ρυθμίσεις Ταυτότητας"
+
+#: identDlg.cpp:50
+msgid "Here you should enter your personal information"
+msgstr "Εδώ πρέπει να εισάγετε προσωπικές πληροφορίες"
+
+#: identDlg.cpp:52
+msgid "You should know what these are!"
+msgstr "Πρέπει να τις ξέρετε από πριν!"
+
+#: identDlg.cpp:61
+msgid "Real Name"
+msgstr "Πραγματικό όνομα"
+
+#: identDlg.cpp:67
+msgid "E-mail Address"
+msgstr "Διεύθυνση ηλεκτρονικής αλληλογραφίας"
+
+#: identDlg.cpp:73
+msgid "Organization"
+msgstr "Οργανισμός"
+
+#: NNTPConfigDlg.cpp:28
+msgid "KRN-NNTP configuration"
+msgstr "KRN-Ρυθμίσεις NNTP"
+
+#: NNTPConfigDlg.cpp:33
+msgid "Servers"
+msgstr "Εξυπηρετητές"
+
+#: NNTPConfigDlg.cpp:35
+msgid "SMTP server"
+msgstr "Εξυπηρετητής SMTP"
+
+#: NNTPConfigDlg.cpp:40
+msgid "NNTP Server"
+msgstr "Εξυπηρετητής NNTP"
+
+#: NNTPConfigDlg.cpp:52
+msgid "Connect on Startup"
+msgstr "Σύνδεση κατά την εκκίνηση"
+
+#: NNTPConfigDlg.cpp:56
+msgid "Connect without asking"
+msgstr "Σύνδεση χωρίς ερώτηση"
+
+#: NNTPConfigDlg.cpp:60
+msgid "Authenticate"
+msgstr "Πιστοποίηση ταυτότητας"
+
+#: NNTPConfigDlg.cpp:65
+msgid "User Name"
+msgstr "Όνομα χρήστη"
+
+#: NNTPConfigDlg.cpp:69
+msgid "Password"
+msgstr "Λέξη κλειδί"
+
+#: decoderDlg.cpp:31
+msgid "KRN - Decoder"
+msgstr "KRN - Αποκωδικοποιητής"
+
+#: decoderDlg.cpp:34
+msgid "ID"
+msgstr "ID"
+
+#: decoderDlg.cpp:37
+msgid "Name"
+msgstr "Όνομα"
+
+#: decoderDlg.cpp:44
+msgid "Destination directory:"
+msgstr "Κατάλογος προορισμού:"
+
+#: decoderDlg.cpp:47
+msgid "Decode All"
+msgstr "Αποκωδικοποίηση όλων"
+
+#: kdecode.cpp:29
+msgid "KRN-Decoder"
+msgstr "KRN-Αποκωδικοποιητής"
+
+#: kdecode.cpp:208
+#, c-format
+msgid "Unsupported encoding type: %s."
+msgstr "Μη υποστηριζόμενη κωδικοποίηση χαρακτήρων: %s."
+
+#: aboutDlg.cpp:28
+msgid "About KRN"
+msgstr "Για το KRN"
+
+#: aboutDlg.cpp:39
+msgid "Part of the KDE project."
+msgstr "Μέρος του KDE."
+
+#: aboutDlg.cpp:42
+msgid "Credits & Thanks"
+msgstr "Ευχαριστίες"
+
+#: aboutDlg.cpp:63
+msgid "And Many thanks to:"
+msgstr "Και πολλά ευχαριστώ προς:"
+
+#: fontsDlg.cpp:39
+msgid "Message Display Settings"
+msgstr "Ρυθμίσεις προβολής μηνύματος"
+
+#: fontsDlg.cpp:46
+msgid "Header Style"
+msgstr "Μορφή επικεφαλίδων"
+
+#: fontsDlg.cpp:48
+msgid "Fancy"
+msgstr "Χαριτωμένες"
+
+#: fontsDlg.cpp:49
+msgid "Brief"
+msgstr "Σύντομες"
+
+#: fontsDlg.cpp:50
+msgid "Standard"
+msgstr "Κανονικές"
+
+#: fontsDlg.cpp:51
+msgid "Long"
+msgstr "Επεκταμένες"
+
+#: fontsDlg.cpp:52
+msgid "All"
+msgstr "Πλήρεις"
+
+#: fontsDlg.cpp:56
+msgid "Attachment Style"
+msgstr "Μορφή συνημμένων"
+
+#: fontsDlg.cpp:58
+msgid "Iconic"
+msgstr "Εικονίδιο"
+
+#: fontsDlg.cpp:59
+msgid "Smart"
+msgstr "Έξυπνα "
+
+#: fontsDlg.cpp:60
+msgid "Inline"
+msgstr "Ενσωματωμένα"
+
+#: fontsDlg.cpp:67
+msgid "Font Size:"
+msgstr "Μέγεθος χαρακτήρων:"
+
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr "Μικρό"
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr "Μεγάλο"
+
+#: fontsDlg.cpp:73
+msgid "Huge"
+msgstr "Τεράστιο"
+
+#: fontsDlg.cpp:78
+msgid "Standard Font"
+msgstr "Κανονική γραμματοσειρά"
+
+#: fontsDlg.cpp:86
+msgid "Fixed Font"
+msgstr "Σταθερή γραμματοσειρά"
+
+#: fontsDlg.cpp:94
+msgid "Background Color"
+msgstr "Χρώμα φόντου"
+
+#: fontsDlg.cpp:97
+msgid "Foreground Color"
+msgstr "Χρώμα χαρακτήρων"
+
+#: fontsDlg.cpp:100
+msgid "Link Color"
+msgstr "Χρώμα δεσμού"
+
+#: fontsDlg.cpp:103
+msgid "Followed Color"
+msgstr "Χρώμα χρησιμοποιημένου δεσμού"
+
+#: fontsDlg.cpp:107
+msgid "Use only one window"
+msgstr "Χρήση μόνο ενός παραθύρου"
+
+#: fontsDlg.cpp:109
+msgid "Split window vertically"
+msgstr "Κάθετος διαχωρισμός παραθύρου"
+
+#: findArtDlg.cpp:22
+msgid "KRN - Article Searcher"
+msgstr "KRN - Ερευνητής άρθρων"
+
+#: findArtDlg.cpp:29
+msgid "Find Articles With:"
+msgstr "Εύρεση άρθρων με:"
+
+#: findArtDlg.cpp:34 rulesDlg.cpp:106
+msgid "In Field:"
+msgstr "Στο πεδίο:"
+
+#: findArtDlg.cpp:56 rulesDlg.cpp:132
+msgid "Wildcard Mode"
+msgstr "Τρόπος λειτουργίας με μπαλαντέρ"
+
+#: krnsender.cpp:48
+msgid "This server is read onlyyou can't post here!"
+msgstr "Αυτός ο εξυπηρετητής είναι μόνο για ανάγνωση - δεν μπορείτε να δημοσιεύσετε εδώ!"
+
+#: expireDlg.cpp:22 expireDlg.cpp:27
+msgid "KRN - Expire Settings"
+msgstr "KRN - Ρυθμίσεις λήξεως"
+
+#: expireDlg.cpp:36
+msgid "For how long should we keep things (in days)?"
+msgstr "Για πόσο καιρό να κρατιούνται αρχεία (σε μέρες);"
+
+#: expireDlg.cpp:45
+msgid "Article Bodies:"
+msgstr "’ρθρα:"
+
+#: expireDlg.cpp:49
+msgid "Article Headers:"
+msgstr "Επικεφαλίδες:"
+
+#: printdlg.cpp:21
+msgid "KRN - Print Settings"
+msgstr "KRN - Ρυθμίσεις εκτύπωσης"
+
+#: printdlg.cpp:26
+msgid "KRN - Printing Settings"
+msgstr "KRN - Ρυθμίσεις εκτύπωσης"
+
+#: printdlg.cpp:33
+msgid "General"
+msgstr "Γενικά"
+
+#: printdlg.cpp:37
+msgid "Use HTML Printing"
+msgstr "Χρήση εκτύπωσης HTML"
+
+#: printdlg.cpp:40
+msgid "Use Direct Printing"
+msgstr "Χρήση άμεσης εκτύπωσης"
+
+#: printdlg.cpp:48
+msgid "Print using:"
+msgstr "Εκτύπωση με τη χρήση:"
+
+#: printdlg.cpp:52
+msgid "Feed it with:"
+msgstr "Τροφοδοσία του με:"
+
+#: printdlg.cpp:54
+msgid "Postscript"
+msgstr "Postscript"
+
+#: printdlg.cpp:55
+msgid "HTML"
+msgstr "HTML"
+
+#: printdlg.cpp:56
+msgid "Text"
+msgstr "Κέιμενο"
+
+#: rulesDlg.cpp:38
+msgid "KRN - Scoring Rules Editor"
+msgstr "KRN - Επεξεργαστής κανόνων scoring"
+
+#: rulesDlg.cpp:45
+msgid "Global Rules"
+msgstr "Γενικοί κανόνες"
+
+#: rulesDlg.cpp:47
+msgid "All Rules"
+msgstr "Όλοι οι κανόνες"
+
+#: rulesDlg.cpp:63
+msgid "Active Rules"
+msgstr "Ενεργοί κανόνες"
+
+#: rulesDlg.cpp:70
+msgid "Rule Editor"
+msgstr "Επεξεργαστής κανόνων"
+
+#: rulesDlg.cpp:87
+msgid "Save as"
+msgstr "Αποθήκευση ως"
+
+#: rulesDlg.cpp:101
+msgid "Match Articles With:"
+msgstr "Ταίριασμα άρθρων με:"
+
+#: rulesDlg.cpp:126
+msgid "Negative"
+msgstr "Αρνητικό"
+
+#: rulesDlg.cpp:189
+msgid "Rule name:"
+msgstr "Όνομα κανόνα:"
+
+#: sortDlg.cpp:23
+msgid "KRN - Header Sorting"
+msgstr "KRN - Ταξινόμηση επικεφαλίδων"
+
+#: sortDlg.cpp:37
+msgid "None"
+msgstr "Καμία"
+
+#: sortDlg.cpp:39
+msgid "Sort by:"
+msgstr "Ταξινόμηση κατά:"
+
+#: sortDlg.cpp:56
+msgid "Use Threading"
+msgstr "Χρήση διαχωρισμού"
