@@ -1,5 +1,5 @@
 
-GMFILES = kmail.gmo
+GMOFILES = kmail.gmo
 POFILES = $(GMOFILES:.gmo=.po)
 
 LANG = mk

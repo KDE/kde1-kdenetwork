@@ -1,8 +1,8 @@
 
 GMOFILES = \
 	kmail.gmo krn.gmo knu.gmo kppp.gmo ktalkd.gmo kfinger.gmo \
-	kcmtalkd.gmo kbiff.gmo ksirc.gmo karchie.gmo korn.gmo
-	kcmktalkd.gmo
+	kcmktalkd.gmo kbiff.gmo ksirc.gmo karchie.gmo korn.gmo
+
 POFILES = $(GMOFILES:.gmo=.po)
 
 LANG = sk
