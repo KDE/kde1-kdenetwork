@@ -27,19 +27,23 @@
 <P>
 <DL>
 <DT><B>Connection Name</B><DD><P>You must give the account a name
+<P>
 <DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use character such
 as ``-'' to make the number more legible.
-<DT><B>Connection Speed</B><DD><P>Choose from the list of connections speeds supported by
-your serial port.
-<DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified
-here once a ppp link has been set up. 
 <P>
-<A NAME="pppd arguments"></A> <DT><B>Edit default pppd</B><DD><P>This will bring up the pppd arguments dialog. You may use
+<DT><B>Authentication</B><DD><P>To be written ...
+<P>
+<DT><B>Store password</B><DD><P>To be written ...
+<P>
+<DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified here once a ppp link has been set up. 
+<P>
+<DT><B>Execute Program upon Disconnect</B><DD><P>analogue with previous item.
+<P>
+<A NAME="pppd arguments"></A> <DT><B>Edit pppd arguments</B><DD><P>This will bring up the pppd arguments dialog. You may use
 this dialog to add any desired options that you want kppp to hand to pppd. Make
 sure that it always contains the -detach option. See the pppd man page for a
 list of available options. Unless you know exactly what you are doing you should
 restrain from tinkering with the pppd options.
-<P>
 </DL>
 <H3><A NAME="ss4.2">4.2 IP</A>
 </H3>
@@ -67,7 +71,6 @@ The machine defaults are restored to the original values
 when you close the ppp link 
 Be careful when choosing this option: It may prove useful to you, but
 it may also cause lots of undesired side effect. Just play with it ...
-<P>
 </DL>
 <P>
 <P>
@@ -91,7 +94,6 @@ addresses will be added at runtime to /etc/resolv.config.
 <DT><B>Disable existing DNS Servers during Connection</B><DD><P>Select this option if 
 you want kppp to disable already existing nameserver entries
 in /etc/resolv.conf during connection.
-<P>
 </DL>
 <P>
 <P>
@@ -102,8 +104,8 @@ in /etc/resolv.conf during connection.
 <DL>
 <DT><B>Default Gateway</B><DD><P>Check this if you want pppd to use the default Gateway
 for your machine.
-<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.
 <P>
+<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.
 </DL>
 <P>
 <P>
@@ -151,12 +153,11 @@ It will save the string for use by LoopEnd
 <LI>LoopEnd: kppp will wait for the specified string to be received to
 exit the loop.  If the string given by the corresponding LoopStart is
 received first, it will trigger a jump to the line after the LoopStart,
-enabling repetition of username/password style paired dialogs.
-</LI>
+enabling repetition of username/password style paired dialogs.</LI>
 </UL>
 <P>
-<P>
 </DL>
+<P>
 <H4>Example scripts</H4>
 
 <P>
@@ -226,7 +227,6 @@ syntax with the -r rule_file command line option to kppp. and
 must be installed in <CODE>$(KDEDIR)/share/apps/kppp/Rules</CODE> or in 
 <CODE>$(HOME)/.kde/share/apps/kppp/Rules</CODE> before you will be able to select it on this
 dialog.
-<P>
 </DL>
 <P>
 <P>
