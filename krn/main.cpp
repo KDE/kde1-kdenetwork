@@ -24,6 +24,7 @@
 
 #include <qapp.h>
 #include <qfile.h>
+#include <qdir.h>
 
 #include <kapp.h>
 #include <kconfig.h>
@@ -196,44 +197,44 @@ void checkConf()
 
 void expireCache()   // robert's cache stuff
 {
-
+    
     conf->setGroup("Cache");
     int expireTime=conf->readNumEntry("ExpireDays",5);
+    
+    QDir d(cachepath.data());
+    QStrList files=d.entryList();
+    
     struct dirent **cdir;
     struct stat st;
     int num_files;
-    char filename[255];
     time_t currenttime = time(NULL);
+    char filename[255];
     
-    num_files = scandir(cachepath.data(), &cdir, 0, alphasort);
-    
-    // debug("%d: %s", num_files, cachepath.data());
-    
-    for(int count = 0; count < num_files; count++) {
-        sprintf(filename, "%s%s", cachepath.data(), cdir[count]->d_name);
+    for (char *fname=files.first();fname!=0;fname=files.next())
+    {
+        sprintf(filename, "%s%s", cachepath.data(), fname);
         
-        //    debug(filename);
+        debug(filename);
         
-        if(stat(filename, &st)) {
+        if(stat(filename, &st))
+        {
             debug("couldn't stat %s", filename);
         } else {
-            if(((currenttime-st.st_atime) > DAY*expireTime) && cdir[count]->d_name[0] != '.') {
+            if(((currenttime-st.st_atime) > DAY*expireTime) && !strcmp(fname, "."))
+            {
                 Article *art = new Article();
                 
-                QString id = cdir[count]->d_name;
-                
-                art->ID = id;
+                art->ID = fname;
                 
                 art->load();
                 
                 if(art->canExpire())
-                    //    debug("unlinking %s", filename);
                     unlink(filename);
                 
                 delete art;
             }
         }
-  }
+    }
 }
 
 
