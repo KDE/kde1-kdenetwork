@@ -313,7 +313,6 @@ void NewsGroup::getList()
 {
     int c=0;
     QString ID;
-//    artList.clear();
     QString ac;
     ac=krnpath+data();
     QFile f(ac);
@@ -583,6 +582,7 @@ void ArticleList::thread(bool)
     this->clear();
     addToList (n,0,this);
     delete d;
+    delete n;
 }
 
 ArticleList::ArticleList()

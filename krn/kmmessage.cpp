@@ -95,6 +95,11 @@ void KMMessage::setAutomaticFields(void)
   DwHeaders& header = mMsg->Headers();
   header.MimeVersion().FromString("1.0");
   header.MessageId().CreateDefault();
+  //KRN patch
+  DwField *field=new DwField();
+  field->SetFieldNameStr("X-NewsReader");
+  field->SetFieldBodyStr("Krn - Part of KDE. http://ultra7.unl.edu.ar");
+  header.AddField(field);
 
   if (numBodyParts() > 1)
   {
