@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Ny mappe"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "KMail feil"
 
@@ -688,58 +688,58 @@ msgstr "Subjekt"
 msgid "Date"
 msgstr "Dato"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d meldinger, %d ulest."
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Mappe kan kun leses."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 msgid "No Subject"
 msgstr "Intet subjekt"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr "rekkefølge for ankomst"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 msgid "subject"
 msgstr "subjekt"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 msgid "date"
 msgstr "dato"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 msgid "sender"
 msgstr "avsender"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sorterer meldingene synkende etter %s"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sorterer meldingene økende etter %s"
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Melding(er) lagret."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "Mislykkes å lagre melding(er)."
 
@@ -1129,19 +1129,19 @@ msgstr ""
 "seksjonen av innstillingene for å kunne\n"
 "motta post."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "advarsel"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "fatal feil"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "KMail-varsel"
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1149,7 +1149,7 @@ msgstr ""
 "$HOME er ikke satt!\n"
 "KMail kan ikke starte uten den.\n"
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1165,11 +1165,11 @@ msgstr ""
 "~/Mail, men denne vil erstatte eksisterende filer med samme\n"
 "navn i mappen ~/Mail (f.eks. inbox)."
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "Lastign av adresseboken mislyktes"
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Ukjent kommandolinjevalg: %s"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
-"POT-Creation-Date: 1998-12-06 01:58+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: czech <flidr@kky.zcu.cz>\n"
@@ -9,61 +9,68 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kfinger.C:23 kfinger.C:46
-msgid "KDE finger utility"
-msgstr "KDE finger"
-
 #: kfinger.C:29
-msgid "Finger Now"
+#, fuzzy
+msgid "F&inger Now"
 msgstr "Spustit teï"
 
 #: kfinger.C:30
-msgid "Talk.."
-msgstr "Rozhovor.."
+#, fuzzy
+msgid "&Talk..."
+msgstr "Rozhovor..."
 
-#: kfinger.C:33
+#: kfinger.C:34
 msgid "Setup"
 msgstr "Nastavení"
 
-#: kfinger.C:34
-msgid "Save Options"
+#: kfinger.C:35
+#, fuzzy
+msgid "&Save Options"
 msgstr "Ulo¾it nastavení"
 
-#: kfinger.C:49
+#: kfinger.C:39
+msgid "&About kfinger..."
+msgstr ""
+
+#: kfinger.C:48
+msgid "KDE finger utility"
+msgstr "KDE finger"
+
+#: kfinger.C:51
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.C:50
+#: kfinger.C:52
 msgid "Stop current finger"
 msgstr "Zastavit souèasný finger"
 
-#: kfinger.C:52
+#: kfinger.C:54
 msgid "Talk..."
 msgstr "Rozhovor..."
 
-#: kfinger.C:53
+#: kfinger.C:55
 msgid "AutoFinger On/Off"
 msgstr "Automatický finger zap./vyp."
 
-#: kfinger.C:65
+#: kfinger.C:67
 msgid "Welcome to KDE Finger\n"
 msgstr ""
 
-#: kfinger.C:66
+#: kfinger.C:68
 msgid "Finger result"
 msgstr "Výsledok"
 
-#: kfinger.C:268
+#: kfinger.C:270
 #, c-format
 msgid "Error on server : %s"
 msgstr "Chyba na serveru : %s"
 
-#: kfinger.C:287
+#: kfinger.C:289
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr ""
 
-#: kfinger.C:304
+#: kfinger.C:306
 #, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
@@ -74,126 +81,129 @@ msgstr ""
 "napsal Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:350
+#: kfinger.C:352
 msgid "Kfinger Setup"
 msgstr "Nastavení KFingeru"
 
-#: kfinger.C:378 kfinger.C:418
+#: kfinger.C:380 kfinger.C:420
 msgid "&Add"
 msgstr "&Pøidat"
 
-#: kfinger.C:388
+#: kfinger.C:390
 msgid "Server Name"
 msgstr "jméno serveru"
 
-#: kfinger.C:392 kfinger.C:395
+#: kfinger.C:394 kfinger.C:397
 msgid "Server list"
 msgstr "Seznam serverù"
 
-#: kfinger.C:428
+#: kfinger.C:430
 msgid "User Name"
 msgstr "Jméno u¾ivatele"
 
-#: kfinger.C:432 kfinger.C:435
+#: kfinger.C:434 kfinger.C:437
 msgid "Users list"
 msgstr "Seznam u¾ivatelù"
 
-#: kfinger.C:449
+#: kfinger.C:451
 msgid "Timed finger"
 msgstr "Èasovaný finger"
 
-#: kfinger.C:464 kfinger.C:651
+#: kfinger.C:466 kfinger.C:653
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Èekání fingeru: %d\""
 
-#: kfinger.C:469
+#: kfinger.C:471
 msgid "Talk Command "
 msgstr "Pøíkaz talku "
 
-#: kfinger.C:479
+#: kfinger.C:481
 msgid "Misc"
 msgstr "Rùzné"
 
-#: kfinger.C:484 kfinger.C:496
+#: kfinger.C:486 kfinger.C:498
 msgid "Finger Output"
 msgstr "Výstup z fingeru"
 
-#: kfinger.C:488
+#: kfinger.C:490
 msgid "Finger server"
 msgstr "Jméno fingerovaného serveru"
 
-#: kfinger.C:492 kfinger.C:504
+#: kfinger.C:494 kfinger.C:506
 msgid "Fixed"
 msgstr "Pevné"
 
-#: kfinger.C:500
+#: kfinger.C:502
 msgid "Finger User"
 msgstr "U¾ivatel"
 
-#: kfinger.C:520
+#: kfinger.C:522
 msgid "Lines to skip :"
 msgstr "Preskoèi» riadkov:"
 
-#: kfinger.C:528 kfinger.C:533
+#: kfinger.C:530 kfinger.C:535
 msgid "Format..."
 msgstr "Formát..."
 
-#: kfinger.C:540
+#: kfinger.C:542
 msgid "User"
 msgstr "U¾ívateµ"
 
-#: kfinger.C:551
+#: kfinger.C:553
 msgid "Server"
 msgstr "Server"
 
-#: kfinger.C:563
+#: kfinger.C:565
 msgid "Talk"
 msgstr "Rozhovor"
 
-#: kfinger.C:698
+#: kfinger.C:700
 msgid "Talk with..."
 msgstr "Rozhovor s..."
 
-#: kfinger.C:765
+#: kfinger.C:767
 msgid "Format string for var1(string)"
 msgstr "Formát øetìzce pro var1(string)"
 
-#: kfinger.C:771
+#: kfinger.C:773
 msgid "Fromat string for var2(int)"
 msgstr "Formát øetìzce pro var2(string)"
 
-#: kfinger.C:791 kfinger.C:797
+#: kfinger.C:793 kfinger.C:799
 msgid "Offset"
 msgstr "Ofset"
 
-#: kfinger.C:810
+#: kfinger.C:812
 msgid "Only var1"
 msgstr "Pouze var1"
 
-#: kfinger.C:816
+#: kfinger.C:818
 msgid "Only var2"
 msgstr "Pouze var2"
 
-#: kfinger.C:822
+#: kfinger.C:824
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:828
+#: kfinger.C:830
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:841
+#: kfinger.C:843
 msgid "Output format string"
 msgstr "Formát výstupního øetìzce"
 
-#: kfinger.C:848
+#: kfinger.C:850
 msgid "Save & Quit"
 msgstr "Ulo¾ a ukonèi"
 
-#: kfinger.C:858
+#: kfinger.C:860
 msgid "Output parameters "
 msgstr "Výstupní parametry "
+
+#~ msgid "Talk.."
+#~ msgstr "Rozhovor.."
 
 #~ msgid ""
 #~ "Welcome to KDE Finger \n"

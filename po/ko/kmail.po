@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "KMail 오류"
 
@@ -697,58 +697,58 @@ msgstr "제목"
 msgid "Date"
 msgstr "날   짜: "
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d 개의 메시지, %d 개의 읽지 않은 메시지."
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "폴더가 읽기 전용입니다."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 msgid "No Subject"
 msgstr "제목 없음"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr "도착 순서"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 msgid "subject"
 msgstr "제목"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 msgid "date"
 msgstr "날짜"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 msgid "sender"
 msgstr "보낸 사람"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr "상태"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "%s을(를) 내림차순으로 정렬"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "%s을(를) 오름차순으로 정렬"
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "메시지가 저장되었습니다."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "메시지 저장에 실패했습니다."
 
@@ -1141,25 +1141,25 @@ msgstr ""
 "항목에 계정을 추가해야 \n"
 "합니다."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "경고"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "치명적인 오류"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr ""
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1177,11 +1177,11 @@ msgstr ""
 "\n"
 "지금 전자우편 폴더를 옮기시겠습니까?"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "알 수 없는 명령행 선택사항: %s"

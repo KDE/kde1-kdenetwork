@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -19,7 +19,7 @@ msgstr "Ta opcja jest jeszcze niedostêpna"
 msgid "New Folder"
 msgstr "Nowy folder"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 #, fuzzy
 msgid "KMail error"
 msgstr "Powa¿ny b³±d"
@@ -694,63 +694,63 @@ msgstr "Temat"
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d wiadomo¶æ(i), %d nieprzeczytanych. "
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Folder tylko do odczytu."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 #, fuzzy
 msgid "Unknown"
 msgstr "Nieznany b³±d"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 #, fuzzy
 msgid "No Subject"
 msgstr "Brak tematu"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr "kolejno¶ci otrzymania"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 #, fuzzy
 msgid "subject"
 msgstr "tematu"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 #, fuzzy
 msgid "date"
 msgstr "daty"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 #, fuzzy
 msgid "sender"
 msgstr "nadawcy"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr "stanu"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortowanie wiadomo¶ci malej±co wg %s"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortowanie wiadomo¶ci rosn±co wg %s"
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Wiadomo¶ci zapisano."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "Zapisanie wiadomo¶ci nie powiod³o siê."
 
@@ -1151,19 +1151,19 @@ msgstr ""
 "w sekcji sieci, aby móc otrzymywaæ\n"
 "pocztê."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "ostrze¿enie"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "powa¿ny b³±d"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "powiadomienie KMail"
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1171,7 +1171,7 @@ msgstr ""
 "zmienna $HOME nie jest ustawiona!\n"
 "KMail nie moze bez tego wystartowaæ.\n"
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1189,11 +1189,11 @@ msgstr ""
 "\n"
 "Czy KMail powinien przenie¶æ foldery teraz?"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "£adowanie ksi±¿ki adresowej nie powiod³o siê"
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Nieznana opcja linii poleceñ: %s"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Új mappa"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 #, fuzzy
 msgid "KMail error"
 msgstr "hiba"
@@ -731,63 +731,63 @@ msgstr "Tárgy"
 msgid "Date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d üzenet, %d olvasatlan."
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Mappa írásvédett."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 #, fuzzy
 msgid "Unknown"
 msgstr "Ismeretlen hiba"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 #, fuzzy
 msgid "No Subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 #, fuzzy
 msgid "subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 #, fuzzy
 msgid "date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 #, fuzzy
 msgid "sender"
 msgstr "Feladó"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Üzenet(ek) elmentve."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 #, fuzzy
 msgid "Failed to save message(s)."
 msgstr "Nem sikerült elmenteni az üzenet(ek)et."
@@ -1225,26 +1225,26 @@ msgid ""
 "receive mail."
 msgstr ""
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "figyelmeztetés"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 #, fuzzy
 msgid "fatal error"
 msgstr "hiba"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr ""
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1260,11 +1260,11 @@ msgstr ""
 "~/Mail könyvtárba, de így felülírja a ~/Mail könyvtárban\n"
 "lévõ, már létezõ fájlokat (pl. inbox)."
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Νέος φάκελλος"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 #, fuzzy
 msgid "KMail error"
 msgstr "μοιραίο λάθος"
@@ -696,63 +696,63 @@ msgstr "Θέμα"
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d μηνύματα, %d αδιάβαστα."
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Ο φάκελλος είναι μόνο για ανάγνωση."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 #, fuzzy
 msgid "Unknown"
 msgstr "’γνωστο σφάλμα"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 #, fuzzy
 msgid "No Subject"
 msgstr "Θέμα"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 #, fuzzy
 msgid "subject"
 msgstr "Θέμα"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 #, fuzzy
 msgid "date"
 msgstr "Ημερομηνία"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 #, fuzzy
 msgid "sender"
 msgstr "Αποστολέας"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Τα Μηνύματα αποθηκέυτηκαν."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "Αποτυχία κατά την αποθήκευση των μηνυμάτων."
 
@@ -1147,25 +1147,25 @@ msgstr ""
 "δικτύου των ρυθμίσεων για να μπορέσετε να λάβετε\n"
 "αλληλογραφία."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "προσοχή"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "μοιραίο λάθος"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr ""
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1183,11 +1183,11 @@ msgstr ""
 "\n"
 "Θέλετε να μετακινηθούν οι κατάλογοι τώρα;"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr ""

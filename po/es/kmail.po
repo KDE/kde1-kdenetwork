@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-10-18 15:38+0200\n"
 "Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
 
@@ -16,7 +16,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nueva carpeta"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "Error en Kmail"
 
@@ -680,58 +680,58 @@ msgstr "Asunto"
 msgid "Date"
 msgstr "Fecha"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mensajes, %d no leídos."
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Carpeta de sólo lectura."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 msgid "No Subject"
 msgstr "Sin Asunto"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr "orden de llegada"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 msgid "subject"
 msgstr "asunto"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 msgid "date"
 msgstr "fecha"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 msgid "sender"
 msgstr "emisor"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr "estado"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Orden descendiente por %s"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Orden ascendiente por %s"
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Mensaje(s) guardados."
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "Fallo al guardar mensaje(s)."
 
@@ -1123,19 +1123,19 @@ msgstr ""
 "sección de red, en opciones,\n"
 "para poder recibir correo."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "advertencia"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "error fatal"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "Notificación KMail"
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1143,7 +1143,7 @@ msgstr ""
 "$HOME co confugirado!\n"
 "KMail no puede comenzar sin esto.\n"
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1161,11 +1161,11 @@ msgstr ""
 "\n"
 "¿Quiere mover las carpetas de correo?"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "Fallo en la carga del libro de direcciones"
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Parámetro de línea de comando desconocido: %s"

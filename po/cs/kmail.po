@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-12-05 02:03+0100\n"
+"POT-Creation-Date: 1998-12-07 01:56+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nový poøadaè"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "Chyba KMailu"
 
@@ -689,58 +689,58 @@ msgstr "Pøedmìt"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:206
+#: kmheaders.cpp:211
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d zpráv, %d nepøeèteno"
 
-#: kmheaders.cpp:208
+#: kmheaders.cpp:213
 msgid "Folder is read-only."
 msgstr "Poøadaè pøístupný pouze pro ètení."
 
-#: kmheaders.cpp:255
+#: kmheaders.cpp:260
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: kmheaders.cpp:258
+#: kmheaders.cpp:263
 msgid "No Subject"
 msgstr "®ádný pøedmìt"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:323
 msgid "order of arrival"
 msgstr "poøadí pøíchodu"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:332
 msgid "subject"
 msgstr "pøedmìt"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:333
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:329
+#: kmheaders.cpp:334
 msgid "sender"
 msgstr "odesilatel"
 
-#: kmheaders.cpp:330
+#: kmheaders.cpp:335
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:337
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Tøídím zprávy sestupnì podle %s"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:339
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Tøídím zprávy vzestupnì podle %s"
 
-#: kmheaders.cpp:430
+#: kmheaders.cpp:435
 msgid "Message(s) saved."
 msgstr "Zpráva(y) ulo¾ena(y)"
 
-#: kmheaders.cpp:432
+#: kmheaders.cpp:437
 msgid "Failed to save message(s)."
 msgstr "Nepodaøilo se ulo¾it zprávu(y)."
 
@@ -1131,19 +1131,19 @@ msgstr ""
 "v nastaveních, aby bylo mo¾né\n"
 "pøijímat po¹tu."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "pozor"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "fatální chyba"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "Oznámení programu KMail"
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1151,7 +1151,7 @@ msgstr ""
 "Promìnná $HOME není nastravena!\n"
 "KMail bez ní nemù¾e být spu¹tìn.\n"
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1169,11 +1169,11 @@ msgstr ""
 "\n"
 "Má KMail pøesunout adresáøe nyní?"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "Nahrávání knihy adres selhalo"
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Neznámý parametr pøíkazové øádky: %s"
