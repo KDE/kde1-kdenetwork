@@ -432,24 +432,24 @@ msgid "Network"
 msgstr "Netzwerk"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "enthält"
+msgstr "Zeichensätze"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Zeichensatz für Nachrichten-Körper:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Nachricht als reiner Text"
+msgstr "Zeichensatz für Nachrichten-Liste:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Die Veränderung des Zeichensatzes tritt erst beim\n"
+"Öffnen eines neuen Fensters oder beim Neustart auf"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -553,12 +553,11 @@ msgstr "Mülleimer bei Beenden leeren"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Zeichensatz für Nachrichten-Körper"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Nachricht als reiner Text"
+msgstr "Zeichensatz für Nachrichten-Liste"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -633,14 +632,12 @@ msgid "Subject"
 msgstr "Betreff"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Unbekannter Fehler"
+msgstr "Unbekannt"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Betreff"
+msgstr "Kein Betreff"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -942,7 +939,6 @@ msgstr ""
 "richtig konfiguriert haben."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr ""
 "Inhalt des Ordners `%s' geändert.\n"
@@ -1296,7 +1292,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
 msgstr "Ordner auswählen"
 
