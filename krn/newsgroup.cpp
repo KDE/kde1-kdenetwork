@@ -254,6 +254,20 @@ int Article::score()
     return 100;
 }
 
+void Article::setRead(bool b)
+{
+  if (!refsLoaded) load();
+  isread = b;
+  save();
+}
+
+void Article::setAvailable(bool b)
+{
+  if (!refsLoaded) load();
+  isavail = b;
+  save();
+}
+
 bool Article::canExpire()  // robert's cache stuff
 {
   return(expire);

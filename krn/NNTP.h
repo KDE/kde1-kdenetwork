@@ -52,9 +52,9 @@ public:
     QStrList Refs;
     void formHeader(QString *s);
     bool isRead() {return isread;};
-    void setRead(bool b=true) {isread=b;save();};
+    void setRead(bool b=true);
     bool isAvailable() {return isavail;};
-    void setAvailable(bool b=true) {isavail=b;save();};
+    void setAvailable(bool b=true);
     void setMarked(bool b=true) {ismarked=b;};
     bool isMarked(){return ismarked;};
     void incref();

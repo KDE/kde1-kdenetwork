@@ -1,4 +1,10 @@
 -----------------------------------------------------------------------------
+Changes made Nov 19
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed bug in Article::setRead() that affected threading, too.
+
+-----------------------------------------------------------------------------
 Changes made Nov 18
 -----------------------------------------------------------------------------
 
@@ -8,6 +14,7 @@ Changes made Nov 18
 * [Roberto] More feedback on opening group (shows counter when reading from
             file, and not only from network).
 * [Roberto] Fixed a focus problem in the "find article" dialog.
+* [Roberto] Small performance hacks, a few bugfixes.
 
 -----------------------------------------------------------------------------
 Changes made Nov 17
