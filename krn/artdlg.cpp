@@ -15,14 +15,16 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+#include <qfiledlg.h>
 #include "artdlg.h"
+
+
 #define Inherited KTopLevelWidget
 
 #include <kapp.h>
 #include <qfile.h>
 #include <qstring.h>
 #include <qtstream.h>
-#include <qfiledlg.h>
 #include <qclipbrd.h>
 #include <qregexp.h>
 
@@ -42,6 +44,7 @@
 #include "findArtDlg.h"
 
 #include "kmcomposewin.h"
+#include "kmreaderwin.h"
 
 #include "artdlg.moc"
 
@@ -242,7 +245,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     filter->pop=article;
     
     gl = new QGridLayout( panner->child1(), 1, 1 ); 
-    messwin=new Kmessage(panner->child1(),"messwin");
+    messwin=new KMReaderWin(panner->child1(),"messwin");
+    messwin->setMsg(0);
     gl->addWidget( messwin, 0, 0 );
     QObject::connect(messwin,SIGNAL(textSelected(bool)),this,SLOT(copyText(bool)));
     
@@ -298,16 +302,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     }
 }
 
-void Artdlg::copyText(bool b)
+void Artdlg::copyText(bool)
 {
-    if (b)
-    {
-        //this is copied from kdehelp
-        QString text;
-        messwin->getKHTMLWidget()->getSelectedText( text );
-        QClipboard *cb = kapp->clipboard();
-        cb->setText( text ); 
-    }
 }
 
 void Artdlg::closeEvent(QCloseEvent *)
@@ -424,7 +420,7 @@ bool Artdlg::actions (int action)
             fontsDlg dlg;
             if(dlg.exec()==1)
             {
-                messwin->loadSettings();
+                messwin->readConfig();
             }
             qApp->restoreOverrideCursor ();
             break;
@@ -432,7 +428,7 @@ bool Artdlg::actions (int action)
     case PRINT_ARTICLE:
         {
             qApp->setOverrideCursor (arrowCursor);
-            messwin->getKHTMLWidget()->print();
+            messwin->printMsg();
             qApp->restoreOverrideCursor ();
             break;
         }
@@ -518,26 +514,23 @@ bool Artdlg::actions (int action)
         }
     case PAGE_UP_ARTICLE:
         {
-            messwin->slotVertSubtractPage();
+            messwin->slotScrollPrior();
             break;
         }
     case SCROLL_UP_ARTICLE:
         {
-            messwin->slotVertSubtractLine();
+            messwin->slotScrollUp();
             break;
         }
     case PAGE_DOWN_ARTICLE:
         {
-            int l1=messwin->getKHTMLWidget()->yOffset();
-            messwin->slotVertAddPage();
-            int l2=messwin->getKHTMLWidget()->yOffset();
-            if (l2==l1)actions(NEXT);
+            messwin->slotScrollNext();
             break;
         }
     case SCROLL_DOWN_ARTICLE:
         
         {
-            messwin->slotVertAddLine();
+            messwin->slotScrollDown();
             break;
         }
     case POST:
@@ -739,11 +732,13 @@ bool Artdlg::loadArt (QString id)
     s=server->article(id.data());
     if (s->isEmpty())
     {
-        messwin->getFromWeb(id);
+//        messwin->getFromWeb(id);
     }
     else
     {
-        messwin->loadMessage(*s);
+        KMMessage *m=new KMMessage();
+        m->fromString(QString(s->data()));
+        messwin->setMsg(m);
     }
     delete s;
 
@@ -823,8 +818,9 @@ void Artdlg::saveArt (QString id)
             art->setAvailable(false);
         s=new QString(klocale->translate("\nError getting article.\nServer said:\n"));
         s->append(server->lastStatusResponse());
-        warning (s->data());
-        messwin->loadMessage(*s);
+        KMMessage *m=new KMMessage();
+        m->fromString(s->data());
+        messwin->setMsg(m);
         delete s;
         qApp->restoreOverrideCursor ();
         return;

@@ -43,6 +43,7 @@
 
 #include "kmsender.h"
 #include "kmcomposewin.h"
+#include "kmreaderwin.h"
 #include "kmidentity.h"
 
 #define CONNECT 1

@@ -18,7 +18,6 @@
 #ifndef Artdlg_included
 #define Artdlg_included
 
-#include "kmessage.h"
 #include "NNTP.h"
 
 #include <qlistbox.h>
@@ -29,9 +28,10 @@
 
 #include <ktopwidget.h>
 #include <kpanner.h>
-#include "kmessage.h"
 #include "ktablistbox.h"
 #include "kiconloader.h"
+
+class KMReaderWin;
 
 class Artdlg : public KTopLevelWidget 
 {
@@ -42,7 +42,7 @@ public:
     Artdlg (NewsGroup *_group, NNTP* server);
     virtual ~Artdlg();
     
-    Kmessage *messwin;
+    KMReaderWin *messwin;
 protected:
     virtual void closeEvent (QCloseEvent *e);
 

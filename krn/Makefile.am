@@ -12,7 +12,6 @@ UTILSDIR = $(kde_appsdir)/Utilities
 BUILTSOURCES =	groupdlg.moc \
 		NNTP.moc \
                 artdlg.moc\
-                kmessage.moc\
                 asker.moc\
                 identDlg.moc\
                 NNTPConfigDlg.moc\
@@ -26,7 +25,8 @@ BUILTSOURCES =	groupdlg.moc \
                 findArtDlg.moc\
                 kmmsgpartdlg.moc\
                 kbusyptr.moc\
-                kalarmtimer.moc
+                kalarmtimer.moc\
+                kmreaderwin.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -36,8 +36,6 @@ krn_SOURCES = 	main.cpp\
 		NNTP.cpp\
 		groupdlg.cpp\
 		artdlg.cpp\
-		kmessage.cpp\
-		kmmessage.cpp\
                 newsgroup.cpp\
                 kstrtable.cpp\
                 asker.cpp\
@@ -47,7 +45,6 @@ krn_SOURCES = 	main.cpp\
                 NNTPConfigDlg.cpp\
                 NNTPConfigDlgData.cpp\
                 decoderDlg.cpp\
-                kformatter.cpp\
                 rmbpop.cpp\
                 kdecode.cpp\
                 aboutDlg.cpp\
@@ -56,6 +53,7 @@ krn_SOURCES = 	main.cpp\
                 kscorer.cpp\
                 fontsDlg.cpp\
                 fontsDlgData.cpp\
+                kmmessage.cpp\
                 kmmsgpart.cpp\
                 kmmsginfo.cpp\
                 kmcomposewin.cpp\
@@ -69,15 +67,14 @@ krn_SOURCES = 	main.cpp\
                 kfileio.cpp\
                 kmmsgpartdlg.cpp\
                 kbusyptr.cpp\
-                kalarmtimer.cpp
+                kalarmtimer.cpp\
+                kmreaderwin.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
-                kmessage.h\
                 kmmessage.h\
 		artdlg.h\
                 groupdlg.h\
-                kmessage.h\
                 kstrtable.h\
                 asker.h\
                 askerData.h\
@@ -86,7 +83,6 @@ noinst_HEADERS = 	NNTP.h\
                 NNTPConfigDlg.h\
                 NNTPConfigDlgData.h\
                 decoderDlg.h\
-		kformatter.h\
 		rmbpop.h\
 		kdecode.h\
 		aboutDlg.h\
@@ -109,7 +105,8 @@ noinst_HEADERS = 	NNTP.h\
                 kfileio.h\
                 kmmsgpartdlg.h\
                 kbusyptr.h\
-                kalarmtimer.h
+                kalarmtimer.h\
+                kmreaderwin.h
 
 SUBDIRS = docs pics
 
@@ -152,10 +149,6 @@ artdlg.moc: artdlg.h
 kdecode.cpp:kdecode.moc
 kdecode.moc: kdecode.h
 	$(MOC) kdecode.h -o kdecode.moc
-
-kmessage.cpp:kmessage.moc
-kmessage.moc: kmessage.h
-	$(MOC) kmessage.h -o kmessage.moc
 
 asker.cpp:asker.moc
 asker.moc: asker.h
@@ -200,3 +193,7 @@ kbusyptr.moc: kbusyptr.h
 kalarmtimer.cpp:kalarmtimer.moc
 kalarmtimer.moc: kalarmtimer.h
 	$(MOC) kalarmtimer.h -o kalarmtimer.moc
+
+kmreaderwin.cpp:kmreaderwin.moc
+kmreaderwin.moc: kmreaderwin.h
+	$(MOC) kmreaderwin.h -o kmreaderwin.moc
