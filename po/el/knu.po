@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Theodore J. Soldatos <theodore@eexi.gr>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: knu.cpp:132 knu.cpp:275
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:141 knu.cpp:281
+msgid "&Traceroute"
+msgstr "Εύρεση διαδρομής"
+
+#: knu.cpp:150 knu.cpp:287
+msgid "Host &resolution"
+msgstr "Ανάλυση διεύθυνσης"
+
+#: knu.cpp:163 knu.cpp:293
+msgid "&Finger"
+msgstr "&Finger"
+
+#: knu.cpp:174
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"Δεν υπάρχει ενεργοποιημένη εντολή\n"
+"στο αρχείο ρυθμίσεων,\n"
+"\n"
+"οπότε δεν μπορώ να κάνω τίποτα...\n"
+
+
+#: knu.cpp:219
+msgid "&New window"
+msgstr "Νέο παράθυρο"
+
+#: knu.cpp:222
+msgid "&Close window"
+msgstr "Κλείσιμο παραθύρου"
+
+#: knu.cpp:233
+msgid "Select &all"
+msgstr "Επιλογή όλων"
+
+#: knu.cpp:236
+msgid "C&lear output window"
+msgstr "Καθαρισμός παραθύρου αποτελεσμάτων"
+
+#: knu.cpp:239
+msgid "P&references..."
+msgstr "Προτιμήσεις..."
+
+#: knu.cpp:249
+msgid "About &Qt"
+msgstr "Για το Qt"
+
+#: knu.cpp:432
+msgid "About..."
+msgstr "Σχετικά..."
+
+#: CommandDlg.cpp:116
+msgid "H&ost:"
+msgstr "Διεύθυνση"
+
+#: CommandDlg.cpp:125
+msgid "&Go!"
+msgstr "Συνέχεια"
+
+#: CommandDlg.cpp:135
+msgid "&Stop"
+msgstr "Στοπ"
+
+#: CommandDlg.cpp:151
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Το εκτελέσιμο αυτής της εντολής δεν βρέθηκε.\n"
+"Μπορείτε να ορίσετε την τοποθεσία του από το μενού Επεξεργασία->Προτιμήσεις."
+
+#: CommandDlg.cpp:336
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"Υπάρχει πρόβλημα στο αρχείο παραμέτρων\n"
+"%s/%src\n"
+"\n"
+"Στην ομάδα [%s],\n"
+"δεν μπορώ να βρώ μια έγκυρη αναφορά \"path=\". \n"
+"\n"
+"Παρακαλώ χρησιμοποιήστε το μενού Επεξεργασία->Προτιμήσεις\n"
+"για να το ρυθμίσετε.\n"
+
+#: CommandDlg.cpp:345
+msgid "Error in pathname"
+msgstr "Σφάλμα στην τοποθεσία"
+
+#: CommandDlg.cpp:478
+msgid "Binary"
+msgstr "Δυαδικό"
+
+#: CommandDlg.cpp:486
+msgid "Path&name:"
+msgstr "Τοποθεσία:"
+
+#: CommandDlg.cpp:495
+msgid "Additional &arguments:"
+msgstr "Επιπλέον ορίσματα:"
+
+#: CommandDlg.cpp:520
+msgid "This command had been disabled in the configuration file."
+msgstr "Αυτή η εντολή έχει απενεργοποιηθεί από το αρχείο παραμέτρων."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr "- παράμετροι"
+
+#: PingDlg.cpp:94 TracerouteDlg.cpp:95
+msgid "Make host &name resolution"
+msgstr "Ανάλυση διεύθυνσης υπολογιστή"
+
+#: TracerouteDlg.cpp:112
+msgid "&Maximum number of hops:"
+msgstr "Μέγιστος αριθμός μεταβάσεων"
+
+#: HostDlg.cpp:105
+msgid "address (A)"
+msgstr "διεύθυνση (Α)"
+
+#: HostDlg.cpp:106
+msgid "name (PTR)"
+msgstr "Όνομα (PTR)"
+
+#: HostDlg.cpp:107
+msgid "name server (NS)"
+msgstr "Εξυπηρετητής διεθύνσεων (NS)"
+
+#: HostDlg.cpp:108
+msgid "mail exchanger (MX)"
+msgstr "Υπεύθυνος αλληλογραφίας (MX)"
+
+#: HostDlg.cpp:109
+msgid "alias (CNAME)"
+msgstr "εναλλακτικό όνομα (CNAME)"
+
+#: HostDlg.cpp:110
+msgid "start of authority (SOA)"
+msgstr "Αρχή (SOA)"
+
+#: HostDlg.cpp:111
+msgid "any record (ANY)"
+msgstr "Όλες τις εγγραφές (ANY)"
+
+#: HostDlg.cpp:117
+msgid "Se&arch for:"
+msgstr "Ψάξε για:"
+
+#: HostDlg.cpp:129 HostDlg.cpp:268
+msgid "default server"
+msgstr "Εξυπηρετητής εξ ορισμού"
+
+#: HostDlg.cpp:138
+msgid "Ser&ver:"
+msgstr "Εξυπηρετητής"
+
+#: FingerDlg.cpp:68
+msgid "User:"
+msgstr "Χρήστης:"
+
+#: FingerDlg.cpp:86
+msgid "Server:"
+msgstr "Εξυπηρετητής:"
