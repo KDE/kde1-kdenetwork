@@ -385,7 +385,6 @@ void NewsGroup::getList(Artdlg *dialog)
     
     int index=0;
     int oldindex=0;
-//    int counter=artList.count();
     int counter=0;
     
     while (1)
@@ -561,19 +560,27 @@ struct node
 
 QDict <node> *d;
 
-void do_insert(QString id,Article *art)
+void do_insert(Article *art)
 {
     node *a=0;
-    if (!id)
-        return;
-    if (id.isEmpty())
-        return;
-    a=d->find(id);
+    a=d->find(art->ID.data());
     if (a) //article is in the dict
     {
         if (a->art==0)
         {
             a->art=art;
+            if (a->parent)
+            {
+                debug ("marker 1");
+                debug ("ID-->%s",art->ID.data());
+//                ((node *)a->parent)->children.removeRef(a);
+//                a->parent=0;
+//                return;
+            }
+        }
+        else
+        {
+            return;
         }
     }
     else //article is not in the dict
@@ -581,16 +588,18 @@ void do_insert(QString id,Article *art)
         a=new node;
         a->art=art;
         a->parent=0;
-        d->insert (id,a);
+        a->children.clear();
+        d->insert (art->ID.data(),a);
     }
     assert (a->art==art);
-    if (!art->Refs.count())
-        return;
     node *last=a;
     node *b=0;
-    for (char *ref=art->Refs.last();ref!=0;ref=art->Refs.prev())
+    QListIterator <char> iter(art->Refs);
+    iter.toLast();
+    char *ref;
+    for (;iter.current();--iter)
     {
-        b=0;
+        ref=iter.current();
         b=d->find(ref);
         if (b==0)
         {
@@ -599,12 +608,14 @@ void do_insert(QString id,Article *art)
             b->parent=0;
             d->insert (ref,b);
             last->parent=b;
+            b->children.clear();
             b->children.append(last);
             last=b;
         }
         else
         {
-            b->children.append(last);
+//            if (-1==b->children.findRef(last))
+                b->children.append(last);
             last->parent=b;
             break;
         }
@@ -613,8 +624,11 @@ void do_insert(QString id,Article *art)
 
 void addToList(node *n,int dep,ArticleList *l)
 {
-    for (node *child=(node *)n->children.first();child!=0;child=(node *)n->children.next())
+    node *child;
+    QListIterator <void> childIt(n->children);
+    for (;childIt.current();++childIt)
     {
+        child=(node *)childIt.current();
         if (child->art)
         {
             l->append(child->art);
@@ -630,38 +644,62 @@ void addToList(node *n,int dep,ArticleList *l)
 
 void ArticleList::thread(bool)
 {
-    d=new QDict <node>;
+    debug ("entered with-->%d",count());
+    d=new QDict <node> (10271);
     d->setAutoDelete(true);
-    for (Article *iter=this->first();iter!=0;iter=this->next())
+    QListIterator <Article> artit(*this);
+    Article *iter;
+    for (;artit.current();++artit)
     {
+        iter=artit.current();
         if (!(iter->refsLoaded))
             iter->load();
         iter->threadDepth=0;
-        do_insert(iter->ID,iter);
+        do_insert(iter);
     }
-    node *n=new node;
-    n->art=0;
-    n->parent=0;
+
+    QList <ArticleList> threads;
     QDictIterator <node> it(*d);
-    
+
     while (it.current())
     {
         if (!(it.current()->parent))
         {
-            it.current()->parent=n;
-            n->children.append(it.current());
+            ArticleList *thr=new ArticleList();
+            if (it.current()->art)
+                thr->append(it.current()->art);
+            addToList(it.current(),0,thr);
+            threads.append(thr);
         }
         ++it;
     }
+    debug ("has %d threads",threads.count());
     this->clear();
-    addToList (n,0,this);
+
+
+    QListIterator <ArticleList> thriter(threads);
+    while (thriter.current())
+    {
+        QListIterator <Article> artiter(*thriter.current());
+        while (artiter.current())
+        {
+//            if(-1==findRef(artiter.current()))
+                this->append(artiter.current());
+//            else
+//                debug("repeated article!!! %s",artiter.current()->ID.data());
+            ++artiter;
+        }
+        thriter.current()->clear();
+        ++thriter;
+    }
+
+
     delete d;
-    delete n;
+    debug ("exited with-->%d",count());
 }
 
 ArticleList::ArticleList()
 {
-    visited=false;
 }
 
 ArticleList::~ArticleList()
