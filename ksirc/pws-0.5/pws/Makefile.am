@@ -30,11 +30,9 @@ kde_icon_DATA = pws.xpm
 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) $(srcdir)/pws.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_minidir)
 	$(INSTALL_DATA) $(srcdir)/mini-pws.xpm $(kde_minidir)/pws.xpm
 
 uninstall-local:
-	-rm -f $(APPSDIR)/pws.kdelnk
 	-rm -f $(kde_minidir)/pws.xpm
 
