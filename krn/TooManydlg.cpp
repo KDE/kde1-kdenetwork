@@ -1,5 +1,5 @@
-#include <TooManydlg.h>
-#include <TooManydlg.moc>
+#include "TooManydlg.h"
+#include "TooManydlg.moc"
 
 #include <qdialog.h>
 #include <qkeycode.h>
