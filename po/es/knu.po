@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1997-12-17 22:54+0100\n"
+"POT-Creation-Date: 1997-12-31 14:20+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1997-10-28 22:45:13+0100\n"
 "From: Bertrand Leconte,,, <leconteb@arthur>\n"
@@ -14,11 +14,11 @@ msgstr "&Ping"
 
 #: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
-msgstr "&Tracear ruta"
+msgstr "&Traceroute"
 
 #: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
-msgstr "&Resolver Host"
+msgstr "&Resolución de servidor"
 
 #: knu.cpp:156
 msgid ""
@@ -27,34 +27,26 @@ msgid ""
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"No hay ning·n comando habilitado\n"
-"en el fichero de configuraci›n.\n"
+"No hay ningún comando disponible\n"
+"en el fichero de configuración.\n"
 "\n"
-"As­ que no puedo hacer nada...\n"
+"Imposible realizar ninguna operción.\n"
 
 #: knu.cpp:201
 msgid "&New window"
-msgstr "&Nueva Ventana"
+msgstr "&Nueva ventana"
 
 #: knu.cpp:204
 msgid "&Close window"
-msgstr "&Cerrar Ventana"
-
-#: knu.cpp:207
-msgid "&Quit"
-msgstr "&Salir"
-
-#: knu.cpp:212
-msgid "&Copy"
-msgstr "&Copiar"
+msgstr "&Cerrar ventana"
 
 #: knu.cpp:215
 msgid "Select &all"
-msgstr "Seleccion&ar Todo"
+msgstr "Seleccionar &todo"
 
 #: knu.cpp:218
 msgid "C&lear output window"
-msgstr "&Limpiar ventana de Salida"
+msgstr "&Limpiar ventana de resultados"
 
 #: knu.cpp:221
 msgid "P&references..."
@@ -62,7 +54,7 @@ msgstr "P&referencias..."
 
 #: knu.cpp:226
 msgid "&Contents"
-msgstr "&Contenidos"
+msgstr "&Contenido"
 
 #: knu.cpp:229
 msgid "&About"
@@ -72,70 +64,58 @@ msgstr "&Acerca de"
 msgid "About &Qt"
 msgstr "Acerca de &Qt"
 
-#: knu.cpp:235
-msgid "&File"
-msgstr "&Fichero"
-
-#: knu.cpp:236
-msgid "&Edit"
-msgstr "&Editar"
-
-#: OptionsDlg.cpp:97 knu.cpp:238
-msgid "&Help"
-msgstr "A&yuda"
-
 #: knu.cpp:404
 msgid "About..."
 msgstr "Acerca de..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:112
 msgid "H&ost:"
-msgstr "H&ost:"
+msgstr "&Servidor"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:121
 msgid "&Go!"
 msgstr "&Iniciar"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:131
 msgid "&Stop"
-msgstr "&Detener"
+msgstr "&Parar"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:147
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Este comando no pudo ser encontrado en el sistema. \n"
-"Puede modificarlo en el men· Editar->Preferencias..."
+"El fichero binario del comando no se encontró. \n"
+"Puede indicar su ubicación en el menú Editar->Preferencias..."
 
-#: CommandDlg.cpp:462
+#: CommandDlg.cpp:453
 msgid "Binary"
-msgstr "Programa"
+msgstr "Binario"
+
+#: CommandDlg.cpp:461
+msgid "Path&name:"
+msgstr "&Directorio:"
 
 #: CommandDlg.cpp:470
-msgid "Path&name:"
-msgstr "Localizaci›&n"
-
-#: CommandDlg.cpp:479
 msgid "Additional &arguments:"
-msgstr "&Argumentos adicionales"
+msgstr "&Argumentos adicionales:"
 
-#: CommandDlg.cpp:484
+#: CommandDlg.cpp:475
 msgid "Browse..."
 msgstr ""
 
-#: CommandDlg.cpp:504
+#: CommandDlg.cpp:495
 msgid "This command had been disabled in the configuration file."
-msgstr "Este comando ha sido desabilitado en el fichero de configuraci›n."
+msgstr "Este comando se ha inhabilitado en el fichero de configuración."
 
 #: OptionsDlg.cpp:68
 msgid " - configuration"
-msgstr " - configuraci›n"
+msgstr " - configuración"
 
 #: OptionsDlg.cpp:91
 #, fuzzy
 msgid "&OK"
-msgstr "&Aceptar"
+msgstr "C&ontinuar"
 
 #: OptionsDlg.cpp:102
 msgid "&Cancel"
@@ -143,28 +123,28 @@ msgstr "&Cancelar"
 
 #: PingDlg.cpp:87 TracerouteDlg.cpp:88
 msgid "Make host &name resolution"
-msgstr "Resolver &nombre de host"
+msgstr "Resolver el nombre del servidor"
 
 #: HostDlg.cpp:217 PingDlg.cpp:143 TracerouteDlg.cpp:165
 msgid ""
 "You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
 "In the ["
 msgstr ""
-"Tiene un problema en su fichero de configuraci›n ~/.kderc/share/config/knurc "
-"\n"
-"En el ["
+"Existe un problema en su fichero de configuración "
+"~/.kderc/share/config/knurc\n"
+"En el grupo["
 
 #: HostDlg.cpp:221 PingDlg.cpp:147 TracerouteDlg.cpp:169
 msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "] grupo, No se pudo encontrar una entrada correcta \"path=\"."
+msgstr "], imposible encontrar una entrada correcta \"path=\"."
 
 #: TracerouteDlg.cpp:105
 msgid "&Maximum number of hops:"
-msgstr "&Mßximo n·mero de saltos:"
+msgstr "Número máximo de saltos:"
 
 #: HostDlg.cpp:98
 msgid "address (A)"
-msgstr "direcci›n (A)"
+msgstr "dirección (A)"
 
 #: HostDlg.cpp:99
 msgid "name (PTR)"
@@ -176,7 +156,7 @@ msgstr "servidor de nombres (NS)"
 
 #: HostDlg.cpp:101
 msgid "mail exchanger (MX)"
-msgstr "intecambiador correo (MX)"
+msgstr "pasarela de correo (MX)"
 
 #: HostDlg.cpp:102
 msgid "alias (CNAME)"
@@ -192,12 +172,27 @@ msgstr "cualquier registro (ANY)"
 
 #: HostDlg.cpp:110
 msgid "Se&arch for:"
-msgstr "Loc&alizar:"
+msgstr "&Buscar:"
 
 #: HostDlg.cpp:122 HostDlg.cpp:268
 msgid "default server"
-msgstr "Servidor por defecto"
+msgstr "servidor predeterminado"
 
 #: HostDlg.cpp:131
 msgid "Ser&ver:"
 msgstr "Ser&vidor:"
+
+#~ msgid "&Quit"
+#~ msgstr "&Salir"
+
+#~ msgid "&Copy"
+#~ msgstr "&Copiar"
+
+#~ msgid "&File"
+#~ msgstr "&Fichero"
+
+#~ msgid "&Edit"
+#~ msgstr "&Editar"
+
+#~ msgid "&Help"
+#~ msgstr "&Ayuda"

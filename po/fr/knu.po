@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1997-12-17 22:54+0100\n"
+"POT-Creation-Date: 1997-12-31 14:20+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1997-10-26 20:32:21+0100\n"
 "From: Bertrand Leconte,,, <leconteb@arthur>\n"
@@ -41,14 +41,6 @@ msgstr "Nouvelle fenêtre"
 msgid "&Close window"
 msgstr "Fermer la fenêtre"
 
-#: knu.cpp:207
-msgid "&Quit"
-msgstr "Quitter"
-
-#: knu.cpp:212
-msgid "&Copy"
-msgstr "Copier"
-
 #: knu.cpp:215
 msgid "Select &all"
 msgstr "Selectionner tout"
@@ -73,35 +65,23 @@ msgstr "A propos"
 msgid "About &Qt"
 msgstr "About &Qt"
 
-#: knu.cpp:235
-msgid "&File"
-msgstr "Fichier"
-
-#: knu.cpp:236
-msgid "&Edit"
-msgstr "Edition"
-
-#: OptionsDlg.cpp:97 knu.cpp:238
-msgid "&Help"
-msgstr "Aide"
-
 #: knu.cpp:404
 msgid "About..."
 msgstr "A propos..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:112
 msgid "H&ost:"
 msgstr "Machine :"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:121
 msgid "&Go!"
 msgstr "Go !"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:131
 msgid "&Stop"
 msgstr "Stop"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:147
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -109,23 +89,23 @@ msgstr ""
 "Cette commande n'a pas été trouvée. \n"
 "Vous pouvez donner son chemin par le menu Edition->Preferences..."
 
-#: CommandDlg.cpp:462
+#: CommandDlg.cpp:453
 msgid "Binary"
 msgstr "Binaire"
 
-#: CommandDlg.cpp:470
+#: CommandDlg.cpp:461
 msgid "Path&name:"
 msgstr "Chemin du programme :"
 
-#: CommandDlg.cpp:479
+#: CommandDlg.cpp:470
 msgid "Additional &arguments:"
 msgstr "Arguments additionnels :"
 
-#: CommandDlg.cpp:484
+#: CommandDlg.cpp:475
 msgid "Browse..."
 msgstr ""
 
-#: CommandDlg.cpp:504
+#: CommandDlg.cpp:495
 msgid "This command had been disabled in the configuration file."
 msgstr "Cette commande a été disablé dans le fichier de configuration."
 
@@ -202,3 +182,18 @@ msgstr "serveur par défaut"
 #: HostDlg.cpp:131
 msgid "Ser&ver:"
 msgstr "Serveur :"
+
+#~ msgid "&Quit"
+#~ msgstr "Quitter"
+
+#~ msgid "&Copy"
+#~ msgstr "Copier"
+
+#~ msgid "&File"
+#~ msgstr "Fichier"
+
+#~ msgid "&Edit"
+#~ msgstr "Edition"
+
+#~ msgid "&Help"
+#~ msgstr "Aide"
