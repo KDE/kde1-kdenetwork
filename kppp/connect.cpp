@@ -1313,8 +1313,6 @@ bool ConnectWidget::execppp() {
   if(gpppdata.authMethod() == AUTH_PAP) {
     command += " user ";
     command += gpppdata.storedUsername();
-    command += " +ua ";
-    command += PAP_AuthFile();
   }
 
   if (command.length() > MAX_CMDLEN){

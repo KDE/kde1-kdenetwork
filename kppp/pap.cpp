@@ -24,6 +24,7 @@
 
 #include <qdir.h>
 #include <unistd.h>
+#include <qregexp.h>
 #include "pap.h"
 #include "pppdata.h"
 
@@ -32,48 +33,67 @@ bool PAP_UsePAP() {
   return (bool)(gpppdata.authMethod() == AUTH_PAP);
 }
 
-QString PAP_AuthFile() {
-  QString s = QDir::homeDirPath() + "/";
-  s += PAP_AUTH_FILE;
-  return s;
-}
-
-bool PAP_CreateAuthFile() {  
-  // Create the pap authentication file. PPPD requires that the file is
-  // owned by the real user. If we are running SETUID root, simply make
-  // a chown on it
-  QString fname = PAP_AuthFile();
-  int fd = open(fname.data(), 
-		O_CREAT|O_TRUNC|O_WRONLY,
-		S_IRUSR|S_IWUSR);
-  if(fd > 0) {
-    bool err = false;
-    QString s = gpppdata.storedUsername();
-    s += "\n";
-    err |= (write(fd, s.data(), s.length()) != (int)s.length());
-
-    s = gpppdata.password;
-    s += "\n";
-    err |= (write(fd, s.data(), s.length()) != (int)s.length());
+bool PAP_CreateAuthFile() {
+  QFile fin, fout;
+  QString fname = PAP_AUTH_FILE;
+  fname += ".new";
+  
+  // copy to new file pap-secrets  
+  fout.setName(fname.data());
+  if(fout.open(IO_WriteOnly)) {
+    QString user = gpppdata.storedUsername();
+    QString pass = gpppdata.password;
+    QRegExp r_user((user + "[ \t]").data());
     
-    // for SETUID root
-    if(getuid() != geteuid() && geteuid() == 0)
-      err |= (fchown(fd, getuid(), (gid_t)-1) != 0);
+    // copy old file
+    fin.setName(PAP_AUTH_FILE);
+    if(fin.open(IO_ReadOnly)) {
+      QTextStream t(&fin);
+      QString line;
+      
+      while(!t.eof()) {
+	line = t.readLine();
+	if(line.find(r_user) == 0)
+	  continue;
 
-    err |= (close(fd) != 0);
-    return !err;
+	fout.writeBlock(line.data(), line.length());
+	fout.writeBlock("\n", 1);
+      }
+
+      // append user/pass pair
+      line = user + "\t*\t" + pass;
+      fout.writeBlock(line.data(), line.length());
+      fin.close();
+    }
+
+    fout.close();
   }
 
-  return FALSE;
+  QDir d;
+  QString oldName = PAP_AUTH_FILE;
+  oldName += ".old";
+
+  // delete old file if any
+  d.remove(oldName.data());
+
+  d.rename(PAP_AUTH_FILE, oldName.data());
+  d.rename(fname.data(), PAP_AUTH_FILE);
+  chmod(PAP_AUTH_FILE, 0600);
+
+  return TRUE;
 }
 
 bool PAP_RemoveAuthFile() {
   if(!PAP_UsePAP())
     return FALSE;
 
-  QString fname = PAP_AuthFile();
-  if(access(fname.data(), F_OK) == 0)
-    return (bool)(unlink(fname.data()) != -1);
-  else
+  QString oldName = PAP_AUTH_FILE;
+  oldName += ".old";
+
+  QDir d;
+  if(d.exists(oldName.data())) {
+    d.remove(PAP_AUTH_FILE);
+    return d.rename(oldName.data(), PAP_AUTH_FILE);
+  } else
     return FALSE;
 }

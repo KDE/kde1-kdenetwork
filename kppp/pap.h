@@ -36,7 +36,6 @@
 #define AUTH_TERMINAL   2
 
 bool PAP_UsePAP();
-QString PAP_AuthFile();
 bool PAP_CreateAuthFile();
 bool PAP_RemoveAuthFile();
 

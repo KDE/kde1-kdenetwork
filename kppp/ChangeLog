@@ -1,3 +1,10 @@
+Tue Feb 24 19:19:44 1998  Mario Weilguni  <mweilguni@kde.org>
+
+	* pap.cpp, connect.cpp: removed the need for a "+ua" option
+	  for PAP. Unfortunatly this REQUIRES that kppp can write
+	  /etc/ppp/pap-secrets (either by running SUID root or
+	  by group permissions)
+
 Fri Feb 13 01:12:19 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* loginterm.cpp: implemented the possibility to log in via

@@ -36,7 +36,7 @@
 #define ACCOUNTING_PATH	".kde/share/apps/kppp/"
 
 // file used for PAP authetication purposes
-#define PAP_AUTH_FILE ".kppp_pap-auth"
+#define PAP_AUTH_FILE "/etc/ppp/pap-secrets"
 
 // Define the default modem response timeout
 #define MODEM_TIMEOUT "60"
