@@ -341,6 +341,32 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
       flowcontrol->setCurrentItem(i);
   }
 
+  chkbox = new QCheckBox("Modem sustains fast initialization.",this,"fastinit");
+  chkbox->adjustSize();
+  chkbox->setGeometry(30,235,240,chkbox->height());
+  chkbox->setChecked(gpppdata.FastModemInit());
+  connect(chkbox,SIGNAL(toggled(bool)),this,SLOT(fast_modem_toggled(bool)));
+
+}
+
+void ModemWidget::fast_modem_toggled(bool on){
+
+  bool was_on;
+  was_on = gpppdata.FastModemInit();
+
+  if (on){
+    gpppdata.setFastModemInit(TRUE);
+    if(!was_on) // we need to resort to this nonsense since 
+                // the toggled signal is emitted when we set 
+                // the toggle button in the constructor and we don't want 
+                // to save the data once for each CheckBox immediately after starting up
+      gpppdata.save();
+  }
+  else{ /*off*/
+    gpppdata.setFastModemInit(FALSE);
+    if(was_on)
+      gpppdata.save();
+  }
 
 
 }

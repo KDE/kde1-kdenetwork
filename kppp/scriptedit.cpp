@@ -33,7 +33,7 @@ ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   setFixedSize(300, 30);
 
   st = new QComboBox(this, "st");
-  st->setGeometry(0, 0, 110, 30);
+  st->setGeometry(0, 5, 110, 25);
   st->insertItem("Expect");
   st->insertItem("Send");
   st->insertItem("Pause (sec)");

@@ -195,7 +195,12 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     p_xppp->debugwindow->statusLabel("Initializing Modem...");
 
     writeline(gpppdata.modemInitStr());
-    usleep(10000); // wait 0.01 secs
+
+    if(gpppdata.FastModemInit())
+      usleep(10000); // 0.01 sec
+    else
+      usleep(1000000); // 1 sec
+
 
     setExpect(gpppdata.modemInitResp());
     vmain = 1;
@@ -850,8 +855,13 @@ void ConnectWidget::hangup() {
     
     writeline(gpppdata.modemHangupStr());
     
-    usleep(10000); // 0.01 sec
-    
+    if(gpppdata.FastModemInit())
+      usleep(10000); // 0.01 sec
+    else
+      usleep(1000000); // 1 sec
+
+
+
     tcsendbreak(modemfd, 0);
 
     tcgetattr(modemfd, &temptty);

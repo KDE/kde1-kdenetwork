@@ -91,6 +91,7 @@ void PPPData::load(const KApplication* a) {
   setModemRingResp(config->readEntry(RINGRESP_KEY , "RING"));
   setModemAnswerResp(config->readEntry(ANSWERRESP_KEY, "CONNECT"));
   setEnter(config->readEntry(ENTER_KEY, "CR/LF"));
+  setFastModemInit(config->readNumEntry(FASTINIT_KEY,1));
 
   // accounts
   for(int i = 0; i < count; i++) {
@@ -181,6 +182,7 @@ void PPPData::save() {
   config->writeEntry(RINGRESP_KEY, modemRingResp());
   config->writeEntry(ANSWERRESP_KEY, modemAnswerResp());
   config->writeEntry(ENTER_KEY, enter());
+  config->writeEntry(FASTINIT_KEY, FastModemInit());
 
   // accounts
   for(int i = 0; i < count(); i++) {
@@ -373,6 +375,14 @@ const char* PPPData::enter() {
 void PPPData::setEnter(const char *n) {
   strncpy(gd.enter, n, PATH_SIZE);
   gd.enter[PATH_SIZE] = '\0';
+}
+
+void PPPData::setFastModemInit(const int n) {
+  gd.fastmodeminit = n;
+}
+
+int PPPData::FastModemInit() {
+  return gd.fastmodeminit;
 }
 
 const char* PPPData::pppdTimeout() {

@@ -104,6 +104,7 @@ private slots:
   void busywaitchanged(const char*);
   void modemlockfilechanged(const char*);
   void setenter(int);
+  void fast_modem_toggled(bool on);
 
 private:
 
@@ -118,7 +119,7 @@ private:
   QComboBox *modemdevice;
   QComboBox *flowcontrol;
 
-  
+  QCheckBox *chkbox;  
   QLineEdit *modemtimeout;
   QLineEdit *busywait;
   QLineEdit *modemlockfile;

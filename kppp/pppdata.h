@@ -106,6 +106,7 @@
 #define RINGRESP_KEY       "RingResponse"
 #define ANSWERRESP_KEY     "AnswerResponse"
 #define ENTER_KEY          "Enter"
+#define FASTINIT_KEY       "FastModemInit"
 
 // account
 #define NAME_KEY           "Name"
@@ -132,6 +133,7 @@ struct gendata {
   char pppdtimeout[TIMEOUT_SIZE+1];         // timeout of pppd daemon
   char busywait[TIMEOUT_SIZE+1];         // time before redial on busy
   char enter[PATH_SIZE+1];                  // type of Enter string
+  int  fastmodeminit;		  // Does the modem need extra time when initializing?
 
   char flowcontrol[FLOWCONTROL_SIZE+1];     // modem flow control
   char modemdevice[MODEMDEV_SIZE+1];        // path of modem device
@@ -217,6 +219,9 @@ public:
 
   const char* enter();
   void setEnter(const char *);
+
+  int FastModemInit();
+  void setFastModemInit(const int);
 
   const char * pppdTimeout();
   void setpppdTimeout(const char *);

@@ -67,7 +67,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   this->setCaption("kppp Statistics");
 
   box = new QGroupBox("Statistics",this);
-  box->setGeometry(5,5,410,305);
+  box->setGeometry(5,5,410,300);
 
   for(int i =0 ; i < 5; i++){
     labela1[i] = new QLabel(this);
@@ -120,7 +120,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   ip_address_label4->setFocusPolicy(QWidget::NoFocus);
 
   cancelbutton = new QPushButton(this,"cancelbutton");
-  cancelbutton->setGeometry(310,320,90,30);
+  cancelbutton->setGeometry(310,315,90,25);
   cancelbutton->setText("OK");
   connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
 
@@ -173,8 +173,8 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
 #endif
 
 
-  this->setMinimumSize(420,355);
-  this->setMaximumSize(420,355);
+  this->setMinimumSize(420,350);
+  this->setMaximumSize(420,350);
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
