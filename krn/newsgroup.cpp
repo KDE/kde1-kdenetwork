@@ -38,6 +38,7 @@ Article::Article(void)
     setMarked (false);
     refcount=0;
     Refs.setAutoDelete(true);
+    threadDepth=0;
 }
 
 void Article::decref()
@@ -61,19 +62,19 @@ void Article::formHeader(QString *s)
     const char *s1, *s2, *s3;
     if (isRead())
     {
-        s->setStr("R\t \t");
+        s->setStr("R\n \n");
     }
     else
     {
-        s->setStr("N\t \t");
+        s->setStr("N\n \n");
     }
     if (!isAvailable())
     {
-        s->setStr("T\t \t");
+        s->setStr("T\n \n");
     }
     if (isMarked())
     {
-        s->setStr("M\t \t");
+        s->setStr("M\n \n");
     }
 
     char *tempbuf=new char[2048];
@@ -93,15 +94,15 @@ void Article::formHeader(QString *s)
     {
         s->append("Unkown Address");
     }
-    s->append("\t \t");
+    s->append("\n \n");
 
     s->append(Lines);
-    s->append("\t \t");
+    s->append("\n \n");
 
     QString t;
     t.setNum(score());
     s->append(t);
-    s->append("\t \t");
+    s->append("\n \n");
 
     if (Date.data())
     {
@@ -115,9 +116,11 @@ void Article::formHeader(QString *s)
     {
         s->append("0/0");
     }
-    s->append("\t \t");
+    s->append("\n \n");
     delete[] tempbuf;
 
+//    for (int i=0;i<threadDepth;i++)
+//        s->append("\t");
     s->append(Subject);
 }
 
@@ -329,6 +332,149 @@ QString noRe(QString subject)
     return subject;
 }
 
+
+bool isParent(Article *parent,Article *child)
+{
+    if (child->Refs.contains(parent->ID.data()))
+        return true;
+    else
+        return false;
+}
+
+/*
+void ArticleList::thread(bool sortBySubject=false)
+{
+    //This isn't working
+    return;
+    if (count()<=1)
+    {
+        return; //not much to thread
+    }
+    
+    QList <ArticleList> threads;
+    QListIterator <ArticleList> thread(threads);
+    threads.setAutoDelete(false);
+    
+    Article *iter;
+    //Make a thread for each article
+    //Sorted by Subjects, ignoring initial "Re:"'s
+    for (iter=this->first();iter!=0;iter=this->next())
+    {
+        ArticleList *l=new ArticleList;
+        l->append(iter);
+        threads.append(l);
+    }
+    
+    //Now consolidate threads
+    bool breaking=false;
+    bool dirty=false;
+    ArticleList *parentThread;
+    ArticleList *childThread;
+    thread.toFirst();
+    for (;thread.current();++thread)
+    {
+        dirty=false;
+        childThread=thread.current();
+        if (childThread->isEmpty())
+            continue;
+        //So I got a thread. What should I do with it?
+        //Look for feasible parents in the thread list
+        //Start with my freshest reference, and go backwards.
+        Article *art=thread.current()->first();
+        //Go over all threads until I find a parent.
+        QListIterator <ArticleList> it(threads);
+        for (;it.current();++it)
+        {
+            parentThread=it.current();
+            QListIterator <Article> it2(*it.current());
+            for (;it2.current();++it2)
+            {
+                if (isParent(it2.current(),art))
+                {
+                    //This is a parent, so I'll attach myself to this thread
+                    //and jump out
+                    breaking=true;
+                    break;
+                }
+            }
+            if (breaking)
+                break;
+        }
+        if (breaking)
+        {
+            //I should put the current thread attached in the end of
+            //parentThread
+
+            //So, remove the child thread from the threads list
+            //Now iterate over childThread, and move the articles to
+            //parentThread
+            QListIterator <Article> it2(*childThread);
+            for (;it2.current();++it2)
+            {
+                parentThread->append(it2.current());
+            }
+            childThread->clear();
+            //And start back from the first thread.
+            //If no threads need reparenting, the outer loop will end
+            dirty=true;
+        }
+    }
+    clear();
+    
+    //If requested, sort the threads by subject
+    QList <ArticleList> sortedThreads;
+    if (sortBySubject)
+    {
+        thread.toFirst();
+        for (;thread.current();++thread)
+        {
+            if (thread.current()->isEmpty())
+                continue;
+            uint i;
+            for (i=0;i<sortedThreads.count();i++)
+            {
+                if (noRe(sortedThreads.at(i)->first()->Subject)
+                    >=noRe(thread.current()->first()->Subject).data())
+                    //hijole with the condition!
+                    break;
+            }
+            if (i<sortedThreads.count())
+                sortedThreads.insert (i,thread.current());
+            else
+                sortedThreads.append (thread.current());
+        }
+        threads=sortedThreads;
+    }
+
+    thread.toFirst();
+    for (;thread.current();++thread)
+    {
+        debug (thread.current()->first()->Subject.data());
+    }
+    
+    //Now thread the subthreads
+    //And rebuild the list from them
+    thread.toFirst();
+    for (;thread.current();++thread)
+    {
+        //The first one is a root for sure
+        if (thread.current()->first())
+        {
+            append(thread.current()->first());
+            thread.current()->remove(0);
+//            thread.current()->thread();
+        }
+        //And add all the articles back in.
+        QListIterator <Article> it2(*thread.current());
+        for (;it2.current();++it2)
+        {
+            append(it2.current());
+        }
+    }
+    
+    }
+    */
+
 void ArticleList::thread()
 {
     if (count()<=1)
@@ -474,10 +620,7 @@ void ArticleList::thread()
     }
 
     //whack the list
-    debug ("this should be 0-->%d or I'm losing articles",count());
     clear();
-    debug ("found %d threads",roots.count());
-    
     //And now reassemble the list from the threads
     //Iterate all the threads
     for (char *s=roots.first();s!=0;s=roots.next())
@@ -503,6 +646,7 @@ void ArticleList::thread()
     }
 
 }
+
 
 ArticleList::~ArticleList()
 {

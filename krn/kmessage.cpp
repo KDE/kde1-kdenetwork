@@ -213,7 +213,8 @@ void Kmessage::getFromWeb(QString id)
              "<h1>Error getting article</h1><hr>
              The article seems to have expired or be missing from both
              your news server and our local cache.<hr>
-             However, you may be able to find it at Altavista following
+             However, if you have a functional Internet connection, you may
+             be able to find it at Altavista following
              <a href=%s>this link</a>",url.url().data());
     this->write (buffer);
     this->end();

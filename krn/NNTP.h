@@ -60,6 +60,7 @@ public:
     void save();
     void load();
     int  score();
+    int  threadDepth;
     
 private:
     bool isread;

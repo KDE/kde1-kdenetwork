@@ -135,7 +135,7 @@ public:
   int lastRowVisible (void) const { return lbox.lastRowVisible(); }
   bool autoUpdate (void) const { return lbox.autoUpdate(); }
   void setAutoUpdate (bool upd) { lbox.setAutoUpdate(upd); }
-  void clearTableFlags(void) { lbox.clearTableFlags(); }
+  void clearTableFlags(uint f=~0) { lbox.clearTableFlags(f); }
   uint tableFlags(void) { return lbox.tableFlags(); }
   bool testTableFlags(uint f) { return lbox.testTableFlags(f); }
   void setTableFlags(uint f) { lbox.setTableFlags(f); }

@@ -165,6 +165,10 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     gl = new QGridLayout( panner->child0(), 1, 1 );
     list=new KTabListBox (panner->child0());
+    list->clearTableFlags(Tbl_hScrollBar);
+    list->clearTableFlags(Tbl_autoHScrollBar);
+    list->setTableFlags(Tbl_autoVScrollBar);
+    list->setSeparator('\n');
     list->setNumCols(11);
     list->setColumn(0, "",20,KTabListBox::PixmapColumn);
     list->setColumn(1, "",5);

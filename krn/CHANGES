@@ -2,6 +2,15 @@
 Changes made Aug 8
 -----------------------------------------------------------------------------
 
+* [Roberto] Placed Aug-9 in the web site.
+
+* [Roberto] Wrote new threading code, but it's too slow.
+  I have some new ideas, but I reverted to the old one by now. 
+
+-----------------------------------------------------------------------------
+Changes made Aug 8
+-----------------------------------------------------------------------------
+
 * [Roberto] Moved the "only unread" option under another menu and made it
   persistant.
 
@@ -15,6 +24,9 @@ Changes made Aug 8
   Qt and mime++ rule! I only had to write about 20 lines of code to go from
   an app which was written in a way that apparently prevented this from
   working to one that does it in a very nifty way!
+
+* [Roberto] Removed the horizontal scroller in artdlg, since it was not useful
+  and used too much space. (And because now I *can* remove it, thx, Stefan :-)
   
 -----------------------------------------------------------------------------
 Changes made Aug 7
