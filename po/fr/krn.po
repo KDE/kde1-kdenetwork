@@ -779,7 +779,7 @@ msgstr "&Urgent"
 
 #: kmcomposewin.cpp:486
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Confirmer la réception"
 
 #: kmcomposewin.cpp:488
 msgid "&Confirm read"
@@ -795,7 +795,8 @@ msgstr "&Tables de caractères..."
 
 #: kmcomposewin.cpp:507
 msgid "&All Fields"
-msgstr ""
+msgstr "&Tous les champs"
+
 
 #: kmcomposewin.cpp:509
 msgid "&From"
@@ -863,7 +864,7 @@ msgstr "Envoyer le message"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
-msgstr ""
+msgstr "Composer un nouveau message"
 
 #: kmcomposewin.cpp:568
 msgid "Save message to file"
@@ -931,7 +932,7 @@ msgstr "Inclure un fichier"
 
 #: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
-msgstr ""
+msgstr "Voir..."
 
 #: kmcomposewin.cpp:1240
 msgid "Save..."
@@ -1018,7 +1019,7 @@ msgstr "Impossible d'ajouter un message au dossier outbox"
 
 #: kmsender.cpp:189
 msgid "Sending still in progress"
-msgstr ""
+msgstr "L'envoi est toujours en cours"
 
 #: kmsender.cpp:245
 msgid "Initiating sender process..."
@@ -1244,7 +1245,7 @@ msgstr "Seulement %d octets sur %d ont pu être écrits."
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr ""
+msgstr "Propriétés de la pièce jointe"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
@@ -1358,7 +1359,7 @@ msgstr ""
 
 #: kpgp.cpp:207
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Il manque la phrase clé"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
@@ -1396,6 +1397,9 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Vous avez entré une phrase clé invalide.\n"
+"Voulez vous réessayer, continuer et laisser\n"
+"le message non signé, ou annuler l'envoi du message?"
 
 #: kpgp.cpp:331
 msgid "Retry"
@@ -1406,6 +1410,8 @@ msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Voulez-vous crypter quand même, laisser le \n"
+"message tel quel, ou annuler le message ?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
@@ -1416,12 +1422,16 @@ msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Voulez-vous laisser le message tel quel,\n"
+"ou annuler le message ?"
 
 #: kpgp.cpp:717
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
 msgstr ""
+"Veuillez entrer votre\n"
+"phrase clé PGP"
 
 #: kpgp.cpp:744
 msgid "PGP Security Check"
@@ -1437,7 +1447,7 @@ msgstr "Identité d'utilisateur PGP :"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Enregistrer la phrase clé"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
@@ -1573,7 +1583,7 @@ msgstr "Faire correspondre les articles avec :"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Poids :"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1617,23 +1627,23 @@ msgstr "Jeu de caractères du composeur"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Configurer par défaut"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bits pour ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "&Encapsuler les caratères inconnus"
 
 #: expirestatusdlg.cpp:35
 msgid "Please wait a minute, I am expiring!"
-msgstr "Veuillez patitenter, je m'arrête !"
+msgstr "Veuillez patienter, je m'arrête !"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Mauvaise phrase clé : impossible de signer"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
@@ -1641,7 +1651,7 @@ msgstr "erreur d'exécution de pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Mauvaise phrase clé : impossible de décrypter"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
@@ -1657,13 +1667,15 @@ msgstr "??? (fichier ~/.pgp/pubring.pgp non trouvé)"
 
 #: kpgpbase.cpp:585
 msgid "The passphrase you entered is invalid."
-msgstr ""
+msgstr "La phrase clé que vous avez entrée est invalide."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Les clés avec lesquelles vous voulez crypter\n"
+"votre message ne sont pas sûres :\nAucun cryptage effectué."
 
 #: kpgpbase.cpp:614
 #, c-format
@@ -1686,7 +1698,7 @@ msgstr "Lire combien d'articles ?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Prendre les articles depuis"
 
 #: TooManydlg.cpp:37
 msgid "Oldest articles"
@@ -1698,4 +1710,4 @@ msgstr "Nouveaux articles"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
+msgstr "En faire le nouveau seuil"
