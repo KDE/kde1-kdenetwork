@@ -359,7 +359,7 @@ int main( int argc, char **argv ) {
   // Mario: testing
   if(TESTING) {
     //    gpppdata.open();
-    //    PPPL_ShowLog();
+    PPPL_ShowLog();
     //    return a.exec();
   }
 
@@ -843,6 +843,11 @@ void dieppp(int sig) {
     if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
       Debug("It was the setuid child that died\n");
       gpppdata.setSuidChildPid(-1);
+      QString msg = "Sorry. kppp's helper process just died.\n\n" \
+                    "Since a further execution would be pointless, " \
+                    "kppp will shut down right now.";
+      QMessageBox::critical(0L, i18n("Error"), i18n(msg));
+      shutDown(1);
     }
   }
 }
