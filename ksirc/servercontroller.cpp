@@ -217,6 +217,10 @@ servercontroller::servercontroller /*FOLD00*/
 servercontroller::~servercontroller() /*FOLD00*/
 {
   delete pic_icon;
+  if(PukeC != 0x0){
+     delete PukeC;
+     PukeC = 0x0;
+  }
 }
 
 void servercontroller::new_connection() /*fold00*/

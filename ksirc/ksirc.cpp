@@ -134,6 +134,8 @@ int main( int argc, char ** argv )
   kApp->exec();
 
   kConfig->sync();
+
+  delete kApp;
 }
 
 
