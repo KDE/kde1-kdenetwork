@@ -1,3 +1,8 @@
+1999-01-28  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: use sigsetjmp() instead of just setjmp() to solve
+	freeze when modem is powered off (bug#267)
+
 1999-01-27  Harri Porten  <porten@kde.org>
 
 	* pppstats.cpp: removed debug output

@@ -36,8 +36,7 @@
 #include "log.h"
 #include "requester.h"
 
-static jmp_buf jmp_buffer;
-static bool expect_alarm = false;
+static sigjmp_buf jmp_buffer;
 
 Modem *Modem::modem = 0;
 
@@ -308,15 +307,13 @@ bool Modem::hangup() {
     
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
-    if (setjmp(jmp_buffer) == 0) {
+    if (sigsetjmp(jmp_buffer, 1) == 0) {
       // set alarm in case tcsendbreak() hangs 
       signal(SIGALRM, alarm_handler);
       alarm(2);
-      expect_alarm = true;
       
       tcsendbreak(modemfd, 0);
       
-      expect_alarm = false;
       alarm(0);
       signal(SIGALRM, SIG_IGN);
     } else {
@@ -514,8 +511,7 @@ void alarm_handler(int) {
   Debug("alarm_handler(): Received SIGALRM\n");
 
   // jump 
-  if (expect_alarm)
-    longjmp(jmp_buffer, 1);
+  siglongjmp(jmp_buffer, 1);
 }
 
 #ifndef HAVE_USLEEP
