@@ -161,12 +161,18 @@ void PukeController::Traffic(int fd)
     if(bytes != sizeof(PukeMessage)){
       cerr << "Short message, Got: " << bytes << " Wanted: " << sizeof(PukeMessage) << " NULL Padded" << endl;
     }
+    /*
     printf("Traffic on: %d => %d %d %d %s\n", 
 	   fd,
 	   pm.iCommand, 
 	   pm.iWinId,
 	   pm.iArg,
 	   pm.cArg);
+    */
+    if(pm.cArg[49] != 0){
+      pm.cArg[49] = 0;
+      warning("PukeController: Message was NOT null terminated\n");
+    }
     MessageDispatch(fd, &pm);
     memset(&pm, 0, sizeof(pm));
   }
@@ -174,6 +180,8 @@ void PukeController::Traffic(int fd)
     switch(errno){
     case EAGAIN: // Don't do anything for try again
       break;
+    case 0:
+      break;     // We just read nothing, don't panic
     default:
       perror("PukeController: read failed");
       closefd(fd);

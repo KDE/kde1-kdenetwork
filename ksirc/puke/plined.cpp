@@ -18,14 +18,14 @@ PWidget *createWidget(widgetId *pwi, PWidget *parent)
 PLineEdit::PLineEdit(PWidget *parent)
   : PWidget(parent)
 {
-  debug("PLineEdit PLineEdit called");
+  //  debug("PLineEdit PLineEdit called");
   lineedit = 0;
   setWidget(lineedit);
 }
 
 PLineEdit::~PLineEdit()
 {
-  debug("PLineEdit: in destructor"); 
+  //  debug("PLineEdit: in destructor"); 
   delete widget();     // Delete the frame
   lineedit=0;          // Set it to 0
   setWidget(lineedit); // Now set all widget() calls to 0.

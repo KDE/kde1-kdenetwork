@@ -250,6 +250,7 @@
 // cArg: no define
 #define PUKE_QFRAME_SET_LINEWIDTH_ACK -1105
 
+//----------------------------------------------------
 // 1200 is a QLineEdit
 
 // Desc: set max line length
@@ -312,6 +313,97 @@
 // cArg: not defined
 #define PUKE_LINED_RETURN_PRESSED_ACK -1220
 
+//------------------------------------------------
+
+// Desc: set's button's current text
+// iWinId: window id
+// iArg: not defined
+// cArg: text
+#define PUKE_BUTTON_SET_TEXT 1300
+
+// Desc: ack for set text
+// iWinId: widget id
+// iArg: not defined
+// cArg: text
+#define PUKE_BUTTON_SET_TEXT_ACK -1300
+
+// Desc: set button to pixmap
+// iWinId: window id
+// iArg: not defined
+// cArg: path to pixmap
+#define PUKE_BUTTON_SET_PIXMAP 1305
+
+// Desc: ack for set pixmap
+// iWinId: widget id
+// iArg: pixmap()->isNull()
+// cArg: not defined
+#define PUKE_BUTTON_SET_PIXMAP_ACK -1305
+
+// Desc: set if button resizes with content changes
+// iWinId: window id
+// iArg: reisze, 0 false, 1 true
+// cArg: not defined
+#define PUKE_BUTTON_SET_AUTORESIZE 1310
+
+// Desc: ack for autreisze
+// iWinId: widget id
+// iArg: autoresize()
+// cArg: not defined
+#define PUKE_BUTTON_SET_AUTORESIZE_ACK -1310
+
+// Desc: button was pressed, not used
+// iWinId: not defined
+// iArg: not defined
+// cArg: not define
+#define PUKE_BUTTON_PRESSED 1350
+
+// Desc: signal button was pressed
+// iWinId: winid
+// iArg: not define
+// cArg: not defined
+#define PUKE_BUTTON_PRESSED_ACK -1350
+
+// Desc: button was relased, not used
+// iWinId: not defined
+// iArg: not defined
+// cArg: not define
+#define PUKE_BUTTON_RELEASED 1351
+
+// Desc: signal button was released
+// iWinId: winid
+// iArg: not define
+// cArg: not defined
+#define PUKE_BUTTON_RELEASED_ACK -1351
+
+// Desc: button was clicked, not used
+// iWinId: not defined
+// iArg: not defined
+// cArg: not define
+#define PUKE_BUTTON_CLICKED 1352
+
+// Desc: signal button was clicked
+// iWinId: winid
+// iArg: not defined
+// cArg: not defined
+#define PUKE_BUTTON_CLICKED_ACK -1352
+
+// Desc: button was toggled, not used
+// iWinId: not defined
+// iArg: not defined
+// cArg: not define
+#define PUKE_BUTTON_TOGGLED 1353
+
+// Desc: signal button was toggled
+// iWinId: winid
+// iArg: not define
+// cArg: not defined
+#define PUKE_BUTTON_TOGGLED_ACK -1353
+
+
+
+// ***********************************************************************
+// ***********************************************************************
+
 // 
 // Base commands are done, next describes Widget's
 //
@@ -325,6 +417,11 @@
 // LINED defines the simple SLE
 #define PWIDGET_LINED 4
 
+// BUTTON defines the abstract class QButton
+#define PWIDGET_BUTTON 5
+
+// PUSH defined the push button
+#define PWIDGET_PUSHBT 6
 
 
 // Group layout commands exist between 10000 and 11000

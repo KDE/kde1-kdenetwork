@@ -165,15 +165,15 @@ baserules.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
+ksirc_LDFLAGS = -rdynamic @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
 
-ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
+ksircstatic_LDFLAGS = -rdynamic -ldl $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
-ksircstatic_LDADD = $(ksirc_LDADD)
+ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a -lpuke /usr/local/lib/qt/lib/libqt.a -lX11 -lXext @LIBSOCKET@ -ldl /usr/lib/libc.a /usr/lib/libm.a /usr/lib/libstdc++.a
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #
@@ -241,7 +241,9 @@ mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
 linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
 mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
 kspainter.o baserules.o
-ksircstatic_DEPENDENCIES = 
+ksircstatic_DEPENDENCIES =  /opt/kde/lib/libkdeui.a \
+/opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a /usr/lib/libc.a \
+/usr/lib/libm.a /usr/lib/libstdc++.a
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)

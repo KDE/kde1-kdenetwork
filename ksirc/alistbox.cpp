@@ -105,7 +105,7 @@ int aListBox::findSep()
 
 bool aListBox::isTop(int index)
 {
-  if(index > findSep())
+  if(index >= findSep())
     return FALSE;
   else
     return TRUE;
@@ -130,8 +130,12 @@ int aListBox::findNick(QString str)
   do{
     while(min != max){
       current = (max - min)/2 + min;
-      if(current == last_current)
-	break; // we're looping, so stop
+      if(current == last_current){
+	if(loop == 0)
+	  break; // we're looping, so stop
+	warning("alistbox: in findNick, looping on second loop for %s",
+		str.data());
+      }
       
       compare = strncasecmp(text(current), str,
 			    QMIN(strlen(text(current)),

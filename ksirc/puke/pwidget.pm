@@ -98,7 +98,7 @@ sub setMinimumSize {
 
   my $iarg = $w * 2**16 + $h;
 
-  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SEMINSIZE,
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETMINSIZE,
 		     'iArg' => $iarg,
 		     'CallBack' => sub {});
 

@@ -2,7 +2,13 @@
 &::PukeSendMessage($PUKE_WIDGET_LOAD, 
 		   0, 
 		   $PWIDGET_LINED,
-		   "plined.so");
+		   "plined.so",
+		   sub { my %ARG = %{shift()};
+			 if($ARG{'iArg'} == 1){
+			   print "*E* PLineEdit Load failed!\n";
+			 }
+		       }
+		  );
 
 package PLineEdit;
 @ISA = qw(PWidget);
@@ -66,10 +72,11 @@ sub setText {
   
   $self->{text} = $text;
 
+  # Don't need the ouput since GET_TEXT_ACK will be called and
+  # we'll set it there
   $self->sendMessage('iCommand' => $::PUKE_LINED_SET_TEXT,
 		     'cArg' => $text,
-		     'CallBack' => sub {my %ARG = %{shift()};
-					$self->{text} = $ARG{'cArg'};});
+		     'CallBack' => sub {});
 
 }
 

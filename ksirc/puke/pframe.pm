@@ -2,7 +2,13 @@
 &::PukeSendMessage($PUKE_WIDGET_LOAD, 
 		   0, 
 		   $PWIDGET_FRAME,
-		   "pframe.so");
+		   "pframe.so",
+		   sub { my %ARG = %{shift()};
+			 if($ARG{'iArg'} == 1){
+			   print "*E* PFrame Load failed!\n";
+			 }
+		       }
+		  );
 
 package PFrame;
 @ISA = qw(PWidget);

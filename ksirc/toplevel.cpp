@@ -992,6 +992,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    nicks->removeItem(index);
 	    no_output = 0;
 	  }
+	  else{
+	    warning("TopLevel-part: nick search on %s failed", s3.data());
+	  }
 	}
 	break;
       case '>':
@@ -1048,6 +1051,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 				   // doesn't maintain sort order
 	  }
 	  nicks->setAutoUpdate(TRUE);
+	}
+	else {
+	  warning("Toplevel-N: nick change search failed on %s", s3.data());
 	}
 	break;
       case ' ':
@@ -1114,6 +1120,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 		  nicks->setAutoUpdate(TRUE);
 		  nicks->repaint();
 		}
+		else{
+		  warning("TopLevel+o: nick search failed on %s", mode.at(i));
+		}
 	      }
 	      else if(strcasecmp(mode.at(i), "-o") == 0){
 		offset = nicks->findNick(arg.at(i));
@@ -1126,6 +1135,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 		  nicks->inSort(irc); // add new nick in sorted pass,with colour
 		  nicks->setAutoUpdate(TRUE);
 		  nicks->repaint();
+		}
+		else{
+		  warning("TopLevel-o: nick search failed on %s", mode.at(i));
 		}
 	      }
 	      else if(strcasecmp(mode.at(i), "+v") == 0){

@@ -44,7 +44,7 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
     parent.iWinId = pm->iWinId;
     if((pw = wrControl->id2pwidget(&parent)) != 0){
       qbl = new QBoxLayout(pw->widget(), (QBoxLayout::Direction) iArg[0], (int) iArg[1]);
-      debug("Creating layout with parent: %d", parent.iWinId);
+      //      debug("Creating layout with parent: %d", parent.iWinId);
       
     }
     else{
@@ -59,8 +59,8 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
     pmRet.iWinId = wIret.iWinId;
     pmRet.iArg = 0;
     strncpy(pmRet.cArg, pm->cArg, 50);
-    debug("Create layout after cArg: %s", pm->cArg);
-    debug("Create layout pmRet.cArg: %s", pmRet.cArg);
+    //    debug("Create layout after cArg: %s", pm->cArg);
+    //    debug("Create layout pmRet.cArg: %s", pmRet.cArg);
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
@@ -79,8 +79,8 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
       emit outputMessage(fd, &pmRet);
       return;
     }
-    debug("Adding widget with stretch: %d and align: %d", (int) pm->cArg[0],
-	  (int) pm->cArg[1]);
+    //    debug("Adding widget with stretch: %d and align: %d", (int) pm->cArg[0],
+    //	  (int) pm->cArg[1]);
     qlb->addWidget(pw->widget(), pm->cArg[0], pm->cArg[1]);
 
     pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget

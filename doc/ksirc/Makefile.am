@@ -1,6 +1,6 @@
 
 # add here all files
-data_DATA = colours.html filters.html index.html ksirc.gif keys.html
+data_DATA = colours.html filters.html index.html ksirc.gif keys.html PROGRAMMING
 
 noinst_HEADERS = $(data_DATA)
 

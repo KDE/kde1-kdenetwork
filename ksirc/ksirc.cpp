@@ -106,6 +106,10 @@ int main( int argc, char ** argv )
     kApp->kdedir() =  kSircConfig->kdedir;
     cerr << "KDEDIR set to: " << kApp->kdedir() << endl;
   }
+  QString ld_path = getenv("LD_LIBRARY_PATH");
+  ld_path += ":" + kSircConfig->kdedir + "/share/apps/ksirc/dl/:";
+  ld_path.prepend("LD_LIBRARY_PATH=");
+  putenv(ld_path.data());
 
   kConfig->setGroup("GlobalOptions");
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));

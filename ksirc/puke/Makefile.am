@@ -32,14 +32,7 @@ mwidget.cpp \
 layout.cpp \
 mlayout.cpp \
 pwidget.cpp \
-mpwidget.cpp \
-
-noinst_HEADERS = \
-commands.h    pframe.h      pwidget.h     widgethdlr.h \
-controller.h  pmessage.h    widget.h \
-commands-handler.pl  convert_commands.pl  tester.pl \
-commands-perl.pl     puke.pl \
-pframe.pm   pwidget.pm layout.h
+mpwidget.cpp
 
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
@@ -59,27 +52,66 @@ libpuke.c: commands.h
 	@touch libpuke.c
 	@echo "Done"
 
-libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so HOWTO-PUKE.txt
+libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so HOWTO-PUKE.txt
 	./convert_commands.pl
 	ar cr libpuke.a $(libpukeOBJECTS)
 	ranlib libpuke.a || true
 
-pframe.so: pframe.cpp pframe.h mpframe.o
+pframe.so: pframe.o pframe.h mpframe.o
 	$(CXXCOMPILE) -fPIC -c pframe.cpp
 	gcc -shared -Wl -o pframe.so pframe.o mpframe.o
 
-mpframe.o: pframe.h
+mpframe.cpp: pframe.h
+	moc pframe.h -o mpframe.cpp
+
+mpframe.o: pframe.h mpframe.cpp
 	$(CXXCOMPILE) -fPIC -c mpframe.cpp
 
-plined.so: plined.cpp plined.h mplined.o
+plined.so: plined.o mplined.o
 	$(CXXCOMPILE) -fPIC -c plined.cpp
 	gcc -shared -Wl -o plined.so plined.o mplined.o
+
+mplined.cpp: plined.h
+	moc plined.h -o mplined.cpp
 
 mplined.o: mplined.cpp plined.h
 	$(CXXCOMPILE) -fPIC -c mplined.cpp
 
+pbutton.so: pbutton.o mpbutton.o
+	$(CXXCOMPILE) -fPIC -c pbutton.cpp
+	gcc -shared -Wl -o pbutton.so pbutton.o mpbutton.o
+
+mpbutton.cpp: pbutton.h
+	moc pbutton.h -o mpbutton.cpp
+
+mpbutton.o: mpbutton.cpp pbutton.h
+	$(CXXCOMPILE) -fPIC -c mpbutton.cpp
+
+ppushbt.so: ppushbt.cpp mppushbt.o
+	$(CXXCOMPILE) -fPIC -c ppushbt.cpp
+	gcc -shared -Wl -o ppushbt.so ppushbt.o mppushbt.o
+
+mppushbt.cpp: ppushbt.h
+	moc ppushbt.h -o mppushbt.cpp
+
+mppushbt.o: mppushbt.cpp ppushbt.h
+	$(CXXCOMPILE) -fPIC -c mppushbt.cpp
+
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
+
+# no install headers
+
+noinst_HEADERS = \
+commands.h layout.h plined.h pwidget.h widgethdlr.h \
+controller.h pframe.h pmessage.h widget.h HOWTO-PUKE.pod \
+commands-handler.pl  pboxlayout.pm pwidget.pm \
+commands-perl.pl pframe.pm test.pl convert_commands.pl \
+plined.pm tester.pl pbase.pm puke.pl pframe.cpp plined.cpp \
+ppushbt.h ppushbt.cpp \
+pbutton.h pbutton.cpp
+
+
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -99,7 +131,7 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_DATA) *.pl *.pm $(kde_datadir)/ksirc
+	$(INSTALL_DATA) *.pl *.pm *.so $(kde_datadir)/ksirc
 
 #
 # remove ALL you have installed in install-data-local or install-exec-local
@@ -110,4 +142,3 @@ uninstall-local:
 # I've added a key binding to emacs for this. 
 m%.cpp: %.h
 	moc $< -o $@
-

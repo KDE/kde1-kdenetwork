@@ -57,10 +57,7 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     pmRet.iCommand = PUKE_WIDGET_CREATE_ACK;
     pmRet.iWinId = wIret.iWinId;
     pmRet.iArg = 0;
-    debug("Create widget before cArg: %s", pm->cArg);
     strncpy(pmRet.cArg, pm->cArg, 50);
-    debug("Create widget after cArg: %s", pm->cArg);
-    debug("Create widget pmRet.cArg: %s", pmRet.cArg);
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_WIDGET_DELETE){
@@ -98,13 +95,13 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     handle = dlopen(pm->cArg, RTLD_LAZY|RTLD_GLOBAL);
     if (!handle) {
       fputs(dlerror(), stderr);
-      return;
+      goto load_barfed; // OK I SHOULD USE EXCEPTIONS!!!
     }
     wc =  (PWidget *(*)(widgetId *wI, PWidget *parent) )
       dlsym(handle, "createWidget");
     if ((error = dlerror()) != NULL)  {
       fputs(error, stderr);
-      return;
+      goto load_barfed; // Oh shutup ;)
     }
     wC = new widgetCreate;
     wC->wc = wc;
@@ -113,6 +110,13 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     
     pmRet.iCommand = -pm->iCommand;
     emit outputMessage(fd, &pmRet);
+    goto finish;
+  load_barfed: 
+    pmRet.iCommand = -pm->iCommand;
+    pmRet.iArg = 1;
+    emit outputMessage(fd, &pmRet);
+  finish:
+    if(1){}  // I hate goto's
   }
   else if(pm->iCommand == PUKE_WIDGET_UNLOAD){
     const char *error;
@@ -213,7 +217,7 @@ void WidgetRunner::closefd(int fd)
   }
   QIntDictIterator<WidgetS> it(*qidWS);
   if(it.count() == 0){
-    debug("WidgetRunner: emtpy set?!?!?\n");
+    debug("WidgetRunner: nothing left to delete\n");
   }
   else{
     while(it.current()){

@@ -56,15 +56,15 @@ baserules.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
+ksirc_LDFLAGS = -rdynamic @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
 
-ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
+ksircstatic_LDFLAGS = -rdynamic -ldl $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
-ksircstatic_LDADD = $(ksirc_LDADD)
+ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a -lpuke /usr/local/lib/qt/lib/libqt.a -lX11 -lXext @LIBSOCKET@ -ldl /usr/lib/libc.a /usr/lib/libm.a /usr/lib/libstdc++.a
 
 kdoc:
 	kdoc -ddoc ksirc *.h

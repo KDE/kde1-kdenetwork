@@ -1,3 +1,16 @@
+1998-03-07  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Majour update comes in the form of the puke sub directory.  This
+ 	contains the starting frame work for full control of ksirc from
+ 	perl scripts.  Right now it implements a small widget set (ha!
+  	small!! a widget, a frame and a lineedit).  Ground work is all set
+ 	to start adding more. :)
+
+	* puke/pwidget.pm (close): Wow it's been a while since this was
+ 	updated =)
+
+
+	
 1998-02-17  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Default rules added: 
@@ -235,6 +248,20 @@
 $Revision$
 	
 $Log$
+Revision 1.28  1998/02/17 20:51:59  asj
+1998-02-17  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Default rules added:
+	                       + Filter ksirc colours
+			       + Filter mirc colours
+			       + Colourize nicks
+			       + Colourize your nick
+
+	* KSPrefs/defaultfilters.cpp: Added default filters
+ 	configure/prefrences dialog.
+
+	* baserules.cpp (defaultRules): Added basic default filter rules.
+
 Revision 1.27  1998/02/07 17:14:51  asj
 Basic updates for beta.
 

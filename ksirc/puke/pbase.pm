@@ -39,7 +39,7 @@ sub new {
   my $self  = {};
 
 
-  print "Parent: $parent\n";
+#  print "Parent: $parent\n";
 
   bless($self, $class);
 
@@ -81,7 +81,7 @@ sub create {
     $self->{Parent}->canRun($self, \&PBase::create, \@_) || return;
   }
 
-  print "*I* Createing widget of type: " . $self->{widgetType} . " with parent " . $self->{Parent}->{iWinId} . "\n";
+#  print "*I* Createing widget of type: " . $self->{widgetType} . " with parent " . $self->{Parent}->{iWinId} . "\n";
 
   $::PUKE_CREATOR{$self->{initId}} =  sub{$self->ackWinId(@_);};
 
@@ -99,6 +99,9 @@ sub create {
 
 sub DESTROY {
   my $self = shift;
+
+  print "*I* Widget Deleted\n";
+  $self->hide();
 
   $self->setRunable(1);
 
@@ -223,7 +226,7 @@ sub installHandler {
 
 #  print Dumper($::PUKE_W_HANDLER{$command});
 
-  print "*I* Installed for $self->{iWinId}, $command handler to $handler\n";
+#  print "*I* Installed for $self->{iWinId}, $command handler to $handler\n";
 }
 
 sub onNext {

@@ -3,6 +3,8 @@
 &docommand("/load pframe.pm");
 &docommand("/load pboxlayout.pm");
 &docommand("/load plined.pm");
+&docommand("/load pbutton.pm");
+&docommand("/load ppushbt.pm");
 
 $pw = new PWidget;
 $pw->resize(250,500);
@@ -21,12 +23,27 @@ $pb = new PBoxLayout($pw, $PBoxLayout::TopToBottom, 5);
 $pb->addWidget($pf, 10); 
 $pb->addWidget($pf2, 5);
 
+$pb2 = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+$pb->addLayout($pb2, 0);
+
 $pl = new PLineEdit($pw);
-$pl->setMinimumSize(35,200);
-$pl->setMaximumSize(35,5000);
+$pl->setMinimumSize(30,50);
+$pl->setMaximumSize(30,1000);
 $pl->setText("Blah blah");
 #$pl->resize(50,75);
-$pb->addWidget($pl, 10, $PBoxLayout::AlignLeft);
+$pb2->addWidget($pl, 0, $PBoxLayout::AlignCenter);
+
+$pp = new PPushButton($pw);
+$pp->setMinimumSize(65,65);
+$pp->setMaximumSize(65,65);
+$pp->setPixmap("/opt/kde/share/icons/ksirc.gif2");
+$pp->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub 
+		    {
+		      print "*I* Clocked!\n"; 
+		      $pw->close;
+		    }
+		   );
+$pb2->addWidget($pp, 0, $PBoxLayout::AlignRight);
 
 $pw->onNext(sub{$pw->show()});
 #$pf->show();

@@ -25,7 +25,7 @@ sub new {
 
   my $widget = shift;
 
-  print "Widget: " . ref($widget) . "\n";
+#  print "Widget: " . ref($widget) . "\n";
 
   if(ref($widget)){
     $self->{Parent} = $widget;
@@ -58,7 +58,7 @@ sub create {
     $self->{Parent}->canRun($self, \&PBoxLayout::create, \@_) || return;
   }
 
-  print "*I* Createing Layout with parent " . $self->{Parent}->{iWinId} . "\n";
+#  print "*I* Createing Layout with parent " . $self->{Parent}->{iWinId} . "\n";
 
   $::PUKE_CREATOR{$self->{initId}} =  sub{$self->ackWinId(@_);};
 
@@ -83,7 +83,7 @@ sub addWidget {
   $self->canRun($self, \&PBoxLayout::addWidget, \@ARG) || return;
   $widget->canRun($self, \&PBoxLayout::addWidget, \@ARG) || return;
   
-  print "*I* Sending add arg for id: " . $widget->{iWinId} . "\n";
+#  print "*I* Sending add arg for id: " . $widget->{iWinId} . "\n";
 
   $align = $PBoxLayout::AlignCenter if($align == 0);
 
@@ -104,7 +104,7 @@ sub addLayout {
   # make sure we can run, and the widget we want to add can run.
   my @ARG = ($layout);
   $self->canRun($self, \&PBoxLayout::addLayout, \@ARG) || return;
-  $layout->canRun($self, \&PBoxLayout::addWidget, \@ARG) || return;
+  $layout->canRun($self, \&PBoxLayout::addLayout, \@ARG) || return;
 
   $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDLAYOUT,
 		     'iWinId' => $self->{iWinId},
