@@ -27,6 +27,7 @@ class kstInside;
 #include <kfm.h>
 #include <ksimpleconfig.h>
 #include <knewpanner.h>
+#include <KMDIMgr.h>
 
 //#include "ahtmlview.h"
 #include "irclistitem.h"
@@ -107,7 +108,9 @@ public:
   virtual void control_message(int, QString);
 
 
-
+  const char* original_name(){
+    return orig_name;
+  }
 
 signals:
   /**
@@ -154,12 +157,23 @@ signals:
    */
   void objDestroyed(KSircTopLevel *);
 
-  public slots:
+public slots:
   /**
-    * When enter is pressed, we read the SLE and output the results
-    * after processing via emitting outputLine.
-    */
+   * When enter is pressed, we read the SLE and output the results
+   * after processing via emitting outputLine.
+   */
   virtual void sirc_line_return();
+
+  /**
+   * When we get focus from the MDI Manager we need a little hocus pocus
+   */
+  virtual void gotMDIFocus(KMDIWindow *);
+
+  /**
+   * setCaption is reimplemented so we can set MDICaption as well
+   */
+  void setCaption(const char *);
+   
 
 protected slots:
     /**
@@ -272,7 +286,7 @@ protected:
    /**
     * Timer checks size and updates it if need be
     */
-//   virtual void timerEvent( QTimerEvent * );
+   //   virtual void timerEvent( QTimerEvent * );
 
 private:
   bool continued_line;
@@ -321,6 +335,11 @@ private:
     * The channel name that we belong too.
     */
   char *channel_name;
+
+  /**
+   * Orginal name must be kept since MDI mananger relies on it
+   */
+  char *orig_name;
 
   /**
     * Caption at the top of the window.

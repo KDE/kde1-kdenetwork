@@ -32,6 +32,10 @@ class ProcCommand;
 
 #include "pws-0.5/pws/pws.h"
 
+#include "KMDIMgr.h"
+
+extern KMDIMgr *MDIMgr;
+
 class ProcCommand // ServerController message
 {
  public:
@@ -177,6 +181,11 @@ public slots:
     virtual void endksirc();
 
 
+protected slots:
+  void MDIMinimized(KMDIWindow *);
+  void WindowSelected(int index);
+      
+    
 protected:
 
     void saveProperties(KConfig *);

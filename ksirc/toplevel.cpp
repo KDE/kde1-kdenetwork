@@ -57,7 +57,7 @@
 
 extern KConfig *kConfig;
 extern KApplication *kApp;
-
+extern KMDIMgr *MDIMgr;
 //QPopupMenu *KSircTopLevel::user_controls = 0L;
 QList<UserControlMenu> *KSircTopLevel::user_menu = 0L;
 QPixmap *KSircTopLevel::pix_info = 0L;
@@ -85,6 +85,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   proc = _proc;
 
+
+  // Set the name, and keep the orignal so we can use the MDI manager
+  orig_name = qstrdup(QString(QObject::name()) + "_" + "toplevel");
+  QString kstl_name = QString(QObject::name()) + "_" + "toplevel";
+  setName(kstl_name);
+
+  
   channel_name = qstrdup(cname);
   if(channel_name){
   //    QString s = channel_name;
@@ -98,10 +105,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   else
     caption = "";
 
-  QString kstl_name = QString(QObject::name()) + "_" + "toplevel";
-  setName(kstl_name);
-  
-  LineBuffer = new QStrList();
+  LineBuffer = new QStrList(TRUE);
   Buffer = FALSE;
 
   have_focus = 0;
@@ -352,7 +356,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel() /*fold00*/
+KSircTopLevel::~KSircTopLevel() /*FOLD00*/
 {
 
   // Cleanup and shutdown
@@ -392,7 +396,7 @@ KSircTopLevel::~KSircTopLevel() /*fold00*/
    */
   delete kmenu;
   delete ktool;
-
+  free(orig_name);
 }
 
 void KSircTopLevel::show() /*FOLD00*/
@@ -869,7 +873,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
   //delete file;
 }
 
-void KSircTopLevel::gotFocus() /*fold00*/
+void KSircTopLevel::gotFocus() /*FOLD00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -893,7 +897,7 @@ void KSircTopLevel::lostFocus() /*fold00*/
 
 }
 
-void KSircTopLevel::control_message(int command, QString str) /*fold00*/
+void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
@@ -924,8 +928,9 @@ void KSircTopLevel::control_message(int command, QString str) /*fold00*/
       ktool->getFrame(10)->setName(QString(QObject::name()) + "_ktoolframe");
       lagmeter->setName(QString(QObject::name()) + "_lagmeter");
       have_focus = 0;
-      setCaption(channel_name);
+      this->setCaption(channel_name);
       mainw->scrollToBottom();
+      emit currentWindow(this);
       break;
     }
   case STOP_UPDATES:
@@ -990,7 +995,7 @@ void KSircTopLevel::control_message(int command, QString str) /*fold00*/
   }
 }
 
-void KSircTopLevel::showTicker() /*fold00*/
+void KSircTopLevel::showTicker() /*FOLD00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1132,7 +1137,7 @@ void KSircTopLevel::iamDestroyed() /*fold00*/
 
 #undef BLAH
 #ifdef BLAH
-void KSircTopLevel::timerEvent( QTimerEvent * ){ /*fold00*/
+void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
 //  debug("Tick:  current size: %d %d, real size: %d %d",
 //	current_size.width(), current_size.height(),
 //	size().width(), size().height());
@@ -1150,7 +1155,25 @@ void KSircTopLevel::timerEvent( QTimerEvent * ){ /*fold00*/
 }
 #endif
 
-kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*/
+void KSircTopLevel::gotMDIFocus(KMDIWindow *win)
+{
+  setFocus();
+  f->setFocus();
+  linee->setFocus();
+  emit currentWindow(this);
+}
+
+void KSircTopLevel::setCaption(const char *str)
+{
+  if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
+    KMDIWindow *w = MDIMgr->getWindowByName(orig_name);
+    if(w != 0x0)
+      w->setCaption(str);
+  }
+  KTopLevelWidget::setCaption(str);
+}
+
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -1175,7 +1198,7 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*
 
 }
 
-kstInside::~kstInside() /*FOLD00*/
+kstInside::~kstInside() /*fold00*/
 {
   delete mainw;
   delete nicks;
@@ -1184,7 +1207,7 @@ kstInside::~kstInside() /*FOLD00*/
 }
 
 
-void kstInside::resizeEvent(QResizeEvent *e) /*FOLD00*/
+void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   QFrame::resizeEvent(e);
 
@@ -1196,7 +1219,7 @@ void kstInside::resizeEvent(QResizeEvent *e) /*FOLD00*/
                    width() - 10, real_height - linee_height - 15);
 }
 
-void kstInside::setName(const char *name) /*FOLD00*/
+void kstInside::setName(const char *name) /*fold00*/
 {
   QObject::setName(name);
   my_name = name;

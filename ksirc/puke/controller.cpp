@@ -230,8 +230,8 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
 	switch(errno){
 	case EAGAIN: // Don't do anything for try again
 	  break;
-	default:
-	  perror("Puke: write on socket failed");
+//	default:
+//	  perror("Puke: write on socket failed");
 	  // Don't call closefd() since deletes are called on write's
 	  // since write is being called from the destructors, etc of
 	  // the widgets.  (bad things happend when you call write

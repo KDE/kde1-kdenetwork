@@ -51,7 +51,6 @@ open_top.cpp open_topData.cpp mopen_top.cpp mopen_topData.cpp \
 messageReceiver.cpp \
 ioBroadcast.cpp \
 ksircprocess.cpp mksircprocess.cpp \
-#open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
 servercontroller.cpp mservercontroller.cpp \
 KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
 FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
@@ -67,7 +66,8 @@ baserules.cpp \
 estring.cpp \
 chanparser.cpp \
 objFinder.cpp \
-mobjFinder.cpp
+mobjFinder.cpp \
+KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp
 
 ksircstaticSOURCES = $(ksirc_SOURCES)
 ksircstaticOBJECTS = $(ksirc_OBJECTS)
@@ -81,7 +81,7 @@ ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 # that depend on the following ones.
 ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(LIBDL)  $(KDE_RPATH)
 
-ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a
+ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a KSOpenkSirc/libksopenksirc.a puke/.libs/libpuke.a
 
 #if COMPILE_KSIRC_STATIC
 STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ $(LIBDL) -lm -lc
@@ -118,8 +118,8 @@ ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_l
 noinst_HEADERS = \
 FilterRuleEditor.h        control_message.h         linelistitem.h \
 FilterRuleEditorData.h    dccDialog.h               messageReceiver.h \
-KSircColour.h             dccDialogData.h           open_ksirc.h \
-KSircColourData.h         ioBroadcast.h             open_ksircData.h \
+KSircColour.h             dccDialogData.h           \
+KSircColourData.h         ioBroadcast.h             \
 ioDCC.h                   open_top.h                usercontrolmenu.h \
 ioDiscard.h               open_topData.h            kspainter.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
@@ -129,7 +129,8 @@ ksircprocess.h            ksirc.kdelnk              cdate.h \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h          usercontrolmenu.h         objFinder.h \
 dsirc                     filters.pl                ksirc.pl \
-sirc.help.gz              baserules.h               estring.h 
+sirc.help.gz              baserules.h               estring.h \
+KMDIMgr.h KMDIMgrBase.h  
 
 
 # just to make sure, automake makes them 
@@ -150,14 +151,13 @@ mirclistbox.cpp \
 mirclistitem.cpp \
 mksircprocess.cpp \
 mobjFinder.cpp \
-mopen_ksirc.cpp \
-mopen_ksircData.cpp \
 mopen_top.cpp \
 mopen_topData.cpp \
 mservercontroller.cpp \
 mssfeprompt.cpp \
 mssfepromptdata.cpp \
-mtoplevel.cpp
+mtoplevel.cpp \
+mKMDIMgr.cpp mKMDIMgrBase.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

@@ -102,6 +102,9 @@ int main( int argc, char ** argv )
 
   kConfig->setGroup("GlobalOptions");
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
+  kConfig->setGroup("General");
+  kSircConfig->MDIMode = kConfig->readNumEntry("MDIMode", false);
+
 
   if(kApp->isRestored()){
     int n = 1;

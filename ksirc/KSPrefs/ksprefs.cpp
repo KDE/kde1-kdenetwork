@@ -53,6 +53,7 @@ KSPrefs::~KSPrefs(){
 void KSPrefs::resizeEvent ( QResizeEvent * )
 {
   pTab->setGeometry(0, 0, width(), height());
+  pGeneral->resize(pTab->width(),pTab->height());
 }
 
 void KSPrefs::slot_apply()

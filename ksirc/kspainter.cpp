@@ -184,7 +184,7 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
         i+=2; // Move ahead 2 characters (~x == 2)
         break;
       default:
-        i++; // Move to next character
+//        i++; // Move to next character
         break;
       }
     }

@@ -296,7 +296,7 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
 }
 
 void KSircListBox::clearSelection() { /*FOLD00*/
-  for(int i = 0; i <= (int) count(); i++){ // Start one prior and one back to just really make sure
+  for(int i = 0; i < (int) count(); i++){ // Start one prior and one back to just really make sure
     ircListItem *it = (ircListItem *) item(i);
     if(it == 0x0){
       continue;
@@ -318,8 +318,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
     int row = -2, line = -2, rchar = -2;
     ircListItem *it;
     if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
-      return;
-    //  debug("rchar: %d", rchar);
+        return;
     if(selectMode == FALSE){
       int xoff, yoff;
       xoff = me->x() - spoint.x() > 0 ? me->x() - spoint.x() : spoint.x() - me->x();
@@ -332,10 +331,10 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
 
 	return;
       }
+//      clearSelection();
       max = min = sline; // start setting max and min info for clean up
       sit->setRevOne(schar);
       selectMode = TRUE;
-      clearSelection();
     }
     //  if(schar == rchar)
     //    rchar++;

@@ -342,7 +342,18 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
             this,SLOT(clean_toplevel(KSircTopLevel *)));
     default_window(wm); // Set it to the default window.
     emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
-    wm->show(); // Pop her up
+    if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
+      wm->recreate(MDIMgr, 0x0, QPoint(0,0));
+      KMDIWindow *mdiWnd=MDIMgr->addWindow(wm,MDI_SHOW,NULL);
+      connect(mdiWnd, SIGNAL(selected(KMDIWindow *)),
+              wm, SLOT(gotMDIFocus(KMDIWindow *)));
+      wm->gotMDIFocus(mdiWnd);
+      mdiWnd->setCaption(str);
+      mdiWnd->show();
+    }
+    else{
+      wm->show(); // Pop her up
+    }
   }
   else{
     debug("Window %s already exists", str.data());
@@ -353,6 +364,16 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
 {
 
   bool is_default = FALSE; // Assume it's no default
+
+
+  // Do this now or we get junk left on the screen
+  if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
+    KMDIWindow *km = MDIMgr->getWindowByName(wm->original_name());
+    if(km != 0x0){
+      MDIMgr->removeWindow(km);
+      km->hide();
+    }
+  }
 
   if(TopList.count() <= 8){ // If this is the last window shut down
     QString command = "/quit\n";

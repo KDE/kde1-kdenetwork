@@ -12,15 +12,15 @@ Dialog {
 WidgetLayout {
 InitialPos {-1 -1}
 Size {450 300}
-MinSize {0 0}
-MaxSize {32767 32767}
+MinSize {450 300}
+MaxSize {450 300}
 Grid {10}
 
 ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 10 430 110}
+		Rect {10 10 430 140}
 		Name {ButtonGroup_4}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -30,7 +30,7 @@ ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 160 430 130}
+		Rect {10 160 430 120}
 		Name {ButtonGroup_3}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -89,7 +89,7 @@ CheckBox {
 		Text {Auto Rejoin}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {20 80 170 30}
+		Rect {240 80 170 30}
 		Name {CheckBox_6}
 		Variable {CB_AutoRejoin}
 		LayoutStatus {NoLayout}
@@ -139,9 +139,21 @@ CheckBox {
 		Text {Display Topic in Caption}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {240 80 170 30}
+		Rect {20 80 210 30}
 		Name {CheckBox_9}
 		Variable {CB_DisplayTopic}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+CheckBox {
+		Checked {TRUE}
+		Text {Use MDI Mode (Must restart to take effect, experimental!!)}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {20 110 410 30}
+		Name {CheckBox_10}
+		Variable {CB_MDIMode}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

@@ -43,7 +43,8 @@ general::general
   kSircConfig->AutoRejoin = kConfig->readNumEntry("AutoRejoin", TRUE);
 
   CB_DisplayTopic->setChecked(kSircConfig->DisplayTopic);
-
+  CB_MDIMode->setChecked(kSircConfig->MDIMode);
+  
   // not yet =P
   CB_BackgroundPix->hide();
   CB_BackgroundPix->setChecked(kConfig->readNumEntry("BackgroundPix", FALSE));
@@ -86,6 +87,7 @@ void general::slot_apply()
   kSircConfig->BackgroundPix = CB_BackgroundPix->isChecked();
   kSircConfig->BackgroundFile = SLE_BackgroundFile->text();
   kSircConfig->DisplayTopic = CB_DisplayTopic->isChecked();
+  kSircConfig->MDIMode = CB_MDIMode->isChecked();
 
   kConfig->setGroup("General");
   kConfig->writeEntry("AutoCreateWin", kSircConfig->AutoCreateWin);
@@ -96,5 +98,6 @@ void general::slot_apply()
   kConfig->writeEntry("BackgroundPix", kSircConfig->BackgroundPix);
   kConfig->writeEntry("BackgroundFile", kSircConfig->BackgroundFile);
   kConfig->writeEntry("DisplayTopic", kSircConfig->DisplayTopic);
+  kConfig->writeEntry("MDIMode", kSircConfig->MDIMode);
   kConfig->sync();
 }

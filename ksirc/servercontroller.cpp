@@ -95,6 +95,7 @@
 extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
+KMDIMgr *MDIMgr;
 
 servercontroller::servercontroller /*FOLD00*/
 (
@@ -105,14 +106,35 @@ servercontroller::servercontroller /*FOLD00*/
   KTopLevelWidget( name )
 {
 
-  sci = new scInside(this, QString(name) + "_mainview");
+
+  MenuBar = new KMenuBar(this, QString(name) + "_menu");
+  setMenu(MenuBar);
+
+  if(kSircConfig->MDIMode == FALSE){
+    sci = new scInside(this, QString(name) + "_mainview");
+    setView(sci, TRUE);
+    MDIMgr = 0;
+  }
+  else{
+    MDIMgr = new KMDIMgr(this,"MDI Mananager", toolBar());
+    setView(MDIMgr, TRUE);
+    sci = new scInside(MDIMgr, QString(name) + "_mainview");
+    KMDIWindow *mdiWnd=MDIMgr->addWindow(sci,MDI_SHOW,NULL);
+    mdiWnd->setCaption("Server Controller");
+    connect(mdiWnd, SIGNAL(minimized(KMDIWindow *)),
+            this, SLOT(MDIMinimized(KMDIWindow *)));
+    mdiWnd->show();
+  }
+
   sci->setFrameStyle(QFrame::Box | QFrame::Raised);
   ConnectionTree = sci->ConnectionTree;
 
-  MenuBar = new KMenuBar(this, QString(name) + "_menu");
+  connect(ConnectionTree, SIGNAL(highlighted(int)),
+	  this, SLOT(WindowSelected(int)));
+  connect(ConnectionTree, SIGNAL(selected(int)),
+	  this, SLOT(WindowSelected(int)));
 
-  setMenu(MenuBar);
-  setView(sci, TRUE);
+
   setFrameBorderWidth(5);
 
   QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
@@ -192,7 +214,8 @@ servercontroller::servercontroller /*FOLD00*/
   setIcon(*pic_icon);
   KWM::setMiniIcon(winId(), *pic_server);
 
-  resize( 450,200 );
+  if(kSircConfig->MDIMode == FALSE)
+    resize( 450,200 );
 
   // Server Controller is done setting up, create Puke interface.
 
@@ -605,13 +628,52 @@ void servercontroller::toggleDocking(){ /*fold00*/
   }
 }
 
-void servercontroller::endksirc(){ /*fold00*/
+void servercontroller::endksirc(){ /*FOLD00*/
   kConfig->sync();
   exit(0);
 
 }
 
-scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/
+void servercontroller::MDIMinimized(KMDIWindow *w){
+  w->slotRestore();
+}
+
+void servercontroller::WindowSelected(int index){
+  KTreeListItem *child = ConnectionTree->itemAt(index);
+  KTreeListItem *parent_chan = child->getParent();
+  if(parent_chan == 0x0 || parent_chan->getText() == 0x0)
+    return;
+  KTreeListItem *parent_server = parent_chan->getParent();
+  if(parent_server == 0x0 || parent_server->getText() == 0x0)
+    return;
+
+  QString txt = QString(parent_server->getText()) + "_" + child->getText() + "_toplevel";
+  debug("Searching on: %s", txt.data());
+  KSircTopLevel *obj = (KSircTopLevel *) objFinder::find(txt, "KSircTopLevel");
+  debug("Found: %p", obj);
+  if(obj == 0x0){
+    txt = QString(parent_server->getText()) + "_!" + child->getText() + "_toplevel";
+    debug("Searching on: %s", txt.data());
+    obj = (KSircTopLevel *) objFinder::find(txt, "KSircTopLevel");
+    debug("Found: %p", obj);
+  }
+    
+  if(obj != 0x0){
+    if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
+      KMDIWindow *w = MDIMgr->getWindowByName(obj->original_name());
+      if(w != 0x0){
+	debug("Restoring window");
+	w->slotRestore();
+	w->raise();
+      }
+    }
+    else{
+      obj->raise();
+    }
+  }
+}
+
+scInside::scInside ( QWidget * parent, const char * name, WFlags /*FOLD00*/
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -637,14 +699,13 @@ scInside::~scInside() /*fold00*/
   delete ConnectionTree;
 }
 
-void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
+void scInside::resizeEvent ( QResizeEvent *e ) /*FOLD00*/
 {
   QFrame::resizeEvent(e);
   ASConn->setGeometry(10,10, width() - 20,
 		      ASConn->fontMetrics().height()+5);
   ConnectionTree->setGeometry(10, 10 + ASConn->height(),
                               width() - 20, height() - 20 - ASConn->height());
-  debug("Servercontroller finished resize\n");
   
 }
 
