@@ -97,7 +97,11 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mAtmList.setAutoDelete(TRUE);
   mAutoDeleteMsg = FALSE;
 
+#ifndef KRN
   setCaption(nls->translate("KMail Composer"));
+#else
+  setCaption(nls->translate("KRN Composer"));
+#endif
   setMinimumSize(200,200);
 
   mAtmListBox = new KTabListBox(&mMainWidget, NULL, 5);
@@ -752,7 +756,7 @@ void KMComposeWin::addAttach(const QString aUrl)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::addAttach(KMMessagePart* msgPart)
+void KMComposeWin::addAttach(const KMMessagePart* msgPart)
 {
   mAtmList.append(msgPart);
 
@@ -771,7 +775,7 @@ void KMComposeWin::addAttach(KMMessagePart* msgPart)
 
 
 //-----------------------------------------------------------------------------
-const QString KMComposeWin::msgPartLbxString(KMMessagePart* msgPart) const
+const QString KMComposeWin::msgPartLbxString(const KMMessagePart* msgPart) const
 {
   unsigned int len;
   QString lenStr(32);
@@ -1171,7 +1175,7 @@ void KMComposeWin::slotHelp()
 
 //Class KMLineEdit ------------------------------------------------------------
 
-KMLineEdit::KMLineEdit(QWidget *parent = NULL, const char *name = NULL)
+KMLineEdit::KMLineEdit(QWidget *parent, const char *name)
   :QLineEdit(parent,name)
 {
 }

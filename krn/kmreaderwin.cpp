@@ -46,7 +46,6 @@ static unsigned char hand_mask_bits[] = {
 extern KApplication *app;
 extern KLocale *nls;
 extern KBusyPtr *kbp;
-extern KConfig *conf;
 #endif
 
 //-----------------------------------------------------------------------------
@@ -58,8 +57,8 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
   mPicsDir = app->kdedir()+"/share/apps/kmail/pics/";
   mMsg = NULL;
 
-  initHtmlWidget();
   readConfig();
+  initHtmlWidget();
 }
 
 
@@ -79,20 +78,6 @@ void KMReaderWin::readConfig(void)
   mHeaderStyle = (HeaderStyle)config->readNumEntry("hdr-style", HdrFancy);
   mAttachmentStyle = (AttachmentStyle)config->readNumEntry("attmnt-style",
 							IconicAttmnt);
-#ifdef KRN
-  conf->setGroup("ArticleListOptions");
-  QColor c1=QColor("black");
-  QColor c2=QColor("blue");
-  QColor c3=QColor("red");
-  mViewer->setDefaultTextColors(conf->readColorEntry("ForegroundColor",&c1)
-                                ,conf->readColorEntry("LinkColor",&c2)
-                                ,conf->readColorEntry("FollowedColor",&c3));
-  mViewer->setDefaultFontBase(conf->readNumEntry("DefaultFontBase",3));
-  mViewer->setStandardFont(conf->readEntry("StandardFont",
-                                           QString("helvetica").data()));
-  mViewer->setFixedFont(conf->readEntry("FixedFont",
-                                        QString("courier").data()));
-#endif
 }
 
 
@@ -107,7 +92,6 @@ void KMReaderWin::writeConfig(bool aWithSync)
   config->writeEntry("attmnt-style",(int)mAttachmentStyle);
 
   if (aWithSync) config->sync();
-
 }
 
 
@@ -121,14 +105,7 @@ void KMReaderWin::initHtmlWidget(void)
   mViewer = new KHTMLWidget(this, mPicsDir);
   mViewer->resize(width()-16, height()-110);
   mViewer->setURLCursor(handCursor);
-#ifndef KRN
   mViewer->setDefaultBGColor(QColor("#ffffff"));
-#else
-  QColor c=QColor("white");
-  conf->setGroup("ArticleListOptions");
-  mViewer->setDefaultBGColor(conf->readColorEntry("BackgroundColor",&c));
-#endif
-  
   /*
   mViewer->setDefaultBGColor(pal->normal().background());
   mViewer->setDefaultTextColor(app->textColor, app->);
