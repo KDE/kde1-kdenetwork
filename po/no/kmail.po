@@ -892,14 +892,12 @@ msgid "&Attach..."
 msgstr "&Legg ved..."
 
 #: kmcomposewin.cpp:531
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Sett inn min &offentlige nøkkel"
+msgstr "Legg ved &offentlig nøkkel"
 
 #: kmcomposewin.cpp:533
-#, fuzzy
 msgid "Attach My &Public Key"
-msgstr "Sett inn min &offentlige nøkkel"
+msgstr "Legg ved min &personlige nøkkel"
 
 #: kmcomposewin.cpp:544
 msgid "&Save..."
@@ -971,11 +969,11 @@ msgstr "Inkluder fil"
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "min pgp-nøkkel"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "pgp-nøkkel"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1593,12 +1591,11 @@ msgstr "PGP-sikkerhetssjekk"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Vennligst velg offentlig nøkkel som skal settes inn"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Velg mappe"
+msgstr "Velg nøkkel"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
