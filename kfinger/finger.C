@@ -1,19 +1,19 @@
  /*
-    KFinger - ver 0.8.1
+    KFinger - ver 0.8.2
     KDE project - kdenetwork
     
     finger.C : Internet Finger protocol
     
     (c) Andrea Rizzi <rizzi@kde.org>
-	14 Apr 1999
+	27 May 1999
     
     License: GPL
 
 */
 #include <netdb.h>
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/resource.h>
-#include <sys/types.h>
 #include <stdlib.h>
 #include <sys/time.h>
 #include <fcntl.h>
@@ -135,8 +135,9 @@ void FingerProtocol::readBuff( int     )
 int FingerProtocol::writeString(QString st) 
 {
     unsigned int len;
-    int  val; 
+    char     val; 
     getsockopt(sock,SOL_SOCKET,SO_ERROR,&val,&len );                   
+    warning("%c ",val);
     if(val==0)  
 	write(sock,st,strlen(st));
     return val;  

@@ -35,7 +35,7 @@ protocol = 0L;
     options->insertItem(klocale->translate("Setup"), this, SLOT(setup()) );
     options->insertItem(klocale->translate("&Save Options"), this, SLOT(save()));
    QPopupMenu *help = kapp->getHelpMenu( TRUE,
-    i18n("kfinger 0.8.1\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
+    i18n("kfinger 0.8.2\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
   menubar->insertItem( klocale->translate("&File"), file );
   menubar->insertItem( klocale->translate("&Options"), options  );
   menubar->insertSeparator();
