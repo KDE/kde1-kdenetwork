@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1999-01-02 02:11+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-13 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -41,7 +41,8 @@ msgstr "Der er ingen ny post"
 msgid ""
 "Cannot modify a\n"
 "system folder."
-msgstr "Kan ikke ændre en\n"
+msgstr ""
+"Kan ikke ændre en\n"
 "systemfolder"
 
 #: kmmainwin.cpp:362
@@ -603,7 +604,7 @@ msgstr "Skrift i brevlisten"
 msgid "Select Account"
 msgstr "Vælg konto"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
 msgid "Unnamed"
 msgstr "Unavngiven"
 
@@ -974,7 +975,7 @@ msgstr "min pgp nøgle"
 msgid "pgp key"
 msgstr "pgp nøgle"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Se..."
 
@@ -982,7 +983,7 @@ msgstr "Se..."
 msgid "Save..."
 msgstr "Gem..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "Egenskaber..."
 
@@ -990,7 +991,7 @@ msgstr "Egenskaber..."
 msgid "Attach..."
 msgstr "Vedhæng..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Se vedhæng"
 
@@ -1013,14 +1014,12 @@ msgstr "Stavekontrol - KMail"
 #: kmcomposewin.cpp:2100
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
-"Fejl ved start af KSell. Se efter at ISpell er rigtigt indstillet."
+msgstr "Fejl ved start af KSell. Se efter at ISpell er rigtigt indstillet."
 
 #: kmfolder.cpp:145
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "Folderen `%s' er ændret. Genskaber index."
-
 
 #: kmfolder.cpp:379
 #, c-format
@@ -1060,73 +1059,64 @@ msgstr "basis 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "Fra: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "Til: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Referencer: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Dato: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Svar til: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Grupper: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Indkodet brev"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Kan ikke afkode brev:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Brevet var underskrevet af"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Advarsel: Dårlig underskrift fra"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "ukendt nøgle ID"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Vedhæng: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "Kunne ikke lave en temporær fil"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Kunne ikke gemme de temporære fil %s"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Kunne ikke gemme fil"
 
@@ -1182,7 +1172,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Indlæsning af addressebogen mislykkedes"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Ukendt kommandolinie indgang: %s"
@@ -1333,8 +1323,8 @@ msgstr ""
 "indstillingerne."
 
 #: kmsender.cpp:501
-#, c-format
-msgid "Failed to execute postprogram %s"
+#, fuzzy, c-format
+msgid "Failed to execute mailer program %s"
 msgstr "Det lykkedes ikke at udføre program %s"
 
 #: kmsender.cpp:589
@@ -1440,55 +1430,55 @@ msgstr "Op"
 msgid "Down"
 msgstr "Ned"
 
-#: kmfilterdlg.cpp:527
+#: kmfilterdlg.cpp:530
 msgid "<nothing>"
 msgstr "<intet>"
 
-#: kmfilterdlg.cpp:538
+#: kmfilterdlg.cpp:541
 msgid "ignore"
 msgstr "ignorer"
 
-#: kmfilterdlg.cpp:539
+#: kmfilterdlg.cpp:542
 msgid "and"
 msgstr "og"
 
-#: kmfilterdlg.cpp:540
+#: kmfilterdlg.cpp:543
 msgid "unless"
 msgstr "medmindre"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:544
 msgid "or"
 msgstr "eller"
 
-#: kmfilterdlg.cpp:547
+#: kmfilterdlg.cpp:550
 msgid "equals"
 msgstr "er lig med"
 
-#: kmfilterdlg.cpp:548
+#: kmfilterdlg.cpp:551
 msgid "not equal"
 msgstr "ikke lig med"
 
-#: kmfilterdlg.cpp:549
+#: kmfilterdlg.cpp:552
 msgid "contains"
 msgstr "indeholder"
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:553
 msgid "doesn't contain"
 msgstr "indeholder ikke"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:554
 msgid "regular expression"
 msgstr "regulært udtryk"
 
-#: kmfilterdlg.cpp:558
+#: kmfilterdlg.cpp:561
 msgid "<message>"
 msgstr "<brev>"
 
-#: kmfilterdlg.cpp:559
+#: kmfilterdlg.cpp:562
 msgid "<body>"
 msgstr "<krop>"
 
-#: kmfilterdlg.cpp:560
+#: kmfilterdlg.cpp:563
 msgid "<any header>"
 msgstr "<enhver hovedindgang>"
 
@@ -1738,7 +1728,8 @@ msgid ""
 "Continue anyway ?"
 msgstr ""
 "Det mislykkedes at lave en backupfil\n"
-"af %s.\n Fortsæt alligevel?"
+"af %s.\n"
+" Fortsæt alligevel?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
@@ -1794,6 +1785,11 @@ msgstr "Det mislykkedes at gemme adressebogen!"
 msgid "&Abort"
 msgstr "&Opgiv"
 
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
+msgstr "&Opgiv"
+
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
 msgstr "Sender breve til"
@@ -1842,3 +1838,8 @@ msgstr "&7 bit er ASCII"
 msgid "&Qute unknonw characters"
 msgstr "Ukendte tegn i anførselstegn"
 
+#~ msgid "Could not create temporary file"
+#~ msgstr "Kunne ikke lave en temporær fil"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Kunne ikke gemme de temporære fil %s"

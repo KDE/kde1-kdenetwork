@@ -66,7 +66,8 @@ msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
 msgstr ""
-"Undskyld, denne type URL er for øjeblikket ikke understøttet af KDE's lydsystem"
+"Undskyld, denne type URL er for øjeblikket ikke understøttet af KDE's "
+"lydsystem"
 
 #: soundpage.cpp:164
 #, c-format
@@ -122,7 +123,8 @@ msgstr "Post &første linie"
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr "Brug første %s for opringerens navn, og anden %s for opringerens værtsnavn"
+msgstr ""
+"Brug første %s for opringerens navn, og anden %s for opringerens værtsnavn"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
@@ -144,7 +146,7 @@ msgstr ""
 "færdig."
 
 #: answmachpage.cpp:171 answmachpage.cpp:189
-#,  c-format
+#, c-format
 msgid "Message from %s"
 msgstr "Besked fra %s"
 
@@ -181,10 +183,10 @@ msgstr ""
 "FWA : Videresend kun annonceringer. Direkte forbindelse. Ikke anbefalet.\n"
 "FWR : Videresend alle forspørgsler, Æbdr info når nødvendigt. Direkte "
 "forbindelse.\n"
-"FWT : Videresedn alle forspørgsler og tag samtalen. Ingen direkte forbindelse.\n"
+"FWT : Videresedn alle forspørgsler og tag samtalen. Ingen direkte "
+"forbindelse.\n"
 "\n"
-"Anbefalet brug: FWT Hvis du vil bruge det bag en brandmur (og hvis "
-"ktalkd\n"
+"Anbefalet brug: FWT Hvis du vil bruge det bag en brandmur (og hvis ktalkd\n"
 "Har adgang til begge netværk), FWR ellers.\n"
 "\n"
 "Se Hjælp for yderligere forklaring.\n"

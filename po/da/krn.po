@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/krn\n"
-"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-16 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -983,8 +983,7 @@ msgstr "Stavekontrol - KMail"
 #: kmcomposewin.cpp:2044
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
-"Fejl ved start af KSell. Se efter at ISpell er rigtigt indstillet."
+msgstr "Fejl ved start af KSell. Se efter at ISpell er rigtigt indstillet."
 
 #: kmsender.cpp:116
 msgid ""
@@ -1213,8 +1212,7 @@ msgstr ""
 msgid ""
 "Could not write to file:\n"
 "%s"
-msgstr ""
-"Kunne ikke skrive til fil"
+msgstr "Kunne ikke skrive til fil"
 
 #: kfileio.cpp:159
 #, c-format
@@ -1483,7 +1481,7 @@ msgstr "Det mislykkedes at gemme adressebogen!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
-msgstr "KRN - Udløb indstillinger"   
+msgstr "KRN - Udløb indstillinger"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
@@ -1636,6 +1634,10 @@ msgstr "&7 bit er ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "Ukendte tegn i anførselstegn"
+
+#: expirestatusdlg.cpp:35
+msgid "Please wait a minute, I am expiring!"
+msgstr ""
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"

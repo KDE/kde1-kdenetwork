@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-01-08 02:05+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-13 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -185,7 +185,7 @@ msgstr ""
 "Login skriptet har en ubalanceret løkke\n"
 "Start/Slut"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:1053
 msgid "Connecting to: "
 msgstr "Forbinder til: "
 
@@ -198,7 +198,7 @@ msgstr "Kan desværre ikke oprette modem låsefil."
 msgid "Looking for Modem ..."
 msgstr "Leder efter modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:1066
 msgid "Log"
 msgstr "Log"
 
@@ -318,7 +318,7 @@ msgstr "Fundet: "
 msgid "Looping: "
 msgstr "Løkker: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Et øjeblik ..."
 
@@ -346,7 +346,7 @@ msgstr "Kører opstart kommando ..."
 msgid "Done"
 msgstr "Færdig"
 
-#: connect.cpp:1123
+#: connect.cpp:1126
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -739,8 +739,7 @@ msgstr ""
 "servere der er angivet i <i>/etc/resolv.conf</i>\n"
 "midlertidigt sat ud af kraft, mens forbindelsen\n"
 "er ved at blive etableret. Efter forbindelsen er \n"
-"afsluttet, bliver serverne genetablerede"
-"\n"
+"afsluttet, bliver serverne genetablerede\n"
 "Der er typisk ingen grund til at benytte denne\n"
 "mulighed, men det kan vise sig nyttigt i visse\n"
 "omstændigheder"
@@ -1106,7 +1105,7 @@ msgstr ""
 "et <i>CONNECT</i> svar fra dit modem. Den anbefalede\n"
 "værdi er 30 sekunder."
 
-#: general.cpp:465 main.cpp:637
+#: general.cpp:465 main.cpp:711
 msgid "Modem"
 msgstr "Modem"
 
@@ -1280,7 +1279,7 @@ msgstr ""
 "Dette vindue forbliver åbent indtil du klikker\n"
 "på en museknap eller trykker på en tast.\n"
 
-#: main.cpp:323
+#: main.cpp:393
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1289,7 +1288,7 @@ msgstr ""
 "kppp kan ikke oprette eller læse fra\n"
 "%s."
 
-#: main.cpp:347
+#: main.cpp:423
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1308,19 +1307,19 @@ msgstr ""
 "Du bør sikre dig at du ikke kører en anden kppp,\n"
 "slette pid-filen og starte kppp igen."
 
-#: main.cpp:353
+#: main.cpp:429
 msgid "Exit"
 msgstr "Afslut"
 
-#: main.cpp:414
+#: main.cpp:491
 msgid "Connect to: "
 msgstr "Forbind med: "
 
-#: main.cpp:425
+#: main.cpp:503
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:438
+#: main.cpp:516
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1339,11 +1338,11 @@ msgstr ""
 "<i>mitbrugernavn</i> er ikke det samme som\n"
 "<i>Mitbrugernavn</i>!"
 
-#: main.cpp:447
+#: main.cpp:525
 msgid "Password:"
 msgstr "Kodeord:"
 
-#: main.cpp:461
+#: main.cpp:539
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1362,11 +1361,11 @@ msgstr ""
 "<i>mitkodeord</i> er ikke det samme som\n"
 "<i>Mitkodeord</i>!"
 
-#: main.cpp:475
+#: main.cpp:553
 msgid "Show Log Window"
 msgstr "Vis log vindue"
 
-#: main.cpp:482
+#: main.cpp:560
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1384,15 +1383,15 @@ msgstr ""
 "Slå det fra hvis <i>kppp</i> virker rutinemæssigt\n"
 "uden problemer."
 
-#: main.cpp:505
+#: main.cpp:583
 msgid "Setup"
 msgstr "Indstillinger"
 
-#: main.cpp:521
+#: main.cpp:599
 msgid "Connect"
 msgstr "Ring op"
 
-#: main.cpp:605
+#: main.cpp:679
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1401,39 +1400,39 @@ msgstr ""
 "Kontoen eksisterer ikke:\n"
 "%s"
 
-#: main.cpp:619
+#: main.cpp:693
 msgid "kppp Configuration"
 msgstr "kppp konfiguration"
 
-#: main.cpp:635
+#: main.cpp:709
 msgid "Accounts"
 msgstr "Konti"
 
-#: main.cpp:636
+#: main.cpp:710
 msgid "Device"
 msgstr "Enhed"
 
-#: main.cpp:638
+#: main.cpp:712
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:639
+#: main.cpp:713
 msgid "Graph"
 msgstr "Graf"
 
-#: main.cpp:800
+#: main.cpp:874
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Tiden løb ud mens vi ventede på at PPP grænsesnittet kom op!"
 
-#: main.cpp:805
+#: main.cpp:879
 msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd dæmonen døde uventet!"
 
-#: main.cpp:813
+#: main.cpp:887
 msgid "Details..."
 msgstr "Detaljer"
 
-#: main.cpp:838
+#: main.cpp:912
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1443,7 +1442,7 @@ msgstr ""
 "\n"
 "Da det ville være meningløst at fortsætte vil kppp afslutte nu."
 
-#: main.cpp:875
+#: main.cpp:949
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1462,7 +1461,7 @@ msgstr ""
 "Dette vil sikre at kppp kan finde PPP dæmonen.\n"
 "Tak."
 
-#: main.cpp:890
+#: main.cpp:964
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1475,7 +1474,7 @@ msgstr ""
 "Undersøg om du har givet kppp setuid tilladelse\n"
 "og at pppd er eksekverbar."
 
-#: main.cpp:904
+#: main.cpp:978
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1495,7 +1494,7 @@ msgstr ""
 "på Modem-fanebladet\n"
 "i opsætningsdialogen."
 
-#: main.cpp:924
+#: main.cpp:998
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1505,7 +1504,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:933
+#: main.cpp:1007
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1514,7 +1513,7 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:950
+#: main.cpp:1024
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1524,7 +1523,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:959
+#: main.cpp:1033
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1533,19 +1532,19 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:971
+#: main.cpp:1045
 msgid "You must specify a telephone number!"
 msgstr "Du skal angive et telefonnummer!"
 
-#: main.cpp:1058
+#: main.cpp:1132
 msgid "Quit kPPP?"
 msgstr "Afslut kPPP"
 
-#: main.cpp:1059
+#: main.cpp:1133
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Hvis du afslutter kPPP vil det afbryde din PPP forbindelse."
 
-#: main.cpp:1094
+#: main.cpp:1178
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1577,11 +1576,11 @@ msgstr "Modem klart."
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kan ikke genoprette tty indstillinger; tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:327
 msgid "Sorry, the modem doesn't respond."
 msgstr "Modemet svarer ikke."
 
-#: modem.cpp:425
+#: modem.cpp:428
 msgid "Unknown speed"
 msgstr "Ukendt hastighed"
 
@@ -1702,7 +1701,7 @@ msgstr "Modem forespørgsmålstiden løb ud"
 msgid "Modem Ready"
 msgstr "Modem klart"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Modem forespørgsels resultat"
 
@@ -1859,6 +1858,10 @@ msgstr "bytes ind og ud"
 msgid "Available rules"
 msgstr "Tilgængelige regler"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: intet regelsæt specificeret\n"
@@ -1989,6 +1992,15 @@ msgstr ""
 "Bed din systemadministrator om at lave en ikke tom\n"
 "fil der har de passende læse/skrive tilladelse."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Ring op"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2085,3 +2097,21 @@ msgstr "kppp's diagnose (blot gætværk):"
 msgid "Write to file"
 msgstr "Skriv til fil"
 
+#: modemdb.cpp:46
+msgid "Select modem type..."
+msgstr ""
+
+#: modemdb.cpp:48
+msgid ""
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
+msgstr ""
+
+#: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
+msgid "<Generic>"
+msgstr ""
+
+#: modemdb.cpp:218
+msgid "Hayes(tm) compatible modem"
+msgstr ""

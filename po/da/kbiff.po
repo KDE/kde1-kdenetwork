@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kbiff\n"
-"POT-Creation-Date: 1998-12-20 02:10+0100\n"
+"POT-Creation-Date: 1999-01-15 02:07+0100\n"
 "PO-Revision-Date: 1999-01-18 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -13,31 +13,31 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kbiff.cpp:506
+#: kbiff.cpp:461
 msgid "&UnDock"
 msgstr "&Udyk"
 
-#: kbiff.cpp:508
+#: kbiff.cpp:463
 msgid "&Dock"
 msgstr "&Dyk"
 
-#: kbiff.cpp:509
+#: kbiff.cpp:464
 msgid "&Setup..."
 msgstr "Op&sætning..."
 
-#: kbiff.cpp:511
+#: kbiff.cpp:466
 msgid "&Help..."
 msgstr "&Hjælp"
 
-#: kbiff.cpp:515
+#: kbiff.cpp:470
 msgid "&Check Mail Now"
 msgstr "&Kig efter post nu"
 
-#: kbiff.cpp:517
+#: kbiff.cpp:472
 msgid "&Read Mail Now"
 msgstr "&Læs post nu"
 
-#: kbiff.cpp:523
+#: kbiff.cpp:478
 msgid "&Stop"
 msgstr "&Stop"
 
@@ -46,6 +46,7 @@ msgid "You have new mail!"
 msgstr "Du har ny post"
 
 #: notify.cpp:53
+#, c-format
 msgid "New Messages: %d"
 msgstr "Nye breve: %d"
 

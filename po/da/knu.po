@@ -117,7 +117,7 @@ msgid ""
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
 "Kunne ikke finde denne kommandobinærfil. \n"
-"Du kan give dens sti i Rediger->Præferancer...menuen." 
+"Du kan give dens sti i Rediger->Præferancer...menuen."
 
 #: CommandDlg.cpp:348
 #, c-format
@@ -142,7 +142,6 @@ msgstr ""
 "Brug Rediger->Præferancer...menuen\n"
 "for at lave indstillingerne igen.\n"
 
-
 #: CommandDlg.cpp:357
 msgid "Error in pathname"
 msgstr "Fejl i stinavn"
@@ -162,7 +161,6 @@ msgstr "Ekstra &argumenter"
 #: CommandDlg.cpp:553
 msgid "This command had been disabled in the configuration file."
 msgstr "Denne kommando er sat ud af kraft i indstillingsfilen."
-
 
 #: OptionsDlg.cpp:69
 msgid " - configuration"
@@ -255,3 +253,7 @@ msgstr "standard server"
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
 msgstr "Ser&ver"
+
+#: FingerDlg.cpp:77
+msgid "&User:"
+msgstr ""
