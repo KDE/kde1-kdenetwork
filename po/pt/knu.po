@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-03-19 22:13+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-01-22 00:00+0100\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -18,9 +18,8 @@ msgid "Host &resolution"
 msgstr "&Resolução da host"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -95,10 +94,17 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Tem um problema no seu\n"
+"ficheiro de configuração\n"
+"%s/%src.\n"
+"No grupo [%s], não consigo\n"
+"encontrar uma entrada \"path=\" válida.\n"
+"\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Erro no caminho"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
@@ -170,22 +176,8 @@ msgstr "Ser&vidor:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "Utilizador:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Ser&vidor:"
-
-#~ msgid "&Contents"
-#~ msgstr "&Conteúdo"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Tem um problema no seu ficheiro de configuração ~/.kde/share/config/knurc.\n"
-#~ "No grupo ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "], não consigo achar uma entrada \"path=\" correcta."
+msgstr "Servidor:"
