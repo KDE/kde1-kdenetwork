@@ -56,7 +56,7 @@ PObject *PWidget::createWidget(CreateArgs &ca)
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QWidget") == TRUE)
     tw = (QWidget *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
-    tw = new QWidget((QWidget *) ca.parent->widget());
+      tw = new QWidget((QWidget *) ca.parent->widget());
   else
     tw = new QWidget();
   pw->setWidget(tw);
@@ -95,12 +95,13 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     break;
   case PUKE_WIDGET_RESIZE:
     {
-      unsigned short int *size;
-      size = (unsigned short int *) &pm->iArg;
-      //      debug("Resizing to: %d => %d %d", pm->iArg, size[0], size[1]);
-      widget()->resize(size[0], size[1]);
-      size[0] = (short) widget()->height();
-      size[1] = (short) widget()->width();
+      int x, y;
+      int found = sscanf(pm->cArg, "%d\t%d", &x, &y);
+      if(found != 2)
+	throw(errorCommandFailed(PUKE_INVALID,10));
+
+      widget()->resize(x, y);
+
       pmRet.iCommand = PUKE_WIDGET_RESIZE_ACK;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
@@ -110,47 +111,52 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     break;
   case PUKE_WIDGET_MOVE:
     {
-      unsigned short int *pos;
-      pos = (unsigned short int *) &pm->iArg;
+      int x, y;
+      int found = sscanf(pm->cArg, "%d\t%d", &x, &y);
+      if(found != 2)
+	throw(errorCommandFailed(PUKE_INVALID,10));
+      
       //      debug("Moving to: %d => %d %d", pm->iArg, pos[0], pos[1]);
-      widget()->move(pos[0], pos[1]);
-      pos[0] = (short) widget()->x();
-      pos[1] = (short) widget()->y();
+      widget()->move(x, y);
       pmRet.iCommand = PUKE_WIDGET_MOVE_ACK;
       pmRet.iWinId = pm->iWinId;      
-      pmRet.iArg = pm->iArg;
+      pmRet.iArg = 0;
       pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
     }
     break;
   case PUKE_WIDGET_SETMINSIZE:
     {
-      unsigned short int *pos;
-      pos = (unsigned short int *) &pm->iArg;
-      widget()->setMinimumSize(pos[0], pos[1]);
+      int x, y;
+      int found = sscanf(pm->cArg, "%d\t%d", &x, &y);
+      if(found != 2)
+	throw(errorCommandFailed(PUKE_INVALID,11));
 
-      pos[0] = (short) widget()->width();
-      pos[1] = (short) widget()->height();
+      widget()->setMinimumSize(x, y);
+
       pmRet.iCommand = PUKE_WIDGET_SETMINSIZE_ACK;
       pmRet.iWinId = pm->iWinId;      
-      pmRet.iArg = pm->iArg;
+      pmRet.iArg = 0;
       pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
     }
     break;
   case PUKE_WIDGET_SETMAXSIZE:
-      unsigned short int *pos;
-      pos = (unsigned short int *) &pm->iArg;
-      widget()->setMaximumSize(pos[0], pos[1]);
+    {
+      int x, y;
+      int found = sscanf(pm->cArg, "%d\t%d", &x, &y);
+      if(found != 2)
+	throw(errorCommandFailed(PUKE_INVALID,12));
 
-      pos[0] = (short) widget()->width();
-      pos[1] = (short) widget()->height();
+      widget()->setMaximumSize(x, y);
+
       pmRet.iCommand = -pm->iCommand;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
       pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
+    }
   case PUKE_WIDGET_SETCAPTION:
     widget()->setCaption(pm->cArg);
     pmRet.iCommand = PUKE_WIDGET_SETCAPTION_ACK;

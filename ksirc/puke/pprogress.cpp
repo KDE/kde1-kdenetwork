@@ -1,4 +1,5 @@
 #include "pprogress.h"
+#include <stdio.h>
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
@@ -40,12 +41,15 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
   switch(pm->iCommand){
   case PUKE_KSPROGRESS_SET_RANGE:
     {
-      unsigned short int *size;
-      size = (unsigned short int *) &pm->iArg;
-      debug("Setting range to: %d %d", size[0], size[1]);
-      if(size[0] > size[1])
-          return;
-      widget()->setRange(size[0], size[1]);
+      int start, stop;
+      int found = sscanf(pm->cArg, "%d\t%d", &start, &stop);
+      if(found != 2)
+	throw(errorCommandFailed(PUKE_INVALID,13));
+      debug("Setting range to: %d %d", start, stop);
+      if(start > stop)
+        return;
+      
+      widget()->setRange(start, stop);
       pmRet.iCommand = PUKE_KSPROGRESS_SET_RANGE_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 0;

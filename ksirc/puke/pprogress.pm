@@ -59,9 +59,11 @@ sub setRange {
 
   my $lower = shift;
   my $upper = shift;
+
+  my $carg = "$lower\t$upper";
   
   $self->sendMessage('iCommand' => $::PUKE_KSPROGRESS_SET_RANGE,
-		     'iArg' => $upper * 65536 + $lower,
+		     'cArg' => $carg,
                      'CallBack' => sub {});
 
 }

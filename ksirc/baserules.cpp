@@ -82,8 +82,12 @@ filterRuleList *KSMBaseRules::defaultRules()
   if( kSircConfig->usHighlight >= 0){
     kConfig->setGroup("StartUp");
     if(strlen(kConfig->readEntry("Nick", "")) > 0){
+      const char *nick = kConfig->readEntry("Nick", "");
+      if(strlen(nick) > 99){
+        debug("Nick too long");
+      }
       sprintf(match_us,
-	       "(?i)<\\S+>.*%99s.*", kConfig->readEntry("Nick", "").data());
+              "(?i)<\\S+>.*%s.*", nick);
       sprintf(to_us,
 	       "$1~%d", kSircConfig->usHighlight);
       fr = new filterRule();

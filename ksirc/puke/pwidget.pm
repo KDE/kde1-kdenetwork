@@ -76,10 +76,10 @@ sub resize {
   my $width = shift;
   my $height = shift;
 
-  my $size = $height * 2**16 + $width;
+  my $carg = "$width\t$height";
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_RESIZE,
-		     'iArg' => $size);
+		     'cArg' => $carg);
 
 }
 
@@ -89,10 +89,10 @@ sub move {
   my $x = shift;
   my $y = shift;
 
-  my $pos = $y * 2**16 + $x;
+  my $carg = "$x\t$y";
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_MOVE,
-		     'iArg' => $pos);
+		     'cArg' => $carg);
 
 }
 
@@ -102,10 +102,10 @@ sub setMinimumSize {
   my $w = shift;
   my $h = shift;
 
-  my $iarg = $w * 2**16 + $h;
+  my $carg = "$w\t$h";
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETMINSIZE,
-		     'iArg' => $iarg,
+		     'cArg' => $carg,
 		     'CallBack' => sub {});
 
 }
@@ -116,10 +116,10 @@ sub setMaximumSize {
   my $w = shift;
   my $h = shift;
 
-  my $iarg = $w * 2**16 + $h;
+  my $carg = "$w\t$h";
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETMAXSIZE,
-		     'iArg' => $iarg,
+		     'cArg' => $carg,
 		     'CallBack' => sub {});
 
 }

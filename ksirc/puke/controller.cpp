@@ -247,7 +247,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
   }
 }
 
-void PukeController::Traffic(int fd) /*fold00*/
+void PukeController::Traffic(int fd) /*FOLD00*/
 {
   PukeMessage pm;
   int bytes = -1;
@@ -279,7 +279,7 @@ void PukeController::Traffic(int fd) /*fold00*/
     }
     else {
         pm.cArg = 0;
-        printf("\n");
+//        printf("\n");
     }
     MessageDispatch(fd, &pm);
     delete[] pm.cArg; // Free up cArg is used
@@ -364,7 +364,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
     }
 }
 
-void PukeController::initHdlr() /*fold00*/
+void PukeController::initHdlr() /*FOLD00*/
 {
 
   widgetCreate *wc;
@@ -487,14 +487,13 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
    * the pattern is 2 shorts.
    */
 
-  unsigned short int *iaArg;
-  iaArg = (unsigned short int *) &pm->iArg;
-  int iParent = iaArg[1];
-  int iType = iaArg[0];
-//  bool bRegex = iParent > 0 ? TRUE : FALSE;
+  int iParent=-1, iType=-1;
 
   char rand[50],name[50];
-  sscanf(pm->cArg, "%s\t%s", rand, name);
+  int found = sscanf(pm->cArg, "%d\t%d\t%s\t%s", &iParent, &iType, rand, name);
+  if(found != 4){
+      throw(errorCommandFailed(PUKE_INVALID,6));
+  }
 
 //  debug("Fetching new widget, type: %d, parent: %d objname: %s", iType, iParent, name);
 
@@ -562,7 +561,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
 
 }
 
-void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wI;
   wI.fd = fd;
@@ -692,7 +691,7 @@ bool PukeController::checkWidgetId(widgetId *pwi) /*fold00*/
   return FALSE;
 }
 
-PObject *PukeController::id2pobject(widgetId *pwi){ /*fold00*/
+PObject *PukeController::id2pobject(widgetId *pwi){ /*FOLD00*/
   if(checkWidgetId(pwi) == TRUE){
     return WidgetList[pwi->fd]->find(pwi->iWinId)->pwidget;
   }
@@ -708,7 +707,7 @@ PObject *PukeController::id2pobject(int fd, int iWinId){ /*fold00*/
   return id2pobject(&wi);
 }
 
-PWidget *PukeController::id2pwidget(widgetId *pwi){ /*fold00*/
+PWidget *PukeController::id2pwidget(widgetId *pwi){ /*FOLD00*/
   PObject *obj = id2pobject(pwi);
   if(obj->widget()->isWidgetType())
     return (PWidget *) obj;
@@ -732,7 +731,7 @@ void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
   pwi->iWinId = iWinId;
   char key[keySize];
   memset(key, 0, keySize);
-  snprintf(key, keySize - 1, "%p", obj->pwidget);
+  sprintf(key, "%p", obj->pwidget);
   revWidgetList.insert(key, pwi);
 
   // Now connect to the destroyed signal so we can remove the object from the lists
@@ -745,7 +744,7 @@ void PukeController::pobjectDestroyed(){
 
   char key[keySize];
   memset(key, 0, keySize);
-  snprintf(key, keySize - 1, "%p", this->sender());
+  sprintf(key, "%p", this->sender());
 
   widgetId *pwi = revWidgetList[key];
 
@@ -856,7 +855,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent
@@ -867,10 +866,10 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
    * the pattern is 2 shorts.
    */
 
-  unsigned short int *iaArg;
-  iaArg = (unsigned short int *) &pm->iArg;
-  int iParent = iaArg[1];
-  int iType = iaArg[0];
+  int iParent, iType;
+  int found = sscanf(pm->cArg, "%d\t%d", &iParent, &iType);
+  if(found != 2)
+      throw(errorCommandFailed(PUKE_INVALID,7));
 
   debug("Creating new widget, type: %d, parent: %d", iType, iParent);
 

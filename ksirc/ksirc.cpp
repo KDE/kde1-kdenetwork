@@ -80,6 +80,15 @@ int main( int argc, char ** argv )
   kSircConfig->colour_info = new QColor(kConfig->readColorEntry("info", &blue));
   kSircConfig->colour_chan = new QColor(kConfig->readColorEntry("chan", &green));
   kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
+  if(kSircConfig->colour_text == 0x0)
+      kSircConfig->colour_text = new QColor("black");
+  if(kSircConfig->colour_info == 0x0)
+      kSircConfig->colour_info = new QColor("blue");
+  if(kSircConfig->colour_chan == 0x0)
+      kSircConfig->colour_chan = new QColor("green");
+  if(kSircConfig->colour_error == 0x0)
+      kSircConfig->colour_error = new QColor("red");
+  
 
   kSircConfig->colour_background = 0;
   kSircConfig->filterKColour = kConfig->readNumEntry("kcolour", false);

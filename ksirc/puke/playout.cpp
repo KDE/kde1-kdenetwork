@@ -22,10 +22,10 @@ PObject *PLayout::createWidget(CreateArgs &ca)
 {
   PLayout *pw = new PLayout(ca.parent);
   QBoxLayout *qbl;
-  int direction, border;
+  int direction, border, iType, iParent;
   // Retreive the border and direction information out of the
   // carg string
-  if(sscanf(ca.pm->cArg, "%d-%d-", &direction, &border) < 2)
+  if(sscanf(ca.pm->cArg, "%d\t%d\t%d\t%d", &iParent, &iType, &direction, &border) < 4)
     throw(errorCommandFailed(-ca.pm->iCommand, -1));
   
   if((ca.parent != 0) &&
@@ -48,7 +48,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
 {
   PukeMessage pmRet;
 
-  debug("In PLayout: %d", pm->iCommand);
+//  debug("In PLayout: %d", pm->iCommand);
   
   if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
     if(pm->iTextSize != 2*sizeof(char)){

@@ -36,8 +36,8 @@ sub new {
   
   my $label_to = new PLabel($self);
   $label_to->setText("To Nick:");
-  $label_to->setMaximumSize(30,1000);
-  $label_to->setMinimumSize(30,50);
+  $label_to->setMaximumSize(1000,30);
+  $label_to->setMinimumSize(50,30);
   $gm_to->addWidget($label_to, 0, $PBoxLayout::AlignCenter);
   
   my $line_to = new PLineEdit($self);
@@ -48,8 +48,8 @@ sub new {
 
   my $label_file = new PLabel($self);
   $label_file->setText("Filename:");
-  $label_file->setMaximumSize(30,1000);
-  $label_file->setMinimumSize(30,50);
+  $label_file->setMaximumSize(1000,30);
+  $label_file->setMinimumSize(50,30);
   $gm_file->addWidget($label_file, 0, $PBoxLayout::AlignCenter);
   
   my $line_file = new PLineEdit($self);
@@ -132,7 +132,7 @@ sub new {
 
   my $label = new PLabel($self);
   $label->setText("Pending DCC");
-  $label->setMaximumSize(20,1000);
+  $label->setMaximumSize(1000,20);
   $gm_main->addWidget($label, 5, $PBoxLayout::AlignCenter);  
   my $lb = new PListBox($self);
   $gm_main->addWidget($lb, 5, $PBoxLayout::AlignCenter);
@@ -142,15 +142,15 @@ sub new {
   
   my $button_get = new PPushButton($self);
   $button_get->setText("&Open Connection");
-  $button_get->setMaximumSize(30,1000);
-  $button_get->setMinimumSize(30,10);
+  $button_get->setMaximumSize(1000,30);
+  $button_get->setMinimumSize(10,30);
   $button_get->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->openClicked});
   $gm_but1->addWidget($button_get, 5);
 
   my $button_forget = new PPushButton($self);
   $button_forget->setText("&Forget Connection");
-  $button_forget->setMaximumSize(30,1000);
-  $button_forget->setMinimumSize(30,10);
+  $button_forget->setMaximumSize(1000,30);
+  $button_forget->setMinimumSize(10,30);
   $button_forget->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->forgetClicked});
   $gm_but1->addWidget($button_forget, 5);
 
@@ -159,8 +159,8 @@ sub new {
   
   my $button_send = new PPushButton($self);
   $button_send->setText("&Send File");
-  $button_send->setMaximumSize(30,1000);
-  $button_send->setMinimumSize(30,10);
+  $button_send->setMaximumSize(1000,30);
+  $button_send->setMinimumSize(10,30);
   $button_send->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->sendClicked});
   $gm_but2->addWidget($button_send, 5);
   

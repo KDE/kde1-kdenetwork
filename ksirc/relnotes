@@ -8,6 +8,7 @@
 ~4~b*~C ~3New Server Picker, thanks Atko
 ~4~b*~C ~3Selecting windows in SC brings them to foreground
 ~4~b*~C ~3Release notes are displayed to the screen on first run
+~4~b*~C ~3Improved online help with /help
 
 
 ~b~12,4             Web Server Notes                                           
@@ -25,6 +26,9 @@ Couple notes to remember, you cannot use ports
 since running a web server is dangerous enough,
 much less giving potential root access away.
 
+/url command will show you a valid url
+for you sure.  Replace <port> with the port(s)
+that the web server is running on.
 
 ~b~12,4                  MDI Mode                                              
 
@@ -64,3 +68,5 @@ best way to display the topic on the screen.
 Server controller is in and needs some more work.  Basic
 idea works well though.
 
+/help now displayes all possible functions, instead of just 
+built in ones.  Shows all kSirc commands as well.

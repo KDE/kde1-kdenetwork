@@ -124,16 +124,25 @@ void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
     throw(parseError("", "Unable to parse status string"));
   status = &string[8];
   char nick[101], modes[101], chan[101], chanmode[101];
-  int found = sscanf(status, "%100s (%100[^)]) on %100s (%100[^)])", nick, modes, chan, chanmode);
+  int found = sscanf(status, "%100s (%100[^)]) on %100s (%100[^)])", nick, modes, chan, chanmode); // Channel modes and user modes
   if(found != 4){
-    found = sscanf(status, "%100s (%100[^)]) (away) on %100s (%100[^)])", nick, modes, chan, chanmode);
-    if(found != 4)
-      throw(parseError("", "Unable to parse status string"));
-    if(strlen(chan) < 98){
-      memmove(chan+2, chan, 98);
-      chan[0] = 'A';
-      chan[1] = '-';
+    found = sscanf(status, "%100s on %100s (%100[^)])", nick, chan, chanmode); // No user mode set
+    if(found != 3){
+      found = sscanf(status, "%100s (%100[^)]) (away) on %100s (%100[^)])", nick, modes, chan, chanmode); // Away
+      if(found != 4){
+	found = sscanf(status, "%100s (away) on %100s (%100[^)])", nick, chan, chanmode); // Away and no user mode set
+	if(found != 3)
+          throw(parseError("", "Unable to parse status string"));
+
+        modes[0] = 0x0; modes[1] = 0x0; // No mode set for user
+      }
+      if(strlen(chan) < 98){
+        memmove(chan+2, chan, 98);
+        chan[0] = 'A';
+	chan[1] = '-';
+      }
     }
+    modes[0] = 0x0; modes[1] = 0x0; // No mode set for user
   }
   QString status_line = chan;
   status_line += QString(" (") + chanmode + ") " +  nick +  " (" + modes + ") ";

@@ -83,10 +83,11 @@ sub create {
 
   $self->{runable} = 1;
 
+  my $carg = $parent . "\t" . $self->{widgetType} . "\t" .  $self->{initId};
+  
   my %REPLY = $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
-                                 'iArg' => $self->{widgetType} +  $parent * 2**16,
                                  'iWinId' => $::PUKE_CONTROLLER,
-                                 'cArg' => $self->{initId},
+                                 'cArg' => $carg,
                                  'CallBack' => sub { },
                                  'WaitFor' => 1);
 
@@ -109,10 +110,12 @@ sub fetchWidget {
 #  $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
 #                     'CallBack' => sub { print "Deleted\n"; });
 
+  $regex = "0" if($regex eq '');
+  my $carg = $regex . "\t" . $self->{widgetType} . "\t" .  $self->{initId} . "\t" . $self->{objName};
+  
   my %REPLY = $self->sendMessage('iCommand' => $::PUKE_FETCHWIDGET,
-                                 'iArg' => $self->{widgetType} +  $regex * 2**16,
                                  'iWinId' => $::PUKE_CONTROLLER,
-                                 'cArg' => $self->{initId} . "\t" . $self->{objName} ,
+                                 'cArg' =>  $carg,
                                  'CallBack' => sub { },
                                  'WaitFor' => 1);
 

@@ -74,11 +74,16 @@ sub create {
   my($paren_id) = 0;
   $paren_id = $self->{Parent}->{iWinId} if $self->{Parent} != -1;
 
+  if($paren_id eq ''){
+    $paren_id = "0";
+  }
+
+  my $carg =  $paren_id . "\t" . $::POBJECT_LAYOUT . "\t" . $self->{Direction} . "\t" . $self->{Border} . "\t" . $self->{initId},
+  
   my %REPLY;
   %REPLY = $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
                               'iWinId' => $::PUKE_CONTROLLER,
-                              'iArg' => $::POBJECT_LAYOUT + $paren_id * 2**16,
-                              'cArg' => "-" . $self->{Direction} . "-" . $self->{Border} . "-" . $self->{initId},
+                              'cArg' => $carg,
                               'CallBack' => sub { },
                               'WaitFor' => 1);
   

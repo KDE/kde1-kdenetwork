@@ -47,7 +47,7 @@ Usage: WALLOP [<#channel>] <message>
 Sends a message to all of the channel operators on the given channel.  
 Defaults the the current channel.");
 
-sub cmd_wallop { #fold00
+sub cmd_wallop { #FOLD00
   &getarg;
   unless ($newarg =~ /^#/) {
     $args = $newarg." ".$args;
@@ -96,7 +96,7 @@ sub cmd_unban { #fold00
 }
 &addcmd("unban");
 
-sub cmd_k { #fold00
+sub cmd_k { #FOLD00
   &getarg;
   $args = "You have been kicked by a KSirc user." unless $args;
   if ($newarg) {
@@ -107,7 +107,7 @@ sub cmd_k { #fold00
 }
 &addcmd("k");
 
-sub cmd_kb { #fold00
+sub cmd_kb { #FOLD00
   &getarg;
   if ($newarg) {
     &docommand("ban $newarg");
@@ -118,7 +118,7 @@ sub cmd_kb { #fold00
 }
 &addcmd("kb");
 
-sub cmd_clrban { #fold00
+sub cmd_clrban { #FOLD00
   &getarg;
   $newarg = $talkchannel unless $newarg;
   &addhook("367", "tban"); 
@@ -153,7 +153,7 @@ sub hook_disconnectd { #fold00
 #}
 #&addhook("kick","kickd");
 
-sub cmd_fcmd { #fold00
+sub cmd_fcmd { #FOLD00
   ($names,$mask,$command) = split(/ /, $args,3);
   $mask =~ s/\!/\!/;
   $mask =~ s/\@/\@/;
@@ -192,7 +192,7 @@ sub hook_removefiltercommand { #fold00
   &tell("~4Filter on $names, /$mask/i, Done.");
 }
 
-sub cmd_fc { #fold00
+sub cmd_fc { #FOLD00
   my ($mask, $cmd) = split(/ /, $args, 2);
   &docommand("fcmd $talkchannel $mask $cmd");
 }
@@ -321,9 +321,10 @@ sub hook_url_who_list { #FOLD00
     $silent = 1;
 }
 
-sub hook_url_end_who { #fold00
+sub hook_url_end_who { #FOLD00
     &remhook("352", "url_who_list");
     &remhook("315", "url_end_who");
+    $args = "";
 }
 
 &addhelp("url",
@@ -355,7 +356,7 @@ sub cmd_extnames #fold00
 }
 &addcmd("extnames");
 
-sub hook_ksirc_who_end { #fold00
+sub hook_ksirc_who_end { #FOLD00
   $who_active--;
   if($who_active == 0){
     &remhook("352", "ksirc_who_list");
@@ -375,9 +376,10 @@ sub hook_ksirc_who_end { #fold00
 
   delete($WHO_INFO{$info[1]});
   delete($WHO_TIME{$info[1]});
+  $args = "";
 }
 
-sub hook_ksirc_who_list { #fold00
+sub hook_ksirc_who_list { #FOLD00
   my @info = split(/\s+/, $_[0]);
   # 0: our nick
   # 1: channel
@@ -416,7 +418,7 @@ sub hook_ksirc_who_list { #fold00
 
 &tell("*** \0032,4\cbLoaded KSirc.pl\003");
 &tell("*** \00313,3\cbWith: Super Willy Enhancements, LotR's exec\003");
-sub cmd_exec { #fold00
+sub cmd_exec { #FOLD00
 
 	my $how, $to;
 
@@ -454,7 +456,7 @@ sub hook_fixcolours { #fold00
 
 &addhook("send_text", "fixcolours");
 
-sub cmd_help { #fold00
+sub cmd_help { #FOLD00
   &tell("*\cbH\cb* Help not available"), return unless @help;
   my $found ='';
   $_[0] =~ /^help\s*(.*)/;
@@ -500,6 +502,7 @@ sub cmd_help { #fold00
     }
   }                                    # KSIRC MOD
   &tell("*\cbH\cb* Unknown help topic; try /help") unless $found;
+  $args = "";
 }
 
 &addcmd("help");
