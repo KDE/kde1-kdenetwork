@@ -1,5 +1,17 @@
+1999-06-15  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
+        * Once for all clear corruption when compacting (I hope)
 
+        * Compact all folders and optional do it on exit.
+
+        * Small speedup from Don Sanders: don't sort new messages if sorting
+          is by order of arrival.
+
+        * Read PGP public keyring on demand and not always; Since this was
+          done on every first message, and pgp sometimes blocks for
+          keyboard input for a second or two, this is a great speedup of
+          start time (for non PGP messages)
+          
 1999-05-29  Sven Radej <radej@kde.org> (KMail-1.0.24)
 
         * Few "unused variable..." cleaned.
