@@ -17,6 +17,11 @@ kppp 0.3 Tue Apr 22:
 With exception of the data savings scheme, which will follow next, kppp 
 has almost completely been rewritten.
 
+kppp 0.6 Nov 26 97:
+
+The data savings scheme has been switched over to to the use of KConfig.
+I consider kppp virtually free of any ezppp code.
+
 Bernd Wuebben
 wuebben@math.cornell.edu
 wuebben@kde.org
