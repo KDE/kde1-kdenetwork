@@ -185,7 +185,7 @@ const char* PPPData::readListConfig(const char* group,
 }
 
 bool PPPData::readWholeListConfig(const char* group, const char* key,
-				  QStrList &list, char sep = ',') {
+				  QStrList &list, char sep) {
   list.clear();
   if (config) {
     config->setGroup(group);
@@ -221,22 +221,8 @@ void PPPData::writeConfig(const char* group, const char* key, int value) {
 
 }
 
-void PPPData::writeListConfig(const char* group, const char* key, 
-			      int i, const char *n) {
-  QStrList list;
-  if (config && i >= 0) {
-    config->setGroup(group);
-    config->readListEntry(key, list);
-    list.last();
-    while (list.count() > (uint) i ) 
-      list.remove(); 
-    if (n) list.append(n);
-    config->writeEntry(key, list);
-  }
-}
-
 void PPPData::writeWholeListConfig(const char* group, const char* key,
-				   QStrList &list, char sep = ',') {
+				   QStrList &list, char sep) {
   if (config) {
     config->setGroup(group);
     config->writeEntry(key, list, sep);
@@ -372,25 +358,9 @@ const char* PPPData::pppdPath() {
   }
   
   return PPPDPATH;
-  //return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
+
 }
 
-void PPPData::setpppdPath(const char *n) {
-  writeConfig(GENERAL_GRP, PPPDPATH_KEY, n);
-}
-
-
-// const char* PPPData::logViewer() {
-
-//   return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "kedit");
-
-// }
-
-// void PPPData::setlogViewer(const char *n) {
-
-//   writeConfig(GENERAL_GRP, LOGVIEWER_KEY, n);
-
-// }
 
 const char* PPPData::pppdTimeout() {
 
@@ -1148,9 +1118,9 @@ const char* PPPData::dns(int i) {
 
 }
 
-void PPPData::setDns(int i, const char *n) {
+void PPPData::setDns(QStrList &list) {
 
-  writeListConfig(cgroup, DNS_KEY, i, n);
+  writeWholeListConfig(cgroup, DNS_KEY, list);
 
 }
 
@@ -1178,9 +1148,9 @@ const char* PPPData::scriptType(int i) {
 }
 
 
-void PPPData::setScriptType(int i, const char *n) {
+void PPPData::setScriptType(QStrList &list) {
 
-  writeListConfig(cgroup, SCRIPTCOM_KEY, i, n);
+  writeWholeListConfig(cgroup, SCRIPTCOM_KEY, list);
 
 }
 
@@ -1195,9 +1165,9 @@ const char* PPPData::script(int i) {
 }
 
 
-void PPPData::setScript(int i, const char *n) {
+void PPPData::setScript(QStrList &list) {
 
-  writeListConfig(cgroup, SCRIPTARG_KEY, i, n);
+  writeWholeListConfig(cgroup, SCRIPTARG_KEY, list);
 
 }
 
@@ -1244,15 +1214,17 @@ const char* PPPData::pppdArgument(int i) {
 
 }
 
-void PPPData::setpppdArgument(int i, const char *n) {
+void PPPData::setpppdArgument(QStrList &args) {
 
-  writeListConfig(cgroup, PPPDARG_KEY, i, n);
+  writeWholeListConfig(cgroup, PPPDARG_KEY, args);
 
 }
 
 void PPPData::setpppdArgumentDefaults() {
 
-  setpppdArgument(0, 0L);
+  QStrList args;
+  // no default arguments currently
+  setpppdArgument(args);
 
 }
 

@@ -164,7 +164,6 @@ public slots:
 
 private slots:
   void hitGatewaySelect( int );
-  void defaultroute_t(bool on);
 
 private:
 

@@ -414,11 +414,11 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 }
 
 void DNSWidget::save() {
-  if (dnsservers->count() > 0)
-    for(uint i=0; i < dnsservers->count(); i++)
-      gpppdata.setDns(i, dnsservers->text(i));
-  else 
-    gpppdata.setDns(0, 0L);
+  QStrList serverlist;
+  for(uint i=0; i < dnsservers->count(); i++)
+    serverlist.append(dnsservers->text(i));
+  gpppdata.setDns(serverlist);
+
   gpppdata.setDomain(dnsdomain->text());
   gpppdata.setExDNSDisabled(exdnsdisabled_toggle->isChecked());
 }
@@ -471,9 +471,6 @@ GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *na
   defaultroute=new QCheckBox(i18n("Assign the Default Route to this Gateway"),
 	this,"defaultroute");
   defaultroute->adjustSize();
-  defaultroute->setChecked(gpppdata.defaultroute());
-  connect(defaultroute,SIGNAL(toggled(bool)),this,SLOT(defaultroute_t(bool)));
-
 
   //load info from gpppdata
   if(!isnewaccount) {
@@ -534,10 +531,6 @@ void GatewayWidget::resizeEvent(QResizeEvent *) {
 		 (box->geometry().bottom() + height())/2);
 }
 
-void GatewayWidget::defaultroute_t(bool on) {
-  // Mario: what strange piece of code is this?
-  // on=on;
-}
 
 void GatewayWidget::save() {
   gpppdata.setGateway(gatewayaddr->text());
@@ -689,15 +682,13 @@ bool ScriptWidget::check() {
 
 
 void ScriptWidget::save() {
-  if(sl->count() > 0)
-    for( uint i=0; i <= sl->count()-1; i++) {
-      gpppdata.setScriptType(i, stl->text(i));
-      gpppdata.setScript(i, sl->text(i));
-    }
-  else {                
-    gpppdata.setScriptType(0, 0L);
-    gpppdata.setScript(0, 0L);
+  QStrList typelist, arglist;
+  for(uint i=0; i < sl->count(); i++) {
+    typelist.append(stl->text(i));
+    arglist.append(sl->text(i));
   }
+  gpppdata.setScriptType(typelist);
+  gpppdata.setScript(arglist);
 }                        
 
 

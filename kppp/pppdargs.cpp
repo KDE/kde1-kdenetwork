@@ -91,13 +91,10 @@ void PPPdArguments::defaultsbutton() {
 
 
 void PPPdArguments::closebutton() {
-  if(arguments->count() > 0) {
-    for(uint i=0; i <= arguments->count()-1; i++)
-      gpppdata.setpppdArgument(i, arguments->text(i));
-  }
-  else {
-    gpppdata.setpppdArgument(0, 0L);
-  }
+  QStrList arglist;
+  for(uint i=0; i < arguments->count(); i++)
+    arglist.append(arguments->text(i));
+  gpppdata.setpppdArgument(arglist);
 
   done(0);
 }

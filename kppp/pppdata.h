@@ -65,8 +65,6 @@
 
 // general
 #define DEFAULTACCOUNT_KEY "DefaultAccount"
-#define PPPDPATH_KEY       "pppdPath"
-//#define LOGVIEWER_KEY      "LogViewer"
 #define PPPDTIMEOUT_KEY    "pppdTimeout"
 #define SHOWCLOCK_KEY      "ShowClock"
 #define SHOWLOGWIN_KEY     "ShowLogWindow"
@@ -155,11 +153,12 @@ public:
   const char* readConfig(const char *, const char *, const char *);
   int readNumConfig(const char *, const char *, int);
   const char* readListConfig(const char *, const char *, int);
-  bool readWholeListConfig(const char *, const char *, QStrList &, char);
+  bool readWholeListConfig(const char *, const char *, QStrList &, 
+                           char sep = ',');
   void writeConfig(const char *, const char *, const char *);
   void writeConfig(const char *, const char *, int);
-  void writeListConfig(const char *, const char *, int, const char*);
-  void writeWholeListConfig(const char *, const char *, QStrList &, char);
+  void writeWholeListConfig(const char *, const char *, QStrList &,
+                            char sep = ',');
 
   // functions to set/get general kppp info
 
@@ -193,11 +192,7 @@ public:
   void set_dock_into_panel(bool set);
   const bool get_dock_into_panel();
 
-//   const char* logViewer();
-//   void setlogViewer(const char*);
-
   const char* pppdPath();
-  void setpppdPath(const char *);
 
   const char* enter();
   void setEnter(const char *);
@@ -355,20 +350,20 @@ public:
   void setDefaultroute(bool set);
 
   const char* dns(int);
-  void setDns(int, const char*);
+  void setDns(QStrList &);
 
   const char* domain();
   void setDomain(const char *);
 
   const char* scriptType(int);
-  void setScriptType(int, const char*);
+  void setScriptType(QStrList &);
 
   const char* script(int);
-  void setScript(int, const char *);
+  void setScript(QStrList &);
 
   const char* pppdArgument(int);
   void setpppdArgumentDefaults();
-  void setpppdArgument(int, const char*);
+  void setpppdArgument(QStrList &);
 
   //functions to change/set the child pppd process info
 

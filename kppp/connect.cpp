@@ -1182,10 +1182,9 @@ bool ConnectWidget::execppp() {
 
 
 void ConnectWidget::closeEvent( QCloseEvent *e ) {
-  // We don't want to lose the conwindow since this is our last 
-  // connection to kppp. If we lost it we would have to kill the 
-  // program by hand to get on with life.
-  e->ignore();                            
+
+  e->ignore();
+  emit cancelbutton();
 }
 
 void ConnectWidget::setMsg(const char* msg) {

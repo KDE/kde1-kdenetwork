@@ -1,3 +1,9 @@
+1998-08-24  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: re-enabled closeEvent()
+        * pppdata.cpp: dumped writeListConfig(). Will do the same with
+        readListConfig() too ... next week.
+
 1998-08-22  Mario Weilguni <mweilguni@kde.org>
 
 	* some KDE style guide conformant changes
