@@ -3,10 +3,10 @@
 #include <string.h>
 #include <mimelib/binhex.h>
 
-static const char *kPreamble =
+const char * const kPreamble =
     "(This file must be converted with BinHex 4.0)";
 
-static char kBinhexChars[] =
+const char kBinhexChars[] =
   "!\"#$%&'()*+,-012345689@ABCDEFGHIJKLMNPQRSTUVXYZ[`abcdefhijklmpqr";
 //            1         2         3         4         5         6
 // 0 123456789012345678901234567890123456789012345678901234567890123
@@ -15,7 +15,7 @@ static char kBinhexChars[] =
 #define SKIP 0x7E
 #define FAIL 0x7D
 
-static char kBinhexTable[] = {
+const char kBinhexTable[] = {
 // 0x00
     SKIP, FAIL, FAIL, FAIL, FAIL, FAIL, FAIL, FAIL,
     FAIL, SKIP, SKIP, FAIL, FAIL, SKIP, FAIL, FAIL,
