@@ -341,7 +341,7 @@ bool KSircListBox::xlateToText(int x, int y,
   
   // Give abolute pos from start of the line
   for(int l = line-1;  l >= 0; l --){
-    cchar += KSPainter::stripColourCodes(it->paintText()->at(l)).length();
+    cchar += strlen(it->paintText()->at(l));
   }
   //  cerr << "On char: " << sline[0] << " Index: " << cchar << endl;
   *rrow = row;
