@@ -159,8 +159,14 @@ an email address in the <B>To:</B> or <B>From:</B> fields and selecting <B>Add t
 your inbox when they arrive. Filters allow you to automatically perform certain actions on
 incoming messages and to manually perform actions on selected messages in a folder.
 <P>The actions section of the <B>Filter Rules</B> window lets you perform up to eight actions in one
-filter. You can you the "Skip Rest" option to skip the rest of the actions in the list.  Only the transfer action and the skip rest action are supported at this time, 
-but expect to see more action options available in future releases of Kmail.
+filter. You can use the "Skip Rest" option to skip the rest of the actions in the list.  
+<P>The "Transfer" action is used to move a message into a specific folder.
+It is useful to add "Skip Rest" as second action after "Transfer" to avoid
+that filters down the list move the message into another folder.
+<P>The "Execute" action executes the given program. The program has to be in
+the path to be found.
+<P>The "Forward-to" action forwards a copy of the message to the given email 
+address.
 <P>Usually, filters are used on incoming messages, but they can also be applied to a message or group of
 messages.  To selectively filter messages in a message folder, select the messages you want to filter and
 type CONTROL-J or select <B>Message | Apply Filters</B>. Note that this will apply all
@@ -232,6 +238,8 @@ Privacy Guard or PGP installed and have your keys created. To configure PGP, sel
 and click on the <B>PGP</B> tab. Type in your PGP user identity in the space
 provided and select any other options that you want before pressing the <B>OK</B> button to save your
 settings. 
+<P>If you want to use PGP 5.x you have to set PGP's language to English. Otherwise
+Kmail won't be able to use it.
 <P>Once PGP is configured, you can use it to sign and encrypt messages. To sign an email message, toggle the
 quill button on the button bar. When you send your message, you will be prompted for your PGP password.
 The message will then be signed with your PGP signature and sent. 
