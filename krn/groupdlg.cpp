@@ -333,15 +333,30 @@ void Groupdlg::openGroup (int index)
             int l=base.length();
             int c=base.contains('.');
             char tc;
-            QStrList bases;
-            bases.setAutoDelete(true);
             QListIterator <NewsGroup> it(groups);
             NewsGroup *iter;
-            for (;it.current();++it)
+
+	    // preload pixmaps
+	    QPixmap followup = 
+	      kapp->getIconLoader()->loadIcon("followup.xpm");
+	    QPixmap krnfolder = 
+	      kapp->getIconLoader()->loadIcon("frnfolder.xpm");
+
+	    // Lets take a larger prime number. For currently 40000 
+	    // newsgroups this means that each slot in the dict
+	    // contains approx. 17 entries.
+	    QDict<int> dict(2423);
+
+	    // we must insert non-NULL pointer into the dict,
+	    // so we take a dummy
+	    int nullItem = 0;
+
+            for (;it.current(); ++it)
             {
                 iter=it.current();
+
                 //this group's name matches the base
-                if (!strncmp(base.data(),iter->name,l))
+                if (l == 0 || !strncmp(base.data(),iter->name,l))
                 {
                     QString gname=iter->name;
                     //Check the dot count.
@@ -349,8 +364,7 @@ void Groupdlg::openGroup (int index)
                     //Add it as a child
                     if (gname.contains('.')==c)
                     {
-                        p=kapp->getIconLoader()->loadIcon("followup.xpm");
-                        list->appendChildItem(iter->name,p,index);
+                        list->appendChildItem(iter->name,followup,index);
                     }
                     
                     else  //It may be a new hierarchy
@@ -359,21 +373,24 @@ void Groupdlg::openGroup (int index)
                         char *nextdot=strchr(iter->name+l+1,'.')+1;
                         tc=nextdot[0];
                         nextdot[0]=0;
-                        if (bases.find(iter->name)==-1)
+                        if (dict.find(iter->name) == 0)
                         {
                             // It's new, so add it to the base list
                             // and insert it as a folder
-                            bases.append(iter->name);
-                            p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
-                            list->appendChildItem(iter->name,p,index);
+			    dict.insert(iter->name, &nullItem);
+			    list->appendChildItem(iter->name,krnfolder,index);
                         }
                         nextdot[0]=tc;
                     }
                 }
             }
-            list->expandItem(index);
+	    list->expandItem(index);
             list->forEveryVisibleItem(checkPixmap,NULL);
             list->repaint();
+
+	    // This fixes a bug in the treeview: the scrollbars are
+	    // not updated properly if the widget is not resized
+	    list->resize(list->size());
         }
         else
         {
@@ -786,7 +803,7 @@ bool Groupdlg::loadActive()
         qApp->restoreOverrideCursor ();
         if (1 == i)
         {
-            server->groupList(&groups,true);
+	    server->groupList(&groups,true);
             success=true;
         }
         else
