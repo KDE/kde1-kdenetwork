@@ -1,84 +1,50 @@
 /* XPM */
-static char *krn[] = {
-/* width height num_colors chars_per_pixel */
-"    32    32       30            1",
-/* colors */
+/* Drawn  by Nico Schwiring for the K Desktop Environment */
+/* See http://www.kde.org */
+static char*krn[]={
+"32 32 12 1",
 ". c #000000",
+"h c #c0c0c0",
+"b c #ffffff",
+"g c #808080",
+"j c #585858",
+"i c #a0a0a4",
+"d c #ffbebe",
+"a c #ffffbe",
+"f c #ff8000",
+"e c #ffa85a",
+"c c #ffdca8",
 "# c None",
-"a c #c0c0c0",
-"b c #fff0d4",
-"c c #ffe2b1",
-"d c #ffd48e",
-"e c #ffc66b",
-"f c #ffb848",
-"g c #ffaa25",
-"h c #ffe3d4",
-"i c #ffc7b1",
-"j c #ffab8e",
-"k c #ff8f6b",
-"l c #ffd4d4",
-"m c #ff8e8e",
-"n c #f2f2f2",
-"o c #e6e6e6",
-"p c #dadada",
-"q c #cecece",
-"r c #c2c2c2",
-"s c #b6b6b6",
-"t c #aaaaaa",
-"u c #9e9e9e",
-"v c #929292",
-"w c #868686",
-"x c #626262",
-"y c #fffbf0",
-"z c #a0a0a4",
-"A c #808080",
-"B c #ffffff",
-/* pixels */
 "................####......######",
-".bybn.bybn.bybnb..##.bybnb..####",
-".bnbb.bnbb.bnbbnbb.#.bnbbnbb.###",
-".bbbb.bbbb.bbbbbbbb..bbbbbbbb.##",
-".bhbh.bhbb.bhbbbhhb..bhbbbhhb..#",
-".bbcd.bbcd.bbcd.bcbc.bbcd.bcbc.#",
-".chcb.chcb.chcb.cbcd.chcb.cbcd..",
-".ccbl.cbcc.ccdc.chcc.bccc.hccc..",
-".ccdc.cccd.cccc.cccc.ccdc.ccic..",
-".cicdcdcd..cdciccdd..ccdc.cdci..",
-".dcddddcc..cicicici..dddc.cici..",
-".ddddcdd...dcidddd...dded.deid..",
-".ddeddddd..dddddddd..dejd.ddde..",
-".dejejedd..dejdejed..dded.dejd..",
-".dede.deee.deej.dedd.d..e.dege..",
-".dfgf.dege.dgee.dfj...Aa..dfed..",
-".ejfg.efed.eefe....AaptBa.ejfj..",
-".efgf.eeee.ef...AaBBtkmiBa.eef..",
-".eeee.efg....AaBBopBiimkpBa.ge..",
-".efgf....AaaBBnnsuvnijipaBoa.f..",
-".fe...AopBBnppAqqswrniBoswtoa...",
-"...AoqonanqAttvuaqronrvvsqnopa..",
-"..aBBAvqrstsqqzopBqzwsqopsrasq..",
-"#.xaBpztwzuxsBnptwtqnopqqsqqqaA.",
-".xoxanrnqtoooavurnBnraqaqqattA..",
-".axoxnsaoaquwsoBnunnusqatzA...##",
-"#.axoxBptAtqpoopnuaaatzA...#####",
-"##.axoxBqynptsqaaattA...########",
-"###.axoxpoqrsattzA...###########",
-"####.axoxttttzA...##############",
-"#####.axtxzA...#################",
-"######......####################"
-};
-SIMPLE  =                    T
-BITPIX  =                    8
-NAXIS   =                    2
-NAXIS1  =                   32
-NAXIS2  =                   32
-HISTORY Written by XV 3.10a
-END
+".abab.abab.ababa..##.ababa..####",
+".abaa.abaa.abaabaa.#.abaabaa.###",
+".aaaa.aaaa.aaaaaaaa..aaaaaaaa.##",
+".aaaa.aaaa.aaaaaaaa..aaaaaaaa.##",
+".aacc.aacc.aacc.acac.aacc.acac.#",
+".caca.caca.caca.cacc.caca.cacc.#",
+".ccad.cacc.cccc.cacc.accc.accc..",
+".cccc.cccc.cccc.cccc.cccc.ccdc..",
+".cdcccccc..cccdcccc..cccc.cccd..",
+".cccccccc..cdcdcdcd..cccc.cdcd..",
+".ccccccc...ccdcccc...ccec.cedc..",
+".cceccccc..cccccccc..cedc.ccce..",
+".cededecc..cedcedec..ccec.cedc..",
+".cece.ceee.ceed.cecc.c..e.ccee..",
+".cefe.cefe.cfee.ced...gh..ceec..",
+".edef.eeec.eeee....ghhibh.eded..",
+".eefe.eeee.ee...ghbbieedbh.eee..",
+".eeee.eef....ghbbbhbddeehbh.fe..",
+".eefe....ghhbbbbhigbdddhhbbh.e..",
+".ee...gbhbbbhhghhhghbdbbhgibh...",
+"...gbhbbhbhgiigihhhbbhgghhbbhh..",
+"..hbbgghhhihhhibhbhighhbhhhhhh..",
+"#.jhbhiigiijhbbhigihbbhhhhhhhhg.",
+".jbjhbhbhibbbhgihbbbhhhhhhhiig..",
+".hjbjbhhbhhighbbbibbihhhiig...##",
+"#.hjbjbhigihhbbhbihhhiig...#####",
+"##.hjbjbhbbhihhhhhiig...########",
+"###.hjbjhbhhhhiiig...###########",
+"####.hjbjiiiiig...##############",
+"#####.hjijig...#################",
+"######......####################"};
 
--- 
-Kalle Dalheimer                 Contract programming for Unix
-kalle@dalheimer.hh.eunet.de     Technical writing
-kalle@kde.org                   Technical editing
-kalle@oreilly.de
-mdalheimer@acm.org              Don't let your friends boot NT!
-	

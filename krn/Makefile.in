@@ -31,6 +31,8 @@ INSTALL_DIR_PRIVATE = $(install) -d -m 0700
 prefix = @prefix@
 KDEINC = $(prefix)/include
 BINDIR = $(prefix)/bin
+ICONDIR =  $(prefix)/share/icons
+MINIDIR =  $(prefix)/share/icons/mini
 
 ########### File Formats ###########
 
@@ -194,8 +196,10 @@ distclean: clean
 	rm -f Makefile pics/Makefile docs/Makefile
 
 install: all
-	$(INSTALL_DIR) $(prefix)/share/icons
-	$(INSTALL_DATA) krn.xpm $(prefix)/share/icons
+	$(INSTALL_DIR) $(ICONDIR)
+	$(INSTALL_DATA) krn.xpm $(ICONDIR)
+	$(INSTALL_DIR) $(MINIDIR)
+	$(INSTALL_DATA) mini-krn.xpm $(MINIDIR)/krn.xpm
 	$(INSTALL_DIR) $(BINDIR)
 	$(INSTALL) $(TARGET) $(BINDIR)
 	$(INSTALL_DIR) $(prefix)/share/applnk/Utilities
@@ -205,6 +209,8 @@ install: all
 
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
+	rm -f $(ICONDIR)/krn.xpm
+	rm -f $(MINIDIR)/krn.xpm
 	(cd pics && $(MAKE) uninstall)
 	(cd docs && $(MAKE) uninstall)
 
