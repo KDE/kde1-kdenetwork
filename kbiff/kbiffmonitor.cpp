@@ -85,8 +85,6 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 void KBiffMonitor::setMailbox(KURL& url)
 {
 TRACEINIT("KBiffMonitor::setMailbox()");
-	if (url.isMalformed())
-		return;
 
 	if (!strcmp(url.protocol(), "imap4"))
 	{

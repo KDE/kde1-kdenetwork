@@ -34,6 +34,8 @@ public:
 	KBiff(QWidget *parent = 0);
 	virtual ~KBiff();
 
+	void setMailbox(const KURL& new_mailbox);
+
 protected:
 	void mousePressEvent(QMouseEvent *);
 

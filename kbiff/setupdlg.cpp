@@ -15,11 +15,16 @@
 #include <qpixmap.h>
 #include <qfont.h>
 #include <qlabel.h>
-#include <qgrpbox.h>
-#include <qfileinf.h>
+#include <qgroupbox.h>
+#include <qfileinfo.h>
+#include <qstrlist.h>
+#include <qlayout.h>
 
 #include <kapp.h>
 #include <ktabctl.h>
+#include <ksimpleconfig.h>
+
+#include <qlistview.h> // KBiffMailboxTab
 
 #include <kfiledialog.h> // KBiffNewMailTab
 
@@ -35,59 +40,72 @@
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
-KBiffSetup::KBiffSetup(const char *)
+KBiffSetup::KBiffSetup(const char *profile)
 	: QDialog(0, 0, true, 0)
 {
 TRACEINIT("KBiffSetup::KBiffSetup()");
-	int y;
+
+	// make sure the profile is *something*
+	if (!profile)
+		profile = "Inbox";
 
 	setCaption(i18n("KBiff Setup"));
 
 	// mailbox groupbox
-	QGroupBox* mailbox_groupbox = new QGroupBox(this);
-	mailbox_groupbox->setGeometry(10, 10, 315, 100);
-	mailbox_groupbox->setTitle(i18n("Profile:"));
+	QGroupBox* profile_groupbox = new QGroupBox(i18n("Profile:"), this);
+
+	QBoxLayout *profile_layout = new QBoxLayout(profile_groupbox,
+	                                            QBoxLayout::Down, 12, 5);
+	profile_layout->addSpacing(8);
 
 	// combo box to hold the profile names
-	comboProfile = new QComboBox(false, this);
-	comboProfile->setGeometry(25, 30, 285, MIN_HEIGHT);
-	connect(comboProfile, SIGNAL(highlighted(int)),
-	                      SLOT(slotProfileSelected(int)));
+	comboProfile = new QComboBox(false, profile_groupbox);
 	comboProfile->setSizeLimit(10);
+	comboProfile->setFixedHeight(comboProfile->sizeHint().height());
+	profile_layout->addWidget(comboProfile);
 
-	y = MIN_HEIGHT + 40;
+	QBoxLayout *button_layout = new QBoxLayout(QBoxLayout::LeftToRight, 10);
+	profile_layout->addLayout(button_layout);
 
 	// add new profile button
-	QPushButton* add_button = new QPushButton(this);
-	add_button->setGeometry(25, y, 85, 30);
+	QPushButton *add_button = new QPushButton(i18n("&New..."), profile_groupbox);
+	add_button->setFixedHeight(add_button->sizeHint().height());
 //	connect(add_button, SIGNAL(clicked()), SLOT(m_addNewMailbox()));
-add_button->setEnabled(false);
-	add_button->setText(i18n("&New..."));
+	button_layout->addWidget(add_button);
+	button_layout->addSpacing(10);
 
 	// rename current profile button
-	QPushButton* rename_button = new QPushButton(this);
-	rename_button->setGeometry(125, y, 85, 30);
+	QPushButton *rename_button = new QPushButton(i18n("&Rename..."),
+	                                             profile_groupbox);
+	rename_button->setFixedHeight(rename_button->sizeHint().height());
 //	connect(rename_button, SIGNAL(clicked()), SLOT(m_renameMailbox()));
-rename_button->setEnabled(false);
-	rename_button->setText(i18n("&Rename..."));
+	button_layout->addWidget(rename_button);
+	button_layout->addSpacing(10);
 
 	// delete current profile button
-	QPushButton* delete_button = new QPushButton(this);
-	delete_button->setGeometry(225, y, 85, 30);
+	QPushButton *delete_button = new QPushButton(i18n("&Delete"),
+	                                             profile_groupbox);
+	delete_button->setFixedHeight(delete_button->sizeHint().height());
 //	connect(delete_button, SIGNAL(clicked()), SLOT(m_deleteMailbox()));
-delete_button->setEnabled(false);
-	delete_button->setText(i18n("&Delete"));
+	button_layout->addWidget(delete_button);
 
-	y += 30;
-
-	mailbox_groupbox->resize(315, y);
+	//  add the profile name stuff into the main layout
+	QBoxLayout *main_layout = new QBoxLayout(this, QBoxLayout::Down);
+	main_layout->addWidget(profile_groupbox, 1);
 
 	// setup the tabs
 	KTabCtl *tabctl = new KTabCtl(this);
-	generalTab = new KBiffGeneralTab(tabctl);
-	newmailTab = new KBiffNewMailTab(tabctl);
-	mailboxTab = new KBiffMailboxTab(tabctl);
+	generalTab = new KBiffGeneralTab(profile, tabctl);
+	newmailTab = new KBiffNewMailTab(profile, tabctl);
+	mailboxTab = new KBiffMailboxTab(profile, tabctl);
 	aboutTab   = new KBiffAboutTab(tabctl); 
+
+	connect(comboProfile, SIGNAL(highlighted(const char *)),
+	        generalTab, SLOT(readConfig(const char *)));
+	connect(comboProfile, SIGNAL(highlighted(const char *)),
+	        newmailTab, SLOT(readConfig(const char *)));
+	connect(comboProfile, SIGNAL(highlighted(const char *)),
+	        mailboxTab, SLOT(readConfig(const char *)));
 
 	// add the tabs
 	tabctl->addTab(generalTab, i18n("General"));
@@ -95,39 +113,49 @@ delete_button->setEnabled(false);
 	tabctl->addTab(mailboxTab, i18n("Mailbox"));
 	tabctl->addTab(aboutTab, i18n("About"));
 
-	y += 15;
+	// add the tab control to the main layout
+	main_layout->addWidget(tabctl, 2);
 
-	tabctl->setGeometry(5, y, 320, 280);
+	QBoxLayout *bottom_layout = new QBoxLayout(QBoxLayout::LeftToRight, 10);
 
-	y += 285;
+	// and add the bottom buttons to the main layout
+	main_layout->addLayout(bottom_layout, 1);
+	main_layout->activate();
 
 	// help button
 	help = new QPushButton(i18n("Help"), this);
-	help->setGeometry(10, y, 75, 30);
+	help->setMinimumSize(help->sizeHint());
 	connect(help, SIGNAL(clicked()), SLOT(invokeHelp()));
+	bottom_layout->addWidget(help);
+	bottom_layout->addSpacing(50);
 
 	// ok button
 	ok = new QPushButton(i18n("OK"), this);
-	ok->setGeometry(165, y, 75, 30);
 	ok->setDefault(true);
+	ok->setMinimumSize(ok->sizeHint());
 	connect(ok, SIGNAL(clicked()), SLOT(slotDone()));
+	bottom_layout->addWidget(ok);
 
 	// cancel button
 	cancel = new QPushButton(i18n("Cancel"), this);
-	cancel->setGeometry(250, y, 75, 30);
+	cancel->setMinimumSize(cancel->sizeHint());
 	connect(cancel, SIGNAL(clicked()), SLOT(reject()));
+	bottom_layout->addWidget(cancel);
 
-	y += 40;
-
-	resize(330, y);
-	setFixedSize(330, y);
-
-	initDefaults();
-	setWidgets();
+	resize(350, 400);
+//	setFixedSize(330, y);
+//	initDefaults();
+//	setWidgets();
+	readConfig(profile);
 }
 
 KBiffSetup::~KBiffSetup()
 {
+}
+
+KURL KBiffSetup::getMailbox() const
+{
+	return mailboxTab->getMailbox();
 }
 
 void KBiffSetup::invokeHelp()
@@ -135,161 +163,156 @@ void KBiffSetup::invokeHelp()
 	kapp->invokeHTMLHelp("kbiff/kbiff.html", "");
 }
 
+void KBiffSetup::readConfig(const char* profile)
+{
+	QStrList profile_list;
+
+	// open the config file
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup("General");
+
+	// read in the mailboxes
+	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
+	delete config;
+
+	// check if we have any mailboxes to read in
+	if (number_of_mailboxes > 0)
+	{
+		// load up the combo box
+		comboProfile->insertStrList(&profile_list);
+
+		// read in the data from the first mailbox if we don't have a name
+		for (int i = 0; i < comboProfile->count(); i++)
+		{
+			if (QString(profile) == comboProfile->text(i))
+			{
+				comboProfile->setCurrentItem(i);
+				break;
+			}
+		}
+	}
+	else
+		comboProfile->insertItem(profile);
+}
+
+void KBiffSetup::saveConfig()
+{
+	// open the config file for writing
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup("General");
+
+	// get the list of profiles
+	QStrList profile_list;
+	for (int i = 0; i < comboProfile->count(); i++)
+		profile_list.append(comboProfile->text(i));
+
+	// write the mailboxes
+	config->writeEntry("Profiles", profile_list);
+
+	delete config;
+}
+
 ///////////////////////////////////////////////////////////////////////
 // Protected slots
 ///////////////////////////////////////////////////////////////////////
 void KBiffSetup::slotDone()
 {
+TRACEINIT("KBiffSetup::slotDone()");
+	QString profile = comboProfile->currentText();
+	saveConfig();
+	generalTab->saveConfig(profile);
+	newmailTab->saveConfig(profile);
+	mailboxTab->saveConfig(profile);
 	accept();
-}
-
-void KBiffSetup::slotProfileSelected(int /*profile*/)
-{
 }
 
 ///////////////////////////////////////////////////////////////////////
 // Protected (non-slot) functions
 ///////////////////////////////////////////////////////////////////////
-void KBiffSetup::initDefaults()
-{
-TRACEINIT("KBiffSetup::initDefaults()");
-	// set the defaults for all the variables
-	profile       = "Inbox";
-	comboProfile->insertItem(profile);
-
-	poll          = 60;
-	mailClient    = (getenv("MAILER")) ? getenv("MAILER") : "kmail";
-	dockInPanel   = true;
-	useSessions   = true;
-	oldmailPixmap = "oldmail.xpm";
-	newmailPixmap = "newmail.xpm";
-	nomailPixmap  = "nomail.xpm";
-
-	runCommand    = false;
-	commandPath   = "";
-	playSound     = false;
-	soundPath     = "";
-	playBeep      = true;
-
-	QFileInfo mailbox_info(getenv("MAIL"));
-	if (mailbox_info.exists() == false)
-	{
-		QString s("/var/spool/mail/");
-		s += getlogin();
-		mailbox_info.setFile(s);
-	}
-	mailbox.setProtocol("mbox");
-	mailbox.setPath(mailbox_info.absFilePath());
-	mailbox.setPort(0);
-}
-
-void KBiffSetup::setWidgets()
-{
-TRACEINIT("KBiffSetup::setWidgets()");
-	// General widgets
-	generalTab->setPoll(poll);
-	generalTab->setMailClient(mailClient);
-	generalTab->setDock(dockInPanel);
-	generalTab->setSessionManagement(useSessions);
-	generalTab->setButtonNewMail(newmailPixmap);
-	generalTab->setButtonNoMail(nomailPixmap);
-	generalTab->setButtonOldMail(oldmailPixmap);
-
-	// New mail widgets
-	newmailTab->setRunCommand(runCommand);
-	newmailTab->setRunCommandPath(commandPath);
-	newmailTab->setPlaySound(playSound);
-	newmailTab->setPlaySoundPath(soundPath);
-	newmailTab->setBeep(playBeep);
-
-	// Mailbox
-	mailboxTab->setMailbox(mailbox);
-}
 
 ///////////////////////////////////////////////////////////////////////
 // KBiffGeneralTab
 ///////////////////////////////////////////////////////////////////////
-KBiffGeneralTab::KBiffGeneralTab(QWidget *parent)
+KBiffGeneralTab::KBiffGeneralTab(const char* profile, QWidget *parent)
 	: QWidget(parent)
 {
 TRACEINIT("KBiffGeneralTab::KBiffGeneralTab()");
+TRACEF("profile = %s", profile);
+	QGridLayout *top_grid = new QGridLayout(this, 5, 3, 12, 5);
+
 	// the poll time (in seconds)
-	QLabel* poll_label = new QLabel(this);
-	poll_label->setGeometry(10, 20, 65, 30);
-	poll_label->setText(i18n("Poll (sec):"));
-	poll_label->adjustSize();
+	QLabel* poll_label = new QLabel(i18n("Poll (sec):"), this);
+	poll_label->setMinimumSize(poll_label->sizeHint());
+	top_grid->addWidget(poll_label, 0, 0);
 
 	// the command to run when clicked
-	QLabel* command_label = new QLabel(this);
-	command_label->setGeometry(10, 50, 65, 30);
-	command_label->setText(i18n("Mail client:"));
-	command_label->adjustSize();
-
-	int x = QMAX(poll_label->width() + 15, command_label->width() + 15);
+	QLabel *mail_label = new QLabel(i18n("Mail client:"), this);
+	mail_label->setMinimumSize(mail_label->sizeHint());
+	top_grid->addWidget(mail_label, 1, 0);
 
 	editPoll = new QLineEdit(this);
-	editPoll->setGeometry(x, 15, 60, MIN_HEIGHT);
+	editPoll->setMinimumSize(editPoll->sizeHint());
+	top_grid->addWidget(editPoll, 0, 1);
 
 	editCommand = new QLineEdit(this);
-	editCommand->setGeometry(x, 45, 300 - x, MIN_HEIGHT);
+	editCommand->setMinimumSize(editCommand->sizeHint());
+	top_grid->addMultiCellWidget(editCommand, 1, 1, 1, 2);
 
 	// do we dock automatically?
-	checkDock = new QCheckBox(this);
-	checkDock->setText(i18n("Dock in panel"));
-	checkDock->setGeometry(x, 75, 150, 25);
-	checkDock->adjustSize();
+	checkDock = new QCheckBox(i18n("Dock in panel"), this);
+	checkDock->setMinimumSize(checkDock->sizeHint());
+	top_grid->addMultiCellWidget(checkDock, 2, 2, 1, 2);
 
 	// should we support session management?
-	checkNoSession = new QCheckBox(this);
-	checkNoSession->setText(i18n("Use session management"));
-	checkNoSession->setGeometry(x, 100, 190, 25);
-	checkNoSession->adjustSize();
+	checkNoSession = new QCheckBox(i18n("Use session management"), this);
+	checkNoSession->setMinimumSize(checkNoSession->sizeHint());
+	top_grid->addMultiCellWidget(checkNoSession, 3, 3, 1, 2);
 
 	// group box to hold the icons together
-	QGroupBox* icons_groupbox = new QGroupBox(this);
-	icons_groupbox->setTitle(i18n("Icons:"));
-	icons_groupbox->move(10, 125);
+	QGroupBox* icons_groupbox = new QGroupBox(i18n("Icons:"), this);
+	top_grid->addMultiCellWidget(icons_groupbox, 4, 4, 0, 2);
+	top_grid->setRowStretch(4, 1);
 
-	x = 125 + fontMetrics().lineSpacing();
+	// layout to hold the icons inside the groupbox
+	QGridLayout *icon_layout = new QGridLayout(icons_groupbox, 3, 3, 12, 5);
+	icon_layout->addRowSpacing(0, 8);
 
 	// "no mail" pixmap button
-	QLabel* nomail_label = new QLabel(this);
-	nomail_label->setText(i18n("No Mail:"));
-	nomail_label->adjustSize();
+	QLabel* nomail_label = new QLabel(i18n("No Mail:"), icons_groupbox);
+	nomail_label->setMinimumSize(nomail_label->sizeHint());
+	icon_layout->addWidget(nomail_label, 1, 0);
 
 	// "old mail" pixmap button
-	QLabel* oldmail_label = new QLabel(this);
-	oldmail_label->setText(i18n("Old Mail:"));
-	oldmail_label->adjustSize();
+	QLabel* oldmail_label = new QLabel(i18n("Old Mail"), icons_groupbox);
+	oldmail_label->setMinimumSize(oldmail_label->sizeHint());
+	icon_layout->addWidget(oldmail_label, 1, 1);
 
 	// "new mail" pixmap button
-	QLabel* newmail_label = new QLabel(this);
-	newmail_label->setText(i18n("New Mail:"));
-	newmail_label->adjustSize();
+	QLabel* newmail_label = new QLabel(i18n("New Mail:"), icons_groupbox);
+	newmail_label->setMinimumSize(newmail_label->sizeHint());
+	icon_layout->addWidget(newmail_label, 1, 2);
 
-	nomail_label->move(25, x);
-	oldmail_label->move(158 - (oldmail_label->width()/2),x);
-	newmail_label->move(290 - newmail_label->width(),x);
+	buttonNoMail = new KIconLoaderButton(icons_groupbox);
+	buttonNoMail->setFixedSize(50, 50);
+	icon_layout->addWidget(buttonNoMail, 2, 0);
 
-	x += nomail_label->height() + 5;
+	buttonOldMail = new KIconLoaderButton(icons_groupbox);
+	buttonOldMail->setFixedSize(50, 50);
+	icon_layout->addWidget(buttonOldMail, 2, 1);
 
-	buttonNoMail = new KIconLoaderButton(this);
-	buttonNoMail->setGeometry(
-		nomail_label->x() + (nomail_label->width()/2) - 25,
-		x, 50, 50);
+	buttonNewMail = new KIconLoaderButton(icons_groupbox);
+	buttonNewMail->setFixedSize(50, 50);
+	icon_layout->addWidget(buttonNewMail, 2, 2);
 
-	buttonOldMail = new KIconLoaderButton(this);
-	buttonOldMail->setGeometry(
-		oldmail_label->x() + (oldmail_label->width()/2) - 25,
-		x, 50, 50);
+	top_grid->activate();
 
-	buttonNewMail = new KIconLoaderButton(this);
-	buttonNewMail->setGeometry(
-		newmail_label->x() + (newmail_label->width()/2) - 25,
-		x, 50, 50);
-
-	icons_groupbox->resize(295,
-		(fontMetrics().lineSpacing() * 2) + 65);
+	readConfig(profile);
 }
 
 KBiffGeneralTab::~KBiffGeneralTab()
@@ -368,44 +391,109 @@ const int KBiffGeneralTab::getPoll()
 {
 	return QString(editPoll->text()).toInt();
 }
+
+void KBiffGeneralTab::readConfig(const char* profile)
+{
+TRACEINIT("KBiffGeneralTab::readConfig()");
+	// open the config file
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	editPoll->setText(config->readEntry("Poll", "60"));
+	editCommand->setText(config->readEntry("MailClient", "kmail"));
+	checkDock->setChecked(config->readBoolEntry("Docked", true));
+	checkNoSession->setChecked(config->readBoolEntry("Sessions", true));
+
+	QString no_mail, old_mail, new_mail;
+	no_mail = config->readEntry("NoMailPixmap", "nomail.xpm");
+	old_mail = config->readEntry("OldMailPixmap", "oldmail.xpm");
+	new_mail = config->readEntry("NewMailPixmap", "newmail.xpm");
+
+	buttonOldMail->setIcon(old_mail);
+	buttonOldMail->setPixmap(kapp->getIconLoader()->loadIcon(old_mail));
+	buttonNewMail->setIcon(new_mail);
+	buttonNewMail->setPixmap(kapp->getIconLoader()->loadIcon(new_mail));
+	buttonNoMail->setIcon(no_mail);
+	buttonNoMail->setPixmap(kapp->getIconLoader()->loadIcon(no_mail));
+
+	delete config;
+}
+
+void KBiffGeneralTab::saveConfig(const char *profile)
+{
+	// open the config file for writing
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	config->writeEntry("Poll", editPoll->text());
+	config->writeEntry("MailClient", editCommand->text());
+	config->writeEntry("Docked", checkDock->isChecked());
+	config->writeEntry("Sessions", checkNoSession->isChecked());
+	config->writeEntry("NoMailPixmap", buttonNoMail->icon());
+	config->writeEntry("NewMailPixmap", buttonNewMail->icon());
+	config->writeEntry("OldMailPixmap", buttonOldMail->icon());
+	delete config;
+}
+
 ///////////////////////////////////////////////////////////////////////
 // KBiffNewMailTab
 ///////////////////////////////////////////////////////////////////////
-KBiffNewMailTab::KBiffNewMailTab(QWidget *parent)
+KBiffNewMailTab::KBiffNewMailTab(const char* profile, QWidget *parent)
 	: QWidget(parent)
 {
 TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
+	QGridLayout *top_layout = new QGridLayout(this, 7, 3, 12, 0);
+
+	top_layout->setColStretch(0, 1);
+	top_layout->setColStretch(1, 0);
+	top_layout->setColStretch(2, 0);
+
+	top_layout->setRowStretch(0, 0);
+	top_layout->setRowStretch(1, 0);
+	top_layout->setRowStretch(2, 0);
+	top_layout->setRowStretch(3, 0);
+	top_layout->setRowStretch(4, 0);
+	top_layout->setRowStretch(5, 0);
+	top_layout->setRowStretch(6, 0);
+
 	// setup the Run Command stuff
-	checkRunCommand = new QCheckBox(this);
-	checkRunCommand->setText(i18n("Run Command"));
-	checkRunCommand->move(10, 10);
-	checkRunCommand->adjustSize();
+	checkRunCommand = new QCheckBox(i18n("Run Command"), this);
+	checkRunCommand->setMinimumSize(checkRunCommand->sizeHint());
+	top_layout->addWidget(checkRunCommand, 0, 0);
 
 	editRunCommand = new QLineEdit(this);
-	editRunCommand->setGeometry(10, 30, 215, MIN_HEIGHT);
+	top_layout->addWidget(editRunCommand, 1, 0);
 
-	buttonBrowseRunCommand = new QPushButton(this);
-	buttonBrowseRunCommand->setText(i18n("Browse"));
-	buttonBrowseRunCommand->setGeometry(235, 30, 70, MIN_HEIGHT);
+	top_layout->addColSpacing(1, 12);
+
+	buttonBrowseRunCommand = new QPushButton(i18n("Browse"), this);
+	buttonBrowseRunCommand->setMinimumSize(75, 25);
+	top_layout->addWidget(buttonBrowseRunCommand, 1, 2);
+
+	top_layout->addRowSpacing(2, 10);
 
 	// setup the Play Sound stuff
-	checkPlaySound = new QCheckBox(this);
-	checkPlaySound->setText(i18n("Play Sound"));
-	checkPlaySound->move(10, 75);
-	checkPlaySound->adjustSize();
+	checkPlaySound = new QCheckBox(i18n("Play Sound"), this);
+	checkPlaySound->setMinimumSize(checkPlaySound->sizeHint());
+	top_layout->addWidget(checkPlaySound, 3, 0);
 
 	editPlaySound = new QLineEdit(this);
-	editPlaySound->setGeometry(10, 95, 215, MIN_HEIGHT);
+	top_layout->addWidget(editPlaySound, 4, 0);
 
-	buttonBrowsePlaySound = new QPushButton(this);
-	buttonBrowsePlaySound->setText(i18n("Browse"));
-	buttonBrowsePlaySound->setGeometry(235, 95, 70, MIN_HEIGHT);
+	buttonBrowsePlaySound = new QPushButton(i18n("Browse"), this);
+	buttonBrowsePlaySound->setMinimumSize(75, 25);
+	top_layout->addWidget(buttonBrowsePlaySound, 4, 2);
 
 	// setup the System Sound stuff
-	checkBeep = new QCheckBox(this);
-	checkBeep->setText(i18n("System Beep"));
-	checkBeep->move(10, 140);
-	checkBeep->adjustSize();
+	checkBeep = new QCheckBox(i18n("System Beep"), this);
+	checkBeep->setMinimumSize(checkBeep->sizeHint());
+	top_layout->addWidget(checkBeep, 5, 0);
 
 	// connect some slots and signals
 	connect(buttonBrowsePlaySound, SIGNAL(clicked()),
@@ -416,10 +504,52 @@ TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	                          SLOT(enablePlaySound(bool)));
 	connect(checkRunCommand, SIGNAL(toggled(bool)),
 	                           SLOT(enableRunCommand(bool)));
+
+	readConfig(profile);
 }
 
 KBiffNewMailTab::~KBiffNewMailTab()
 {
+}
+
+void KBiffNewMailTab::readConfig(const char* profile)
+{
+TRACEINIT("KBiffNewMailTab::readConfig()");
+	// open the config file
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	checkRunCommand->setChecked(config->readBoolEntry("RunCommand", false));
+	checkPlaySound->setChecked(config->readBoolEntry("PlaySound", false));
+	checkBeep->setChecked(config->readBoolEntry("SystemBeep", true));
+	editRunCommand->setText(config->readEntry("RunCommandPath"));
+	editPlaySound->setText(config->readEntry("PlaySoundPath"));
+
+	enableRunCommand(checkRunCommand->isChecked());
+	enablePlaySound(checkPlaySound->isChecked());
+
+	delete config;
+}
+
+void KBiffNewMailTab::saveConfig(const char *profile)
+{
+TRACEINIT("KBiffNewMailTab::saveConfig()");
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	config->writeEntry("RunCommand", checkRunCommand->isChecked());
+	config->writeEntry("PlaySound", checkPlaySound->isChecked());
+	config->writeEntry("SystemBeep", checkBeep->isChecked());
+	config->writeEntry("RunCommandPath", editRunCommand->text());
+	config->writeEntry("PlaySoundPath", editPlaySound->text());
+
+	delete config;
 }
 
 bool KBiffNewMailTab::getRunCommand()
@@ -510,47 +640,46 @@ void KBiffNewMailTab::browsePlaySound()
 KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	: QDialog(0, 0, true, 0)
 {
-	int y = 15;
-
 	setCaption(i18n("Advanced Options"));
-	QLabel *mailbox_label = new QLabel(this);
-	mailbox_label->setText(i18n("Mailbox URL:"));
-	mailbox_label->move(15, y+5);
-	mailbox_label->adjustSize();
+
+	QBoxLayout *top_layout = new QBoxLayout(this, QBoxLayout::Down, 12, 5);
+
+	QGridLayout *grid_layout = new QGridLayout(2, 3, 12);
+	top_layout->addLayout(grid_layout);
+
+	QLabel *mailbox_label = new QLabel(i18n("Mailbox URL:"), this);
+	grid_layout->addWidget(mailbox_label, 0, 0);
+
+	QLabel *port_label = new QLabel(i18n("Port:"), this);
+	grid_layout->addWidget(port_label, 1, 0);
 
 	mailbox = new QLineEdit(this);
-	mailbox->move(mailbox_label->width() + 20, y);
-	mailbox->resize(370 - mailbox_label->width(), MIN_HEIGHT);
-
-	y += MIN_HEIGHT + 5;
-
-	QLabel *port_label = new QLabel(this);
-	port_label->setText(i18n("Port:"));
-	port_label->move(15, y+5);
-	port_label->adjustSize();
+	mailbox->setMinimumSize(375, 25);
+	grid_layout->addMultiCellWidget(mailbox, 0, 0, 1, 2);
 
 	port = new QLineEdit(this);
-	port->move(mailbox_label->width() + 20, y);
-	port->resize(100, MIN_HEIGHT);
+	mailbox->setMinimumSize(100, 25);
+	grid_layout->addWidget(port, 1, 1);
+	grid_layout->addColSpacing(3, 200);
 
 	connect(port, SIGNAL(textChanged(const char*)),
 	              SLOT(portModified(const char*)));
 
-	y += MIN_HEIGHT + 5;
+	QBoxLayout *button_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	top_layout->addLayout(button_layout);
 
-	QPushButton *ok = new QPushButton(this);
-	ok->setText(i18n("OK"));
-	ok->setGeometry(235, y, 75, MIN_HEIGHT);
+	QPushButton *ok = new QPushButton(i18n("OK"), this);
+	ok->setMinimumSize(ok->sizeHint());
 	ok->setDefault(true);
-
+	button_layout->addWidget(ok);
 	connect(ok, SIGNAL(clicked()), SLOT(accept()));
 
-	QPushButton *cancel = new QPushButton(this);
-	cancel->setText(i18n("Cancel"));
-	cancel->setGeometry(315, y, 75, MIN_HEIGHT);
+	QPushButton *cancel = new QPushButton(i18n("Cancel"), this);
+	cancel->setMinimumSize(cancel->sizeHint());
+	button_layout->addWidget(cancel);
 	connect(cancel, SIGNAL(clicked()), SLOT(reject()));
 
-	resize(400, 110);
+	top_layout->activate();
 }
 
 KBiffMailboxAdvanced::~KBiffMailboxAdvanced()
@@ -590,85 +719,177 @@ void KBiffMailboxAdvanced::portModified(const char *text)
 	setMailbox(url);
 }
 
-KBiffMailboxTab::KBiffMailboxTab(QWidget *parent)
+KBiffMailboxTab::KBiffMailboxTab(const char* profile, QWidget *parent)
 	: QWidget(parent)
 {
 TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
-	buttonBrowse = new QPushButton(this);
-	buttonBrowse->setText(i18n("Browse"));
-	buttonBrowse->setGeometry(230, 15, 70, 25);
-	connect(buttonBrowse, SIGNAL(clicked()), SLOT(browse()));
+	QGridLayout *grid = new QGridLayout(this, 8, 4, 12, 5);
+	mailboxes = new QListView(this);
+	mailboxes->addColumn(i18n("Mailbox:"));
+	mailboxes->setColumnWidthMode(0, QListView::Maximum);
 
-	QLabel* protocol_label = new QLabel(this);
-	protocol_label->setText(i18n("Protocol:"));
-	protocol_label->move(15, 20);
-	protocol_label->adjustSize();
+	grid->addMultiCellWidget(mailboxes, 0, 7, 0, 0);
 
-	QLabel* mailbox_label = new QLabel(this);
-	mailbox_label->setText(i18n("Mailbox:"));
-	mailbox_label->move(15, 50);
-	mailbox_label->adjustSize();
+	mailboxes->adjustSize();
+	mailboxes->setMinimumWidth(mailboxes->columnWidth(0));
 
-	QLabel* server_label = new QLabel(this);
-	server_label->setText(i18n("Server:"));
-	server_label->move(15, 100);
-	server_label->adjustSize();
+	connect(mailboxes, SIGNAL(selectionChanged(QListViewItem *)),
+	                   SLOT(slotMailboxSelected(QListViewItem *)));
 
-	QLabel* user_label = new QLabel(this);
-	user_label->setText(i18n("User:"));
-	user_label->move(15, 130);
-	user_label->adjustSize();
+	QLabel *protocol_label = new QLabel(i18n("Protocol:"), this);
+	protocol_label->setMinimumSize(protocol_label->sizeHint());
 
-	QLabel* password_label = new QLabel(this);
-	password_label->setText(i18n("Password:"));
-	password_label->move(15, 160);
-	password_label->adjustSize();
+	QLabel *mailbox_label = new QLabel(i18n("Mailbox:"), this);
+	mailbox_label->setMinimumSize(mailbox_label->sizeHint());
 
-	int x = QMAX(protocol_label->width() + 20, 
-	             QMAX(mailbox_label->width() + 20,
-					 QMAX(server_label->width() + 20,
-					 QMAX(password_label->width() + 20, user_label->width() + 20))));
+	QLabel *server_label = new QLabel(i18n("Server:"), this);
+	server_label->setMinimumSize(server_label->sizeHint());
+
+	QLabel *user_label = new QLabel(i18n("User:"), this);
+	user_label->setMinimumSize(user_label->sizeHint());
+
+	QLabel *password_label = new QLabel(i18n("Password:"), this);
+	password_label->setMinimumSize(password_label->sizeHint());
 
 	comboProtocol = new QComboBox(this);
-	comboProtocol->setGeometry(x, 15, 100, MIN_HEIGHT);
 	comboProtocol->insertItem("");
 	comboProtocol->insertItem("mbox");
 	comboProtocol->insertItem("maildir");
 	comboProtocol->insertItem("imap4");
 	comboProtocol->insertItem("pop3");
+	comboProtocol->setMinimumSize(comboProtocol->sizeHint());
 
 	connect(comboProtocol, SIGNAL(highlighted(int)),
 	                       SLOT(protocolSelected(int)));
 
+	buttonBrowse = new QPushButton(i18n("Browse"), this);
+	buttonBrowse->setMinimumSize(75, 25);
+	connect(buttonBrowse, SIGNAL(clicked()), SLOT(browse()));
+
 	editMailbox = new QLineEdit(this);
-	editMailbox->setGeometry(x, 45, 300 - x, MIN_HEIGHT);
+	editMailbox->setMinimumHeight(25);
 
 	editServer = new QLineEdit(this);
-	editServer->setGeometry(x, 95, 300 - x, MIN_HEIGHT);
+	editServer->setMinimumHeight(25);
 
 	editUser = new QLineEdit(this);
-	editUser->setGeometry(x, 125, 300 - x, MIN_HEIGHT);
+	editUser->setMinimumHeight(25);
 
 	editPassword = new QLineEdit(this);
-	editPassword->setGeometry(x, 155, 300 - x, MIN_HEIGHT);
+	editPassword->setMinimumHeight(25);
 	editPassword->setEchoMode(QLineEdit::Password);
 
-	checkStorePassword = new QCheckBox(this);
-	checkStorePassword->setGeometry(x, 185, 220, MIN_HEIGHT);
-	checkStorePassword->setText(i18n("Store password"));
-	checkStorePassword->adjustSize();
+	checkStorePassword = new QCheckBox(i18n("Store password"), this);
+	checkStorePassword->setMinimumSize(checkStorePassword->sizeHint());
 
-	QPushButton *advanced_bt = new QPushButton(this);
-	advanced_bt->setText(i18n("Advanced"));
-	advanced_bt->resize(QMAX(80, advanced_bt->sizeHint().width()), MIN_HEIGHT);
-	advanced_bt->move(300 - advanced_bt->width(), 210);
-	connect(advanced_bt, SIGNAL(clicked()), SLOT(advanced()));
+	QPushButton *advanced_button = new QPushButton(i18n("Advanced"), this);
+	advanced_button->setMinimumSize(75, 25);
+	connect(advanced_button, SIGNAL(clicked()), SLOT(advanced()));
 
-	protocolSelected(0);
+	grid->addWidget(protocol_label, 0, 1);
+	grid->addWidget(mailbox_label, 1, 1);
+	grid->addWidget(server_label, 3, 1);
+	grid->addWidget(user_label, 4, 1);
+	grid->addWidget(password_label, 5, 1);
+
+	grid->addWidget(comboProtocol, 0, 2);
+	grid->addWidget(buttonBrowse, 0, 3);
+	grid->addMultiCellWidget(editMailbox, 1, 1, 2, 3);
+	grid->addMultiCellWidget(editServer, 3, 3, 2, 3);
+	grid->addMultiCellWidget(editUser, 4, 4, 2, 3);
+	grid->addMultiCellWidget(editPassword, 5, 5, 2, 3);
+	grid->addMultiCellWidget(checkStorePassword, 6, 6, 2, 3);
+	grid->addWidget(advanced_button, 7, 3);
+
+	grid->setColStretch(1, 0);
+	grid->setColStretch(2, 3);
+	grid->setColStretch(3, 1);
+
+	grid->activate();
+
+	readConfig(profile);
 }
 
 KBiffMailboxTab::~KBiffMailboxTab()
 {
+}
+
+void KBiffMailboxTab::readConfig(const char* profile)
+{
+TRACEINIT("KBiffMailboxTab::readConfig()");
+	// open the config file
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	QStrList mailbox_list;
+
+	int number_of_mailboxes = config->readListEntry("Mailboxes", mailbox_list);
+
+	if (number_of_mailboxes > 0)
+	{
+		for (unsigned int i = 0; i < mailbox_list.count(); i+=2)
+		{
+			QString key = mailbox_list.at(i);
+			QString url = mailbox_list.at(i+1);
+
+			QListViewItem *item = new QListViewItem(mailboxes, key);
+			item->setPixmap(0, QPixmap("mail.xpm"));
+
+TRACEF("Inserting %s into %s", (const char*)url, (const char*)key);
+			mailboxHash.insert(key, url);
+		}
+	}
+	else
+	{
+		QFileInfo mailbox_info(getenv("MAIL"));
+		if (mailbox_info.exists() == false)
+		{
+			QString s("/var/spool/mail/");
+			s += getlogin();
+			mailbox_info.setFile(s);
+		}
+
+		QString default_path("mbox:");
+		default_path += mailbox_info.absFilePath();
+
+TRACEF("Inserting %s into Default", (const char*)default_path);
+		mailboxHash.insert("Default", default_path);
+
+		QListViewItem *item = new QListViewItem(mailboxes, "Default");
+		item->setPixmap(0, QPixmap("mail.xpm"));
+		mailboxes->setSelected(item, true);
+	}
+
+	delete config;
+}
+
+void KBiffMailboxTab::saveConfig(const char *profile)
+{
+TRACEINIT("KBiffMailboxTab::saveConfig()");
+	// open the config file
+	QString config_file(KApplication::localconfigdir());
+	config_file += "/kbiff2rc";
+	KSimpleConfig *config = new KSimpleConfig(config_file);
+
+	config->setGroup(profile);
+
+	QStrList mailbox_list;
+
+	for (QListViewItem *item = mailboxes->firstChild();
+	     item;
+		  item = item->nextSibling())
+	{
+TRACEF("mailbox: %s -> %s", item->text(0), mailboxHash["Default"]);
+mailboxHash.statistics();
+		mailbox_list.append(item->text(0));
+		mailbox_list.append(mailboxHash[item->text(0)]);
+	}
+
+	config->writeEntry("Mailboxes", mailbox_list);
+	delete config;
 }
 
 void KBiffMailboxTab::setMailbox(const KURL& url)
@@ -695,7 +916,6 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 		editMailbox->setText(path);
 	}
 
-TRACEF("url.port() = %d", url.port());
 	port = url.port();
 
 	if (editServer->isEnabled())
@@ -732,6 +952,14 @@ KURL KBiffMailboxTab::getMailbox() const
 		url.setPath(path);
 	}
 	return url;
+}
+
+void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
+{
+TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
+TRACEF("mailbox = %s", item->text(0));
+TRACEF("url = %s", mailboxHash[item->text(0)]);
+	setMailbox(KURL(mailboxHash[item->text(0)]));
 }
 
 void KBiffMailboxTab::protocolSelected(int protocol)

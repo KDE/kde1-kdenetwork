@@ -16,10 +16,12 @@
 
 #include <qwidget.h>
 #include <qdialog.h>
-#include <qlined.h>
-#include <qchkbox.h>
-#include <qpushbt.h>
-#include <qcombo.h>
+#include <qlineedit.h>
+#include <qcheckbox.h>
+#include <qpushbutton.h>
+#include <qcombobox.h>
+#include <qlistview.h>
+#include <qdict.h>
 
 #include <kiconloaderdialog.h>
 #include <kurl.h>
@@ -36,40 +38,18 @@ public:
 	KBiffSetup(const char *name = 0);
 	virtual ~KBiffSetup();
 
+	KURL getMailbox() const;
+
 public slots:
 	void invokeHelp();
 
+	void readConfig(const char *profile);
+	void saveConfig();
+
 protected slots:
 	void slotDone();
-	void slotProfileSelected(int profile);
-
-protected:
-	void initDefaults();
-	void setWidgets();
 
 private:
-	// profile data
-	QString      profile;
-
-	// General
-	unsigned int poll;
-	QString      mailClient;
-	bool         dockInPanel;
-	bool         useSessions;
-	QString      oldmailPixmap;
-	QString      newmailPixmap;
-	QString      nomailPixmap;
-
-	// New Mail
-	bool    runCommand;
-	QString commandPath;
-	bool    playSound;
-	QString soundPath;
-	bool    playBeep;
-
-	// Mailbox
-	KURL mailbox;
-
 	// "outer" dialog
 	QComboBox   *comboProfile;
 	QPushButton *help;
@@ -87,7 +67,7 @@ class KBiffGeneralTab : public QWidget
 {
 	Q_OBJECT
 public:
-	KBiffGeneralTab(QWidget *parent=0);
+	KBiffGeneralTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffGeneralTab();
 
 	const char* getButtonNewMail();
@@ -99,6 +79,9 @@ public:
 	const bool  getSessionManagement();
 
 public slots:
+	void readConfig(const char *profile);
+	void saveConfig(const char *profile);
+
 	void setSessionManagement(bool);
 	void setButtonNewMail(const char*);
 	void setButtonNoMail(const char*);
@@ -122,7 +105,7 @@ class KBiffNewMailTab : public QWidget
 {
 	Q_OBJECT
 public:
-	KBiffNewMailTab(QWidget *parent=0);
+	KBiffNewMailTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffNewMailTab();
 
 	bool getRunCommand();
@@ -132,6 +115,9 @@ public:
 	bool getBeep();
 
 public slots:
+	void readConfig(const char *profile);
+	void saveConfig(const char *profile);
+
 	void setRunCommand(bool);
 	void setRunCommandPath(const char*);
 	void setPlaySound(bool);
@@ -181,18 +167,26 @@ class KBiffMailboxTab : public QWidget
 {
 	Q_OBJECT
 public:
-	KBiffMailboxTab(QWidget *parent=0);
+	KBiffMailboxTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffMailboxTab();
 
 	void setMailbox(const KURL& url);
 	KURL getMailbox() const;
 
+public slots:
+	void readConfig(const char *profile);
+	void saveConfig(const char *profile);
+
 protected slots:
+	void slotMailboxSelected(QListViewItem *item);
+
 	void protocolSelected(int protocol);
 	void browse();
 	void advanced();
 
 private:
+	QDict<char> mailboxHash;
+
 	unsigned int port;
 	QComboBox   *comboProtocol;
 	QLineEdit   *editMailbox;
@@ -201,6 +195,7 @@ private:
 	QLineEdit   *editPassword;
 	QCheckBox   *checkStorePassword;
 	QPushButton *buttonBrowse;
+	QListView   *mailboxes;
 };
 
 class KBiffAboutTab : public QWidget

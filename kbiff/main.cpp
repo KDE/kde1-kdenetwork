@@ -9,7 +9,11 @@ int main(int argc, char *argv[])
 	KBiff kbiff;
 	KBiffSetup setup;
 
-	if (!setup.exec())
+	if (setup.exec())
+	{
+		kbiff.setMailbox(setup.getMailbox());
+	}
+	else
 		return 0;
 
 	app.setMainWidget(&kbiff);
