@@ -46,6 +46,15 @@ AC_SUBST(LIBBSD)
 dnl uu or uulib?
 AC_CHECK_LIB(uu,    UUInitialize, [LIBUU="-luu"   ], , $all_libraries)
 AC_CHECK_LIB(uulib, UUInitialize, [LIBUU="-luulib"], , $all_libraries)
+if test -z "$LIBUU"; then
+  AC_MSG_WARN([no acceptable libuu found. You should look into config.log
+for the reasons of this. There is one in kdesupport, so be sure to have
+this installed! 
+Til then we will disable krn from compiling.
+])
+  DO_NOT_COMPILE="$DO_NOT_COMPILE krn"
+fi
+
 AC_SUBST(LIBUU)
 ac_cpp_safe=$ac_cpp
 ac_cpp='$CXXCPP $CPPFLAGS $all_includes'
