@@ -122,6 +122,7 @@ private:
   QPushButton *help_b;
   QPushButton *setup_b;
   QFrame *fline;
+  QFrame *fline1;
   QPushButton *connect_b;
   QComboBox *connectto_c;
   QLabel *ID_Label;

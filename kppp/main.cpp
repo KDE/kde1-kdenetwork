@@ -267,6 +267,10 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
   connected = false;
 
+  fline1 = new QFrame(this,"line");
+  fline1->setFrameStyle(QFrame::HLine |QFrame::Sunken);
+  fline1->setGeometry(15,7,327,3);
+
   ID_Label = new QLabel(this,"lableid");
   ID_Label->setText("Login ID:");
   ID_Label->setGeometry(30,27,70,20);
@@ -295,7 +299,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
   fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(15,170,327,3);
+  fline->setGeometry(15,172,327,3);
 
   quit_b = new QPushButton("Quit", this, "quit");
   quit_b->setGeometry(15, 187, 70, 25);
