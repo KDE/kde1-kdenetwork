@@ -1,3 +1,10 @@
+1999-04-24  Harri Porten  <porten@kde.org>
+
+	* runtests.cpp: test for `lock' in /etc/ppp/options is not needed any-
+	more, thanks to a hint from Paul Mackeras (pppd). Leaving away ttySx
+	(99/04/10) from the command line and binding stdin/stdout to the
+	device (99/01/12) stops pppd from trying to lock the device itself.
+
 1999-04-10  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: solved problems with pppd 2.3.6 and 2.3.7

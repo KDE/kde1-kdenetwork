@@ -443,6 +443,7 @@ int runTests() {
     }
   }
 
+#if 0
   // Test 4: check for undesired 'lock' option in /etc/ppp/options
   QFile opt(SYSOPTIONS);
   if (opt.open(IO_ReadOnly)) {
@@ -476,6 +477,7 @@ int runTests() {
       warning++;
     }
   } 
+#endif
 
   // Test 5: check for existence of /etc/resolv.conf
   int fd;
