@@ -38,6 +38,7 @@
 #include "kmsender.h"
 #include "kmidentity.h"
 #include "kbusyptr.h"
+#include "kmmessage.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
@@ -98,6 +99,7 @@ int main( int argc, char **argv )
     nls=a.getLocale();
     keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
+    KMMessage::readConfig();
 
     checkConf();
 

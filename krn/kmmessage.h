@@ -21,12 +21,12 @@ public:
   /** Straight forward initialization. */
   KMMessage(KMFolder* parent=NULL);
 
+  /** Constructor from a DwMessage. Handy for KRN*/
+  KMMessage(DwMessage*);
+  
   /** Copy constructor. Does *not* automatically load the message. */
   KMMessage(const KMMsgInfo& msgInfo);
 
-  /* KRN added this */
-  KMMessage(DwMessage*);
-  
   /** Destructor. */
   virtual ~KMMessage();
 
@@ -81,35 +81,7 @@ public:
    are done because this method does things different if there are
    attachments / multiple body parts. */
   virtual void setAutomaticFields(void);
-
-
-  
-  /* KRN added these */
-  /** Get the groups it should be posted to */
-  virtual const QString groups(void) const;
-
-  /** Set the groups to be posted to */
-  virtual void setGroups(const QString aStr);
-
-  /** Get the groups it should followup to */
-  virtual const QString followup(void) const;
-
-  /** Set the groups to followup to */
-  virtual void setFollowup(const QString aStr);
-
-  /** Get the references for this message */
-  virtual const QString references(void) const;
-
-  /** Set the references for this message */
-  virtual void setReferences(const QString aStr);
-
-  /** Returns the message ID, useful for followups */
-  virtual const QString id(void) const;
-
-  /* End of functions added by KRN */
-  
-
-  
+    
   /** Get or set the 'Date' header field */
   virtual const QString dateStr(void) const;
   virtual const QString dateShortStr(void) const;
@@ -141,6 +113,30 @@ public:
   /** Get or set the 'Subject' header field */
   virtual const QString subject(void) const;
   virtual void setSubject(const QString aStr);
+
+  /** Get the groups it should be posted to (Added for krn)*/
+  virtual const QString groups(void) const;
+
+  /** Set the groups to be posted to (Added for krn)*/
+  virtual void setGroups(const QString aStr);
+
+  /** Get the groups it should followup to (Added for krn)*/
+  virtual const QString followup(void) const;
+
+  /** Set the groups to followup to (Added for krn)*/
+  virtual void setFollowup(const QString aStr);
+
+  /** Get the references for this message (Added for krn)*/
+  virtual const QString references(void) const;
+
+  /** Set the references for this message (Added for krn)*/
+  virtual void setReferences(const QString aStr);
+
+  /** Returns the message ID, useful for followups (Added for krn)*/
+  virtual const QString id(void) const;
+
+  /* End of functions added by KRN */
+
 
   /** Get or set header field with given name */
   virtual const QString headerField(const QString name) const;

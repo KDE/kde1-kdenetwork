@@ -8,8 +8,8 @@
 #include "kmsender.h"
 #include "kmidentity.h"
 #include "kfileio.h"
-#include "kmmsgpartdlg.h"
 #include "kbusyptr.h"
+#include "kmmsgpartdlg.h"
 
 #include <assert.h>
 #include <drag.h>
@@ -39,6 +39,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef KRN
+/* start added for KRN */
+extern KLocale *nls;
+extern KStdAccel* keys;
+extern KApplication *app;
+extern KBusyPtr *kbp;
+extern KMSender *msgSender;
+extern KMIdentity *identity;
+#define aboutText "KRN"
+/* end added for KRN */
+#else
+#include "kmglobal.h"
+#include "kmmainwin.h"
+#endif
+
+
 #include "kmcomposewin.moc"
 
 
@@ -52,14 +68,6 @@
 #define HDR_ALL      0x3f
 
 
-/* start added for KRN */
-extern KLocale *nls;
-extern KStdAccel* keys;
-extern KApplication *app;
-extern KBusyPtr *kbp;
-extern KMSender *msgSender;
-extern KMIdentity *identity;
-/* end added for KRN */
 
 //-----------------------------------------------------------------------------
 KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
@@ -359,7 +367,7 @@ void KMComposeWin::setupMenuBar(void)
   mMenuBar->insertItem(nls->translate("&Attach"), menu);
 
   //---------- Menu: Help
-  menu = app->getHelpMenu(TRUE, "KRN");
+  menu = app->getHelpMenu(TRUE, aboutText);
   mMenuBar->insertSeparator();
   mMenuBar->insertItem(nls->translate("&Help"), menu);
 

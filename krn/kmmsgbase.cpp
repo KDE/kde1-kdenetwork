@@ -3,6 +3,10 @@
 #include "kmmsgbase.h"
 #include <mimelib/mimepp.h>
 #include <qregexp.h>
+#ifndef KRN
+#include <kmfolder.h>
+#endif
+
 
 #define NUM_STATUSLIST 7
 static KMMsgStatus sStatusList[NUM_STATUSLIST+1] = 
@@ -65,8 +69,9 @@ void KMMsgBase::setStatus(KMMsgStatus aStatus)
 {
   mStatus = aStatus;
   mDirty = TRUE;
-  /* Comented by KRN
-  if (mParent) mParent->headerOfMsgChanged(this); */
+#ifndef KRN
+  if (mParent) mParent->headerOfMsgChanged(this);
+#endif
 }
 
 
@@ -80,8 +85,9 @@ void KMMsgBase::setStatus(const char* aStatusStr)
 
   mStatus = sStatusList[i];
   mDirty = TRUE;
-  /* Commented by KRN
-  if (mParent) mParent->headerOfMsgChanged(this); */
+#ifndef KRN
+  if (mParent) mParent->headerOfMsgChanged(this);
+#endif
 }
 
 

@@ -6,8 +6,12 @@
 
 #include "kmmessage.h"
 #include "kmmsgpart.h"
-#include "kmidentity.h"
 #include "kmmsginfo.h"
+#ifndef KRN
+#include "kmfolder.h"
+#include "kmversion.h"
+#endif
+#include "kmidentity.h"
 
 #include <kapp.h>
 #include <kconfig.h>
@@ -28,8 +32,12 @@
 #include <qmlined.h>
 #endif
 
+
 // Originally in kmglobal.h, but we want to avoid to depend on it here
 extern KMIdentity* identity;
+// Added by KRN to allow internationalized config defaults
+extern KLocale* nls;
+
 
 static DwString emptyString("");
 static QString resultStr;
@@ -37,7 +45,8 @@ static QString resultStr;
 // Values that are set from the config file with KMMessage::readConfig()
 static QString sReplyStr, sForwardStr, sReplyAllStr, sIndentPrefixStr;
 
-/* KRN added these */
+
+/* Start functions added for KRN */
 
 //-----------------------------------------------------------------------------
 KMMessage::KMMessage(DwMessage* aMsg)
@@ -109,8 +118,6 @@ const QString KMMessage::id(void) const
 }
 
 /* End of functions added by KRN */
-
-
 
 
 //-----------------------------------------------------------------------------
@@ -325,8 +332,11 @@ void KMMessage::initHeader(void)
   setTo("");
   setSubject("");
   if (!identity->replyToAddr().isEmpty()) setReplyTo(identity->replyToAddr());
-  /* KRN changed this */
+#ifdef KRN
   setHeaderField("X-NewsReader", "KRN http://ultra7.unl.edu.ar");
+#else
+  setHeaderField("X-Mailer", "KMail [version " KMAIL_VERSION "]");
+#endif
 
   gettimeofday(&tval, NULL);
   setDate((time_t)tval.tv_sec);
@@ -1011,11 +1021,15 @@ const QString KMMessage::emailAddrAsAnchor(const QString aEmail, bool stripped)
 //-----------------------------------------------------------------------------
 void KMMessage::readConfig(void)
 {
-  KConfig* config = kapp->getConfig();
 
+  /* Default values added for KRN otherwise createReply() segfaults*/
+  /* They are taken from kmail's dialog */
+
+  KConfig *config=kapp->getConfig();
+    
   config->setGroup("KMMessage");
-  sReplyStr = config->readEntry("phrase-reply");
-  sReplyAllStr = config->readEntry("phrase-reply-all");
-  sForwardStr = config->readEntry("phrase-forward");
-  sIndentPrefixStr = config->readEntry("indent-prefix");
+  sReplyStr = config->readEntry("phrase-reply",nls->translate("On %D, you wrote:"));
+  sReplyAllStr = config->readEntry("phrase-reply-all",nls->translate("On %D, %F wrote:"));
+  sForwardStr = config->readEntry("phrase-forward",nls->translate("Forwarded Message"));
+  sIndentPrefixStr = config->readEntry("indent-prefix",">");
 }
