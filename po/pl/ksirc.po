@@ -1,0 +1,284 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ksirc \n"
+"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"PO-Revision-Date: 1999-01-04 19:10+0200\n"
+"Last-Translator: Piotr Roszatycki <dexter@fnet.pl>\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+
+#: FilterRuleEditorData.cpp:33
+msgid "Description:"
+msgstr "Opis:"
+
+#: FilterRuleEditorData.cpp:51
+msgid "Match:"
+msgstr "Wzorzec:"
+
+#: FilterRuleEditorData.cpp:69
+msgid "From:"
+msgstr "Od:"
+
+#: FilterRuleEditorData.cpp:78
+msgid "To:"
+msgstr "Do:"
+
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Zmieñ"
+
+#: FilterRuleEditorData.cpp:126
+msgid "New Rule"
+msgstr "Nowa regu³a"
+
+#: FilterRuleEditorData.cpp:145
+msgid "Up"
+msgstr "Wy¿ej"
+
+#: FilterRuleEditorData.cpp:155
+msgid "Down"
+msgstr "Ni¿ej"
+
+#: KSircColourData.cpp:33
+msgid "Generic Text"
+msgstr "Zwyk³y tekst"
+
+#: KSircColourData.cpp:62
+msgid "Info"
+msgstr "Informacje"
+
+#: KSircColourData.cpp:71
+msgid "Chan Messages"
+msgstr "Wiadomo¶ci"
+
+#: KSircColourData.cpp:80
+msgid "Errors"
+msgstr "B³êdy"
+
+#: KSircColourData.cpp:115
+msgid "Background"
+msgstr "T³o"
+
+#: dccDialogData.cpp:38
+msgid "&Get"
+msgstr "&Pobierz"
+
+#: dccDialogData.cpp:46
+msgid "&Forget"
+msgstr "&Zignoruj"
+
+#: ksirc.cpp:60
+msgid ""
+"kSirc Alpha releases have an 8 week\n"
+"expiry date.\n"
+"\n"
+"kSirc-ALPHA HAS EXPIRED!!\n"
+"Please upgrade or use a beta release"
+msgstr ""
+"kSirc Alpha dezaktualizuje siê po 8 tygodniach!\n"
+"\n"
+"Obecnie kSirc-ALPHA jest ZDEZAKTUALIZOWANY!!\n"
+"Proszê zainstalowaæ aktualn± wersjê"
+
+#: ksirc.cpp:68
+msgid ""
+"kSirc Alpha release have an 8 week\n"
+"expiry date.\n"
+"\n"
+"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
+msgstr ""
+"kSirc Alpha dezaktualizuje siê po 8 tygodniach!\n"
+"\n"
+"TA WERSJA ZDEZAKTUALIZUJE SIÊ ZA 4 TYGODNIE"
+
+#: open_topData.cpp:39
+msgid "Channel/Nick:"
+msgstr "Kana³/Ksywa:"
+
+#: servercontroller.cpp:160
+msgid "&Dock"
+msgstr "&Dokuj"
+
+#: servercontroller.cpp:168 servercontroller.cpp:748
+msgid "New Server..."
+msgstr "Nowy serwer..."
+
+#: servercontroller.cpp:169
+msgid "&Join Channel..."
+msgstr "&Wejd¼ na kana³..."
+
+#: servercontroller.cpp:171
+msgid "&Connections"
+msgstr "&Po³±czenia"
+
+#: servercontroller.cpp:188 servercontroller.cpp:737
+msgid "&Colour Preferences..."
+msgstr "Ustawienia &kolorów..."
+
+#: servercontroller.cpp:190 servercontroller.cpp:739
+msgid "&Global Fonts..."
+msgstr "Ustawienia &czcionek..."
+
+#: servercontroller.cpp:192 servercontroller.cpp:741
+msgid "&Filter Rule Editor..."
+msgstr "Edycja regu³ &filtrowania..."
+
+#: servercontroller.cpp:194 servercontroller.cpp:743
+msgid "&Web Server Configuration..."
+msgstr "Konfiguracja serwera &WWW"
+
+#: servercontroller.cpp:197 servercontroller.cpp:745
+msgid "&Preferences..."
+msgstr "&Ustawienia..."
+
+#: servercontroller.cpp:207
+msgid "Help on Colours..."
+msgstr "Kolory..."
+
+#: servercontroller.cpp:209
+msgid "Help on Filters..."
+msgstr "Filtry..."
+
+#: servercontroller.cpp:211
+msgid "Help on Keys..."
+msgstr "Klawisze..."
+
+#: servercontroller.cpp:214
+msgid "About kSirc..."
+msgstr "Informacje o kSirc"
+
+#: servercontroller.cpp:232
+msgid "Server Control"
+msgstr "Kontrola serwera"
+
+#: servercontroller.cpp:291 servercontroller.cpp:455
+msgid "Channels"
+msgstr "Kana³y"
+
+#: servercontroller.cpp:291 servercontroller.cpp:455
+msgid "Online"
+msgstr "Po³±czony"
+
+#: servercontroller.cpp:693
+msgid "Active Server Connections"
+msgstr "Aktywne po³±czenia serwera"
+
+#: servercontroller.cpp:734
+msgid "&Undock"
+msgstr "&Oddokuj"
+
+#: toplevel.cpp:140
+msgid "Lag in seconds to the server"
+msgstr "Lag do serwera w sekundach"
+
+#: toplevel.cpp:144
+msgid "&Ticker Mode"
+msgstr "Tryb &zegara"
+
+#: toplevel.cpp:166
+msgid "&Cut Window..."
+msgstr "&Zamknij okno..."
+
+#: toplevel.cpp:297
+msgid "&Users"
+msgstr "&U¿ytkownicy"
+
+#: welcomeWinData.cpp:35
+msgid "Show Again"
+msgstr "Pokazuj ponownie"
+
+#: welcomeWinData.cpp:44
+msgid "Dissmiss"
+msgstr "Anuluj"
+
+#: KSColourPicker/kscolourpickerData.cpp:30
+msgid "Pick"
+msgstr "Pobierz"
+
+#: KSColourPicker/kscolourpickerData.cpp:46
+msgid "Sample Colour"
+msgstr "Przyk³adowy kolor"
+
+#: KSCutDialog/KSCutDialogData.cpp:39
+msgid "Cop&y"
+msgstr "&Kopiuj"
+
+#: KSOpenkSirc/open_ksircData.cpp:37
+msgid "&Connect"
+msgstr "&Po³±cz"
+
+#: KSOpenkSirc/open_ksircData.cpp:54
+msgid "&Edit Servers"
+msgstr "&Edytuj serwery"
+
+#: KSOpenkSirc/open_ksircData.cpp:86
+msgid "Group:"
+msgstr "Grupa:"
+
+#: KSOpenkSirc/open_ksircData.cpp:103
+msgid "Server/Quick Connect to:"
+msgstr "Po³±cz z:"
+
+#: KSOpenkSirc/open_ksircData.cpp:120
+msgid "Port:"
+msgstr "Port:"
+
+#: KSOpenkSirc/open_ksircData.cpp:147
+msgid "Server Desc:"
+msgstr "Opis serwera:"
+
+#: KSPrefs/UserMenuRefData.cpp:61
+msgid "Menu Name"
+msgstr "Nazwa menu"
+
+#: KSPrefs/UserMenuRefData.cpp:70
+msgid "Type"
+msgstr "Typ"
+
+#: KSPrefs/UserMenuRefData.cpp:79
+msgid "Command"
+msgstr "Polecenie:"
+
+#: KSPrefs/UserMenuRefData.cpp:87
+msgid "OP Only"
+msgstr "Tylko dla opa"
+
+#: KSPrefs/UserMenuRefData.cpp:135
+msgid "Modify"
+msgstr "Modyfikuj"
+
+#: KSPrefs/ksprefs.cpp:9
+msgid "kSirc Prefrences"
+msgstr "W³a¶ciwo¶ci kSirc"
+
+#: KSPrefs/ksprefs.cpp:22
+msgid "&General"
+msgstr "&Ogólne"
+
+#: KSPrefs/ksprefs.cpp:23
+msgid "&StartUp"
+msgstr "S&tart"
+
+#: KSPrefs/ksprefs.cpp:24
+msgid "Servers/&Channels"
+msgstr "Serwery/&Kana³y"
+
+#: KSPrefs/ksprefs.cpp:25
+msgid "&User Menu"
+msgstr "Menu &u¿ytkownika"
+
+#: KSPrefs/ksprefs.cpp:26
+msgid "&Default Filters"
+msgstr "&Domy¶lne filtry"
+
+#: KSTicker/speeddialogData.cpp:79
+msgid "Tick Interval"
+msgstr "Opó¼nienie zegara"
+
+#: KSTicker/speeddialogData.cpp:88
+msgid "Step Size"
+msgstr "Krok"
+
+#: puke/kdynlib.cpp:70
+#, c-format
+msgid "No such file \"%s\"!"
+msgstr "Brak pliku \"%s\"!"
