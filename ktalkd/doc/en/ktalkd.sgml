@@ -238,8 +238,11 @@ user when using startx... Any hint about that ?
 
 <sect1>Why don't I, as a normal user, receive KDE announcements ?
 <p>
-If you're running a linux system (with /proc enabled), this is a
+If you're running a linux system (with /proc enabled), this behaviour is a
 bug. Please send me a description of it so that I correct it.</p>
+<p>If you're running linux 2.0.35, this is a known bug in the kernel,
+which doesn't let root read /proc. The solution is the same as in section
+5.1, provided that you run kdm or xdm to log into X. Or upgrade !
 <p>Otherwise, this is normal : ktalkd can't find the user, as KDE doesn't 
 log him into utmp and the linux based (/proc) detection is disabled.
 The solution is the same as in section 5.1, provided that you run kdm
