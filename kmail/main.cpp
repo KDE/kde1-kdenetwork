@@ -689,6 +689,12 @@ static void processArgs(int argc, char *argv[])
 }
 */
 
+void version() {
+
+ printf("%s\n",aboutText);
+
+}
+
 //-----------------------------------------------------------------------------
 main(int argc, char *argv[])
 {
@@ -735,6 +741,11 @@ main(int argc, char *argv[])
           if (i<argc-1) subj = argv[++i];
           mailto = TRUE;
         }
+	else if (strcmp(argv[i],"-v")==0)
+	{
+	  version();
+ 	  exit(0);
+	}
         else if (strcmp(argv[i],"-c")==0)
         {
           if (i<argc-1) cc = argv[++i];
