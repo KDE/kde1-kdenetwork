@@ -392,7 +392,11 @@ void PukeController::initHdlr() /*fold00*/
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_DUMPTREE, cs);
 
-
+  // Fetch widget gets the requested widget from the ServerController
+  cs = new commandStruct;
+  cs->cmd = &hdlrPukeDeleteWidget;
+  cs->dlhandle = 0x0;
+  qidCommandTable.insert(PUKE_WIDGET_DELETE, cs);
 
 }
 
@@ -529,6 +533,39 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*fold00*/
   emit outputMessage(fd, &pmRet);
 
 }
+
+void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*FOLD00*/
+{
+  widgetId wI;
+  wI.fd = fd;
+  wI.iWinId = pm->iWinId;
+
+  if(pm->iWinId == ControllerWinId) // Don't try and delete ourselves
+    throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_CONTROL));
+
+  PukeMessage pmRet = *pm;
+  QIntDict<WidgetS> *qidWS = WidgetList[fd];
+  if(qidWS == 0){
+    debug("WidgetRunner:: no such set of widget descriptors?");
+    throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_SUCH_CONNECTION));
+  }
+  if(qidWS->find(wI.iWinId)){
+    debug("Closing: %d", wI.iWinId);
+    // Remove the list item then delete the widget.  This will stop
+    // the destroyed signal from trying to remove it again.
+    PObject *pw = qidWS->find(wI.iWinId)->pwidget;
+    qidWS->remove(wI.iWinId);
+    delete pw; pw = 0;
+    pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
+  }
+  else {
+    warning("WidgetRunner: no such widget: %d", wI.iWinId);
+    throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_SUCH_WIDGET));
+  }
+  
+  emit outputMessage(fd, &pmRet);
+}
+
 void PukeController::closefd(int fd) /*fold00*/
 {
   if(bClosing == TRUE)
@@ -675,35 +712,6 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
     emit outputMessage(fd, &pmRet);
     free(pmRet.cArg);
   }
-  else if(pm->iCommand == PUKE_WIDGET_DELETE){
-    if(pm->iWinId == ControllerWinId) // Don't try and delete ourselves
-      throw(errorCommandFailed(PUKE_INVALID,0));
-
-    PukeMessage pmRet = *pm;
-    QIntDict<WidgetS> *qidWS = WidgetList[fd];
-    if(qidWS == 0){
-      debug("WidgetRunner:: no such set of widget descriptors?");
-      throw(errorCommandFailed(PUKE_INVALID, 0));
-    }
-    if(qidWS->find(wI.iWinId)){
-      debug("Closing: %d", wI.iWinId);
-      // Remove the list item then delete the widget.  This will stop
-      // the destroyed signal from trying to remove it again.
-      PObject *pw = qidWS->find(wI.iWinId)->pwidget;
-      qidWS->remove(wI.iWinId);
-      delete pw; pw = 0;
-      pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
-    }
-    else {
-      pmRet.iArg = 1;
-      pmRet.cArg = strdup("No Such Widget");
-      pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
-      warning("WidgetRunner: no such widget: %d", wI.iWinId);
-    }
-    emit outputMessage(fd, &pmRet);
-    if(pmRet.iArg == 1)
-        free(pmRet.cArg);
-  }
   else if(pm->iCommand == PUKE_WIDGET_LOAD){
     PukeMessage pmRet = *pm;
     KDynamicHandle handle;
@@ -768,7 +776,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent

@@ -74,6 +74,10 @@ private:
     int __command, __iarg;
 };
 
+#define INVALID_DEL_NO_CONTROL 100
+#define INVALID_DEL_NO_SUCH_CONNECTION 101
+#define INVALID_DEL_NO_SUCH_WIDGET 102
+
 class PukeController : public PObject
 {
   Q_OBJECT
@@ -192,6 +196,7 @@ private:
   void hdlrPukeEcho(int fd, PukeMessage *pm);
   void hdlrPukeDumpTree(int fd, PukeMessage *pm);
   void hdlrPukeFetchWidget(int fd, PukeMessage *pm);
+  void hdlrPukeDeleteWidget(int fd, PukeMessage *pm);
 
 };
 
