@@ -75,6 +75,8 @@ sub new {
   $dlg->setDir(POSIX::getcwd());
   $dlg->installHandler($::PUKE_KBFD_FILE_SELECTED_ACK, sub{$self->fileSelected(shift())});
 
+  $self->setMinimumSize(450, 110);
+  $self->setMaximumSize(2000, 2000);
   $self->resize(450, 110);
 
   return $self;
@@ -166,6 +168,8 @@ sub new {
   
   $gm_main->activate();
 
+  $self->setMinimumSize(400, 275);
+  $self->setMaximumSize(2000, 2000);
   $self->resize(400, 275);
   
   @$self{'gm_main', 'label1', 'lb', 'button_get', 'button_chat', 'button_forget', 'gm_but1', 'gm_but2', 'button_send' }
@@ -353,6 +357,7 @@ sub hook_ksirc_dcc_send {
   #  print "*I* Starting dcc into with: $nick, $file, $size, $fh\n";
   
   my($window) =  new DCCProgress;
+  $size = 10240 if $size == 0;
   $window->setRange(0, $size);
   $window->setCaption("$file=>$nick");
   $window->setTopText("Sending: $file Size: $size");
@@ -397,6 +402,7 @@ sub hook_ksirc_dcc_get {
   my $size = $::KSIRC_FILE_SIZES{$file};
   
   my($window) =  new DCCProgress;
+  $size = 10240 if $size == 0;
   $window->setRange(0, $size);
   $window->setCaption("$file<=$nick");
   $window->setTopText("Receiver: $file Size: $size");

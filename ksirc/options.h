@@ -17,6 +17,13 @@
 #define BUTTON_SIZE    20
 #define TITLEBAR_HEIGHT 20
 
+#ifdef TRANSPARENT
+#undef TRANSPARENT
+#endif
+
+#ifdef OPAQUE
+#undef OPAQUE
+#endif
 
 enum WINDOW_MOVE_TYPE {
   TRANSPARENT,

@@ -41,13 +41,14 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
   switch(pm->iCommand){
   case PUKE_KSPROGRESS_SET_RANGE:
     {
-      int start, stop;
+      int start=0, stop=1;
       int found = sscanf(pm->cArg, "%d\t%d", &start, &stop);
       if(found != 2)
 	throw(errorCommandFailed(PUKE_INVALID,13));
-      debug("Setting range to: %d %d", start, stop);
-      if(start > stop)
-        return;
+      if(start >= stop){
+          stop = start+1;
+          start = 0;
+      }
       
       widget()->setRange(start, stop);
       pmRet.iCommand = PUKE_KSPROGRESS_SET_RANGE_ACK;
