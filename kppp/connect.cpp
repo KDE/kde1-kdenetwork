@@ -1707,12 +1707,7 @@ void parseargs(char* buf, char** args){
 int lockdevice() {
 
   int fd;
-  char c;
-  QString oldlock="";
-  QString procpid=PROC_DIR; /* "/proc" */
   char newlock[80]="";
-  int start, len;
-  QRegExp r("[1-9]+[0-9]*");
 
   QString lockfile;
   lockfile = gpppdata.modemLockFile();
@@ -1744,36 +1739,33 @@ int lockdevice() {
 
     // Mario: it's not necessary to read more than lets say 32 bytes. If
     // file has more than 32 bytes, skip the rest
-    int ctr = 0;
-    while (ctr++ < 32 && read(fd, &c, 1) == 1) 
-      oldlock+=c;
-    close(fd);
-
+    char oldlock[33];
+    int sz = read(fd, &oldlock, 32);
+    close (fd);
+    if (sz <= 0)
+      return 1;
+    oldlock[sz] = '\0';
+      
 #ifdef MY_DEBUG
-    printf("Device is locked by: %s\n",(const char*)oldlock);
+    printf("Device is locked by: %s\n", &oldlock);
 #endif
+      
+    pid_t oldpid;
+    int match = sscanf(oldlock, "%d", &oldpid);
 
-#ifdef linux /* we will use /proc only on the Linux platform */
-
-    oldlock.stripWhiteSpace();
-    start=r.match(oldlock,0,&len);
-    if (start == -1)
+    // found a pid in lockfile ?
+    if (match < 1 || oldpid <= 0)
       return 1;
-    procpid+="/";
-    procpid+=oldlock.mid(start,len);
-    procpid.stripWhiteSpace();
-
-    if ((fd = open((const char*)procpid, O_RDONLY)) >= 0) {
-      close(fd);
-    }
-
-    if ((errno != ENOENT) && (atoi(oldlock.mid(start,len))!=getpid()) ) 
+    
+    // check if process exists
+    if (kill(oldpid, 0) == 0)
       return 1;
-
-#else
-    return 1;
+    if (errno != ESRCH)
+      return 1;
+      
+#ifdef MY_DEBUG
+    printf("lockfile is stale\n");
 #endif
-
   }
 
   if((fd = open(gpppdata.modemLockFile(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {

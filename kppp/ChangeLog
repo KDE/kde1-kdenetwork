@@ -1,3 +1,8 @@
+1998-07-25  Harri Porten  <porten@tu-harburg.de>
+
+	* connect.cpp: rewrote check for stale lock files. After dropping
+	the use of /proc it should work on other platforms now, too.
+
 1998-07-19  Harri Porten  <porten@tu-harburg.de>
 
 	* merged killppp() and terminatepppd() in killpppd()	

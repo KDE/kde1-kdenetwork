@@ -84,9 +84,6 @@
 // Lock File for the modem device (Needed by mgetty users)
 #define MODEM_LOCK_FILE "/var/lock/LCK..modem"
 
-// /proc dir ( only used on linux in connect.cpp )
-#define PROC_DIR "/proc"
-
 // search path for pppd binary
 #define PPPDSEARCHPATH "/sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin"
 
