@@ -1,9 +1,18 @@
 -----------------------------------------------------------------------------
+Changes made Nov 15
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed a bug that consisted of a 5 byte change in the sources.
+            Gee! only two hours per byte changed! :-(
+
+-----------------------------------------------------------------------------
 Changes made Nov 14
 -----------------------------------------------------------------------------
 
 * [Roberto] Faster newsgroup opening
 * [Roberto & César] Fixed threading bug.
+* [Roberto] Removed some debug info.
+* [Roberto] For some reason now the "update article list" action works :-)
 
 -----------------------------------------------------------------------------
 Changes made Nov 13

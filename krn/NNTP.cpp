@@ -387,6 +387,8 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                     }
                     if (n)
                     {
+                        if (!art.ID.data())
+                            debug ("broken article in listXover");
                         n->addArticle(art.ID);
                     }
                     //Write the article ID to the newsgroup file

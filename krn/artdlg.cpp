@@ -274,6 +274,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(Key_Up, SCROLL_UP_ARTICLE);
     acc->insertItem(Key_Down, SCROLL_DOWN_ARTICLE);
     acc->insertItem(Key_X, EXPUNGE);
+    acc->insertItem(Key_Slash, FIND_ARTICLE);
+    acc->insertItem(Key_S, FIND_ARTICLE);
+    acc->insertItem(CTRL+Key_F, FIND_ARTICLE);
     
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));

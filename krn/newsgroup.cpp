@@ -219,14 +219,14 @@ void Article::load()
     From=tl.at(3);
     Date=tl.at(4);
     if (!strcmp(tl.at(5),"1"))
-        setRead(true);
+        isread=true;
     else
-        setRead(false);
+        isread=false;
 
     if (!strcmp(tl.at(6),"1"))
-        setExpire(true);
+        expire=true;
     else
-        setExpire(false);
+        expire=false;
 
     for (unsigned int i=7;i<tl.count();i++)
     {

@@ -35,6 +35,7 @@
 #include <kconfig.h>
 #include <kfm.h>
 #include <kurl.h>
+#include <qmsgbox.h>
 
 #include "kmessage.moc"
 
@@ -149,10 +150,32 @@ void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
     }
     else
     {
+        bool success=false;
         debug("Unknown URL type. Spawning KFM.");
-        KFM f;
-        f.openURL(s);
+        KFM fm;
+        //        QString t=tmpnam(NULL);
+        fm.openURL(s);
+        /*        fm.copy(s,t);
+         QFile f(t);
+         if (f.exists())
+         {
+         if (f.open(IO_ReadOnly))
+         {
+         char *buffer = new char[f.size()];
+         f.readBlock (buffer,f.size());
+         this->begin("file:/tmp/xxx");
+         this->write(buffer);
+         this->end();
+         delete[] buffer;
+         success=true;
+         }
+         }
+         
+         if (!success)
+         QMessageBox::warning(0,"KFM - Warning","I can't get that message from the web for some reason");
+         */
     }
+    
 }
 
 bool Kmessage::dump(char* part, QString fileName)
