@@ -1473,9 +1473,8 @@ msgid "The pass phrase is missing."
 msgstr "Chýba heslo."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "varovanie"
+msgstr "PGP varovanie"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1485,22 +1484,20 @@ msgid ""
 msgstr ""
 
 #: kpgp.cpp:296
-#, fuzzy
 msgid "Could not find the public keys for\n"
-msgstr "Nemô¾em nájs» verejné kµúèe pre niektorých µudí.\n"
+msgstr "Nemô¾em nájs» verejné kµúèe pre\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Títo µudia nebudú schopní\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Tento èlovek nebude schopný\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "za¹ifrova» správu"
+msgstr "roz¹ifrova» správu."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1508,26 +1505,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Zadali ste nesprávny heslo PGP.\n"
+"Chcete to vyskú¹a» znova, pokraèova» a\n"
+"ponecha» správu nepodpísanú alebo zru¹i» posielanie spávy?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Znova"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Chcete to zakryptova» aj tak, ponecha» správu\n"
+"ako je alebo zru¹i» správu ?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Zakryptova»"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Chcete necha» správu ako je alebo ju\n"
+"zru¹i»?"
 
 #: kpgp.cpp:711
 msgid ""
@@ -1547,11 +1551,11 @@ msgstr "Identita u¾ívateµa PGP:"
 
 #: kpgp.cpp:776
 msgid "Store passphrase"
-msgstr ""
+msgstr "Ulo¾i» heslo PGP"
 
 #: kpgp.cpp:782
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Stále kryptova» sebe"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1559,7 +1563,7 @@ msgstr "Zlé heslo; nemô¾em podpísa»"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "chyba pri spú¹»aní pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1567,36 +1571,37 @@ msgstr "Zlé heslo; nemô¾em rozkódova»"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Nemám privátny kµúè pre túto správu"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "neznáme ID kµúèa "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (súbor ~/.pgp/pubring.pgp nenájdený)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Chýba heslo."
+msgstr "Heslo, ktoré ste zadali, je nesprávne."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Kµúèe, ktorým chcete zakryptova» tieto správy\n"
+"nie sú dôveryhodné. Nekryptujem."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"verejný kµúè pre %s nenájdený.\n"
-"Táto osoba nebude schopná de¹ifrova» správu."
+"Nasledujúce kµúèe sú nedôveryhodné:\n"
+"%s\n"
+"Tieto osoby nebudú schopné de¹ifrova» správu."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1783,22 +1788,3 @@ msgstr "&7 bit je ASCII"
 msgid "&Qute unknonw characters"
 msgstr "Oznaèi» neznáme znaky"
 
-#~ msgid "Error during PGP:"
-#~ msgstr "Chyba pri behu PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Správa podpísaná "
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Správa má chybný podpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Koniec správy podpísanej pomocou PGP"
-
-#~ msgid ""
-#~ "Could not find public keys matching the\n"
-#~ "userid(s) %s. These persons won't be able\n"
-#~ "to read the message."
-#~ msgstr ""
-#~ "Verejný kµúè pre %s nenájdený.\n"
-#~ "Táto osoba nebude schopná de¹ifrova» správu."
