@@ -14,6 +14,7 @@ findArtDlg::findArtDlg
     findArtDlgData( this )
 {
     setCaption( "KRN - Article Searcher" );
+    expr->setFocus();
     QObject::connect(b1,SIGNAL(clicked()),this,SLOT(find()));
     QObject::connect(b2,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(expr,SIGNAL(returnPressed()),this,SLOT(find()));

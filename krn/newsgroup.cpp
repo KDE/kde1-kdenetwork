@@ -324,6 +324,7 @@ void NewsGroup::addArticle(QString ID)
 
 void NewsGroup::getList(Artdlg *dialog)
 {
+    char *buffer=new char[100];
     int c=0;
     QString ID;
     QString ac;
@@ -347,17 +348,16 @@ void NewsGroup::getList(Artdlg *dialog)
                 qApp->processEvents();
             ID=st.readLine();
             addArticle (ID);
-            if (dialog)
+            if (dialog && !(artList.count()%10))
             {
-                char *buffer=new char[100];
                 sprintf (buffer,"Received %d articles",artList.count());
                 dialog->updateCounter(buffer);
-                delete[] buffer;
             }
         }
         b.close();
         arr.resize(0);
     }
+    delete[] buffer;
 }
 
 void NewsGroup::updateList()

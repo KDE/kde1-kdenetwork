@@ -250,10 +250,8 @@ void Groupdlg::openGroup (QString name)
     int i=groups.find(&NewsGroup(name));
     if (groups.at(i)->isVisible)
     {
-        debug ("it's visible");
         return;
     }
-        debug ("it's not visible");
     if (i!=-1)
     {
         groups.at(i)->load();
@@ -821,7 +819,7 @@ void Groupdlg::findGroup()
                 KTreeListItem *it=list->itemAt(&p);
                 if (!it)
                 {
-                    debug ("no fsking item!!!!");
+                    debug ("no fscking item!!!!");
                     break;
                 }
                 if (!it->isExpanded())

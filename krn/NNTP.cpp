@@ -390,13 +390,14 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                             debug ("broken article in listXover");
                         n->addArticle(art.ID);
                     }
+                    counter++;
                     //Write the article ID to the newsgroup file
                     gi+=templ.at(OffsetID);
                     gi+="\n";
                     tok=strtok(NULL,"\n");
-                    sprintf (buffer,"Received %d articles",counter);
+                    if (!(counter%10))
+                        sprintf (buffer,"Received %d articles",counter);
                     emit newStatus(buffer);
-                    counter++;
                 }
                 f.writeBlock(gi.data(),gi.length());
                 f.close();

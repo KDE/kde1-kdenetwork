@@ -312,11 +312,9 @@ void Artdlg::copyText(bool b)
 
 void Artdlg::closeEvent(QCloseEvent *)
 {
-    debug ("artcount-->%d",artSpool.count());
     group->artList.clear();
     artList.clear();
     group->isVisible=0;
-    debug ("artcount-->%d",artSpool.count());
     delete this;
 } 
 
@@ -339,7 +337,6 @@ void Artdlg::fillTree ()
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
 
-    debug ("flag!!!");
     list->setAutoUpdate(false);
     list->clear();
     artList.clear();
@@ -955,7 +952,6 @@ void Artdlg::FindThis (const char *expr,const char *field)
             if (regex.match(iter.current()->Subject.data())>-1)
             {
                 list->setCurrentItem(index);
-                debug (iter.current()->Subject.data());
                 break;
             }
         }
