@@ -45,7 +45,7 @@ void aListBox::inSort ( const QListBoxItem *lbi, bool top = false)
 
   int sep = findSep();
 
-  if(sep > 0){
+  if(sep >= 0){
     if(top == TRUE){
       min = 0;
       max = sep - 1;
@@ -73,23 +73,18 @@ void aListBox::inSort ( const char * text, bool top = false)
 
 int aListBox::findSep()
 {
-  bool found = FALSE;
   uint i = 0;
-  for(; (i < count()) && (found == FALSE); i++){
-    if(strcmp(text(i), SEP) == 0){
-      found = TRUE;
-    }
-  }
-  if(found == TRUE)
-    return i;
-  else
-    return -1;
+  for(; i < count(); i++)
+    if(strcmp(text(i), SEP) == 0)
+      return i;
+
+  return -1;
 
 }
 
 bool aListBox::isTop(int index)
 {
-  if(index >= findSep())
+  if(index > findSep())
     return FALSE;
   else
     return TRUE;

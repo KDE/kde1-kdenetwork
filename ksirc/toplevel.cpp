@@ -98,6 +98,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   have_focus = 0;
   ticker = 0; // Set the ticker to NULL while it doesn't exist.
+  tab_pressed = 0; // Tab (nick completion not pressed yet)
   
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
@@ -166,7 +167,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   nicks = new aListBox(pan, "qlb");          // Make the users list box.
   //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
   //  nicks->setMinimumWidth(100);             // matched the main text window
-  nicks->setFocusPolicy(QWidget::ClickFocus);
+  nicks->setFocusPolicy(QWidget::NoFocus);
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
   nicks->setFont(kSircConfig->defaultfont);
   //  gm2->addWidget(nicks, 0);
@@ -186,7 +187,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 	  this, SLOT(lostFocus()));
   connect(linee, SIGNAL(pasteText()),
 	  this, SLOT(pasteToWindow()));
-	
+  connect(linee, SIGNAL(textChanged(const char *)),
+	  this, SLOT(lineeTextChanged(const char *)));
+
   gm->addWidget(linee);                    // No special controls are needed.
 
   connect(linee, SIGNAL(returnPressed()), // Connect return in sle to send
@@ -272,6 +275,10 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 		     this,
 		     SLOT(AccelNextMsgNick()));
 
+  accel->connectItem(accel->insertItem(Key_Tab), // adds TAB accelerator
+                     this,                         // connected to the main
+                     SLOT(TabNickCompletion()));  // TabNickCompletion() slot
+
 }
 
 
@@ -317,6 +324,57 @@ KSircTopLevel::~KSircTopLevel()
 //      sirc_receive(QString(""));
 //  }
 //}
+
+void KSircTopLevel::TabNickCompletion() 
+{
+  /* 
+   * Gets current text from lined find the last item and try and perform
+   * a nick completion, then return and reset the line.
+   */
+
+  int pos;
+  QString s;
+
+  if(tab_pressed > 0)
+    s = tab_saved.data();
+  else{
+    s = linee->text();
+    tab_saved = s.data();
+  }
+
+  if(s.length() == 0)
+    return;
+
+  pos = s.findRev(" ", -1, FALSE);
+
+  if (pos == -1) {
+    QString nick = findNick(s, tab_pressed);
+    if(nick.isNull() == TRUE){
+      tab_pressed = 0;
+      nick = findNick(s, tab_pressed);
+    }
+    s = nick;
+  }
+  else {
+    QString nick = findNick(s.mid(pos + 1, s.length()), tab_pressed);
+    if(nick.isNull() == TRUE){
+      tab_pressed = 0;
+      nick = findNick(s.mid(pos + 1, s.length()), tab_pressed);
+    }
+    s.replace(pos + 1, s.length(), nick);
+  }
+
+  tab_pressed++;
+
+  disconnect(linee, SIGNAL(textChanged(const char *)),
+	  this, SLOT(lineeTextChanged(const char *)));
+
+  linee->setText(s);
+
+  connect(linee, SIGNAL(textChanged(const char *)),
+	  this, SLOT(lineeTextChanged(const char *)));
+
+}
   
 void KSircTopLevel::sirc_receive(QString str)
 {
@@ -396,7 +454,6 @@ void KSircTopLevel::sirc_receive(QString str)
   }
 }
 
-
 void KSircTopLevel::sirc_line_return()
 {
 
@@ -407,13 +464,14 @@ void KSircTopLevel::sirc_line_return()
   if(s.length() == 0)
     return;
 
+  tab_pressed = 0; // New line, zero the counter.
 
   // 
   // Lookup the nick completion
   // Do this before we append the linefeed!!
   //
 
-  int pos1, pos2;
+  int pos2;
   
   if(kSircConfig->nickcompletion == TRUE){
     if(s.find(QRegExp("^[^ :]+: "), 0) != -1){
@@ -425,23 +483,23 @@ void KSircTopLevel::sirc_line_return()
 	s.replace(0, pos2, findNick(s.mid(0, pos2)));
     }
     
-    pos2 = 0;
-    pos1 = 0;
-    
-    while(s.find(" ::", pos2) >= 0){
-      pos1 = s.find(" ::", pos2);
-      pos2 = s.find(" ", pos1+3);
-      if(pos2 == -1)
-	pos2 = s.length();
-      if(pos2 - pos1 - 3 < 1){
-	cerr << "Evil string: " << s << endl;
-	break;
-      }
-      else{
-	s.replace(pos1 + 1, pos2 - pos1 - 1, 
-		  findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
-      }
-    }
+    //    pos2 = 0;
+    //    pos1 = 0;
+    //    
+    //    while(s.find(" ::", pos2) >= 0){
+    //      pos1 = s.find(" ::", pos2);
+    //      pos2 = s.find(" ", pos1+3);
+    //      if(pos2 == -1)
+    //	pos2 = s.length();
+    //      if(pos2 - pos1 - 3 < 1){
+    //	cerr << "Evil string: " << s << endl;
+    //	break;
+    //      }
+    //      else{
+    //	s.replace(pos1 + 1, pos2 - pos1 - 1, 
+    //		  findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
+    //      }
+    //    }
   }
 
   s += '\n'; // Append a need carriage return :)
@@ -1264,6 +1322,13 @@ void KSircTopLevel::showTicker()
   ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
   ticker->setSpeed(kConfig->readNumEntry("tick", 30), 
 		   kConfig->readNumEntry("step", 3));
+  QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
+                               colorGroup().light(), colorGroup().dark(),
+                               colorGroup().midlight(), 
+                               *kSircConfig->colour_text, 
+                               *kSircConfig->colour_background); 
+  ticker->setPalette(QPalette(cg,cg,cg));
+  ticker->setBackgroundColor( *kSircConfig->colour_background );
   connect(ticker, SIGNAL(doubleClick()), 
 	  this, SLOT(unHide()));
   connect(ticker, SIGNAL(closing()), 
@@ -1295,7 +1360,7 @@ void KSircTopLevel::unHide()
   linee->setFocus();  // Give SLE focus
 }
 
-QString KSircTopLevel::findNick(QString part)
+QString KSircTopLevel::findNick(QString part, uint which = 0)
 {
   QStrList matches;
   for(uint i=0; i < nicks->count(); i++){
@@ -1306,7 +1371,10 @@ QString KSircTopLevel::findNick(QString part)
     }
   }
   if(matches.count() > 0){
-    return matches.at(0);
+    if(which < matches.count())
+      return matches.at(which);
+    else
+      return 0;
   }
   return part;
     
@@ -1345,4 +1413,9 @@ void KSircTopLevel::pasteToWindow()
   }
   sirc_write(text);
   linee->setText("");
+}
+
+void KSircTopLevel::lineeTextChanged(const char *)
+{
+  tab_pressed = 0;
 }

@@ -14,7 +14,7 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 
   pHeight = 1;
 
-    setFont(QFont("fixed"));
+  setFont(QFont("fixed"));
   // ring = "Hi";
   ring = "";
   SInfo *si = new SInfo;
@@ -101,6 +101,7 @@ void KSTicker::timerEvent(QTimerEvent *)
   }
   if(ring.length() > (uint) chars){
     QPainter p(this);
+    p.setPen( colorGroup().text() );
     bitBlt(this, -tickStep, 0, this);
     cOffset += tickStep;
     if(cOffset >= onechar){
@@ -131,6 +132,7 @@ void KSTicker::paintEvent( QPaintEvent *)
   if(isVisible() == FALSE)
     return;
   QPainter p(this);
+  p.setPen( colorGroup().text() );
   //  p.setFont(QFont("fixed"));
   if(ring.length() > (uint) chars){
     if(currentChar > chars){

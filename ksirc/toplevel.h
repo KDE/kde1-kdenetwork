@@ -227,6 +227,13 @@ protected slots:
      * reads the clip board and pastes into the main listbox.
      */
    void pasteToWindow();
+   /**
+     * On a TAB key press we call Tab_nick_completion which
+     * reads the last thing in linee matches it with a nick and 
+     * puts it back into the line.
+     */
+   void TabNickCompletion();
+   void lineeTextChanged(const char *);
 
 protected:
    /**
@@ -239,7 +246,7 @@ protected:
      */
    virtual void resizeEvent(QResizeEvent *);
 
-   virtual QString findNick(QString);
+   virtual QString findNick(QString, uint which = 0);
 
 private:
   bool continued_line;
@@ -280,10 +287,31 @@ private:
   static QPixmap *pix_bluep;
   static QPixmap *pix_madsmile;
 
+  /**
+    * The channel name that we belong too.
+    */
   char *channel_name;
+
+  /**
+    * Caption at the top of the window.
+    */
   QString caption;
 
+  /**
+    * Does the window have focus? 1 when yes, 0 when no.
+    */
   int have_focus;
+
+  /** 
+    * Number of time tab has been pressed.  Each time it's pressed
+    * roll through the list of matching nicks.  
+    */
+  int tab_pressed;
+  /**
+    * When tabs pressed save the line for use at a latter date.
+    */
+  QString tab_saved;
+    
 
   KSTicker *ticker;
   QRect myrect;
