@@ -30,7 +30,8 @@ BUILTSOURCES =	groupdlg.moc \
                 krnsender.moc\
                 kmsender.moc\
                 kmaddrbookdlg.moc\
-                ktreeview.moc
+                ktreeview.moc\
+                expireDlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -75,8 +76,8 @@ krn_SOURCES = 	main.cpp\
                 krnsender.cpp\
                 kmaddrbookdlg.cpp\
                 kmaddrbook.cpp\
-                ktreeview.cpp
-
+                ktreeview.cpp\
+                expireDlg.cpp
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -116,8 +117,8 @@ noinst_HEADERS = 	NNTP.h\
                 krnsender.h\
                 kmaddrbookdlg.h\
                 kmaddrbook.h\
-                ktreeview.h
-
+                ktreeview.h\
+                expireDlg.h
 
 
 SUBDIRS = docs pics
@@ -222,9 +223,14 @@ kmaddrbookdlg.cpp:kmaddrbookdlg.moc
 kmaddrbookdlg.moc: kmaddrbookdlg.h
 	$(MOC) kmaddrbookdlg.h -o kmaddrbookdlg.moc
 
-ktreeviewdlg.cpp:ktreeviewdlg.moc
-ktreeviewdlg.moc: ktreeviewdlg.h
-	$(MOC) ktreeviewdlg.h -o ktreeviewdlg.moc
+ktreeview.cpp:ktreeview.moc
+ktreeview.moc: ktreeview.h
+	$(MOC) ktreeview.h -o ktreeview.moc
+
+
+expireDlg.cpp:expireDlg.moc
+expireDlg.moc: expireDlg.h
+	$(MOC) expireDlg.h -o expireDlg.moc
 
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot
