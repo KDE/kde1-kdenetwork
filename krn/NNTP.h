@@ -175,6 +175,7 @@ public:
     bool    artList(int from=0,int to=0);
     QString *article(char *id);
     bool    isCached(char *id);
+    bool    postArticle(QString ID);
     int     authinfo(const char *username,const char *password);
     int     setMode (char *mode);
     QString    	hostname;

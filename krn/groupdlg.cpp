@@ -164,7 +164,8 @@ Groupdlg::Groupdlg
     
     pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
     tool->insertButton (pixmap, CONNECT, true, "Connect to server");
-    pixmap.load (pixpath+"disconnected.xpm");
+
+    pixmap=kapp->getIconLoader()->loadIcon("disconnected.xpm");
     tool->insertButton (pixmap, DISCONNECT, false, "Disconnect from server");
     tool->insertSeparator ();
     

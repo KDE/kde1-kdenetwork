@@ -191,10 +191,12 @@ install: all
 	$(INSTALL) $(TARGET) $(BINDIR)
 	$(INSTALL_DATA) Krn.kdelnk $(prefix)/share/applnk
 	(cd pics && $(MAKE) install)
+	(cd docs && $(MAKE) install)
 
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
 	(cd pics && $(MAKE) uninstall)
+	(cd docs && $(MAKE) uninstall)
 
 ####### Meta objects
 

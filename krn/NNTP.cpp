@@ -538,3 +538,8 @@ void NNTP::getResponse(QString *r )
 {
     r->setStr(TextResponse().data());
 }
+
+bool NNTP::postArticle (QString ID)
+{
+    return false;
+}
