@@ -703,7 +703,7 @@ void KMMainWin::slotSetHeaderStyle(int id)
 //-----------------------------------------------------------------------------
 void KMMainWin::folderSelected(KMFolder* aFolder)
 {
-  cout << "Entering folderSelected\n";
+  debug ("Entering folderSelected\n");
   if(!aFolder)
     {
       debug("KMMainWin::folderSelected(): aFolder == NULL");

@@ -64,7 +64,7 @@ bool KMAcctLocal::processNewMail(KMIOStatus *statusWdg)
 
   if (mFolder==NULL) return FALSE;
 
-  printf("processNewMail: %s\n", (const char*)location());
+  debug("processNewMail: %s", (const char*)location());
 
   statusWdg->prepareTransmission(location(), KMIOStatus::RETRIEVE);
   app->processEvents();
