@@ -28,48 +28,113 @@
 
 #include <qobject.h>
 #include <qmsgbox.h>
-#include <qsocketnotifier.h>
+#include <kprocess.h>
 #include "ruleset.h"
 
-class Accounting : public QObject {
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accounting base class
+//
+/////////////////////////////////////////////////////////////////////////////
+class AccountingBase : public QObject {
   Q_OBJECT
 public:
+  AccountingBase(QObject *parent = 0);
+  virtual ~AccountingBase();
 
-  Accounting(QObject *parent = 0);
-  ~Accounting();
+  virtual double total();
+  virtual double session();
 
-  bool running();
-  bool loadRuleSet(const char *name);
-  double total();
-  double session();
+  virtual bool running() { return false; };
+  virtual bool loadRuleSet(const char *name) = 0;
 
-protected:
-  void timerEvent(QTimerEvent *);
-  void logMessage(QString, bool = FALSE);
-  bool saveCosts();
-  bool loadCosts();
+public slots:
+  virtual void slotStart() {};
+  virtual void slotStop() {};
 
 signals:
   void changed(QString total, QString session);
 
-public slots:
-  void resetCosts(const char *accountname);
-  void slotStart();
-  void slotStop();
+protected:
+  void logMessage(QString, bool = FALSE);
+  bool saveCosts();
+  bool loadCosts();
 
-private:
-  RuleSet rules;
   QString LogFileName;
   double _total, _session;
-  double _lastcosts;
-  double _lastlen;
-  int acct_timer_id, update_timer_id;
-  time_t start_time;
+  QString _name;
 
   // static members
 public:
-  static QString getCosts(const char* accountname);  
+  static void resetCosts(const char *accountname);
+  static QString getCosts(const char* accountname);
+  static QString getAccountingFile(const char* accountname);
+};
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accounting based on ruleset files
+//
+/////////////////////////////////////////////////////////////////////////////
+class Accounting : public AccountingBase {
+  Q_OBJECT
+public:
+  Accounting(QObject *parent = 0);
+
+  virtual double total();
+  virtual double session();
+
+  virtual bool loadRuleSet(const char *name);
+  virtual bool running();
+
+private:
+  virtual void timerEvent(QTimerEvent *t);
+
+public slots:
+  virtual void slotStart();
+  virtual void slotStop();
+
+signals:
+  void changed(QString total, QString session);
+
+private:
+  int acct_timer_id;
+  int update_timer_id;
+  time_t start_time;
+  double _lastcosts;
+  double _lastlen;
+  RuleSet rules;
+};
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accounting based on executable files
+//
+/////////////////////////////////////////////////////////////////////////////
+class ExecutableAccounting : public AccountingBase {
+  Q_OBJECT
+public:
+  ExecutableAccounting(QObject *parent = 0);
+
+  virtual bool loadRuleSet(const char *name);
+  virtual bool running();
+
+public slots:
+  virtual void slotStart();
+  virtual void slotStop();
+
+private slots:
+  void gotData(KProcess *proc, char *buffer, int buflen);
+
+signals:
+  void changed(QString total, QString session);
+
+private:
+  KProcess *proc;
+  QString currency;
+  QString provider;
 };
 
 #endif
-

@@ -1020,7 +1020,10 @@ void ConnectWidget::if_waiting_slot() {
 
   // prepare the con_win so as to have the right size for
   // accounting / non-accounting mode
-  p_kppp->con_win->accounting(p_kppp->accounting.running());
+  if(p_kppp->acct != 0)
+    p_kppp->con_win->accounting(p_kppp->acct->running());
+  else
+    p_kppp->con_win->accounting(false);
 
   if (gpppdata.get_dock_into_panel()) {
     DockWidget::dock_widget->dock();

@@ -53,12 +53,31 @@ extern PPPData gpppdata;
 extern int ibytes;
 extern int obytes;
 
-Accounting::Accounting(QObject *parent) : 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Helper functions
+//
+/////////////////////////////////////////////////////////////////////////////
+QString timet2qstring(time_t t) {
+  QString s;
+
+  s.sprintf("%u", t);
+  return s;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// The base class for the accounting system provides a base set of usefull
+// and common functions, but does not do any accounting by itself. The 
+// accounting is accomplished withing it´s derived classes
+//
+/////////////////////////////////////////////////////////////////////////////
+AccountingBase::AccountingBase(QObject *parent) :
   QObject(parent),
   _total(0),
-  _session(0),
-  acct_timer_id(0),
-  update_timer_id(0)
+  _session(0)
 {
   QDate dt = QDate::currentDate();
   LogFileName.sprintf("%s-%4d.log",
@@ -73,10 +92,137 @@ Accounting::Accounting(QObject *parent) :
   LogFileName = fname;
 }
 
-
-Accounting::~Accounting() {
+AccountingBase::~AccountingBase() {
   if(running())
     slotStop();
+}
+
+
+double AccountingBase::total() {
+  return _total + _session;
+}
+
+
+
+double AccountingBase::session() {
+  return _session;
+}
+
+
+// set costs back to zero ( typically once per month)
+void AccountingBase::resetCosts(const char *accountname){
+  QString prev_account = gpppdata.accname();
+
+  gpppdata.setAccount(accountname);
+  gpppdata.setTotalCosts("");
+
+  gpppdata.setAccount(prev_account);
+}
+
+
+void AccountingBase::logMessage(QString s, bool newline) {
+  int old_umask = umask(0077);
+
+  QFile f(LogFileName.data());
+
+  bool result = f.open(IO_ReadWrite);
+  if(result) {
+    // move to eof, and place \n if necessary
+    if(f.size() > 0) {
+      if(newline) {
+	f.at(f.size() - 1);
+	char c = 0;
+	f.readBlock(&c, 1);
+	if(c != '\n')
+	  f.writeBlock("\n", 1);
+      } else
+	f.at(f.size() - 1);
+    }
+
+    f.writeBlock(s.data(), s.length());
+    f.close();
+  }
+
+  // restore umask
+  umask(old_umask);
+}
+
+
+QString AccountingBase::getCosts(const char* accountname) {
+  QString prev_account = gpppdata.accname();
+
+  gpppdata.setAccount(accountname);
+  QString val = gpppdata.totalCosts();
+
+  gpppdata.setAccount(prev_account);
+
+  return val;
+}
+
+
+
+bool AccountingBase::saveCosts() {
+  if(!_name.isNull() && _name.length() > 0) {
+    QString val;
+    val.setNum(total());
+
+    gpppdata.setTotalCosts(val);
+    gpppdata.save();
+
+    return TRUE;
+  } else
+    return FALSE;
+}
+
+
+bool AccountingBase::loadCosts() {
+  QString val = gpppdata.totalCosts();
+
+  if(val.isNull()) // QString will segfault if isnull and toDouble called
+    _total = 0.0;
+  else {
+    bool ok;
+    _total = val.toDouble(&ok);
+    if(!ok)
+      _total = 0.0;
+  }
+
+  return TRUE;
+}
+
+
+QString AccountingBase::getAccountingFile(const char* accountname) {
+  // load from home directory if file is found there
+  QString d = QDir::homeDirPath() + "/";
+  d += ACCOUNTING_PATH ;
+  d += "/Rules/";
+  d += accountname;
+
+  if(access(d.data(), R_OK) == 0)
+    return d;
+
+  // load from KDE directory if file is found there
+  d = KApplication::kde_datadir().copy();
+  d += "/kppp/Rules/";
+  d += accountname;
+  if(access(d.data(), R_OK) == 0)
+    return d;
+
+  d = "";
+  return d;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accounting class for ruleset files
+//
+/////////////////////////////////////////////////////////////////////////////
+Accounting::Accounting(QObject *parent) : 
+  AccountingBase(parent),
+  acct_timer_id(0),
+  update_timer_id(0)
+{
 }
 
 
@@ -86,7 +232,6 @@ bool Accounting::running() {
 
 
 void Accounting::timerEvent(QTimerEvent *t) {
-
   if(t->timerId() == acct_timer_id) {
 
     double newCosts;
@@ -130,14 +275,6 @@ void Accounting::timerEvent(QTimerEvent *t) {
     // every n seconds (see UPDATE_TIME)
     saveCosts();
   }
-}
-
-
-QString timet2qstring(time_t t) {
-  QString s;
-
-  s.sprintf("%u", t);
-  return s;
 }
 
 
@@ -193,60 +330,17 @@ bool Accounting::loadRuleSet(const char *name) {
     rules.load(""); // delete old rules
     return TRUE;
   }
-
-  // load from home directory if file is found there
-  QString d = QDir::homeDirPath() + "/";
-  d += ACCOUNTING_PATH ;
-  d += "/Rules/";
-  d += name;
-
-
-  QFileInfo fl(d.data());
-   if(fl.exists()) {
-     int ret = rules.load(d.data());
-     return (bool)(ret == 0);
-   }
-
-  // load from KDE directory if file is found there
-  d = KApplication::kde_datadir().copy();
-  d += "/kppp/Rules/";
-  d += name;
+  
+  QString d = AccountingBase::getAccountingFile(name);
 
   QFileInfo fg(d.data());
    if(fg.exists()) {
      int ret = rules.load(d.data());
+     _name = rules.name();
      return (bool)(ret == 0);
    }
 
  return FALSE;
-}
-
-
-void Accounting::logMessage(QString s, bool newline) {
-  int old_umask = umask(0077);
-
-  QFile f(LogFileName.data());
-
-  bool result = f.open(IO_ReadWrite);
-  if(result) {
-    // move to eof, and place \n if necessary
-    if(f.size() > 0) {
-      if(newline) {
-	f.at(f.size() - 1);
-	char c = 0;
-	f.readBlock(&c, 1);
-	if(c != '\n')
-	  f.writeBlock("\n", 1);
-      } else
-	f.at(f.size() - 1);
-    }
-
-    f.writeBlock(s.data(), s.length());
-    f.close();
-  }
-
-  // restore umask
-  umask(old_umask);
 }
 
 
@@ -267,57 +361,120 @@ double Accounting::session() {
 }
 
 
-// set costs back to zero ( typically once per month)
-void Accounting::resetCosts(const char *accountname){
-  QString prev_account = gpppdata.accname();
 
-  gpppdata.setAccount(accountname);
-  gpppdata.setTotalCosts("");
 
-  gpppdata.setAccount(prev_account);
+ExecutableAccounting::ExecutableAccounting(QObject *parent) : 
+  AccountingBase(parent),
+  proc(0)
+{
 }
 
 
-bool Accounting::saveCosts() {
-  if(!rules.name().isNull() && (rules.name().length() > 0)) {
-    QString val;
-    val.setNum(total());
-
-    gpppdata.setTotalCosts(val);
-    gpppdata.save();
-
-    return TRUE;
-  } else
-    return FALSE;
+bool ExecutableAccounting::running() {
+  return (proc != 0) || proc->isRunning();
 }
 
 
-bool Accounting::loadCosts() {
+bool ExecutableAccounting::loadRuleSet(const char *name) {
+  QString s = AccountingBase::getAccountingFile(gpppdata.accountingFile());
+  return (access(s.data(), X_OK) == 0);
+}
 
-  QString val = gpppdata.totalCosts();
 
-  if(val.isNull()) // QString will segfault if isnull and toDouble called
-    _total = 0.0;
-  else {
-    bool ok;
-    _total = val.toDouble(&ok);
-    if(!ok)
-      _total = 0.0;
+void ExecutableAccounting::gotData(KProcess *proc, char *buffer, int buflen) {
+  QString field[8];
+  int nFields = 0;
+  int pos, last_pos = 0;
+
+  // split string
+  QString b(buffer);
+  pos = b.find(':');
+  while(pos != -1 && nFields < 8) {
+    field[nFields++] = b.mid(last_pos, pos-last_pos);
+    last_pos = pos+1;
+    pos = b.find(':', last_pos);
   }
 
-  return TRUE;
+  for(int i = 0; i < nFields;i++)
+    fprintf(stderr, "FIELD[%d] = %s\n", i, field[i].data());
+  
+  QString __total, __session;
+  QString s(buffer);
+  int del1, del2, del3;
+
+  del1 = s.find(':');
+  del2 = s.find(':', del1+1);
+  del3 = s.find(':', del2+1);
+  if(del1 == -1 || del2 == -1 || del3 == -1) {
+    // TODO: do something usefull here
+    return;
+  }
+
+  provider = s.left(del1);
+  currency = s.mid(del1, del2-del1);
+  __total = s.mid(del2, del2-del1);
+  __session = s.mid(del3, s.length()-del3+1);
+
+  bool ok1, ok2;
+  _total = __total.toDouble(&ok1);
+  _session = __session.toDouble(&ok2);
+  
+  if(!ok1 || !ok2) {
+    // TODO: do something usefull here
+    return;
+  }
+
+  printf("PROVIDER=%s, CURRENCY=%s, TOTAL=%0.3e, SESSION=%0.3e\n", 
+	 provider.data(),
+	 currency.data(),
+	 _total,
+	 _session);
 }
 
 
-QString Accounting::getCosts(const char* accountname) {
-  QString prev_account = gpppdata.accname();
+void ExecutableAccounting::slotStart() {
+  if(proc != 0)
+    slotStop(); // just to make sure
 
-  gpppdata.setAccount(accountname);
-  QString val = gpppdata.totalCosts();
+  loadCosts();
+  QString s = AccountingBase::getAccountingFile(gpppdata.accountingFile());
+  proc = new KProcess;
 
-  gpppdata.setAccount(prev_account);
+  QString s_total;
+  s_total.sprintf("%0.8f", total());
+  *proc << s.data() << s_total.data();
+  connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)),
+	  this, SLOT(gotData(KProcess *, char *, int)));
+  proc->start();
 
-  return val;
+  time_t start_time = time(0); 
+  s = timet2qstring(start_time);
+  s += ":";
+  s += gpppdata.accname();
+  s += ":";
+  s += currency;
+  
+  logMessage(s, TRUE);
+}
+
+
+void ExecutableAccounting::slotStop() {
+  if(proc != 0) {
+    proc->kill();
+    delete proc;
+    proc = 0;
+
+    QString s;
+    s.sprintf(":%s:%0.4e:%0.4e:%u:%u\n",
+	      timet2qstring(time(0)).data(),
+	      session(),
+	      total(),
+	      ibytes,
+	      obytes);
+
+    logMessage(s, FALSE);
+    saveCosts();
+  }
 }
 
 #include "accounting.moc"

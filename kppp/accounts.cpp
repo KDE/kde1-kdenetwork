@@ -182,7 +182,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
     reset->setEnabled(TRUE);
     costlabel->setEnabled(TRUE);
     costedit->setEnabled(TRUE);
-    costedit->setText(Accounting::getCosts(accountlist_l->text(accountlist_l->currentItem())));
+    costedit->setText(AccountingBase::getCosts(accountlist_l->text(accountlist_l->currentItem())));
 
     vollabel->setEnabled(TRUE);
     voledit->setEnabled(TRUE);

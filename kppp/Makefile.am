@@ -58,7 +58,8 @@ kppp_SOURCES	= accounts.cpp \
 		groupbox.cpp \
 		newwidget.cpp \
 		requester.cpp \
-		opener.cpp 
+		opener.cpp \
+		modemdb.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -98,7 +99,8 @@ noinst_HEADERS = accounts.h \
 		ppplog.h \
 		log.h \
 		groupbox.h \
-		newwidget.h 
+		newwidget.h \
+		modemdb.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -119,7 +121,8 @@ BUILTSOURCES = accounts.moc \
 		acctselect.moc\
 		docking.moc \
 		setup.moc \
-		groupbox.moc
+		groupbox.moc \
+		modemdb.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -238,3 +241,7 @@ scriptedit.moc: scriptedit.h
 groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h
 	$(MOC) groupbox.h -o groupbox.moc
+
+modemdb.cpp: modemdb.moc
+modemdb.moc: modemdb.h
+	$(MOC) modemdb.h -o modemdb.moc

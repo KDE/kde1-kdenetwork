@@ -10,6 +10,25 @@
 	* modem.cpp: fixed usleep() replacement in case #ifndef HAVE_USLEEP
 	* connect.cpp: saving of old_hostname was broken
 
+1999-01-10  Mario Weilguni <mweilguni@kde.org>
+
+	* complete rework of the accounting system. The old implementation
+	did only allow one type of accounting (=via rulefiles). The new
+	will allow executable rulefiles too.
+	
+1999-01-06  Mario Weilguni <mweilguni@kde.org>
+
+	* added new hungarian rules
+	* the title of the main window was "kppp.bin". Fixed this.
+	* the combobox for selecting the account to dial in was
+	editable for some strange reason. Fixed.
+	* modified the testing stuff (-T now)
+
+1999-01-04  Mario Weilguni <mweilguni@kde.org>
+
+	* began to add a modem database. See README.ModemDB for
+	details. The modem DB will not make it into KDE 1.1 (sorry)
+
 1999-01-05  Harri Porten  <porten@kde.org>
 
 	* opener.cpp: set O_NOCTTY flag when opening the modem device to
@@ -22,9 +41,6 @@
 	* connect.cpp,opener.*,requester.*: moved call to sethostname()
 	into Opener. Bug discovered by Matthew Ando <ando@math.jhu.edu>
 
-1999-01-04
-	
-	* began to add a modem database. See README.ModemDB for details
 
 1999-01-04  Mario Weilguni <mweilguni@kde.org>
 

@@ -79,7 +79,7 @@ public:
    *  of a doubleingpoint number using the
    *  currency-settings
    */
-  QString currencyString(double f);
+  QString currencyString(double val);
 
   /// sets the start time -- must be called when the connection has bee established
   void setStartTime(QDateTime dt);

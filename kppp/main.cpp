@@ -26,7 +26,6 @@
 
 #include <config.h>
 
-
 #include <qfileinf.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -63,6 +62,7 @@
 #include "newwidget.h"
 #include "opener.h"
 #include "requester.h"
+#include "modemdb.h"
 
 #include <X11/Xlib.h>
 
@@ -167,42 +167,41 @@ void showNews() {
   }
 }
 
+
 extern "C" {
-
-static int kppp_x_errhandler( Display *dpy, XErrorEvent *err ) {
-  char errstr[256]; // safe
+  static int kppp_x_errhandler( Display *dpy, XErrorEvent *err ) {
+    char errstr[256]; // safe
   
-  /*
-    if(gpppdata.pppdpid() >= 0) {
-    kill(gpppdata.pppdpid(), SIGTERM);
-    }
+    /*
+      if(gpppdata.pppdpid() >= 0) {
+      kill(gpppdata.pppdpid(), SIGTERM);
+      }
     
-    p_kppp->stopAccounting();
-    removedns();
-    unlockdevice();*/
+      p_kppp->stopAccounting();
+      removedns();
+      unlockdevice();*/
   
-  XGetErrorText( dpy, err->error_code, errstr, 256 );
-  fatal( "X Error: %s\n  Major opcode:  %d", errstr, err->request_code );
-  return 0;
-}
-
-
-static int kppp_xio_errhandler( Display * ) {
-  if(gpppdata.get_xserver_exit_disconnect()) {
-    fprintf(stderr, "X11 Error!\n");
-    if(gpppdata.pppdpid() >= 0)
-      kill(gpppdata.pppdpid(), SIGTERM);    
-
-    p_kppp->stopAccounting();
-    removedns();
-    Modem::modem->unlockdevice();
-    return 0;
-  } else{
-    fatal( "%s: Fatal IO error: client killed", "kppp" );
+    XGetErrorText( dpy, err->error_code, errstr, 256 );
+    fatal( "X Error: %s\n  Major opcode:  %d", errstr, err->request_code );
     return 0;
   }
-}
 
+
+  static int kppp_xio_errhandler( Display * ) {
+    if(gpppdata.get_xserver_exit_disconnect()) {
+      fprintf(stderr, "X11 Error!\n");
+      if(gpppdata.pppdpid() >= 0)
+	kill(gpppdata.pppdpid(), SIGTERM);    
+
+      p_kppp->stopAccounting();
+      removedns();
+      Modem::modem->unlockdevice();
+      return 0;
+    } else{
+      fatal( "%s: Fatal IO error: client killed", "kppp" );
+      return 0;
+    }
+  }
 } /* extern "C" */
 
 
@@ -327,15 +326,15 @@ int main( int argc, char **argv ) {
 
   int c;
   opterr = 0;
-  while ((c = getopt(argc, argv, "c:khvr:qt")) != EOF) {
+  while ((c = getopt(argc, argv, "c:khvr:qT")) != EOF) {
     switch (c)
       {
-
       case '?':
 	fprintf(stderr, "%s: unknown option \"%s\"\n", 
 		argv[0], argv[optind-1]);
 	usage(argv[0]);
 	shutDown(1);
+
       case 'c':
 	{
 	  const int MAX_NAME_LENGTH = 64;
@@ -347,27 +346,33 @@ int main( int argc, char **argv ) {
 	  cmdl_account = tmp;
 	  break;
 	}
+
       case 'k':
         terminate_connection = true;
         break;
+
       case 'h':
 	usage(argv[0]);
 	break;
+
       case 'v':
 	banner(argv[0]);
 	break;
+
       case 'q':
 	quit_on_disconnect = true;
 	break;
+
       case 'r':
 	shutDown(RuleSet::checkRuleFile(optarg));
 	break; // never reached
-      case 't':
+
+      case 'T':
 	TESTING=true;
 	break;
       }
   }
-
+  
   if(!cmdl_account.isEmpty()) {
     have_cmdl_account = true;
     Debug("cmdl_account:%s:\n",cmdl_account.data());
@@ -403,8 +408,14 @@ int main( int argc, char **argv ) {
   // Mario: testing
   if(TESTING) {
     gpppdata.open();
-    AccountingSelector *w = new AccountingSelector(0);
-    w->show();
+//     gpppdata.setAccountbyIndex(0);
+//     ExecutableAccounting *c = new ExecutableAccounting(p_kppp);
+//     c->slotStart();
+    ModemSelector *c = new ModemSelector(0);
+    c->exec();
+    delete c;
+    exit(0);
+    
     return a.exec();
   }
 
@@ -444,14 +455,15 @@ int main( int argc, char **argv ) {
 
   remove_pidfile();
 
-  //  return ret;
   shutDown(ret); // okay ?
+  return 0; // never reached, prevent warning
 }
 
 
 
 KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
-  : QWidget(parent, name) 
+  : QWidget(parent, name),
+    acct(0)
 {
   tabWindow = 0;
 
@@ -480,7 +492,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   MIN_SIZE(label1);
   l1->addWidget(label1, 0, 1);
 
-  connectto_c = new QComboBox(true,this);
+  connectto_c = new QComboBox(false, this);
+  
   connect(connectto_c, SIGNAL(activated(int)), 
 	  SLOT(newdefaultaccount(int)));
   MIN_SIZE(connectto_c);
@@ -618,10 +631,6 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 		    320,110);
   KWM::setMiniIcon(con_win->winId(), kapp->getMiniIcon());
 
-  // connect to the accounting object
-  connect(&accounting, SIGNAL(changed(QString, QString)),
-	  con_win, SLOT(slotAccounting(QString, QString)));
-
   stats = new PPPStatsDlg(0,"stats",this);
   stats->hide();
 
@@ -690,7 +699,7 @@ void KPPPWidget::prepareSetupDialog() {
     connect(accounts, SIGNAL(resetaccounts()),
 	    this, SLOT(resetaccounts()));
     connect(accounts, SIGNAL(resetCosts(const char *)),
-	    &accounting, SLOT(resetCosts(const char *)));
+	    this, SLOT(resetCosts(const char *)));
     modem1 = new ModemWidget(tabWindow);
     modem2 = new ModemWidget2(tabWindow);
     general = new GeneralWidget(tabWindow);
@@ -1155,7 +1164,17 @@ void KPPPWidget::startAccounting() {
   if(!gpppdata.AcctEnabled())
     return;
   
-  if(!accounting.loadRuleSet(gpppdata.accountingFile())) {
+  QString d = AccountingBase::getAccountingFile(gpppdata.accountingFile());
+  if(::access(d.data(), X_OK) != 0)
+    acct = new Accounting(this);
+  else
+    acct = new ExecutableAccounting(this);
+
+  // connect to the accounting object
+  connect(acct, SIGNAL(changed(QString, QString)),
+	  con_win, SLOT(slotAccounting(QString, QString)));
+
+  if(!acct->loadRuleSet(gpppdata.accountingFile())) {
     QString s= i18n("Can not load the accounting\nruleset \"");
     s += gpppdata.accountingFile();
     s += "\"!";
@@ -1166,7 +1185,7 @@ void KPPPWidget::startAccounting() {
     QTimer::singleShot(0, this, SLOT(rulesetLoadError()));
     return;
   } else
-	accounting.slotStart();
+    acct->slotStart();
 }
 
 void KPPPWidget::stopAccounting() {
@@ -1177,7 +1196,11 @@ void KPPPWidget::stopAccounting() {
   if(!gpppdata.AcctEnabled())
     return;
 
-  accounting.slotStop();
+  if(acct != 0) {
+    acct->slotStop();
+    delete acct;
+    acct = 0;
+  }
 }
 
 
@@ -1200,6 +1223,10 @@ void KPPPWidget::setPW_Edit(const char *pw) {
   PW_Edit->setText(pw);
 }
 
+
+void KPPPWidget::resetCosts(const char *s) {
+  AccountingBase::resetCosts(s);
+}
 
 void killpppd() {
   int stat;

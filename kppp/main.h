@@ -99,6 +99,7 @@ private slots:
 
 public slots:
   void resetaccounts();
+  void resetCosts(const char *);
   void disconnect();
   void log_window_toggled(bool on);
   void startAccounting();
@@ -116,7 +117,7 @@ public:
   ConnectWidget *con;
   ConWindow *con_win;
   PPPStatsDlg *stats;
-  Accounting accounting;
+  AccountingBase *acct;
   QPushButton *quit_b;
 
 private:
