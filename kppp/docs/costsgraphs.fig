@@ -34,8 +34,6 @@ Single
 4 0 0 0 0 0 12 0.0000 4 180 1605 2550 675 minimum_cost Graph\001
 4 0 0 0 0 0 12 0.0000 4 180 1605 8850 675 flat_init_costs Graph\001
 4 0 0 0 0 0 12 0.0000 4 180 4650 7125 5475 Thes graphs illustrate, why the new keyword 'flat_init_costs'\001
-4 0 0 0 0 0 12 0.0000 4 180 4905 7125 5700 was necessry. A Cost graph such as the one show above,labeled\001
-4 0 0 0 0 0 12 0.0000 4 180 4545 7125 5925 'flat_init_cost Graph' could not be generated with the labels\001
 4 0 0 0 0 0 12 0.0000 4 180 4830 7125 6150 minimum_cost and pre_connection alone. The situation depicted\001
 4 0 0 0 0 0 12 0.0000 4 180 4500 7125 6375 in the Grapc c) above is the one encounted in France today.\001
 4 0 0 0 0 0 12 0.0000 4 180 165 750 525 a)\001
@@ -48,8 +46,10 @@ Single
 4 0 0 0 0 0 12 0.0000 4 105 330 6300 975 cost\001
 4 0 0 0 0 0 12 0.0000 4 105 330 300 975 cost\001
 4 0 0 0 0 0 12 0.0000 4 105 330 300 4650 cost\001
-4 0 0 0 0 0 12 0.0000 4 180 4785 7125 6675 c) could also not be generated with 'rules' since ruls depend on\001
-4 0 0 0 0 0 12 0.0000 4 180 4560 7125 6900 absolut times 'such as 3:00pm, not on relative times such as\001
-4 0 0 0 0 0 12 0.0000 4 180 2865 7125 7125 'the first 3 minutes during connection.\001
 4 0 0 0 0 0 12 0.0000 4 135 450 10650 7500 Bernd\001
 4 0 0 0 0 0 12 0.0000 4 180 1395 10650 7725 wuebben@kde.org\001
+4 0 0 0 0 0 12 0.0000 4 180 4950 7125 5700 was necessry. A Cost graph such as the one show above, labeled\001
+4 0 0 0 0 0 12 0.0000 4 180 4470 7125 5925 'flat_init_cost Graph' could not be generated with the rules\001
+4 0 0 0 0 0 12 0.0000 4 180 4875 7125 6675 c) could also not be generated with 'rules' since rules depend on\001
+4 0 0 0 0 0 12 0.0000 4 180 4860 7125 6900 'absolut times 'such as '3:00pm', not on 'relative times' such as\001
+4 0 0 0 0 0 12 0.0000 4 180 2925 7125 7125 'the first 3 minutes' during connection.\001
