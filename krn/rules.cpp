@@ -105,3 +105,11 @@ bool Rule::match(const Article art,NNTP *server)
     
     return matches;
 }
+
+void load(const char *name,KConfigBase *conf)
+{
+}
+void save(const char *name,KConfigBase *conf)
+{
+}
+

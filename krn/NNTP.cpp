@@ -448,8 +448,10 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             grouplist->clear();
             return;
         }
-        
-        if(kStringToFile(mTextResponse.c_str(),ac.data(),false,true))
+
+        QString tstr(mTextResponse.length()+1);
+        qstrncpy(tstr.data(),mTextResponse.data(),mTextResponse.length());
+        if(kStringToFile(tstr,ac.data(),false,true))
         {
             QString command="sort <";
             command=command+ac+">"+ac+"1; mv "+ac+"1 "+ac;
@@ -565,6 +567,7 @@ QString *NNTP::article(const char *_id)
         {
             QString a(TextResponse().c_str());
             int limit=a.find("\r\n\r\n");
+            debug ("limit-->%d",limit);
             kStringToFile(a.left(limit),p+".head",FALSE,FALSE,TRUE);
             kStringToFile(a.right(a.length()-limit-4),p+".body",FALSE,FALSE,TRUE);
             delete data;

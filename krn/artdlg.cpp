@@ -91,8 +91,6 @@
 
 extern QString pixpath,cachepath;
 
-extern ArticleDict artSpool;
-
 extern KDecode *decoder;
 
 extern KConfig *conf;
@@ -1161,11 +1159,7 @@ void Artdlg::saveArt (QString id)
     }
     else
     {
-        Article *art;
-        art=artSpool.find(id.data());
-        if (art)
-            art->setAvailable(false);
-        s=new QString(klocale->translate("\nError getting article.\nServer said:\n"));
+        s=new QString(klocale->translate("From: Krn\nTo: You\n\nError getting article.\nServer said:\n"));
         s->append(server->lastStatusResponse());
         KMMessage *m=new KMMessage();
         m->fromString(s->data());

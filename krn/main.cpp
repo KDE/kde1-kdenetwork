@@ -43,6 +43,7 @@
 #include "kmmessage.h"
 #include "kmaddrbook.h"
 #include "kfileio.h"
+#include "rules.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
@@ -68,8 +69,6 @@ KBusyPtr *kbp;
 KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
 
-
-ArticleDict artSpool;
 
 QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
 
