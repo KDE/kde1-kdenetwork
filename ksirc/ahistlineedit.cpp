@@ -103,3 +103,10 @@ void aHistLineEdit::focusOutEvent(QFocusEvent *)
 {
   emit lostFocus();
 }
+
+void aHistLineEdit::mouseReleaseEvent ( QMouseEvent *e )
+{
+  if(e->button() == MidButton){
+    emit pasteText();
+  }
+}

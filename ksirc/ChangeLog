@@ -1,3 +1,14 @@
+1997-12-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Added support for multiple op/deop'ings.  Seems ok, except for
+ 	when a non-op changes their nick they might be shown as an op.
+  	Looking into it.
+
+	* Generic bug fixing and re-orginization since the 26th.  Check
+ 	the cvs logs.
+
+	* Added full cut&paste support.  Seems to work ok.
+
 1997-12-26  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* toplevel.cpp (resizeEvent): fixed resize problem.
@@ -33,6 +44,29 @@
 $Revision$
 	
 $Log$
+Revision 1.6  1997/12/27 04:20:50  asj
+1. Fixed resive screw up in mainw
+
+2. added clear responce in toplevel.cpp, now resets screen.  Fixed irclistbox
+to handle this.  (needed it anyways)
+
+3. Auto create should be working better.
+
+4. Fixed problem in auto create and auto following invites, most annoying.
+
+5. Added filter control mechanism where each ksircmessagereceiver can
+reply with a default set of filter rules it requires.
+
+6. cleaed up ~ a little bit. ~~ now prints a single ~.  This is usefull
+for scripts which can look for stray ~ which may be taken as a control
+character when they're only inline in the text.
+
+Default filter rules now include:
+
+* Italics, bold, and underline ascii to ksirc conversion.
+
+* DCC redirected to DCC module.
+
 Revision 1.5  1997/12/26 05:56:20  asj
 Removed annoying $$
 

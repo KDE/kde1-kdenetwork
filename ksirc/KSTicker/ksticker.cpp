@@ -20,6 +20,7 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   SInfo *si = new SInfo;
   si->length = 0;
   StrInfo.append(si);  
+  StrInfo.setAutoDelete(TRUE);
   setMinimumSize(100, 10);
   setFixedHeight((fontMetrics().ascent()+2)*pHeight);
   onechar = fontMetrics().width("X");
@@ -173,7 +174,8 @@ void KSTicker::resizeEvent( QResizeEvent *e)
 void KSTicker::closeEvent( QCloseEvent *)
 {
   emit closing();
-  delete this;
+  killTimers();
+  //  delete this;
 }
 
 void KSTicker::startTicker()

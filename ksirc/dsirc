@@ -2162,7 +2162,7 @@ while (1) {
 	&dohooks("nick", $newarg);
 	$who=$newarg;
 	&dostatus;
-	&tell("~!all~*\cbN\cb* $oldnick are now known as $newarg");
+	&tell("~!all~*\cbN\cb* $oldnick is now known as $newarg");
       } else {
 	&dohooks("nick", $newarg);
 	&tell("~!all~*\cbN\cb* $who$puh2 is now known as $newarg");   # MOD FOR KSIRC

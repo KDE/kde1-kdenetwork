@@ -16,6 +16,7 @@ class global_config {
 
   bool message_window;
   bool autocreate;
+  bool nickcompletion;
 
   QString kdedir;
 };

@@ -90,7 +90,7 @@ int aListBox::findSep()
 
 bool aListBox::isTop(int index)
 {
-  if(index > findSep())
+  if(index >= findSep())
     return FALSE;
   else
     return TRUE;

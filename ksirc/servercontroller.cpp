@@ -111,10 +111,16 @@ servercontroller::servercontroller
 	reuse(); // invert it again to what it should be.
 	auto_id = options->insertItem("Auto Create Windows", 
 			    this, SLOT(autocreate()));
-	options->insertSeparator();
 	options->setItemChecked(auto_id, 
 				kConfig->readNumEntry("AutoCreate", FALSE));
 	kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
+	nickc_id = options->insertItem("Nick Completion", 
+			    this, SLOT(nickcompletion()));
+	options->setItemChecked(nickc_id, 
+				kConfig->readNumEntry("NickCompletion", TRUE));
+	kSircConfig->nickcompletion = 
+	  kConfig->readNumEntry("NickCompletion", TRUE);
+	options->insertSeparator();
 	options->insertItem("Colour Preferences...",
 			    this, SLOT(colour_prefs()));
 	options->insertItem("Global Fonts...",
@@ -331,4 +337,20 @@ void servercontroller::configChange()
     it.current()->getWindowList()["!all"]->control_message(REREAD_CONFIG, "");
     ++it;
   }
+}
+
+void servercontroller::nickcompletion()
+{
+  kConfig->setGroup("GlobalOptions");
+  if(kConfig->readNumEntry("NickCompletion", TRUE) == FALSE){
+    options->setItemChecked(nickc_id, TRUE);
+    kConfig->writeEntry("NickCompletion", TRUE);
+    kSircConfig->nickcompletion = TRUE;
+  }
+  else{
+    options->setItemChecked(nickc_id, FALSE);
+    kConfig->writeEntry("NickCompletion", FALSE);
+    kSircConfig->nickcompletion = FALSE;
+  }
+  kConfig->sync();
 }

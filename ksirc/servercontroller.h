@@ -54,13 +54,14 @@ public slots:
     virtual void font_update(const QFont&);
     virtual void filter_rule_editor();
     virtual void configChange();
+    virtual void nickcompletion();
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
   QDict<KSircProcess> proc_list;
   QPopupMenu *options, *connections;
-  int reuse_id, join_id, server_id, auto_id;
+  int reuse_id, join_id, server_id, auto_id, nickc_id;
 
   int open_toplevels;
 

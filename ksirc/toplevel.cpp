@@ -20,9 +20,11 @@
 #include <string.h>
 
 #include <qclipbrd.h> 
+#include <qmsgbox.h> 
 
 #include <knewpanner.h>
 #include <kiconloader.h>
+
 
 extern KConfig *kConfig;
 extern KApplication *kApp;
@@ -156,6 +158,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 	  this, SLOT(gotFocus()));
   connect(linee, SIGNAL(lostFocus()),
 	  this, SLOT(lostFocus()));
+  connect(linee, SIGNAL(pasteText()),
+	  this, SLOT(pasteToWindow()));
+	
   gm->addWidget(linee);                    // No special controls are needed.
 
   connect(linee, SIGNAL(returnPressed()), // Connect return in sle to send
@@ -401,33 +406,34 @@ void KSircTopLevel::sirc_line_return()
 
   int pos1, pos2;
   
-  if(s.find(QRegExp("^[^ :]+: "), 0) != -1){
-    pos2 = s.find(": ", 0);
-    if(pos2 < 1){
-      cerr << "Evil string: " << s << endl;
+  if(kSircConfig->nickcompletion == TRUE){
+    if(s.find(QRegExp("^[^ :]+: "), 0) != -1){
+      pos2 = s.find(": ", 0);
+      if(pos2 < 1){
+	cerr << "Evil string: " << s << endl;
+      }
+      else
+	s.replace(0, pos2, findNick(s.mid(0, pos2)));
     }
-    else
-      s.replace(0, pos2, findNick(s.mid(0, pos2)));
+    
+    pos2 = 0;
+    pos1 = 0;
+    
+    while(s.find(" ::", pos2) >= 0){
+      pos1 = s.find(" ::", pos2);
+      pos2 = s.find(" ", pos1+3);
+      if(pos2 == -1)
+	pos2 = s.length();
+      if(pos2 - pos1 - 3 < 1){
+	cerr << "Evil string: " << s << endl;
+	break;
+      }
+      else{
+	s.replace(pos1 + 1, pos2 - pos1 - 1, 
+		  findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
+      }
+    }
   }
-
-  pos2 = 0;
-  pos1 = 0;
-
-  while(s.find(" ::", pos2) >= 0){
-    pos1 = s.find(" ::", pos2);
-    pos2 = s.find(" ", pos1+3);
-    if(pos2 == -1)
-      pos2 = s.length();
-    if(pos2 - pos1 - 3 < 1){
-      cerr << "Evil string: " << s << endl;
-      break;
-    }
-    else{
-      s.replace(pos1 + 1, pos2 - pos1 - 1, 
-		findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
-    }
-  }
-
 
   s += '\n'; // Append a need carriage return :)
 
@@ -1284,5 +1290,17 @@ void KSircTopLevel::pasteToWindow()
 {
   QString text = kApp->clipboard()->text();
   text += "\n";
+  if((text.contains("\n") > 4) || (text.length() > 300)){
+      switch( QMessageBox::warning(this, "Large Paste Requested",
+				   "You are about to paste a very \nlarge number of lines,\ndo you really want to do this?",
+				   "Yes", "No", 0, 0, 1)){
+      case 0:
+	break;
+      default:
+	linee->setText("");
+	return;
+      }
+  }
   sirc_write(text);
+  linee->setText("");
 }

@@ -234,8 +234,8 @@ void KSircIOController::stdin_write(QString &s)
 void KSircIOController::sircDied(KProcess *)
 {
 
-  ksircproc->TopList["!all"]->sirc_receive("*E* SIRC IS DEAD");
+  ksircproc->TopList["!all"]->sirc_receive("*E* DSIRC IS DEAD");
   ksircproc->TopList["!all"]->sirc_receive("*E* KSIRC WINDOW HALTED");
-  ksircproc->TopList["!all"]->sirc_receive("*E* Tried to run: " + kApp->kde_bindir() + QString("/dsirc") + "\n");
-  
+  ksircproc->TopList["!all"]->sirc_receive("*E* Tried to run: " +  kSircConfig->kdedir + QString("/bin/dsirc") + "\n");
+  ksircproc->TopList["!all"]->sirc_receive("*E* DID YOU READ THE INSTALL INTRUCTIONS?");
 }
