@@ -249,8 +249,10 @@ void Groupdlg::openGroup (QString name)
     int i=groups.find(&NewsGroup(name));
     if (groups.at(i)->isVisible)
     {
+        debug ("it's visible");
         return;
     }
+        debug ("it's not visible");
     if (i!=-1)
     {
         groups.at(i)->load();

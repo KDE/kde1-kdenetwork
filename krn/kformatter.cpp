@@ -21,7 +21,7 @@ KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
     message->Parse();
 
     //Get the date format from the config
-    QString *defFmt=new QString("%y%m%d %H:%M (%Z)");
+    QString *defFmt=new QString("%y/%m/%d");
     kapp->getConfig()->setGroup("Appearance");
     dateFmt=new QString(kapp->getConfig()->readEntry("Dateformat",defFmt->data()));
     CHECK_PTR(dateFmt);
@@ -91,7 +91,6 @@ bool KFormatter::isMultiPart(QList<int> part)
 const char* KFormatter::rawPart(QList<int> partno)
 {
     DwBodyPart* body=getPart(partno);
-//    const char* data=body->Body().AsString().data(); XXXX
     const char* data=body->Body().AsString().c_str();
     return data;
 }
@@ -143,7 +142,7 @@ QString KFormatter::htmlPart(QList<int> partno)
 
     baseType=baseType.lower();
 
-    QString subType=body->Headers().ContentType().SubtypeStr().data();
+    QString subType=body->Headers().ContentType().SubtypeStr().c_str();
     //Work-around for bug in mimelib
     pos=subType.find('\n');
     if(pos!=-1) subType=subType.left(pos);
@@ -245,14 +244,14 @@ QString KFormatter::htmlPart(QList<int> partno)
                 int* j=new int;
                 *j=i;
                 partno.append(j);
-                //debug("Checking part: %s",listToStr(partno).data());
+                //debug("Checking part: %s",listToStr(partno).c_str());
                 curr=getPart(partno);
                 //debug("* curr=%p",curr);
-                //debug("data: \"%s\"",curr->AsString().data());
+                //debug("data: \"%s\"",curr->AsString().c_str());
                 if(curr!=NULL)
                 {
-                    baseType=curr->Headers().ContentType().TypeStr().data();
-                    subType=curr->Headers().ContentType().SubtypeStr().data();
+                    baseType=curr->Headers().ContentType().TypeStr().c_str();
+                    subType=curr->Headers().ContentType().SubtypeStr().c_str();
                     score=rateType(baseType,subType);
                     //debug("This part scored %d",score);
                     if(score>=max)
@@ -267,7 +266,7 @@ QString KFormatter::htmlPart(QList<int> partno)
                 i++;
             }
             partno.append(&maxpos);
-            //debug("*** Best version: %s",listToStr(partno).data());
+            //debug("*** Best version: %s",listToStr(partno).c_str());
             if(getPart(partno)==NULL)
             {
                 return "<strong>This part claims to be made up of several "
@@ -379,12 +378,12 @@ QString KFormatter::htmlPart(QList<int> partno)
 QString KFormatter::getType(QList<int> part)
 {
     int pos;
-    QString baseType=getPart(part)->Headers().ContentType().TypeStr().data();
+    QString baseType=getPart(part)->Headers().ContentType().TypeStr().c_str();
     pos=baseType.find('\n');
     if(pos!=-1) baseType=baseType.left(pos);
     pos=baseType.find(';');
     if(pos!=-1) baseType=baseType.left(pos);
-    QString subType=getPart(part)->Headers().ContentType().SubtypeStr().data();
+    QString subType=getPart(part)->Headers().ContentType().SubtypeStr().c_str();
     pos=subType.find('\n');
     if(pos!=-1) subType=subType.left(pos);
     QString wholeType=baseType;
@@ -454,10 +453,7 @@ QString KFormatter::htmlHeader()
         if (message->Headers().HasField(iter))
         {
             QString headerName=iter;
-            QString headerContents=message->Headers().FieldBody(iter).AsString().data();
-            //Work-around for mimelib bug
-            int npos=headerContents.find('\n');
-            if(npos!=-1) headerContents=headerContents.left(npos);
+            QString headerContents=message->Headers().FieldBody(iter).AsString().c_str();
             debug("Header contents: %s",headerContents.data());
             header+="<b>"+headerName.leftJustify(10)+":</b> ";
 
@@ -497,62 +493,6 @@ QString KFormatter::htmlHeader()
                 }
                 header+="\n";
             }
-            else if(headerName=="Date")
-            {
-                debug ("Date formatter:%s",dateFmt->data());
-                DwDateTime realDate(headerContents.data());
-                debug("Real time: %s",realDate.AsString().data());
-                QString textDate="";
-                QString temp;
-                for(int pos=0; pos<(int)dateFmt->length(); pos++)
-                {
-                    if( dateFmt->at(pos)=='%' && pos<(int)dateFmt->length() )
-                    {
-                        debug("decoding control char %c",dateFmt->at(pos+1));
-                        switch(dateFmt->at(pos+1))
-                        {
-                        case '%' : textDate+='%';
-                                   break;
-                        case 'd' : temp.setNum(realDate.Day());
-                                   textDate+=temp;
-                                   break;
-                        case 'k' :
-                        case 'H' : temp.setNum(realDate.Hour());
-                                   textDate+=temp;
-                                   break;
-                        case 'l' :
-                        case 'I' : temp.setNum(realDate.Hour()%12);
-                                   textDate+=temp;
-                                   break;
-                        case 'M' : temp.setNum(realDate.Minute());
-                                   textDate+=temp;
-                                   break;
-                        case 'm' : temp.setNum(realDate.Month());
-                                   textDate+=temp;
-                                   break;
-                        case 'p' : textDate+=realDate.Hour()>11?"PM":"AM";
-                                   break;
-                        case 'S' : temp.setNum(realDate.Second());
-                                   textDate+=temp;
-                                   break;
-                        case 'Y' : temp.setNum(realDate.Year());
-                                   textDate+=temp;
-                                   break;
-                        case 'y' : temp.setNum(realDate.Year()%100);
-                                   textDate+=temp;
-                                   break;
-                        case 'Z' : temp.setNum(realDate.Zone());
-                                   textDate+=temp;
-                                   break;
-                        default  : warning("The format character %c is not"
-                                           " yet supported.",dateFmt->at(pos+1));
-                        }
-                        pos++;
-                    }
-                    else textDate+=dateFmt->at(pos);
-                }
-                header+=textDate+"\n";
-            }
             else
                 // header without special formatting
                 // needs to escape < and >
@@ -587,7 +527,7 @@ QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
      part.sprintf("This part consists of an jpeg image, wich unfortunately "
      "could not be automatically saved, and therefore can not be"
      "shown. To save this image, click on save %s",
-     saveLink(partno, "").data() );
+     saveLink(partno, "").c_str() );
      }
      */
     return part;
@@ -842,7 +782,7 @@ bool KFormatter::dump(QList<int> part, QString fileName)
 
     QFile file(fileName);
     if(!file.open(IO_WriteOnly)) return FALSE;
-    if(file.writeBlock(src.data(), src.length()) != (int)src.length())
+    if(file.writeBlock(src.c_str(), src.length()) != (int)src.length())
     {
         file.close();
         return FALSE;

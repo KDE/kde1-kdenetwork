@@ -609,7 +609,7 @@ bool Artdlg::actions (int action)
     case CATCHUP:
         {
             group->catchup();
-            this->close(FALSE);
+            fillTree();
             break;
         }     
         
