@@ -48,4 +48,5 @@ uninstall-local:
 	-rmdir $(kde_appsdir)/Internet
 
 messages:
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(korn_SOURCES) && mv messages.po ../po/korn.pot
 
