@@ -62,6 +62,7 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 1;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
 
@@ -97,7 +98,7 @@ void PPopupMenu::got_activated(int itemId){
   pmRet.iCommand = PUKE_POPUPMENU_ACTIVATED_ACK;
   pmRet.iWinId = wI.iWinId;
   pmRet.iArg = itemId;
-  pmRet.cArg[0] = 0;
+  pmRet.cArg = 0;
   emit outputMessage(wI.fd, &pmRet);
 
 }

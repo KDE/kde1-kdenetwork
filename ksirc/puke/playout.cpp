@@ -69,6 +69,15 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
+    if(pm->iTextSize != 2*sizeof(char)){
+      warning("PLayout/addwidget: incorrent cArg size, bailing out.  Needed: %d wanted: %d\n", sizeof(int), pm->iTextSize);
+      pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = 1;
+      pmRet.cArg = 0;
+      emit outputMessage(fd, &pmRet);
+      return;
+    }
     widgetId wiWidget;
     wiWidget.fd = fd;
     wiWidget.iWinId = pm->iArg;
@@ -80,10 +89,19 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDLAYOUT){
+    if(pm->iTextSize != sizeof(char)){
+      warning("PLayout: incorrent cArg size, bailing out.  Needed: %d wanted: %d\n", sizeof(int), pm->iTextSize);
+      pmRet.iCommand = PUKE_LAYOUT_ADDLAYOUT_ACK; // ack the add widget
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = 1;
+      pmRet.cArg = 0;
+      emit outputMessage(fd, &pmRet);
+      return;
+    }
     PObject *pld = controller()->id2pobject(fd, pm->iWinId);
     PObject *pls = controller()->id2pobject(fd, pm->iArg);
     if( (pld->widget()->inherits("QBoxLayout") == FALSE) || (pls->widget()->inherits("QBoxLayout") == FALSE))
@@ -95,7 +113,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_LAYOUT_ADDLAYOUT_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDSTRUT){
@@ -108,7 +126,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
 
     pmRet.iCommand = PUKE_LAYOUT_ADDSTRUT_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_LAYOUT_ACTIVATE){
@@ -122,7 +140,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
 
     pmRet.iCommand = PUKE_LAYOUT_ACTIVATE_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
   }
   else {

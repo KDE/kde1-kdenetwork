@@ -44,7 +44,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_INSERT_SORT:
@@ -55,7 +55,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_INSERT_PIXMAP:
@@ -66,7 +66,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_HIGHLIGHT:
@@ -77,7 +77,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->currentItem();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_REMOVE:
@@ -89,7 +89,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_GETTEXT:
@@ -100,20 +100,24 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iWinId = pm->iWinId;
     if(widget()->text(pm->iArg) != 0x0){
       pmRet.iArg = 1;
-      strncpy(pmRet.cArg, widget()->text(pm->iArg), 50);
+      pmRet.iTextSize = strlen(widget()->text(pm->iArg));
+      pmRet.cArg = new char[strlen(widget()->text(pm->iArg))+1];
+      strcpy(pmRet.cArg, widget()->text(pm->iArg));
+      emit outputMessage(fd, &pmRet);
+      delete[] pmRet.cArg;
     }
     else{
       pmRet.iArg = 0;
-      pmRet.cArg[0] = 0x0;
+      pmRet.cArg = 0;
+      emit outputMessage(fd, &pmRet);
     }
-    emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_SET_SCROLLBAR:
     widget()->setScrollBar((bool) pm->iArg);
     pmRet.iCommand = PUKE_LISTBOX_SET_SCROLLBAR_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_SET_AUTO_SCROLLBAR:
@@ -121,7 +125,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = PUKE_LISTBOX_SET_AUTO_SCROLLBAR_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LISTBOX_CLEAR:
@@ -129,7 +133,7 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = PUKE_LISTBOX_CLEAR_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   default:
@@ -164,11 +168,15 @@ void PListBox::highlighted(int index) { /*FOLD00*/
   pmRet.iCommand = PUKE_LISTBOX_HIGHLIGHTED_ACK;
   pmRet.iWinId = widgetIden().iWinId;
   pmRet.iArg = index;
-  if(widget()->text(index) != 0)
-    strncpy(pmRet.cArg, widget()->text(index), 50);
+  if(widget()->text(index) != 0){
+    pmRet.iTextSize = strlen(widget()->text(index));
+    pmRet.cArg = new char[strlen(widget()->text(index)) + 1];
+    strcpy(pmRet.cArg, widget()->text(index));
+  }
   else
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
   emit outputMessage(widgetIden().fd, &pmRet);
+  delete[] pmRet.cArg;
 }
 
 void PListBox::selected(int index) { /*FOLD00*/
@@ -178,11 +186,15 @@ void PListBox::selected(int index) { /*FOLD00*/
   pmRet.iCommand = PUKE_LISTBOX_SELECTED_ACK;
   pmRet.iWinId = widgetIden().iWinId;
   pmRet.iArg = index;
-  if(widget()->text(index) != 0)
-    strncpy(pmRet.cArg, widget()->text(index), 50);
+  if(widget()->text(index) != 0){
+    pmRet.iTextSize = strlen(widget()->text(index));
+    pmRet.cArg = new char[strlen(widget()->text(index)) + 1];
+    strcpy(pmRet.cArg, widget()->text(index));
+  }
   else
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
   emit outputMessage(widgetIden().fd, &pmRet);
+  delete[] pmRet.cArg;
 }
 
 bool PListBox::checkWidget(){ /*FOLD00*/

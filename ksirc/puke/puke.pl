@@ -21,9 +21,9 @@ $SYNC = 0;
 #
 # Setup debugging logger, comment out for production use
 #
-$DEBUG = 0;
+$DEBUG = 1;
 if($DEBUG){
-  open(LOG, ">msg-log");
+  open(LOG, ">msg-log") || warn "Failed to open log file: $!\n";
   select(LOG); $| = 1; select(STDOUT);
   print LOG "Start time: ". `date`;
 }
@@ -48,8 +48,9 @@ if($DEBUG){
 #require 'commands-handler.pl';
 &docommand("/load commands-handler.pl");
 
-$PukePacking = "iiia50aa";  # aa padding to fill to 64 bytes
-$PukeMSize = 64;
+$PukeHeader = 2863311530; # Alternating 1010 for 32 bits
+$PukePacking = "Iiiiia*";  # 4 ints, followed by any number of of characters
+$PukeMSize = length(pack($PukePacking, $PukeHeader, 0, 0, 0, 0, ""));
 
 if(!$ENV{'PUKE_SOCKET'}) {
     $sock = $ENV{'HOME'} . "/.ksirc.socket";
@@ -73,10 +74,12 @@ select($PUKEFd); $| = 1; select(STDOUT);
 # Arg4: cArg
 sub PukeSendMessage {
   my($cmd, $winid, $iarg, $carg, $handler, $waitfor) = @_;
-  print("PUKE: cArg message too long $cArg\n") if(length($carg) > 50);
+  #  print("PUKE: cArg message too long $cArg\n") if(length($carg) > 50);
   $PUKE_HANDLER{$cmd}{$winid} = $handler if $handler != undef;
-  syswrite($PUKEFd, pack($PukePacking, $cmd, $winid, $iarg, $carg), $PukeMSize);
-  print LOG kgettimeofday() . " SEND message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $carg\n" if $DEBUG;
+  my $msg = pack($PukePacking, $PukeHeader, $cmd, $winid, $iarg, length($carg), $carg);
+  syswrite($PUKEFd, $msg, length($msg));
+  #  print STDERR "*** " . $msg . "\n";
+  print LOG kgettimeofday() . " SEND message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg LEN: " . length($carg) . " CARG: $carg\n" if $DEBUG;
   if($SYNC == 1 || $waitfor == 1){
     return &sel_PukeRecvMessage(1, $winid, -$cmd, $carg);
   }
@@ -89,7 +92,20 @@ sub sel_PukeRecvMessage {
   my($cmd, $winid, $iarg, $carg, $junk);
 
   while(1){
-    $len = sysread($PUKEFd, $m, $PukeMSize);
+    my $old_a = $SIG{'alarm'};
+    $SIG{'alarm'} = sub { die "alarm\n"; };
+    my $old_time = alarm(5);
+    eval {
+      $len = sysread($PUKEFd, $m, $PukeMSize);
+    };
+    if($@){
+       print "*E* Timeout waiting for data for first sysread\n";
+       $SIG{ALRM} = $old_a;
+       alarm($old_time);
+       return;
+    }
+    $SIG{ALRM} = $old_a;
+    alarm($old_time);
 
     if($len== 0){
       &remsel($PUKEFd);
@@ -97,13 +113,37 @@ sub sel_PukeRecvMessage {
       return;
     }
     #  print "Length: $len " . length($m) . "\n";
-    ($cmd, $winid, $iarg, $carg) = unpack($PukePacking, $m);
-    #  print("PUKE: Got => $PUKE_NUM2NAME{$cmd}/$cmd\n");
-    #  print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
+    ($header, $cmd, $winid, $iarg, $length, $carg) = unpack($PukePacking, $m);
+    if($header != $PukeHeader){
+      print("*E* Invalid message received! Discarding!\n");
+      #      return;
+    }
+    if($length > 0){
+      my $old_a = $SIG{'alarm'};
+      $SIG{'alarm'} = sub { die "alarm\n"; };
+      my $old_time = alarm(5);
+      eval {
+	$clen = sysread($PUKEFd, $m2, $length);
+      };
+      if($@){
+         print "*E* Timeout waiting for cArg data\n";
+      }
+      $SIG{ALRM} = $old_a;
+      alarm($old_time);
+      
+      if($length != $clen){
+        print "\n*E* Warning: wanted to read: $length got $clen\n";
+      }
+      $m .= $m2;
+      ($header, $cmd, $winid, $iarg, $length, $carg) = unpack($PukePacking, $m);
+    }
+               #    print("PUKE: Got => $PUKE_NUM2NAME{$cmd}/$cmd\n");
+               #    print("PUKE: Got: $cmd, $winid, $iarg, $length, $carg\n");
+               #    print("\n");
     if($winid == undef){ $winid = 0; }
     $blah = $carg;
     $blah =~ s/\000//g;
-    print LOG kgettimeofday() . " GOT  message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+    print LOG kgettimeofday() . " GOT  message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg LEN: $length CARG: $blah\n" if $DEBUG;
     #
     # Check both $cmd and the correct reply -$cmd
     #
@@ -115,7 +155,7 @@ sub sel_PukeRecvMessage {
     #  print "*I* Def handler: $PUKE_DEF_HANDLER{$cmd}\n";
 
     if($wait == 1 && $winid == $wait_winid && $wait_cmd == $cmd){
-      print LOG kgettimeofday() . " WAIT message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+      print LOG kgettimeofday() . " WAIT message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg LEN: $length CARG: $blah\n" if $DEBUG;
       ($wait, $wait_winid, $wait_cmd, $wait_carg) = ();
       return %ARG;
     }
@@ -135,7 +175,7 @@ sub sel_PukeRecvMessage {
       #
 
       if($wait == 1 && (substr($wait_carg,0,7) eq substr($carg,0,7))){
-	print LOG kgettimeofday() . " WAI2 message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+	print LOG kgettimeofday() . " WAI2 message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg LEN: $length CARG: $blah\n" if $DEBUG;
 	($wait, $wait_winid, $wait_cmd, $wait_carg) = ();
         return %ARG;
       }
@@ -157,7 +197,7 @@ sub sel_PukeRecvMessage {
     $nfound = select($rout=$rin, undef, undef, 1);
     if($nfound < 1){
       print "*E* PUKE: Timed out waiting for reply, returning null\n";
-      print LOG kgettimeofday() . " FAIL message: CMD: $PUKE_NUM2NAME{$wait_cmd} WIN: $wait_winid IARG: ### CARG: $wait_carg\n" if $DEBUG;
+      print LOG kgettimeofday() . " FAIL message: CMD: $PUKE_NUM2NAME{$wait_cmd} WIN: $wait_winid IARG: ### LEN: $length CARG: $wait_carg\n" if $DEBUG;
       return ();
     }
   }

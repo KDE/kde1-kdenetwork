@@ -44,7 +44,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_ALISTBOX_ISTOP:
@@ -55,7 +55,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_ALISTBOX_FIND_NICK:
@@ -66,7 +66,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_ALISTBOX_SMALL_HIGHLIGHT:
@@ -87,7 +87,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
       pmRet.iCommand = - pm->iCommand;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 0;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }
@@ -109,7 +109,7 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
       pmRet.iCommand = - pm->iCommand;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 0;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }

@@ -44,6 +44,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->maxLength();
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LINED_SET_ECHOMODE:
@@ -55,6 +56,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->echoMode();
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LINED_SET_TEXT:
@@ -62,14 +64,16 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
       debug("PLineEdit: No Widget set");
       return;
     }
-    pm->cArg[49] = 0;
     debug("PukeLine Edit: Got: %s", pm->cArg);
     widget()->setText(pm->cArg);
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
+    pmRet.iTextSize = strlen(widget()->text());
+    pmRet.cArg = new char[strlen(widget()->text())+1];
     strcpy(pmRet.cArg, widget()->text());
     emit outputMessage(fd, &pmRet);
+    delete[] pmRet.cArg;
     break;
   case PUKE_LINED_GET_TEXT:
     if(widget() == 0){
@@ -79,8 +83,11 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
+    pmRet.iTextSize = strlen(widget()->text());
+    pmRet.cArg = new char[strlen(widget()->text())+1];
     strcpy(pmRet.cArg, widget()->text());
     emit outputMessage(fd, &pmRet);
+    delete[] pmRet.cArg;
     break;
   default:
     PWidget::messageHandler(fd, pm);
@@ -112,8 +119,11 @@ void PLineEdit::updateText(const char *text){
   pmRet.iCommand = PUKE_LINED_GET_TEXT_ACK;
   pmRet.iWinId = widgetIden().iWinId;
   pmRet.iArg = 0;
-  strncpy(pmRet.cArg, text, 50);
+  pmRet.iTextSize = strlen(text);
+  pmRet.cArg = new char[strlen(text)+1];
+  strcpy(pmRet.cArg, text);
   emit outputMessage(widgetIden().fd, &pmRet);
+  delete[] pmRet.cArg;
 }
 
 void PLineEdit::returnPress() {
@@ -122,6 +132,6 @@ void PLineEdit::returnPress() {
   pmRet.iCommand = PUKE_LINED_RETURN_PRESSED_ACK;
   pmRet.iWinId = widgetIden().iWinId;
   pmRet.iArg = 0;
-  pmRet.cArg[0] = 0;
+  pmRet.cArg = 0;
   emit outputMessage(widgetIden().fd, &pmRet);
 }

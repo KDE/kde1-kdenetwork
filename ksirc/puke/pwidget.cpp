@@ -69,7 +69,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_WIDGET_SHOW_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_WIDGET_HIDE:
@@ -77,7 +77,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_WIDGET_HIDE_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;    
   case PUKE_WIDGET_REPAINT:
@@ -85,7 +85,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_WIDGET_REPAINT_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_WIDGET_RESIZE:
@@ -99,7 +99,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_WIDGET_RESIZE_ACK;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
     }
     break;
@@ -114,7 +114,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_WIDGET_MOVE_ACK;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
     }
     break;
@@ -129,7 +129,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_WIDGET_SETMINSIZE_ACK;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
     }
     break;
@@ -143,7 +143,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = -pm->iCommand;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
   case PUKE_WIDGET_SETCAPTION:
@@ -151,15 +151,16 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_WIDGET_SETCAPTION_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    strncpy(pmRet.cArg, widget()->caption(), 49);
+    pmRet.iTextSize = strlen(widget()->caption());
+    pmRet.cArg = strdup(widget()->caption());
     emit outputMessage(fd, &pmRet);
+    free(pmRet.cArg);
     break;
   case PUKE_WIDGET_GET_BACKGROUND_COLOUR:
     {
-      int *pos;
-      pos = (int *) &pm->cArg;
+      pmRet.cArg = new char[15];
+      pmRet.iTextSize = 15;
       QColor back = widget()->backgroundColor();
-      memset(pmRet.cArg, 0x0, 50);
       debug("Colour are: %d %d %d", back.red(), back.green(), back.blue());
       sprintf(pmRet.cArg, "%d,%d,%d", back.red(), back.green(), back.blue());
       
@@ -167,6 +168,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = 0;
       emit outputMessage(fd, &pmRet);
+      delete pmRet.cArg;
       break;
     }
   case PUKE_WIDGET_SET_BACKGROUND_PIXMAP:
@@ -175,12 +177,13 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = -pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_WIDGET_SET_BACKGROUND_COLOUR:
     {
       int *pos;
-      pos = (int *) &pm->cArg;
+      pos = (int *) pm->cArg;
       QColor bg(pos[0], pos[1], pos[2]);
       QColorGroup cg = QColorGroup(widget()->colorGroup().foreground(),
                                    bg,
@@ -194,6 +197,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = -pm->iCommand;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }
@@ -203,18 +207,11 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_WIDGET_SET_ENABLED_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   default:
     PObject::messageHandler(fd, pm);
-/*  warning("PWidget: Unkown Command: %d", pm->iCommand);
-    pmRet.iCommand = PUKE_INVALID;
-    pmRet.iWinId = pm->iWinId;
-    pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
-    emit outputMessage(fd, &pmRet);
-*/
   }
 }
 
@@ -250,7 +247,7 @@ bool PWidget::eventFilter(QObject *o, QEvent *e)
     pm.iCommand = PUKE_EVENT_UNKOWN;
     pm.iWinId = wI.iWinId;
     pm.iArg = e->type();
-    pm.cArg[0] = 0;
+    pm.cArg = 0;
     emit outputMessage(wI.fd, &pm);
 
   }
@@ -269,7 +266,7 @@ void PWidget::eventNone(QObject *, QEvent *e)
   pm.iCommand = - e->type() - 1020; // 1030 offset for events
   pm.iWinId = wI.iWinId;
   pm.iArg = 0;
-  pm.cArg[0] = 0;
+  pm.cArg = 0;
 
   emit outputMessage(wI.fd, &pm);
   
@@ -286,7 +283,7 @@ void PWidget::eventTimer(QObject *, QEvent *e)
   pm.iCommand = PUKE_WIDGET_EVENT_TIMER;
   pm.iWinId = wI.iWinId;
   pm.iArg = et->timerId();
-  pm.cArg[0] = 0;
+  pm.cArg = 0;
 
   emit outputMessage(wI.fd, &pm);
   
@@ -305,13 +302,17 @@ void PWidget::eventMouse(QObject *, QEvent *e)
   pm.iArg = 0;
 
   // special cArg handling
-  int *icArg = (int *) &pm.cArg;
+  pm.iTextSize = 4*sizeof(int);
+  int *icArg = new int[4];
   icArg[0] = me->x();
   icArg[1] = me->y();
   icArg[2] = me->button();
   icArg[3] = me->state();
+  pm.cArg = (char *) icArg;
 
   emit outputMessage(wI.fd, &pm);
+  
+  delete[] icArg;
   
 }
 
@@ -328,12 +329,16 @@ void PWidget::eventKey(QObject *, QEvent *e)
   pm.iArg = 0;
 
   // special cArg handling
-  int *icArg = (int *) &pm.cArg;
+  pm.iTextSize = 3*sizeof(int);
+  int *icArg = new int[3];
   icArg[0] = ke->key();
   icArg[1] = ke->ascii();
   icArg[2] = ke->state();
+  pm.cArg = (char *) icArg;
 
   emit outputMessage(wI.fd, &pm);
+
+  delete[] icArg;
   
 }
 
@@ -350,11 +355,15 @@ void PWidget::eventFocus(QObject *, QEvent *e)
   pm.iCommand = - e->type() - 1020; // 1020 offset for events
   pm.iWinId = wI.iWinId;
   pm.iArg = 0;
+
+  pm.cArg = new char[2];
+  pm.iTextSize = 2*sizeof(char);
   pm.cArg[0] = fe->gotFocus();
   pm.cArg[1] = fe->lostFocus();
 
   emit outputMessage(wI.fd, &pm);
-  
+
+  delete[] pm.cArg;
 }
 
 void PWidget::eventPaint(QObject *, QEvent *e)  
@@ -366,7 +375,7 @@ void PWidget::eventPaint(QObject *, QEvent *e)
   pm.iCommand = - e->type() - 1020; // 1020 offset for events
   pm.iWinId = wI.iWinId;
   pm.iArg = 0;
-  pm.cArg[0] = 0;
+  pm.cArg = 0;
 
   emit outputMessage(wI.fd, &pm);
   
@@ -385,13 +394,17 @@ void PWidget::eventMove(QObject *, QEvent *e)
   pm.iArg = 0;
 
   // special cArg handling
-  int *icArg = (int *) &pm.cArg;
+  pm.iTextSize = 4*sizeof(int);
+  int *icArg = new int[4];
   icArg[0] = me->pos().x();
   icArg[1] = me->pos().y();
   icArg[2] = me->oldPos().x();
   icArg[3] = me->oldPos().y();
+  pm.cArg = (char *) icArg;
 
   emit outputMessage(wI.fd, &pm);
+
+  delete[] icArg;
   
 }
 
@@ -408,13 +421,17 @@ void PWidget::eventResize(QObject *, QEvent *e)
   pm.iArg = 0;
 
   // special cArg handling
-  int *icArg = (int *) &pm.cArg;
+  pm.iTextSize = 4*sizeof(int);
+  int *icArg = new int[4];
   icArg[0] = re->size().height();
   icArg[1] = re->size().width();
   icArg[2] = re->oldSize().height();
   icArg[3] = re->oldSize().width();
+  pm.cArg = (char *) icArg;
 
   emit outputMessage(wI.fd, &pm);
+
+  delete[] icArg;
   
 }
 

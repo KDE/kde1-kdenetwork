@@ -2,15 +2,19 @@
 #define PUKE_MESSAGE_H
 
 typedef struct {
+  unsigned int iHeader;   // Filled in durring in PukeController, do not set
   int iCommand;
   int iWinId;
   int iArg;
-  char cArg[50];
+  int iTextSize; // Size of the text message that follows
+  char *cArg;
 } PukeMessage;
 
 typedef struct {
   int fd;
   int iWinId;
 } widgetId;
+
+const uint iPukeHeader = 2863311530U;
 
 #endif

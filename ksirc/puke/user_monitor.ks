@@ -15,6 +15,7 @@
 use Net::SMTP;
 
 my $WHO = "$ENV{HOME}/who_online.pl";
+my $INFO = "$ENV{HOME}/mysql_fetch";
 
 my %ALLOW_MULT = ();
 $ALLOW_MULT{'asj'} = 1;
@@ -88,7 +89,10 @@ sub new {
   my $menu_online = $menu->insertText("Online Time");
   $menu->installMenu($menu_online, sub { &::say("online " . $self->{'list_box'}->currentText() . "\n"); });
   my $menu_info = $menu->insertText("User Information");
+  $menu->installMenu($menu_info, sub { my $user =  $self->{'list_box'}->currentText(); print `$INFO $user`; });
+  my $menu_info = $menu->insertText("Connection Information");
   $menu->installMenu($menu_info, sub { my $exec = "$WHO info " . $self->{'list_box'}->currentText(); print `$exec`; });
+
   my $menu_rem = $menu->insertText("Remove User From List");
   $menu->installMenu($menu_rem, sub {
      my $user = $self->{'list_box'}->currentText();
@@ -289,13 +293,20 @@ if($online == undef){
   $online->resize(196,740);
   $online->move(823,0);
 
-  eval {
-    $main::polar = new PWidget();
-    $main::polar->fetchWidget("199.247.156.200_toplevel");
-    $main::polar->move(0,0);
-    $main::polar->resize(816, 740);
+  eval { 
+  $main::polar = new PWidget();
+  $main::polar->fetchWidget("199.247.156.200_toplevel");
+  $main::polar->move(0,0);
+  $main::polar->resize(816, 740);
+  };
+  if($@) {
+     eval {
+         $main::polar = new PWidget();
+         $main::polar->fetchWidget("199.247.156.200_#polarcom_toplevel");
+         $main::polar->move(0,0);
+         $main::polar->resize(816, 740);
+     };
   }
-
   $users_online = {};
 }
 

@@ -256,10 +256,14 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   char channel_name[101];
 
   // Get the channel name portion of the string
-  count = sscanf(string, "*#* Users on %100[^:] ", channel_name);
+  // Search for the first space, since : can be embeded into channel names.
+  count = sscanf(string, "*#* Users on %100[^ ]", channel_name);
   if(count < 1)
     throw(parseError(string, QString("Could not find channel name")));
 
+  // Remove the : from the end.
+  channel_name[strlen(channel_name)-1] = 0x0;
+  
   if (strcasecmp(channel_name,top->channel_name) != 0){
     string.remove(0,3);
     throw(parseSucc(string,kSircConfig->colour_info,top->pix_info));

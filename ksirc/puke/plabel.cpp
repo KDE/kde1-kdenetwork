@@ -45,7 +45,7 @@ void PLabel::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LABEL_SETPIXMAP:
@@ -56,7 +56,7 @@ void PLabel::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LABEL_SETMOVIE:
@@ -67,7 +67,7 @@ void PLabel::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_LABEL_SETALIGNMENT:
@@ -78,7 +78,7 @@ void PLabel::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   default:

@@ -45,7 +45,7 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_MENUDATA_INSERT_TEXT_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = id;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }
@@ -60,7 +60,7 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_MENUDATA_INSERT_PIXMAP_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = id;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }
@@ -72,7 +72,7 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
       pmRet.iCommand = PUKE_MENUDATA_REMOVE_ITEM_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = pm->iArg;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }

@@ -31,7 +31,7 @@ PObject *PObject::createWidget(CreateArgs &ca) /*fold00*/
   return pw;
 }
 
-void PObject::messageHandler(int fd, PukeMessage *pm) /*fold00*/
+void PObject::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 {
   PukeMessage pmRet;
   if(pm->iCommand == PUKE_WIDGET_DELETE){
@@ -41,7 +41,7 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*fold00*/
     pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
 
     delete this;
@@ -53,7 +53,7 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*fold00*/
     pmRet.iCommand = PUKE_RELEASEWIDGET_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
 
     /**
@@ -67,7 +67,7 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*fold00*/
     pmRet.iCommand = PUKE_INVALID;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
   }
 }

@@ -43,7 +43,8 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
 
     pmRet.iCommand = - pm->iCommand;// Create ack
     pmRet.iWinId = pm->iWinId;
-    strncpy(pmRet.cArg, widget()->text(), 50);
+    pmRet.cArg = (char *) widget()->text(); // It's const, but we don't mess with it anyways
+    pmRet.iTextSize = strlen(pmRet.cArg);
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_BUTTON_SET_PIXMAP:
@@ -55,6 +56,7 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->pixmap()->isNull();
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_BUTTON_SET_AUTORESIZE:
@@ -66,6 +68,7 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = - pm->iWinId;
     pmRet.iArg = widget()->autoResize();
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   default:
@@ -104,7 +107,7 @@ void PButton::buttonMessage(int iCommand)
   pmRet.iCommand = iCommand;
   pmRet.iArg = 0;
   pmRet.iWinId = widgetIden().iWinId;
-  pmRet.cArg[0] = 0;
+  pmRet.cArg = 0;
 
   emit outputMessage(widgetIden().fd, &pmRet);
 }

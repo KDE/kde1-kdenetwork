@@ -40,7 +40,7 @@ void PFrame::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_QFRAME_SET_FRAME_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->frameStyle();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_QFRAME_SET_LINEWIDTH:
@@ -48,7 +48,7 @@ void PFrame::messageHandler(int fd, PukeMessage *pm)
     pmRet.iCommand = PUKE_QFRAME_SET_LINEWIDTH_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->lineWidth();
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   default:

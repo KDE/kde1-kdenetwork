@@ -49,7 +49,7 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
       pmRet.iCommand = PUKE_KSPROGRESS_SET_RANGE_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 0;
-      pmRet.cArg[0] = 0;
+      pmRet.cArg = 0;
       emit outputMessage(fd, &pmRet);
       break;
     }
@@ -58,7 +58,7 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = PUKE_KSPROGRESS_SET_TOPTEXT;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_KSPROGRESS_SET_BOTTEXT:
@@ -66,7 +66,7 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = PUKE_KSPROGRESS_SET_BOTTEXT;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
   case PUKE_KSPROGRESS_SET_VALUE:
@@ -74,7 +74,7 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.iCommand = PUKE_KSPROGRESS_SET_VALUE_ACK;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
-    pmRet.cArg[0] = 0;
+    pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;        
   default:
@@ -88,7 +88,7 @@ void PProgress::cancelPressed(){ /*FOLD00*/
   pmRet.iCommand = PUKE_KSPROGRESS_CANCEL_ACK;
   pmRet.iWinId = widgetIden().iWinId;
   pmRet.iArg = 0;
-  pmRet.cArg[0] = 0;
+  pmRet.cArg = 0;
   emit outputMessage(widgetIden().fd, &pmRet);
 }
 

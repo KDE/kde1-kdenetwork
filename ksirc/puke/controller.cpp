@@ -107,7 +107,7 @@ PukeController::PukeController(QString sock, QObject *parent=0, const char *name
 
 }
 
-PukeController::~PukeController() /*FOLD00*/
+PukeController::~PukeController() /*fold00*/
 {
   unlink(qsPukeSocket);
 }
@@ -147,7 +147,7 @@ void PukeController::NewConnect(int) /*FOLD00*/
 }
 
 
-void PukeController::Writeable(int fd) /*FOLD00*/
+void PukeController::Writeable(int fd) /*fold00*/
 {
   if(qidConnectFd[fd]){
     qidConnectFd[fd]->writeable = TRUE;
@@ -166,11 +166,51 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
     //      cerr << "PUKE: Writing to FD that's not writeable: " << fd << endl;
-    //    }
+      //    }
     if(message != 0){
-      if(message->cArg[0] == 0)
-	memset(message->cArg, 45, 50);
-      int bytes = write(fd, message, sizeof(PukeMessage));
+      int bytes = 0;
+      if(message->iTextSize == 0 || message->cArg == 0){
+        message->iHeader = iPukeHeader;
+        message->iTextSize = 0;
+        message->cArg = 0;
+#ifdef DEBUG
+        printf("Traffic on: %d <= %d %d %d %d 0x%x\n",
+               fd,
+               message->iCommand,
+               message->iWinId,
+               message->iArg,
+               message->iTextSize,
+               message->cArg);
+#endif
+        bytes = write(fd, message, 5 * sizeof(int));
+      }
+      else{
+        struct OutMessageS {
+          unsigned int iHeader;
+          int iCommand;
+          int iWinId;
+          int iArg;
+          int iTextSize;
+          char cArg[message->iTextSize];
+        } OutMessage;
+        OutMessage.iHeader = iPukeHeader;
+        OutMessage.iCommand = message->iCommand;
+        OutMessage.iWinId = message->iWinId;
+        OutMessage.iArg = message->iArg;
+        OutMessage.iTextSize = message->iTextSize;
+        memcpy(OutMessage.cArg, message->cArg, OutMessage.iTextSize);
+        //        OutMessage.cArg[OutMessage.iTextSize] = 0; // Don't need to null out the last character
+#ifdef DEBUG
+        printf("Traffic on: %d <= %d %d %d %d 0x%x\n",
+               fd,
+               message->iCommand,
+               message->iWinId,
+               message->iArg,
+               message->iTextSize,
+               message->cArg);
+#endif /* DEBUG */
+        bytes = write(fd, &OutMessage, 5*sizeof(int) + (OutMessage.iTextSize) * sizeof(char));
+      }
       //      cerr << "Wrote: " << bytes << endl;
       if(bytes <= 0){
 	switch(errno){
@@ -193,29 +233,40 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
   }
 }
 
-void PukeController::Traffic(int fd) /*fold00*/
+void PukeController::Traffic(int fd) /*FOLD00*/
 {
   PukeMessage pm;
   int bytes = -1;
   memset(&pm, 0, sizeof(pm));
-  while((bytes = read(fd, &pm, sizeof(PukeMessage))) > 0){
-    if(bytes != sizeof(PukeMessage)){
+  while((bytes = read(fd, &pm, 5*sizeof(int))) > 0){
+    if(bytes != 5*sizeof(int)){
       cerr << "Short message, Got: " << bytes << " Wanted: " << sizeof(PukeMessage) << " NULL Padded" << endl;
     }
-    /*
-    printf("Traffic on: %d => %d %d %d %s\n", 
-	   fd,
+#ifdef DEBUG
+    printf("Traffic on: %d => %d %d %d %d",
+           fd,
 	   pm.iCommand, 
 	   pm.iWinId,
 	   pm.iArg,
-	   pm.cArg);
-    */
-    if(pm.cArg[49] != 0){
-      pm.cArg[49] = 0;
-      warning("PukeController: Message was NOT null terminated\n");
+           pm.iTextSize);
+#endif /* DEBUG */
+    if(pm.iHeader != iPukeHeader){
+      warning("Invalid packet received, discarding!");
+      return;
+    }
+    if(pm.iTextSize > 0){
+      pm.cArg = new char[pm.iTextSize + 1];
+      int tbytes = read(fd, pm.cArg, pm.iTextSize * sizeof(char));
+      pm.cArg[pm.iTextSize] = 0x0; // Null terminate the string.
+      printf(" %s\n", pm.cArg);
+    }
+    else {
+        pm.cArg = 0;
+        printf("\n");
     }
     MessageDispatch(fd, &pm);
-    memset(&pm, 0, sizeof(pm));
+    delete[] pm.cArg; // Free up cArg is used
+    memset(&pm, 0, 5*sizeof(int));
   }
   if(bytes <= 0){ // Shutdown the socket!
     switch(errno){
@@ -248,7 +299,7 @@ void PukeController::ServMessage(QString, int, QString) /*fold00*/
 // Message Dispatcher is in messagedispatcher.cpp
 
 
-void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
 {
     try {
 
@@ -267,7 +318,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
         pmRet.iCommand = PUKE_INVALID;
         pmRet.iWinId = pm->iWinId;
         pmRet.iArg = 0;
-        pmRet.cArg[0] = 0;
+        pmRet.iTextSize = 0;
         emit outputMessage(fd, &pmRet);
         return;
     }
@@ -275,8 +326,8 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
         PukeMessage pmRet;
         pmRet.iCommand = err.command();
         pmRet.iWinId = pm->iWinId;
-        pmRet.iArg = err.iarg();
-        pmRet.cArg[0] = 0;
+	pmRet.iArg = err.iarg();
+	pmRet.iTextSize = 0;
         emit outputMessage(fd, &pmRet);
         return;
     }
@@ -353,7 +404,7 @@ void PukeController::hdlrPukeInvalid(int fd, PukeMessage *) /*fold00*/
 }
 
 
-void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*FOLD00*/
 {
   PukeMessage pmOut;
   memset(&pmOut, 0, sizeof(pmOut));
@@ -364,7 +415,7 @@ void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
     debug("Fd: %d cArg: %s", fd, pm->cArg);
     this->qidConnectFd[fd]->server = qstrdup(pm->cArg);
     pmOut.iWinId = pm->iWinId;
-    pmOut.iArg = sizeof(PukeMessage);
+    pmOut.iArg = sizeof(PukeMessage) - sizeof(char *);
   }
   this->writeBuffer(fd, &pmOut);
 }
@@ -379,7 +430,7 @@ void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*fold00*/
   this->writeBuffer(fd, &pmOut);
 }
 
-void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm) /*fold00*/
 {
   objFinder::dumpTree();
   
@@ -471,7 +522,8 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
   pmRet.iCommand = PUKE_WIDGET_CREATE_ACK;
   pmRet.iWinId = wIret.iWinId;
   pmRet.iArg = 0;
-  strncpy(pmRet.cArg, pm->cArg, 50);
+  pmRet.iTextSize = pm->iTextSize;
+  pmRet.cArg = pm->cArg;
   emit outputMessage(fd, &pmRet);
 
 }
@@ -615,8 +667,11 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
     pmRet.iCommand = PUKE_WIDGET_CREATE_ACK;
     pmRet.iWinId = wIret.iWinId;
     pmRet.iArg = 0;
-    strncpy(pmRet.cArg, pm->cArg, 50);
+    pmRet.cArg = strdup(pm->cArg);
+//    printf("Got: %s Copied: %s\n", pm->cArg, pmRet.cArg);
+    pmRet.iTextSize = strlen(pm->cArg);
     emit outputMessage(fd, &pmRet);
+    free(pmRet.cArg);
   }
   else if(pm->iCommand == PUKE_WIDGET_DELETE){
     if(pm->iWinId == ControllerWinId) // Don't try and delete ourselves
@@ -639,11 +694,13 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
     }
     else {
       pmRet.iArg = 1;
-      strcpy(pmRet.cArg, "No Such Widget");
+      pmRet.cArg = strdup("No Such Widget");
       pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
       warning("WidgetRunner: no such widget: %d", wI.iWinId);
     }
     emit outputMessage(fd, &pmRet);
+    if(pmRet.iArg == 1)
+        free(pmRet.cArg);
   }
   else if(pm->iCommand == PUKE_WIDGET_LOAD){
     PukeMessage pmRet = *pm;
@@ -652,30 +709,26 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
     PObject *(*wc)(CreateArgs &ca);
     widgetCreate *wC;
 
-    pm->cArg[49] = 0;
-    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
-//    handle = dlopen(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
-    if (!handle) {
-//      fputs(dlerror(), stderr);
-//      fputs("\n", stderr);
+    if(pm->iTextSize == 0){
       emit(errorCommandFailed(-pm->iCommand, 1));
       return;
     }
-//    wc =  (PObject *(*)(CreateArgs &ca) )
-    //      dlsym(handle, "createWidget");
+
+    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
+    if (!handle) {
+      emit(errorCommandFailed(-pm->iCommand, 1));
+      return;
+    }
     wc =  (PObject *(*)(CreateArgs &ca) )
         KDynamicLibrary::getSymbol(handle, "createWidget");
 
-//    if ((error = dlerror()) != NULL)  {
-//      fputs(error, stderr);
-//      emit(errorCommandFailed(-pm->iCommand, 1));
-//    }
     wC = new widgetCreate;
     wC->wc = wc;
     wC->dlhandle = handle;
     widgetCF.insert(pm->iArg, wC);
 
     pmRet.iCommand = -pm->iCommand;
+    pmRet.iTextSize = 0;
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_WIDGET_UNLOAD){
@@ -706,13 +759,13 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
       pmRet.iCommand = PUKE_INVALID;
       pmRet.iWinId = wI.iWinId;
       pmRet.iArg = 0;
-      pmRet.cArg[0] = 0;
+      pmRet.iTextSize = 0;
       emit outputMessage(fd, &pmRet);
     }
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent

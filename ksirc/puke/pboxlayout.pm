@@ -147,6 +147,7 @@ sub addLayout {
   my %REPLY = $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDLAYOUT,
                                  'iWinId' => $self->{iWinId},
                                  'iArg' => $layout->{iWinId},
+                                 'cArg' => pack("C", 0),
                                  'CallBack' => sub { },
                                  'WaitFor' => 1);
 
