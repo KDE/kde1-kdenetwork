@@ -24,6 +24,16 @@ KMMessage::KMMessage(KMFolder* aOwner, DwMessage* aMsg)
   if (!aMsg) mMsg = DwMessage::NewMessage(mMsgStr, 0);
 }
 
+//-----------------------------------------------------------------------------
+KMMessage::KMMessage(DwMessage* aMsg)
+{
+  mOwner = NULL;
+  mStatus = stUnknown;
+  if (!aMsg) mMsg = DwMessage::NewMessage(mMsgStr, 0);
+  else
+      mMsg=aMsg;
+}
+
 
 //-----------------------------------------------------------------------------
 KMMessage::~KMMessage()
@@ -75,7 +85,7 @@ const char* KMMessage::statusToStr(Status aSt)
 //-----------------------------------------------------------------------------
 KMMessage* KMMessage::reply(void)
 {
-  KMMessage* msg = new KMMessage;
+  KMMessage* msg = new KMMessage();
 
 
 
@@ -185,14 +195,32 @@ const char* KMMessage::cc(void) const
   if (header.HasCc()) return header.Cc().AsString().c_str();
   else return "";
 }
-
-
 //-----------------------------------------------------------------------------
 void KMMessage::setCc(const char* aStr)
 {
   if (!aStr) return;
   mMsg->Headers().Cc().FromString(aStr);
 }
+
+//-----------------------------------------------------------------------------
+const char* KMMessage::followup(void) const
+{
+  DwHeaders& header = mMsg->Headers();
+  if (header.HasFollowupTo()) return header.FollowupTo().AsString().c_str();
+  else
+  {
+      if (header.HasNewsgroups()) return header.Newsgroups().AsString().c_str();
+      else return "";
+  }
+}
+//-----------------------------------------------------------------------------
+void KMMessage::setFollowup(const char* aStr)
+{
+  if (!aStr) return;
+  mMsg->Headers().FollowupTo().FromString(aStr);
+}
+
+
 
 
 //-----------------------------------------------------------------------------

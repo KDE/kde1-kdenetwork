@@ -23,114 +23,133 @@ extern KMSender *msgSender;
 //-----------------------------------------------------------------------------
 KMComposeView::KMComposeView(QWidget *parent, const char *name, 
                              QString emailAddress, KMMessage *message,
-                             Action action,bool isNNTP,QString groups):
-  QWidget(parent, name)
+                             Action action,bool isNNTP,QString groups,bool isMail):
+QWidget(parent, name)
 {
-  QLabel* label;
-  QSize sz;
+    QLabel* label;
+    QSize sz;
+    
+    attWidget = NULL;
+    if (message) currentMessage = message;
+    else currentMessage = new KMMessage(); 
+    
+    grid = new QGridLayout(this,11,2,2,4);
+    
+    toLEdit = new QLineEdit(this);
+    label = new QLabel(toLEdit, nls->translate("&To:"), this);
+    label->adjustSize();
+    label->setMinimumSize(label->size());
+    if (isMail)
+        grid->addWidget(label,0,0);
+    
+    sz.setWidth(100);
+    sz.setHeight(label->size().height() + 6);
+    
+    toLEdit->setMinimumSize(sz);
+    if (isMail)
+        grid->addWidget(toLEdit,0,1);
 
-  attWidget = NULL;
-  if (message) currentMessage = message;
-  else currentMessage = new KMMessage(); 
+    if (!isMail)
+    {
+        label->hide();
+        toLEdit->hide();
+    }
+    
+    ccLEdit = new QLineEdit(this);
+    label = new QLabel(ccLEdit, nls->translate("&Cc:"), this);
+    label->adjustSize();
+    label->setMinimumSize(label->size());
+    if (isMail)
+        grid->addWidget(label,1,0);
 
-  grid = new QGridLayout(this,11,2,2,4);
+    if (!isMail)
+    {
+        label->hide();
+        ccLEdit->hide();
+    }
 
-  toLEdit = new QLineEdit(this);
-  label = new QLabel(toLEdit, nls->translate("&To:"), this);
-  label->adjustSize();
-  label->setMinimumSize(label->size());
-  grid->addWidget(label,0,0);
-
-  sz.setWidth(100);
-  sz.setHeight(label->size().height() + 6);
-
-  toLEdit->setMinimumSize(sz);
-  grid->addWidget(toLEdit,0,1);
-
-  ccLEdit = new QLineEdit(this);
-  label = new QLabel(ccLEdit, nls->translate("&Cc:"), this);
-  label->adjustSize();
-  label->setMinimumSize(label->size());
-  grid->addWidget(label,1,0);
-
-  subjLEdit = new QLineEdit(this);
-  label = new QLabel(subjLEdit, nls->translate("&Subject:"), this);
-  label->adjustSize();
-  label->setMinimumSize(label->size());
-  grid->addWidget(label,2,0);
-  connect(subjLEdit,SIGNAL(textChanged(const char *)),
-	  SLOT(slotUpdateHeading(const char *)));
-
-  if (emailAddress) 
-    toLEdit->setText(emailAddress);
-  ccLEdit->setMinimumSize(sz);
-  grid->addWidget(ccLEdit,1,1);
-
-  subjLEdit->setMinimumSize(sz);
-  grid->addWidget(subjLEdit,2,1);
-
-  //Start of stuff for group names
-  
-  if (isNNTP)
-  {
-      groupsLEdit = new QLineEdit(this);
-      label = new QLabel(groupsLEdit, "&Groups:", this);
-      label->adjustSize();
-      label->setMinimumSize(label->size());
-      grid->addWidget(label,3,0);
-      groupsLEdit->setMinimumSize(sz);
-      grid->addWidget(groupsLEdit,3,1);
-
-      if (groups)
-          groupsLEdit->setText(groups);
-  }
-  //End of stuff for group names
-
-  
-  editor = new KEdit(0,this);
-  grid->addMultiCellWidget(editor,4,8,0,1);
-  grid->setRowStretch(4,100);
-
-  // Setup attachmentListBox
-  attachmentListBox = new KTabListBox(this,NULL,3);
-  attachmentListBox->setColumn(0,nls->translate("F"),20,
-			       KTabListBox::PixmapColumn);
-  attachmentListBox->setColumn(1,nls->translate("Filename"),
-			       parent->width()-140);
-  attachmentListBox->setColumn(2,nls->translate("Size"),80);
-  connect(attachmentListBox,SIGNAL(popupMenu(int,int)),
-	  SLOT(slotPopupMenu(int,int)));
-  grid->addMultiCellWidget(attachmentListBox,10,9,0,1);
-  attachmentListBox->hide(); //Hide because no attachments present at startup  
-
-  zone = new KDNDDropZone(editor,DndURL);
-  connect(zone,SIGNAL(dropAction(KDNDDropZone *)),
-	  SLOT(slotGetDNDObject()));
-
-  // urlList is the internal QStrList which holds 
-  // all bodyParts to be displayed
-  urlList = new QStrList; 
-	
-  grid->setColStretch(1,100);
-
-  // Check if an action is requested.
-  if(message && action==actForward) forwardMessage();	
-  else if(message && action==actReply) replyMessage();
-  else if(message && action ==actReplyAll) replyAll();
-
-  grid->activate();
-
-  parseConfiguration();	
-  initKMimeMagic(); // Necessary for content Type parsing.
+    
+    subjLEdit = new QLineEdit(this);
+    label = new QLabel(subjLEdit, nls->translate("&Subject:"), this);
+    label->adjustSize();
+    label->setMinimumSize(label->size());
+    grid->addWidget(label,2,0);
+    connect(subjLEdit,SIGNAL(textChanged(const char *)),
+            SLOT(slotUpdateHeading(const char *)));
+    
+    if (emailAddress) 
+        toLEdit->setText(emailAddress);
+    ccLEdit->setMinimumSize(sz);
+    
+    if (isMail)
+        grid->addWidget(ccLEdit,1,1);
+    
+    subjLEdit->setMinimumSize(sz);
+    grid->addWidget(subjLEdit,2,1);
+    
+    //Start of stuff for group names
+    
+    if (isNNTP)
+    {
+        groupsLEdit = new QLineEdit(this);
+        label = new QLabel(groupsLEdit, "&Groups:", this);
+        label->adjustSize();
+        label->setMinimumSize(label->size());
+        grid->addWidget(label,3,0);
+        groupsLEdit->setMinimumSize(sz);
+        grid->addWidget(groupsLEdit,3,1);
+        
+        if (groups)
+            groupsLEdit->setText(groups);
+    }
+    //End of stuff for group names
+    
+    
+    editor = new KEdit(0,this);
+    grid->addMultiCellWidget(editor,4,8,0,1);
+    grid->setRowStretch(4,100);
+    
+    // Setup attachmentListBox
+    attachmentListBox = new KTabListBox(this,NULL,3);
+    attachmentListBox->setColumn(0,nls->translate("F"),20,
+                                 KTabListBox::PixmapColumn);
+    attachmentListBox->setColumn(1,nls->translate("Filename"),
+                                 parent->width()-140);
+    attachmentListBox->setColumn(2,nls->translate("Size"),80);
+    connect(attachmentListBox,SIGNAL(popupMenu(int,int)),
+            SLOT(slotPopupMenu(int,int)));
+    grid->addMultiCellWidget(attachmentListBox,10,9,0,1);
+    attachmentListBox->hide(); //Hide because no attachments present at startup  
+    
+    zone = new KDNDDropZone(editor,DndURL);
+    connect(zone,SIGNAL(dropAction(KDNDDropZone *)),
+            SLOT(slotGetDNDObject()));
+    
+    // urlList is the internal QStrList which holds 
+    // all bodyParts to be displayed
+    urlList = new QStrList; 
+    
+    grid->setColStretch(1,100);
+    
+    // Check if an action is requested.
+    if(message && action==actForward) forwardMessage();	
+    else if(message && action==actReply) replyMessage();
+    else if(message && action ==actReplyAll) replyAll();
+    else if(message && action ==actFollowup) followupMessage();
+    
+    grid->activate();
+    
+    parseConfiguration();	
+    initKMimeMagic(); // Necessary for content Type parsing.
 }
 
 void KMComposeView::initKMimeMagic()
 {
-  // Magic file detection init
-  QString mimefile = kapp->kdedir();
-  mimefile += "/share/magic";
-  magic = new KMimeMagic( mimefile );
-  magic->setFollowLinks( TRUE );
+    // Magic file detection init
+    QString mimefile = kapp->kdedir();
+    mimefile += "/share/magic";
+    magic = new KMimeMagic( mimefile );
+    magic->setFollowLinks( TRUE );
 }
 
 
@@ -593,6 +612,38 @@ void KMComposeView::replyMessage()
   editor->update();
   currentMessage = currentMessage->reply();
 }
+//-----------------------------------------------------------------------------
+void KMComposeView::followupMessage()
+{
+  QString temp;
+  int lines;
+
+  temp.sprintf(nls->translate("Re: %s"),currentMessage->subject());
+  groupsLEdit->setText(currentMessage->followup());
+  subjLEdit->setText(temp);
+
+  temp.sprintf(nls->translate("\nOn %s %s wrote:\n"), 
+	       currentMessage->dateStr(), currentMessage->from());
+  editor->append(temp);
+
+  if ((currentMessage->numBodyParts()) == 0) 
+    temp = currentMessage->body();
+  else
+    {KMMessagePart *p = new KMMessagePart();
+    currentMessage->bodyPart(0,p);
+    temp = p->body();
+    delete p;}
+   
+    
+  editor->append(temp);
+
+  lines = editor->numLines();
+  for(int x=2;x < lines;x++)
+    {editor->insertAt("> ",x,0);
+    }
+  editor->update();
+  currentMessage = currentMessage->reply();
+}
 
 //-----------------------------------------------------------------------------
 void KMComposeView::slotUndoEvent()
@@ -734,14 +785,14 @@ void KMComposeView::resizeEvent(QResizeEvent *)
 
 //-----------------------------------------------------------------------------
 KMComposeWin::KMComposeWin(QWidget *, const char *name, QString emailAddress,
-			   KMMessage *message, Action action,bool isNNTP,QString groups) :
+			   KMMessage *message, Action action,bool isNNTP,QString groups,bool isMail) :
   KTopLevelWidget(name)
 {
-  setCaption(nls->translate("KMail Composer"));
+  setCaption(nls->translate("Composer"));
 
   parseConfiguration();
 
-  composeView = new KMComposeView(this,NULL,emailAddress,message,action,isNNTP,groups);
+  composeView = new KMComposeView(this,NULL,emailAddress,message,action,isNNTP,groups,isMail);
   setView(composeView,FALSE);
 
   setupMenuBar();

@@ -439,18 +439,6 @@ bool Artdlg::actions (int action)
             markArt(list->currentItem(),0);
             break;
         }
-    case FOLLOWUP:
-        {
-            int index = list->currentItem();
-            
-            if(index < 0)
-                break;
-            
-            Article *art=artList.at(index);
-            KMComposeWin *comp=new KMComposeWin(0,"","",0,actNoOp,true);
-            comp->show();
-            break;
-        }
     case SAVE_ARTICLE:
         {
             int index=list->currentItem();
@@ -503,6 +491,25 @@ bool Artdlg::actions (int action)
             messwin->slotVertAddLine();
             break;
         }
+    case FOLLOWUP:
+        {
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            DwMessage *m=new DwMessage();
+            QString *ts=server->article(art->ID.data());
+            m->FromString(ts->data());
+            delete ts;
+            m->Parse();
+
+            KMMessage *mm=new KMMessage(m);
+            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actFollowup,true,"",false);
+            comp->show();
+            break;
+        }
     case REP_MAIL:
         {
             int index = list->currentItem();
@@ -511,7 +518,14 @@ bool Artdlg::actions (int action)
                 break;
             
             Article *art=artList.at(index);
-            KMComposeWin *comp=new KMComposeWin(0,"",art->From,0,actNoOp,false);
+            DwMessage *m=new DwMessage();
+            QString *ts=server->article(art->ID.data());
+            m->FromString(ts->data());
+            delete ts;
+            m->Parse();
+
+            KMMessage *mm=new KMMessage(m);
+            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actReply);
             comp->show();
             break;
         }

@@ -36,7 +36,7 @@
 
 class KMMessage;
 class QGridLayout;
-enum Action { actNoOp =0, actForward=1, actReply=2, actReplyAll=3 };
+enum Action { actNoOp =0, actForward=1, actReply=2, actReplyAll=3, actFollowup=4};
 
 
 //-----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class KMComposeView : public QWidget
   Q_OBJECT
 public:
   KMComposeView(QWidget *parent=0,const char *name=0,QString emailAddress=0,
-		KMMessage *message=0, Action ac = actNoOp,bool isNNTP=false,QString groups=0);
+		KMMessage *message=0, Action ac = actNoOp,bool isNNTP=false,QString groups=0,bool isMail=true);
   ~KMComposeView();
   KEdit *editor;
 
@@ -68,6 +68,7 @@ private:
 
   void parseConfiguration();
   void forwardMessage();
+  void followupMessage();
   void replyMessage();
   void replyAll();
   void insertNewAttachment(QString );
@@ -116,7 +117,7 @@ class KMComposeWin : public KTopLevelWidget
 
 public:
   KMComposeWin(QWidget *parent = 0, const char *name = 0, 
-	       QString emailAddress=0, KMMessage *message=0, Action action = actNoOp,bool isNNTP=false,QString groups=0);
+	       QString emailAddress=0, KMMessage *message=0, Action action = actNoOp,bool isNNTP=false,QString groups=0,bool isMail=true);
   virtual void show();
   QString encoding;
   friend class KMComposeView;  

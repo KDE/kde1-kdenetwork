@@ -20,6 +20,8 @@ protected:
   KMMessage(KMFolder*, DwMessage* = NULL);
 
 public:
+  KMMessage(DwMessage*);
+
   typedef enum {
     stUnknown=' ', stNew='N', stUnread='U', stOld='O', stDeleted='D',
     stReplied='A'
@@ -142,6 +144,13 @@ public:
   /** Append a body part to the message. */
   virtual void addBodyPart(const KMMessagePart* aPart);
 
+
+  /** Get the groups it should followup to */
+  virtual const char *followup(void) const;
+
+  /** Set the groups to followup to */
+  virtual void setFollowup(const char* aStr);
+  
   /** Owning folder or NULL if none. */
   KMFolder* owner(void) const { return mOwner; }
 
