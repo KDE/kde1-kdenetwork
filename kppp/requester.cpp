@@ -87,8 +87,8 @@ int Requester::recvFD(char *filename, int size) {
   fd = -1;
 
   // set alarm in case recvmsg() hangs 
-  signal(SIGALRM, recv_timeout);
-  alarm(2);
+  //  signal(SIGALRM, recv_timeout);
+  //  alarm(2);
 
   len = recvmsg(socket, &msg, flags);
 
@@ -108,7 +108,7 @@ int Requester::recvFD(char *filename, int size) {
 #else
     fd = *((int *) control.cmsg.cmsg_data);
 #endif
-    printf("response.status: %i\n", response.status);
+    Debug("response.status: %i", response.status);
     assert(response.status <= 0);
     if(response.status < 0)
       return response.status;
@@ -133,13 +133,13 @@ bool Requester::recvResponse() {
 
   iov.iov_base = &response;
   iov.iov_len = sizeof(struct ResponseHeader);
-  printf("recvResponse(): nach recvmsg\n");
+  Debug("recvResponse(): waiting for message");
   len = recvmsg(socket, &msg, flags);
-  printf("recvResponse(): nach recvmsg\n");
+  Debug("recvResponse(): received message");
   if (len <= 0) {
     perror("recvmsg failed");
   } else {
-    printf("response.status: %i\n", response.status);
+    Debug("response.status: %i", response.status);
   }
 
   return (response.status == 0);
@@ -284,13 +284,13 @@ bool Requester::sendRequest(struct RequestHeader *request, int len) {
   msg.msg_iovlen = 1;
   msg.msg_control = 0L;
   msg.msg_controllen = 0;
-  printf("vor sendmsg type = %i\n", request->type);
+  Debug("sendRequest: trying to send msg type %i", request->type);
   sendmsg(socket, &msg, 0);
-  printf("nach sendmsg\n");
+  Debug("sendRequest: sent message");
 
   return true;
 }
 
 void recv_timeout(int) {
-  printf("timeout()\n");
+  Debug("timeout()");
 }

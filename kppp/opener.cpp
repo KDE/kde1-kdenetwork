@@ -119,7 +119,7 @@ void Opener::mainLoop() {
         mode = 0;
       response.status = 0;
       if ((fd = open(lockfile, flags, mode)) == -1) {
-        fprintf(stderr, "error opening lockfile!\n");
+        Debug("error opening lockfile!");
         lockfile[0] = '\0';
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
@@ -158,7 +158,7 @@ void Opener::mainLoop() {
       response.status = 0;
       if ((fd = open("/var/log/messages", O_RDONLY)) == -1) {
         if ((fd = open("/var/log/syslog.ppp", O_RDONLY)) == -1) {
-          fprintf(stderr, "error opening syslog file !\n");
+          Debug("error opening syslog file !");
           fd = open(DEVNULL, O_RDONLY);
           response.status = -errno;
           sendFD(DEVNULL, fd, &response);

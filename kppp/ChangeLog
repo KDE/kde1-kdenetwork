@@ -1,3 +1,7 @@
+1998-12-04  Harri Porten  <porten@kde.org>
+
+	* requester.cpp: disable alarm() for now, silence some debug messages
+
 1998-12-01  Harri Porten  <porten@kde.org>
 
 	* main.cpp: notify user about death of helper process and abort
