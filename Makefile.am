@@ -69,7 +69,7 @@ subdirs:
 	@test -r SUBDIRS && mv SUBDIRS subdirs
 
 acinclude.m4: admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4
-	cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4
+	@cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4
 
 MAINTAINERCLEANFILES = subdirs configure.in acinclude.m4 SUBDIRS
 
