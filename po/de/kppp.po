@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-03-19 22:13+0100\n"
+"POT-Creation-Date: 1998-04-05 14:26+0200\n"
 "PO-Revision-Date: 1998-02-27 15:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -106,178 +106,183 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Login-Script hat unausgewogenen Schleifenanfang/-ende"
 
-#: connect.cpp:98 connect.cpp:200 main.cpp:777
+#: connect.cpp:99 connect.cpp:201 main.cpp:779
 msgid "Connecting to: "
 msgstr "Verbinde mit: "
 
-#: connect.cpp:107 connect.cpp:215 miniterm.cpp:162 modeminfo.cpp:63
+#: connect.cpp:108 connect.cpp:216 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
 msgstr "Sorry, kann keine Modemsperrung erzeugen."
 
-#: connect.cpp:112 connect.cpp:175 modeminfo.cpp:68
+#: connect.cpp:113 connect.cpp:176 modeminfo.cpp:68
 msgid "Looking for Modem ..."
 msgstr "Suche Modem..."
 
-#: connect.cpp:121 debug.cpp:86 main.cpp:790
+#: connect.cpp:122 debug.cpp:86 main.cpp:792
 msgid "Log"
 msgstr "Loggen"
 
-#: connect.cpp:209 miniterm.cpp:157 modeminfo.cpp:145
+#: connect.cpp:210 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
 msgstr "Sorry, das Modemgerät ist gesperrt."
 
-#: connect.cpp:221 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+#: connect.cpp:222 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
 msgstr "Modem bereit"
 
-#: connect.cpp:253 connect.cpp:254
+#: connect.cpp:254 connect.cpp:255
 msgid "Initializing Modem..."
 msgstr "Initialisiere Modem..."
 
-#: connect.cpp:274
+#: connect.cpp:275
 msgid "Dialing"
 msgstr "Wähle"
 
-#: connect.cpp:304
+#: connect.cpp:305
 msgid "Line Busy. Hanging up ..."
 msgstr "Leitung besetzt. Hänge auf..."
 
-#: connect.cpp:310
+#: connect.cpp:311
 msgid "Line Busy. Waiting: "
 msgstr "Leitung besetzt. Warte: "
 
-#: connect.cpp:312 connect.cpp:411 connect.cpp:430
+#: connect.cpp:313 connect.cpp:430 connect.cpp:449
 msgid " seconds"
 msgstr " Sekunden"
 
-#: connect.cpp:330
+#: connect.cpp:331
 msgid "No Dialtone"
 msgstr "Kein Freizeichen"
 
-#: connect.cpp:340
+#: connect.cpp:341
 msgid "No Carrier"
 msgstr "Keine Trägerfrequenz"
 
-#: connect.cpp:375
+#: connect.cpp:376
 #, fuzzy
 msgid "Scanning "
 msgstr "Sende "
 
-#: connect.cpp:386
+#: connect.cpp:387
+#, fuzzy
+msgid "Saving "
+msgstr "Sende "
+
+#: connect.cpp:405
 msgid "Sending "
 msgstr "Sende "
 
-#: connect.cpp:397
+#: connect.cpp:416
 msgid "Expecting "
 msgstr "Erwarte "
 
-#: connect.cpp:409
+#: connect.cpp:428
 msgid "Pause "
 msgstr "Pause "
 
-#: connect.cpp:428
+#: connect.cpp:447
 msgid "Timeout "
 msgstr "Timeout "
 
-#: connect.cpp:442 connect.cpp:443
+#: connect.cpp:461 connect.cpp:462
 msgid "Hangup"
 msgstr "Hänge auf"
 
-#: connect.cpp:456 connect.cpp:457
+#: connect.cpp:475 connect.cpp:476
 msgid "Answer"
 msgstr "Antworte"
 
-#: connect.cpp:465
+#: connect.cpp:484
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:502
+#: connect.cpp:521
 msgid "Password "
 msgstr "Passwort "
 
-#: connect.cpp:539
+#: connect.cpp:558
 msgid "Prompting "
 msgstr "Frage nach "
 
-#: connect.cpp:576
+#: connect.cpp:595
 msgid "PW Prompt "
 msgstr "Passwort-Nachfrage "
 
-#: connect.cpp:602
+#: connect.cpp:621
 msgid "Loop Start "
 msgstr "Schleifenanfang "
 
-#: connect.cpp:606
+#: connect.cpp:625
 msgid "ERROR: Nested too deep, ignored."
 msgstr "FEHLER: zu tief verschachtelt!"
 
-#: connect.cpp:611
+#: connect.cpp:630
 msgid "Loops nested too deeply!"
 msgstr "Schleifen zu tief verschachtelt!"
 
-#: connect.cpp:629
+#: connect.cpp:648
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Schleifenende ohne eine passende Start-Zeile: "
 
-#: connect.cpp:706
+#: connect.cpp:725
 msgid "Starting pppd ..."
 msgstr "Starte pppd...."
 
-#: connect.cpp:766 connect.cpp:792
+#: connect.cpp:785 connect.cpp:811
 msgid "unknown speed"
 msgstr "unbekannte Geschwindigkeit"
 
-#: connect.cpp:830
+#: connect.cpp:849
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:841
+#: connect.cpp:860
 msgid "Found: "
 msgstr "Gefunden: "
 
-#: connect.cpp:853
+#: connect.cpp:872
 msgid "Looping: "
 msgstr "Schleife: "
 
-#: connect.cpp:884 modeminfo.cpp:333
+#: connect.cpp:903 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Bitten einen Moment..."
 
-#: connect.cpp:927
+#: connect.cpp:946
 msgid "Script timed out!"
 msgstr "Timeout beim Script!"
 
-#: connect.cpp:952
+#: connect.cpp:972
 #, fuzzy
 msgid "Scanning: "
 msgstr "Sende "
 
-#: connect.cpp:963
+#: connect.cpp:983
 msgid "Expecting: "
 msgstr "Erwarte: "
 
-#: connect.cpp:997
+#: connect.cpp:1017
 msgid "Logging on to Network ..."
 msgstr "Melde am Netzwerk an..."
 
-#: connect.cpp:1023
+#: connect.cpp:1043
 msgid "Running Startup Command ..."
 msgstr "Starte Anfangskommando..."
 
-#: connect.cpp:1088
+#: connect.cpp:1108
 msgid "Sorry, can't open modem."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
-#: connect.cpp:1095
+#: connect.cpp:1115
 msgid "Sorry, the modem is not ready."
 msgstr "Sorry, das Modem ist nicht bereit."
 
-#: connect.cpp:1103 connect.cpp:1144 modeminfo.cpp:375
+#: connect.cpp:1123 connect.cpp:1164 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr "Sorry, das Modem ist besetzt."
 
-#: connect.cpp:1375
+#: connect.cpp:1395
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -285,27 +290,31 @@ msgstr ""
 "pppd-Kommando und Kommandozeilen-Argumente überschreiten\n"
 "2024 Zeichen in der Länge. Was tun Sie nur?"
 
-#: conwindow.cpp:44
+#: conwindow.cpp:45
 msgid "Connected at:"
 msgstr "Verbunden mit:"
 
-#: conwindow.cpp:50
+#: conwindow.cpp:51
 msgid "Time connected:"
 msgstr "Verbunden seit:"
 
 #: conwindow.cpp:56
+msgid "Volume:"
+msgstr ""
+
+#: conwindow.cpp:60
 msgid "Session Bill:"
 msgstr "Sitzungskosten:"
 
-#: conwindow.cpp:58
+#: conwindow.cpp:62
 msgid "Total Bill:"
 msgstr "Gesamtkosten:"
 
-#: conwindow.cpp:64 docking.cpp:75
+#: conwindow.cpp:68 docking.cpp:75
 msgid "Disconnect"
 msgstr "Trennen"
 
-#: conwindow.cpp:68 docking.cpp:73
+#: conwindow.cpp:72 docking.cpp:73
 msgid "Details"
 msgstr "Details"
 
@@ -563,7 +572,7 @@ msgstr "Modem-Sperrdatei"
 msgid "Modem Timeout:"
 msgstr "Modem-Timeout:"
 
-#: general.cpp:433 main.cpp:487
+#: general.cpp:433 main.cpp:489
 msgid "Modem"
 msgstr "Modem"
 
@@ -587,31 +596,31 @@ msgstr "Modemabfrage"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: main.cpp:311
+#: main.cpp:313
 msgid "Connect to: "
 msgstr "Verbinde mit: "
 
-#: main.cpp:322
+#: main.cpp:324
 msgid "Login ID:"
 msgstr "Username:"
 
-#: main.cpp:334
+#: main.cpp:336
 msgid "Password:"
 msgstr "Passwort:"
 
-#: main.cpp:351
+#: main.cpp:353
 msgid "Show Log Window"
 msgstr "Log-Fenster anzeigen"
 
-#: main.cpp:373
+#: main.cpp:375
 msgid "Setup"
 msgstr "Einstellungen"
 
-#: main.cpp:388
+#: main.cpp:390
 msgid "Connect"
 msgstr "Verbinden"
 
-#: main.cpp:456
+#: main.cpp:458
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -620,23 +629,23 @@ msgstr ""
 "Zugang nicht vorhanden:\n"
 "%s"
 
-#: main.cpp:473
+#: main.cpp:475
 msgid "kppp Configuration"
 msgstr "kppp-Konfiguration"
 
-#: main.cpp:485
+#: main.cpp:487
 msgid "Accounts"
 msgstr "Zugänge"
 
-#: main.cpp:486
+#: main.cpp:488
 msgid "Device"
 msgstr "Gerät"
 
-#: main.cpp:488
+#: main.cpp:490
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:712
+#: main.cpp:714
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -653,7 +662,7 @@ msgstr ""
 "Bereich PPP der Einstellungen ein.\n"
 " Danke schön"
 
-#: main.cpp:724
+#: main.cpp:726
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -666,7 +675,7 @@ msgstr ""
 "Bitte stellen Sie sicher, daß Sie kppp setuid-Berechtigung gegeben haben\n"
 "und daß pppd ausführbar ist."
 
-#: main.cpp:738
+#: main.cpp:740
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -687,7 +696,7 @@ msgstr ""
 "der Einstellungen.\n"
 " Danke schön"
 
-#: main.cpp:758
+#: main.cpp:760
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -697,7 +706,7 @@ msgstr ""
 "PAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Passwort angeben!"
 
-#: main.cpp:765
+#: main.cpp:767
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -706,15 +715,15 @@ msgstr ""
 "Kann PAP-Authentifizierungsdatei\n"
 "\"%s\" nicht erzeugen"
 
-#: main.cpp:842
+#: main.cpp:844
 msgid "Quit kPPP?"
 msgstr "kppp beenden?"
 
-#: main.cpp:843
+#: main.cpp:845
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Das Verlassen von kPPP wird die Verbindung trennen."
 
-#: main.cpp:876
+#: main.cpp:880
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -832,63 +841,63 @@ msgstr "Sorry, das Modem ist besetzt"
 msgid "Modem Query Results"
 msgstr "Modemabfrage-Ergebnisse"
 
-#: pppstatdlg.cpp:69
+#: pppstatdlg.cpp:70
 msgid "kppp Statistics"
 msgstr "kppp Statistik"
 
-#: pppstatdlg.cpp:74
+#: pppstatdlg.cpp:75
 msgid "Statistics"
 msgstr "Statistik"
 
-#: pppstatdlg.cpp:147
+#: pppstatdlg.cpp:148
 msgid "Local Addr:"
 msgstr "Lokale Adresse:"
 
-#: pppstatdlg.cpp:153
+#: pppstatdlg.cpp:154
 msgid "Remote Addr:"
 msgstr "Entfernte Adresse:"
 
-#: pppstatdlg.cpp:185
+#: pppstatdlg.cpp:186
 msgid "bytes in"
 msgstr "Bytes empfangen"
 
-#: pppstatdlg.cpp:186
+#: pppstatdlg.cpp:187
 msgid "bytes out"
 msgstr "Bytes gesendet"
 
-#: pppstatdlg.cpp:188
+#: pppstatdlg.cpp:189
 msgid "packets in"
 msgstr "Pakete empfangen"
 
-#: pppstatdlg.cpp:189
+#: pppstatdlg.cpp:190
 msgid "packets out"
 msgstr "Pakete gesendet"
 
-#: pppstatdlg.cpp:191
+#: pppstatdlg.cpp:192
 msgid "vjcomp in"
 msgstr "vjcomp empfangen"
 
-#: pppstatdlg.cpp:192
+#: pppstatdlg.cpp:193
 msgid "vjcomp out"
 msgstr "vjcomp gesendet"
 
-#: pppstatdlg.cpp:194
+#: pppstatdlg.cpp:195
 msgid "vjunc in"
 msgstr "vjunc empfangen"
 
-#: pppstatdlg.cpp:195
+#: pppstatdlg.cpp:196
 msgid "vjunc out"
 msgstr "vjunc gesendet"
 
-#: pppstatdlg.cpp:197
+#: pppstatdlg.cpp:198
 msgid "vjerr"
 msgstr "vjerr"
 
-#: pppstatdlg.cpp:198
+#: pppstatdlg.cpp:199
 msgid "non-vj"
 msgstr "nicht-vj"
 
-#: pppstatdlg.cpp:351 pppstatdlg.cpp:358
+#: pppstatdlg.cpp:355 pppstatdlg.cpp:362
 msgid "unavailable"
 msgstr "nicht verfügbar"
 
@@ -969,7 +978,12 @@ msgstr "Gebührenzählung ein"
 msgid "Selected:"
 msgstr "Gewählt:"
 
-#: acctselect.cpp:147 acctselect.cpp:253
+#: acctselect.cpp:84
+#, fuzzy
+msgid "Volume accounting"
+msgstr "Gebührenzählung ein"
+
+#: acctselect.cpp:154 acctselect.cpp:260
 msgid "Available rules"
 msgstr "Verfügbare Regeln"
 
@@ -1070,7 +1084,8 @@ msgstr ""
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
-"This option has to removed since kppp takes care of device locking itself.\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
 "Contact your system administrator."
 msgstr ""
 

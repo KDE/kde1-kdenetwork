@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-03-19 22:13+0100\n"
+"POT-Creation-Date: 1998-04-05 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Modify Folder"
 msgstr "Τροποποίηση φακέλλου"
 
-#: kmmainwin.cpp:330
+#: kmmainwin.cpp:332
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -50,11 +50,16 @@ msgstr ""
 "Είστε σίγουρος ότι θέλετε να διαγράψετε\n"
 "τα περιεχόμενα του φακέλλου \"%s\" ;"
 
-#: kmmainwin.cpp:333 kmmainwin.cpp:361
+#: kmmainwin.cpp:335 kmmainwin.cpp:370
 msgid "Confirmation"
 msgstr "Επιβεβαίωση"
 
-#: kmmainwin.cpp:354
+#: kmmainwin.cpp:349
+#, fuzzy
+msgid "Moved all messages into trash"
+msgstr "Αποστολή μηνυμάτων στο "
+
+#: kmmainwin.cpp:363
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -62,7 +67,7 @@ msgstr ""
 "Η διαγραφή φακέλλου συστήματος\n"
 "δεν επιτρέπεται."
 
-#: kmmainwin.cpp:358
+#: kmmainwin.cpp:367
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -71,263 +76,263 @@ msgstr ""
 "Είστε σίγουρος ότι θέλετε να διαγράψετε τον φάκελλο\n"
 "\"%s\" καί ό,τι αυτός περιέχει;"
 
-#: kmmainwin.cpp:426
+#: kmmainwin.cpp:435
 msgid "Message as Plain Text"
 msgstr "Μήνυμα ως απλό κείμενο"
 
-#: kmmainwin.cpp:433 kmmainwin.cpp:453
+#: kmmainwin.cpp:442 kmmainwin.cpp:462
 msgid "Select Folder"
 msgstr "Επιλογή φακέλλου"
 
-#: kmmainwin.cpp:474
+#: kmmainwin.cpp:483
 msgid "Queued messages successfully sent."
 msgstr "Αποστολή καθυστερούμενων μηνυμάτων επιτυχής."
 
-#: kmmainwin.cpp:476
+#: kmmainwin.cpp:485
 msgid "Failed to send (some) queued messages."
 msgstr "Αποτυχία αποστολής (κάποιων ή όλων) καθυστερούμενων μηνυμάτων."
 
-#: kmmainwin.cpp:585
+#: kmmainwin.cpp:594
 msgid "Opening URL..."
 msgstr "’νοιγμα URL"
 
-#: kmmainwin.cpp:646
+#: kmmainwin.cpp:655
 msgid "Address added to addressbook."
 msgstr "Η διεύθυνση προσετέθη στο βιβλίο διευθύνσεων"
 
-#: kmmainwin.cpp:658
+#: kmmainwin.cpp:667
 msgid "Address copied to clipboard."
 msgstr "Η διεύθυνση αντιγράφτηκε στο σημειωματάριο."
 
-#: kmmainwin.cpp:663
+#: kmmainwin.cpp:672
 msgid "URL copied to clipboard."
 msgstr "Το URL αντιγράφτηκε στο σημειωματάριο."
 
-#: kmmainwin.cpp:690
+#: kmmainwin.cpp:699
 msgid "Send to..."
 msgstr "Αποστολή προς..."
 
-#: kmmainwin.cpp:692
+#: kmmainwin.cpp:701
 msgid "Send reply to..."
 msgstr "Αποστολή απάντησης προς..."
 
-#: kmmainwin.cpp:694
+#: kmmainwin.cpp:703
 msgid "Forward to..."
 msgstr "Προώθηση προς..."
 
-#: kmmainwin.cpp:697
+#: kmmainwin.cpp:706
 msgid "Add to addressbook"
 msgstr "Προσθήκη στο βιβλίο διευθύνσεων"
 
-#: kmmainwin.cpp:699 kmmainwin.cpp:708
+#: kmmainwin.cpp:708 kmmainwin.cpp:717
 msgid "Copy to clipboard"
 msgstr "Αντιγραφή στο σημειωματάριο"
 
-#: kmmainwin.cpp:706
+#: kmmainwin.cpp:715
 msgid "Open URL..."
 msgstr "'Ανοιγμα URL..."
 
-#: kmmainwin.cpp:716 kmmainwin.cpp:806
+#: kmmainwin.cpp:725 kmmainwin.cpp:815
 msgid "&Reply..."
 msgstr "Απάντηση..."
 
-#: kmmainwin.cpp:718 kmmainwin.cpp:808
+#: kmmainwin.cpp:727 kmmainwin.cpp:817
 msgid "Reply &All..."
 msgstr "Απάντηση σε όλους..."
 
-#: kmmainwin.cpp:720 kmmainwin.cpp:810
+#: kmmainwin.cpp:729 kmmainwin.cpp:819
 msgid "&Forward..."
 msgstr "Προώθηση..."
 
-#: kmmainwin.cpp:723 kmmainwin.cpp:815
+#: kmmainwin.cpp:732 kmmainwin.cpp:824
 msgid "&Move..."
 msgstr "Μετακίνηση..."
 
-#: kmmainwin.cpp:725 kmmainwin.cpp:817
+#: kmmainwin.cpp:734 kmmainwin.cpp:826
 msgid "&Copy..."
 msgstr "Αντιγραφή..."
 
-#: kmmainwin.cpp:739
+#: kmmainwin.cpp:748
 msgid "New Composer"
 msgstr "Νέο παράθυρο σύνταξης μηνύματος"
 
-#: kmmainwin.cpp:741
+#: kmmainwin.cpp:750
 msgid "New Mailreader"
 msgstr "Νέο παράθυρο ανάγνωσης"
 
-#: kmmainwin.cpp:744
+#: kmmainwin.cpp:753
 msgid "Save As..."
 msgstr "Αποθήκευση ως..."
 
-#: kmmainwin.cpp:746
+#: kmmainwin.cpp:755
 msgid "Print..."
 msgstr "Εκτύπωση..."
 
-#: kmmainwin.cpp:749
+#: kmmainwin.cpp:758
 msgid "Check Mail..."
 msgstr "Έλεγχος για νέα αλληλογραφία..."
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:760
 msgid "Send Queued"
 msgstr "Αποστολή καθυστερούμενων μηνυμάτων"
 
-#: kmmainwin.cpp:754
+#: kmmainwin.cpp:763
 msgid "&Settings..."
 msgstr "Ρυθμίσεις..."
 
-#: kmcomposewin.cpp:429 kmmainwin.cpp:756
+#: kmcomposewin.cpp:429 kmmainwin.cpp:765
 msgid "&Addressbook..."
 msgstr "Κατάλογος διευθύνσεων..."
 
-#: kmmainwin.cpp:758
+#: kmmainwin.cpp:767
 msgid "&Filter..."
 msgstr "Φίλτρα..."
 
-#: kmmainwin.cpp:772
+#: kmmainwin.cpp:781
 msgid "&Find..."
 msgstr "Εύρεση..."
 
-#: kmmainwin.cpp:777
+#: kmmainwin.cpp:786
 msgid "&Create..."
 msgstr "Δημιουργία..."
 
-#: kmmainwin.cpp:779
+#: kmmainwin.cpp:788
 msgid "&Modify..."
 msgstr "Τροποποίηση..."
 
-#: kmmainwin.cpp:781
+#: kmmainwin.cpp:790
 msgid "C&ompact"
 msgstr "Συμπίεση"
 
-#: kmmainwin.cpp:783
+#: kmmainwin.cpp:792
 msgid "&Empty"
 msgstr "’δειασμα"
 
-#: kmcomposewin.cpp:509 kmmainwin.cpp:785
+#: kmcomposewin.cpp:509 kmmainwin.cpp:794
 msgid "&Remove"
 msgstr "Διαγραφή"
 
-#: kmmainwin.cpp:793
+#: kmmainwin.cpp:802
 msgid "Unread"
 msgstr "Αδιάβαστο"
 
-#: kmmainwin.cpp:794
+#: kmmainwin.cpp:803
 msgid "Read"
 msgstr "Διαβασμένο"
 
-#: kmmainwin.cpp:795
+#: kmmainwin.cpp:804
 msgid "Replied"
 msgstr "Απαντημένο"
 
-#: kmmainwin.cpp:796
+#: kmmainwin.cpp:805
 msgid "Queued"
 msgstr "Καθυστερούμενο"
 
-#: kmmainwin.cpp:797
+#: kmmainwin.cpp:806
 msgid "Sent"
 msgstr "Απεσταλμένο"
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:810
 msgid "&Next"
 msgstr "Επόμενο"
 
-#: kmmainwin.cpp:803
+#: kmmainwin.cpp:812
 msgid "&Previous"
 msgstr "Προηγούμενο"
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:822
 msgid "&Set Status"
 msgstr "Ορισμός κατάστασης"
 
-#: kmmainwin.cpp:822
+#: kmmainwin.cpp:831
 msgid "Send again..."
 msgstr "Επαναποστολή"
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:833
 msgid "Apply filters"
 msgstr "Εφαρμογή φίλτρων"
 
-#: kmmainwin.cpp:827
+#: kmmainwin.cpp:836
 msgid "View Source..."
 msgstr "Προβολή πηγαίου αρχείου..."
 
-#: kmmainwin.cpp:834
+#: kmmainwin.cpp:843
 msgid "&Brief Headers"
 msgstr "Σύντομες επικεφαλίδες"
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:845
 msgid "&Fancy Headers"
 msgstr "Πλούσιες επικεφαλίδες"
 
-#: kmmainwin.cpp:838
+#: kmmainwin.cpp:847
 msgid "&Standard Headers"
 msgstr "Κανονικές επικεφαλίδες"
 
-#: kmmainwin.cpp:840
+#: kmmainwin.cpp:849
 msgid "&Long Headers"
 msgstr "Επεκταμένες επικεφαλίδες"
 
-#: kmmainwin.cpp:842
+#: kmmainwin.cpp:851
 msgid "&All Headers"
 msgstr "Όλες οι επικεφαλίδες"
 
-#: kmmainwin.cpp:845
+#: kmmainwin.cpp:854
 msgid "Iconic Attachments"
 msgstr "Συνημμένα με εικονίδια"
 
-#: kmmainwin.cpp:846
+#: kmmainwin.cpp:855
 msgid "Smart Attachments"
 msgstr "Έξυπνα συνημμένα"
 
-#: kmmainwin.cpp:847
+#: kmmainwin.cpp:856
 msgid "Inlined Attachments"
 msgstr "Ενσωματωμένα συνημμένα"
 
-#: kmmainwin.cpp:858
+#: kmmainwin.cpp:867
 msgid "F&older"
 msgstr "Φάκελλος"
 
-#: kmmainwin.cpp:859
+#: kmmainwin.cpp:868
 msgid "&Message"
 msgstr "Μήνυμα"
 
-#: kmcomposewin.cpp:538 kmmainwin.cpp:878
+#: kmcomposewin.cpp:538 kmmainwin.cpp:887
 msgid "Compose new message"
 msgstr "Σύνταξη νέου μηνύματος"
 
-#: kmcomposewin.cpp:543 kmmainwin.cpp:883
+#: kmcomposewin.cpp:543 kmmainwin.cpp:892
 msgid "Save message to file"
 msgstr "Αποθήκευση μηνύματος σε αρχείο"
 
-#: kmcomposewin.cpp:548 kmmainwin.cpp:888
+#: kmcomposewin.cpp:548 kmmainwin.cpp:897
 msgid "Print message"
 msgstr "Εκτύπωση μηνύματος"
 
-#: kmmainwin.cpp:895
+#: kmmainwin.cpp:904
 msgid "Get new mail"
 msgstr "Εύρεση νέας αλληλογραφίας"
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:910
 msgid "Reply to author"
 msgstr "Απάντηση στον συντάκτη"
 
-#: kmmainwin.cpp:906
+#: kmmainwin.cpp:915
 msgid "Reply to all recipients"
 msgstr "Απάντηση σε όλους τους παραλήπτες"
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:920
 msgid "Forward message"
 msgstr "Προώθηση μηνύματος"
 
-#: kmmainwin.cpp:916
+#: kmmainwin.cpp:925
 msgid "Delete message"
 msgstr "Διαγραφή μηνύματος"
 
-#: kmcomposewin.cpp:572 kmmainwin.cpp:922
+#: kmcomposewin.cpp:572 kmmainwin.cpp:931
 msgid "Open addressbook..."
 msgstr "’νοιγμα βιβλίου διευθύνσεων"
 
-#: kmmainwin.cpp:934
+#: kmmainwin.cpp:943
 msgid "Initializing..."
 msgstr "Αρχικοποίηση..."
 
@@ -540,7 +545,7 @@ msgstr "Διάφορα"
 msgid "Select Account"
 msgstr "Επιλογή λογαριασμού"
 
-#: kmaccount.cpp:70 kmfilterdlg.cpp:463 kmsettings.cpp:524
+#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:524
 msgid "Unnamed"
 msgstr "Ανώνυμος"
 
@@ -922,7 +927,7 @@ msgstr ""
 "Σφάλμα κατά την εκκίνηση του KSpell. Παρακαλώ βεβαιωθείτε ότι έχετε "
 "εγκαταστήσει και ρυθμίσει σωστά το ISpell."
 
-#: kmfolder.cpp:142
+#: kmfolder.cpp:143
 #, c-format
 msgid ""
 "Contents of folder `%s' changed.\n"
@@ -1288,67 +1293,67 @@ msgstr ""
 "στον κανόνα φίλτρου `%s'.\n"
 "Την αγνοώ."
 
-#: kmfilterdlg.cpp:64
+#: kmfilterdlg.cpp:62
 msgid "Filter Rules"
 msgstr "Κανόνες φίλτρου"
 
-#: kmfilterdlg.cpp:143
+#: kmfilterdlg.cpp:141
 msgid "Up"
 msgstr "Πάνω"
 
-#: kmfilterdlg.cpp:146
+#: kmfilterdlg.cpp:144
 msgid "Down"
 msgstr "Κάτω"
 
-#: kmfilterdlg.cpp:533
+#: kmfilterdlg.cpp:531
 msgid "<nothing>"
 msgstr "<τίποτα>"
 
-#: kmfilterdlg.cpp:544
+#: kmfilterdlg.cpp:542
 msgid "ignore"
 msgstr "αγνόησε"
 
-#: kmfilterdlg.cpp:545
+#: kmfilterdlg.cpp:543
 msgid "and"
 msgstr "και"
 
-#: kmfilterdlg.cpp:546
+#: kmfilterdlg.cpp:544
 msgid "unless"
 msgstr "εκτός"
 
-#: kmfilterdlg.cpp:547
+#: kmfilterdlg.cpp:545
 msgid "or"
 msgstr "ή"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:551
 msgid "equals"
 msgstr "ίσο με"
 
-#: kmfilterdlg.cpp:554
+#: kmfilterdlg.cpp:552
 msgid "not equal"
 msgstr "διάφορο του"
 
-#: kmfilterdlg.cpp:555
+#: kmfilterdlg.cpp:553
 msgid "contains"
 msgstr "περιέχει"
 
-#: kmfilterdlg.cpp:556
+#: kmfilterdlg.cpp:554
 msgid "doesn't contain"
 msgstr "δεν περιέχει"
 
-#: kmfilterdlg.cpp:557
+#: kmfilterdlg.cpp:555
 msgid "regular expression"
 msgstr "λογική φόρμουλα"
 
-#: kmfilterdlg.cpp:564
+#: kmfilterdlg.cpp:562
 msgid "<message>"
 msgstr "<μήνυμα>"
 
-#: kmfilterdlg.cpp:565
+#: kmfilterdlg.cpp:563
 msgid "<body>"
 msgstr "<κυρίως σώμα>"
 
-#: kmfilterdlg.cpp:566
+#: kmfilterdlg.cpp:564
 msgid "<any header>"
 msgstr "<οποιαδήποτε επικεφαλίδα>"
 
