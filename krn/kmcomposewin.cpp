@@ -184,6 +184,8 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
 //-----------------------------------------------------------------------------
 KMComposeWin::~KMComposeWin()
 {
+  writeConfig();
+
   if (mAutoDeleteMsg && mMsg) delete mMsg;
 #ifdef HAS_KSPELL
   if (mKSpellConfig) delete KSpellConfig;
@@ -202,10 +204,8 @@ void KMComposeWin::readConfig(void)
   int w, h;
 
   config->setGroup("Composer");
-  mAutoSign = (stricmp(config->readEntry("signature"),"auto")==0);
-  cout << "auto:" << mAutoSign << endl;
+  mAutoSign = (stricmp(config->readEntry("signature","manual"),"auto")==0);
   mShowToolBar = config->readNumEntry("show-toolbar", 1);
-  mSendImmediate = config->readNumEntry("send-immediate", -1);
   mDefEncoding = config->readEntry("encoding", "base64");
   mShowHeaders = config->readNumEntry("headers", HDR_STANDARD);
   mWordWrap = config->readNumEntry("word-wrap", 1);
@@ -228,7 +228,7 @@ void KMComposeWin::readConfig(void)
   else
       mDefaultCharset=str;
       
-  cout << "Default charset: "<<mDefaultCharset<<"\n";    
+  debug("Default charset: %s", (const char*)mDefaultCharset);
       
   str = config->readEntry("composer-charset", "");
   if (str.isNull() || str=="default" || !KCharset(str).isDisplayable())
@@ -236,7 +236,7 @@ void KMComposeWin::readConfig(void)
   else
       mDefComposeCharset=str;
       
-  cout << "Default composer charset: "<<mDefComposeCharset<<"\n";    
+  debug("Default composer charset: %s", (const char*)mDefComposeCharset);
 #endif
 
   config->setGroup("Geometry");
@@ -257,7 +257,6 @@ void KMComposeWin::writeConfig(void)
   config->setGroup("Composer");
   config->writeEntry("signature", mAutoSign?"auto":"manual");
   config->writeEntry("show-toolbar", mShowToolBar);
-  config->writeEntry("send-immediate", mSendImmediate);
   config->writeEntry("encoding", mDefEncoding);
   config->writeEntry("headers", mShowHeaders);
 #if defined CHARSETS  
@@ -442,17 +441,17 @@ void KMComposeWin::setupMenuBar(void)
   menu->insertItem(i18n("&Addressbook..."),this,
 		   SLOT(slotAddrBook()));
   menu->insertItem(i18n("&Print..."),this, 
-		   SLOT(slotPrint()), keys->print());
+		   SLOT(slotPrint()));
   menu->insertSeparator();
   menu->insertItem(i18n("&New Composer..."),this,
-                   SLOT(slotNewComposer()), keys->openNew());
+                   SLOT(slotNewComposer()));
 #ifndef KRN
   menu->insertItem(i18n("New Mailreader"), this, 
 		   SLOT(slotNewMailReader()));
 #endif
   menu->insertSeparator();
   menu->insertItem(i18n("&Close"),this,
-		   SLOT(slotClose()), keys->close());
+		   SLOT(slotClose()));
   mMenuBar->insertItem(i18n("&File"),menu);
 
   
@@ -461,7 +460,7 @@ void KMComposeWin::setupMenuBar(void)
   mMenuBar->insertItem(i18n("&Edit"),menu);
 #ifdef BROKEN
   menu->insertItem(i18n("Undo"),this,
-		   SLOT(slotUndoEvent()), keys->undo());
+		   SLOT(slotUndoEvent()));
   menu->insertSeparator();
 #endif //BROKEN
   menu->insertItem(i18n("Cut"), this, SLOT(slotCut()));
@@ -471,9 +470,9 @@ void KMComposeWin::setupMenuBar(void)
 		   SLOT(slotMarkAll()));
   menu->insertSeparator();
   menu->insertItem(i18n("Find..."), this,
-		   SLOT(slotFind()), keys->find());
+		   SLOT(slotFind()) );
   menu->insertItem(i18n("Replace..."), this,
-		   SLOT(slotReplace()), keys->replace());
+		   SLOT(slotReplace()));
 
   //---------- Menu: Options
   menu = new QPopupMenu();
@@ -776,11 +775,10 @@ bool KMComposeWin::applyChanges(void)
 
   //assert(mMsg!=NULL);
   if(!mMsg)
-    {
-      debug("KMComposeWin::applyChanges() : mMsg == NULL!\n");
-      return false;
-    }
-	    
+  {
+    debug("KMComposeWin::applyChanges() : mMsg == NULL!\n");
+    return FALSE;
+  }
 
   mMsg->setTo(to());
   mMsg->setFrom(from());
@@ -863,6 +861,7 @@ bool KMComposeWin::applyChanges(void)
     bodyPart.setTypeStr("text");
     bodyPart.setSubtypeStr("plain");
     str = pgpProcessedMsg();
+    if (str.isNull()) return FALSE;
 #if defined CHARSETS      
     str=convertToSend(str);
     cout<<"Setting charset to: "<<mCharset<<"\n";
@@ -1498,13 +1497,13 @@ void KMComposeWin::slotDropAction()
 
 
 //----------------------------------------------------------------------------
-void KMComposeWin::slotSend()
+void KMComposeWin::doSend(int aSendNow)
 {
   bool sentOk;
 
   kbp->busy();
   applyChanges();
-  sentOk = msgSender->send(mMsg);
+  sentOk = (applyChanges() && msgSender->send(mMsg, aSendNow));
   kbp->idle();
 
   if (sentOk)
@@ -1512,34 +1511,27 @@ void KMComposeWin::slotSend()
     mAutoDeleteMsg = FALSE;
     close();
   }
-  else warning("Failed to send message.");
+}
+
+
+//----------------------------------------------------------------------------
+void KMComposeWin::slotSend()
+{
+  doSend();
 }
 
 
 //----------------------------------------------------------------------------
 void KMComposeWin::slotSendLater()
 {
-  kbp->busy();
-  applyChanges();
-  if(msgSender->send(mMsg,FALSE))
-  {
-    mAutoDeleteMsg = FALSE;
-    close();
-  }
-  kbp->idle();
+  doSend(FALSE);
 }
 
 
 //----------------------------------------------------------------------------
 void KMComposeWin::slotSendNow()
 {
-  kbp->busy();
-  if(applyChanges() && msgSender->send(mMsg,TRUE))
-  {
-    mAutoDeleteMsg = FALSE;
-    close();
-  }
-  kbp->idle();
+  doSend(TRUE);
 }
 
 
@@ -1553,7 +1545,7 @@ void KMComposeWin::slotAppendSignature()
   if (sigFileName.isEmpty())
   {
     // open a file dialog and let the user choose manually
-    KFileDialog dlg(getenv("HOME"));
+    KFileDialog dlg(getenv("HOME"),0,this,0,TRUE,FALSE);
     dlg.setCaption(i18n("Choose Signature File"));
     if (!dlg.exec()) return;
     sigFileName = dlg.selectedFile();

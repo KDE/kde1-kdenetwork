@@ -30,7 +30,6 @@
 #include <kapp.h>
 #include <kconfig.h>
 #include <kkeyconf.h>
-#include <kstdaccel.h> 
 #include <kmsgbox.h>
 
 #include "rules.h"
@@ -61,7 +60,6 @@ KConfig *conf;
 KLocale *nls;
 KRNSender *msgSender;
 KMIdentity *identity;
-KStdAccel* keys;
 KBusyPtr *kbp;
 KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
@@ -105,7 +103,6 @@ int main( int argc, char **argv )
 
     checkConf();
     nls=a.getLocale();
-    keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
     msgSender=new KRNSender();
     msgSender->readConfig();
