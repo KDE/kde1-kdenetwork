@@ -845,7 +845,7 @@ int main (int argc, char **argv)
   // set main application
   //  debug("setup application");
   archie = new KApplication(argc, argv,"karchie");
-  archie->setFont(QFont("Helvetica",12),true);
+  //archie->setFont(QFont("Helvetica",12),true);
 
   //  debug("setup window");
   window = new KArchie("main");

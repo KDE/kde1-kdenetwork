@@ -486,12 +486,12 @@ KAView::newFileList( KAQueryList &fileList )
 {
   fList = &fileList;
   // max breite des filedate Feldes herausfinden
-  QFontMetrics *fm = &fontMetrics();
+  //QFontMetrics *fm = &fontMetrics();
   int width, maxwidth = 0, i, count = fileList.count();
   if ( count > 150 ) // don't count too much lines
     count = 150;
   for ( i=0; i<count; i++ ) {
-    width = fm->boundingRect(fileList.at(i)->getDateTime().toString()).width();
+    width = fontMetrics().boundingRect(fileList.at(i)->getDateTime().toString()).width();
     if ( width > maxwidth )
       maxwidth = width;
   }
