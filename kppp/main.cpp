@@ -56,7 +56,6 @@
 #include "modem.h"
 #include "ppplog.h"
 #include "log.h"
-#include "quickhelp.h"
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;

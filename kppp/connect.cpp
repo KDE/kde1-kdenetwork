@@ -174,6 +174,29 @@ void ConnectWidget::preinit() {
 }
 
 
+void ConnectWidget::startNotifier() {
+  if(sn == 0) {
+    sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
+    connect(sn, SIGNAL(activated(int)),
+	    this, SLOT(readtty(int)));
+    Debug("QSocketNotifier started!");
+  } else {
+    Debug("QSocketNotifier re-enabled!");
+    sn->setEnabled(true);
+  }
+}
+
+
+void ConnectWidget::stopNotifier() {
+  if(sn != 0) {
+    sn->setEnabled(false);
+    delete sn;
+    sn = 0;
+    Debug("QSocketNotifier stopped!");
+  }
+}
+
+
 void ConnectWidget::init() {
   pppd_has_died = false;
   gpppdata.setpppdError(0);
@@ -224,13 +247,8 @@ void ConnectWidget::init() {
       // this timer reads from the modem
       semaphore = false;
 
-      if(sn) {
-	delete sn;
-	Debug("QSocketNotifier stopped!");
-      }
-      sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
-      connect(sn, SIGNAL(activated(int)),
-	      this, SLOT(readtty(int)));
+      stopNotifier();
+      startNotifier();
       
       // if we are stuck anywhere we will time out
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -712,11 +730,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       if_timeout_timer->stop(); // better be sure.
 
       // stop reading of data
-      if(sn) {
-	delete sn;
-	sn = 0;
-	Debug("QSocketNotifier stopped!");
-      }
+      stopNotifier();
 
       if(gpppdata.authMethod() == AUTH_TERMINAL) {
 	if (termwindow) {
@@ -806,6 +820,13 @@ void ConnectWidget::readtty(int) {
     c = ((int)c & 0x7F);
     readbuffer += c;
     myreadbuffer += c;
+
+    // if this is a newline or carriage return, disable the notifier
+    // for a short time and then re-enable it (avoid reading too much)
+    if(sn != 0 && (c == '\n' || c == '\r')) {
+      sn->setEnabled(false);
+      QTimer::singleShot(20, this, SLOT(startNotifier()));
+    }
     
     // While in scanning mode store each char to the scan buffer
     // for use in the prompt command
@@ -869,12 +890,7 @@ void ConnectWidget::pause() {
 
 
 void ConnectWidget::cancelbutton() {
-  if(sn) {
-    delete sn;
-    sn = 0;
-    Debug("QSocketNotifier stopped!");
-  }
-
+  stopNotifier();
   killTimer(main_timer_ID);
   timeout_timer->stop();
 

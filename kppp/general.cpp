@@ -28,11 +28,11 @@
 #include <kapp.h>
 #include <qlayout.h>
 #include <kintegerline.h>
+#include <kquickhelp.h>
 #include "general.h"
 #include "version.h"
 #include "macros.h"
 #include "log.h"
-#include "quickhelp.h"
 
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -66,7 +66,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   tl->addRowSpacing(2, 5);
 
   chkbox6 = new QCheckBox(i18n("Dock into Panel on Connect"),this,"dockingbox");
-  QuickHelp::add(chkbox6, "<+><bold>Dock into Panel on Connect<-><bold>\n\nAfter a <red>connection<black> is established,\nthe window is \"docked\" into the panel.");
+  KQuickHelp::add(chkbox6, "<+><bold>Dock into Panel on Connect<-><bold>\n\nAfter a <red>connection<black> is established,\nthe window is \"docked\" into the panel.");
   MIN_HEIGHT(chkbox6);
   chkbox6->setChecked(gpppdata.get_dock_into_panel());
   connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));

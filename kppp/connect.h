@@ -76,6 +76,8 @@ private slots:
   void cancelbutton();
   void debugbutton();
   void if_waiting_slot();
+  void stopNotifier();
+  void startNotifier();
 
 public slots:
   void init();

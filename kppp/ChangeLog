@@ -1,3 +1,12 @@
+1998-08-29  Mario Weilguni <mweilguni@kde.org>
+
+	* In ConnectWidget::readtty(): after a newline or CR is received,
+	the QSocketnotifier is disabled for 20ms to avoid reading too
+	much.
+	* added compile option "NO_GRAPH" to disable the graph
+	* removed the compile options "COMPILE_PIX" in pppstatsdlg.cpp,
+	this is no longer needed or supported
+
 1998-08-27  Harri Porten  <porten@kde.org>
 
 	* ppplog.cpp: use short named header file to keep Qt 1.33 users happy
@@ -8,7 +17,7 @@
 	now used. Much better response time now, lower CPU usage!
 	* "prompt" was deleted in the ConnectWidget destructor. Removed
 	that
-	* added telephone rule for Malaysia
+	* added telephone rule for Malaysia	
 
 1998-08-24  Harri Porten  <porten@kde.org>
 

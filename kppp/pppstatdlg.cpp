@@ -23,13 +23,6 @@
  */
 
 
-#ifdef COMPILE_PIX
-#include "modemnone.h"
-#include "modemboth.h"
-#include "modemright.h"
-#include "modemleft.h"
-#endif
-
 #include <kmsgbox.h>
 #include <qlayout.h>
 #include <qmsgbox.h>
@@ -87,55 +80,26 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   QHBoxLayout *l111 = new QHBoxLayout;
   l11->addLayout(l111);
 
-  /*
-  if ( !modem_pixmap.loadFromData(Terminal_xpm_data, Terminal_xpm_len) ) {
-    QMessageBox::message( "Error", "Could not load Terminal.xpm" );
-  }
-  if ( !modem_left_pixmap.loadFromData(terminal_left_xpm_data, terminal_left_xpm_len)){
-    QMessageBox::message( "Error", "Could not load termleft.xpm" );
-  }
-  if ( !modem_right_pixmap.loadFromData(terminal_right_xpm_data, terminal_right_xpm_len)){
-    QMessageBox::message( "Error", "Could not load termright.xpm" );
-  }
-  if ( !modem_both_pixmap.loadFromData(terminal_both_xpm_data, terminal_both_xpm_len) ){
-    QMessageBox::message( "Error", "Could not load termboth.xpm" );
-  }
-  */
-
   QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";
   QString tmp;
 
 #define PMERROR(pm) \
-  tmp.sprintf(i18n("Could not load %s !"), pm); \
-  QMessageBox::warning(this, i18n("Error"), tmp);
+  { tmp.sprintf(i18n("Could not load %s !"), pm); \
+  QMessageBox::warning(this, i18n("Error"), tmp); \
+  }
 
-#ifdef COMPILE_PIX
-  if ( !big_modem_both_pixmap.loadFromData(modemboth_data, modemboth_len) ){
+  if ( !big_modem_both_pixmap.load(pixdir + "modemboth.xpm") )
     PMERROR("modemboth.xpm");
-  }
-  if ( !big_modem_left_pixmap.loadFromData(modemleft_data, modemleft_len) ){
+
+  if ( !big_modem_left_pixmap.load(pixdir + "modemleft.xpm") )
     PMERROR("modemleft.xpm");
-  }
-  if ( !big_modem_right_pixmap.loadFromData(modemright_data, modemright_len) ){
-    PMERROR("modemright.xpm")
-  }
-  if ( !big_modem_none_pixmap.loadFromData(modemnone_data, modemnone_len) ){
+
+  if ( !big_modem_right_pixmap.load(pixdir + "modemright.xpm") )
+    PMERROR("modemright.xpm"); 
+
+  if ( !big_modem_none_pixmap.load(pixdir + "modemnone.xpm") )
     PMERROR("modemnone.xpm");
-  }
-#else
-  if ( !big_modem_both_pixmap.load(pixdir + "modemboth.xpm") ){
-    PMERROR("modemboth.xpm");
-  }
-  if ( !big_modem_left_pixmap.load(pixdir + "modemleft.xpm") ){
-    PMERROR("modemleft.xpm");
-  }
-  if ( !big_modem_right_pixmap.load(pixdir + "modemright.xpm") ){
-    PMERROR("modemright.xpm");
-  }
-  if ( !big_modem_none_pixmap.load(pixdir + "modemnone.xpm") ){
-    PMERROR("modemnone.xpm");
-  }
-#endif
+  
 
   pixmap_l = new QLabel(this);
   pixmap_l->setMinimumSize(big_modem_both_pixmap.size());
@@ -172,7 +136,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 
   QGridLayout *l112 = new QGridLayout(5, 4);
   l11->addLayout(l112);
-  for(i =0 ; i < 5; i++){
+  for(i =0 ; i < 5; i++) {
     labela1[i] = new QLabel(this);
 
     labela2[i] = new QLabel(this);
@@ -224,11 +188,13 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   tl->addLayout(l12);
   l12->addStretch(1);
 
+#ifndef NO_GRAPH
   graph = new QFrame(this);
   graph->setFrameStyle(QFrame::Box | QFrame::Sunken);
   l1->addMultiCellWidget(graph, 2, 2, 1, 2);
   graph->setMinimumWidth(300);
   graph->setFixedHeight(76+4);
+#endif
 
   cancelbutton = new QPushButton(this, "cancelbutton");
   cancelbutton->setText(i18n("Close"));
@@ -240,8 +206,11 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
+
+#ifndef NO_GRAPH
   graphTimer = new QTimer(this);
   connect(graphTimer, SIGNAL(timeout()), SLOT(updateGraph()));
+#endif
 
   tl->freeze();
 }
@@ -279,6 +248,7 @@ void PPPStatsDlg::stop_stats() {
 }
 
 void PPPStatsDlg::paintGraph() {
+#ifndef NO_GRAPH
   // why draw that stuff if not visible?
   if(!isVisible())
     return;
@@ -327,9 +297,11 @@ void PPPStatsDlg::paintGraph() {
 
   p.end();
   bitBlt(graph, 2, 2, &pm, 0, 0, pm.width(), pm.height(), CopyROP);
+#endif
 }
 
 void PPPStatsDlg::updateGraph() {
+#ifndef NO_GRAPH
   bin[ringIdx] = ibytes - bin_last;
   bout[ringIdx] = obytes - bout_last;
   if(bin[ringIdx] > max)
@@ -342,6 +314,7 @@ void PPPStatsDlg::updateGraph() {
   bout_last = obytes;
   ringIdx++;
   paintGraph();
+#endif
 }
 
 
@@ -352,9 +325,9 @@ void PPPStatsDlg::paintEvent (QPaintEvent *) {
 }
 
 
-void PPPStatsDlg::paintIcon(){
+void PPPStatsDlg::paintIcon() {
 
-    if((ibytes_last != ibytes) && (obytes_last != obytes)){
+    if((ibytes_last != ibytes) && (obytes_last != obytes)) {
       bitBlt( pixmap_l, 0, 0, &big_modem_both_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
@@ -362,7 +335,7 @@ void PPPStatsDlg::paintIcon(){
       return;
     }
 
-    if (ibytes_last != ibytes){
+    if (ibytes_last != ibytes) {
       bitBlt( pixmap_l, 0, 0, &big_modem_left_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
@@ -370,7 +343,7 @@ void PPPStatsDlg::paintIcon(){
       return;
     }
 
-    if(obytes_last != obytes){
+    if(obytes_last != obytes) {
       bitBlt( pixmap_l, 0, 0, &big_modem_right_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
@@ -382,7 +355,6 @@ void PPPStatsDlg::paintIcon(){
     ibytes_last = ibytes;
     obytes_last = obytes;
     pixstate = PIXNONE;
-
 }
 
 
@@ -405,7 +377,7 @@ void PPPStatsDlg::timeclick() {
     break;
   }
 
-  if( this->isVisible()){
+  if( isVisible()) {
     update_data(do_stats());
     paintIcon();
   }
@@ -418,7 +390,6 @@ void PPPStatsDlg::closeEvent( QCloseEvent *e ) {
 
 
 void PPPStatsDlg::update_data(bool) {
-
   ibytes_string.sprintf("%d",ibytes);
   ipackets_string.sprintf("%d",ipackets);
   compressedin_string.sprintf("%d",compressedin);
@@ -442,28 +413,23 @@ void PPPStatsDlg::update_data(bool) {
   labelb2[3]->setText(packetsunc_string);
   labelb2[4]->setText(packetsoutunc_string);
 
-  if(ips_set == false){
-
+  if(!ips_set) {
     // if I don't resort to this trick it is imposible to
     // copy/paste the ip out of the lineedits due to
     // reset of cursor position on setText()
 
-    if( !local_ip_address.isEmpty() ){
+    if( !local_ip_address.isEmpty() )
       ip_address_label2->setText(local_ip_address);
-    }
-    else{
+    else
       ip_address_label2->setText(i18n("unavailable"));
-    }
 
-    if( !remote_ip_address.isEmpty() ){
+    if( !remote_ip_address.isEmpty() )
       ip_address_label4->setText(remote_ip_address);
-    }
-    else{
+    else
       ip_address_label4->setText(i18n("unavailable"));
-    }
+    
     ips_set = true;
   }
-
 }
 
 #include "pppstatdlg.moc"

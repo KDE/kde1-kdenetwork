@@ -127,6 +127,4 @@ private:
   QTimer *graphTimer;
 };
 
-
 #endif
-
