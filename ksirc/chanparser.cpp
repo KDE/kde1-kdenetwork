@@ -294,28 +294,28 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   while(nick != 0x0){                     // While there's nick to go...
     nickListItem *irc = new nickListItem();
 
-    try{
-      for(;;){
-        switch(*nick){
-        case '@':
-          irc->setOp(TRUE);
-          break;
-        case '+':
-          irc->setVoice(TRUE);
-          break;
-        case '#':
-          irc->setAway(TRUE);
-          break;
-        case '*':
-          irc->setIrcOp(TRUE);
-          break;
-        default:
-          throw(doneModes(0)); // We're done
-        }
-        nick++; // Move ahead to next character
+    bool done = FALSE;
+
+    for(;;){
+      switch(*nick){
+      case '@':
+	irc->setOp(TRUE);
+	break;
+      case '+':
+	irc->setVoice(TRUE);
+	break;
+      case '#':
+	irc->setAway(TRUE);
+	break;
+      case '*':
+	irc->setIrcOp(TRUE);
+	break;
+      default:
+	done = TRUE;
       }
-    }
-    catch(doneModes &d) {
+      if(done == TRUE)
+	break;
+      nick++; // Move ahead to next character
     }
 
     irc->setText(nick);

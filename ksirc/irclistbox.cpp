@@ -13,7 +13,7 @@ extern KApplication *kApp;
 
 static const int fudge = 5;
 
-KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f)
+KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*fold00*/
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
@@ -41,12 +41,12 @@ KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QLis
   selectMode = FALSE;
 }
 
-KSircListBox::~KSircListBox()
+KSircListBox::~KSircListBox() /*fold00*/
 {
   delete vertScroll;
 }
 
-bool KSircListBox::scrollToBottom(bool force)
+bool KSircListBox::scrollToBottom(bool force) /*fold00*/
 {
   if(force == TRUE)
     ScrollToBottom = TRUE;
@@ -70,7 +70,7 @@ bool KSircListBox::scrollToBottom(bool force)
     return FALSE;
 }
 
-void KSircListBox::updateScrollBars()
+void KSircListBox::updateScrollBars() /*fold00*/
 {
   int wheight = height();
   int theight = totalHeight();
@@ -83,7 +83,7 @@ void KSircListBox::updateScrollBars()
   }
 }
 
-void KSircListBox::resizeEvent(QResizeEvent *e)
+void KSircListBox::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   QListBox::resizeEvent(e);
   vertScroll->resize(16, this->height());
@@ -99,13 +99,13 @@ void KSircListBox::resizeEvent(QResizeEvent *e)
   scrollToBottom(TRUE);
 }
 
-void KSircListBox::setTopItem(int index)
+void KSircListBox::setTopItem(int index) /*fold00*/
 {
   QListBox::setTopItem(index);
   updateScrollBars();
 }
 
-void KSircListBox::scrollTo(int index)
+void KSircListBox::scrollTo(int index) /*fold00*/
 {
    setYOffset(index + fudge);
    if((index + 100) > (totalHeight() - height()))
@@ -115,7 +115,7 @@ void KSircListBox::scrollTo(int index)
    //   setYOffset(yoff);
 }
 
-void KSircListBox::pageUp()
+void KSircListBox::pageUp() /*fold00*/
 {
   setYOffset(QMAX(0, yOffset()-height()));
   updateScrollBars();
@@ -123,20 +123,20 @@ void KSircListBox::pageUp()
   
 }
 
-void KSircListBox::pageDown()
+void KSircListBox::pageDown() /*fold00*/
 {
   setYOffset(imin(totalHeight()-height()+fudge, yOffset()+height()));
   updateScrollBars();
 }
 
-void KSircListBox::lineUp()
+void KSircListBox::lineUp() /*fold00*/
 {
   setYOffset(QMAX(0, yOffset()-itemHeight(topItem())));
   updateScrollBars();
   ScrollToBottom = FALSE;
 }
 
-void KSircListBox::lineDown()
+void KSircListBox::lineDown() /*fold00*/
 {
   setYOffset(imin(totalHeight()-height()+fudge, yOffset()+itemHeight(topItem())));
   updateScrollBars();
@@ -148,7 +148,7 @@ void KSircListBox::lineDown()
 //}
 
 
-int KSircListBox::imin(int max, int offset){
+int KSircListBox::imin(int max, int offset){ /*fold00*/
   if(max < offset){
     ScrollToBottom = TRUE;
     return max;
@@ -160,7 +160,7 @@ int KSircListBox::imin(int max, int offset){
       
 }
 
-int KSircListBox::totalHeight () 
+int KSircListBox::totalHeight ()  /*fold00*/
 {
   if(thDirty == FALSE)
     return theightCache;
@@ -170,26 +170,26 @@ int KSircListBox::totalHeight ()
   return theightCache;
 }
 
-void KSircListBox::insertItem ( const QListBoxItem *lbi, int index )
+void KSircListBox::insertItem ( const QListBoxItem *lbi, int index ) /*fold00*/
 {
   QListBox::insertItem(lbi, index);
   theightCache += lbi->height(this);
   //  thDirty = TRUE;
 }
 
-void KSircListBox::insertItem ( const char * text, int index )
+void KSircListBox::insertItem ( const char * text, int index ) /*fold00*/
 {
   QListBox::insertItem(text, index);
   thDirty = TRUE;
 }
 
-void KSircListBox::insertItem ( const QPixmap & pixmap, int index )
+void KSircListBox::insertItem ( const QPixmap & pixmap, int index ) /*fold00*/
 {
   QListBox::insertItem(pixmap, index);
   thDirty = TRUE;
 }
 
-void KSircListBox::removeItem ( int index ) 
+void KSircListBox::removeItem ( int index )  /*fold00*/
 {
   theightCache -= item(index)->height(this);
   thDirty = TRUE;
@@ -198,20 +198,20 @@ void KSircListBox::removeItem ( int index )
 }
 
 
-void KSircListBox::clear()
+void KSircListBox::clear() /*fold00*/
 {
   thDirty = TRUE;
   QListBox::clear();
   
 }
 
-void KSircListBox::updateTableSize()
+void KSircListBox::updateTableSize() /*fold00*/
 {
   thDirty = TRUE;
   QTableView::updateTableSize();
 }
 
-void KSircListBox::mousePressEvent(QMouseEvent *me){
+void KSircListBox::mousePressEvent(QMouseEvent *me){ /*FOLD00*/
   selectMode = FALSE;
   spoint.setX(me->x());
   spoint.setY(me->y());
@@ -219,13 +219,15 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){
   ScrollToBottom = FALSE; // Lock window
 }
 
-void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
+void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
   int erow; // End row
-  
-  ScrollToBottom = TRUE; // Unlock window
+
 //  cerr << "Mouse release event!\n";
   if(selectMode == FALSE)
     return;
+
+  ScrollToBottom = TRUE; // Unlock window
+  
   selectMode = FALSE;
   int row, line, rchar;
   ircListItem *it;
@@ -244,9 +246,6 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   if(erow == srow){
     debug("Selected: %s", it->getRev().data());
     kApp->clipboard()->setText(KSPainter::stripColourCodes(it->getRev()));
-    it->setRevOne(-1);
-    it->setRevTwo(-1);
-    it->updateSize();
     updateItem(row, TRUE);
   }
   else {
@@ -269,10 +268,6 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
       }
       selected.append(KSPainter::stripColourCodes(cit->getRev()));
       selected.append("\n");
-      cit->setRevOne(-1);
-      cit->setRevTwo(-1);
-      cit->updateSize();
-      updateItem(crow, FALSE);
     }
     selected.truncate(selected.length()-1); // Remove the last \n
     kApp->clipboard()->setText(selected);
@@ -280,7 +275,21 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   }
 }
 
-void KSircListBox::mouseMoveEvent(QMouseEvent *me){
+void KSircListBox::clearSelection() {
+  for(int i = min; i <= max; i++){
+    ircListItem *it = (ircListItem *) item(i);
+    if(it == 0x0){
+      warning("Row out of range: %d", i);
+      continue;
+    }
+    it->setRevOne(-1);
+    it->setRevTwo(-1);
+    it->updateSize();
+    updateItem(i, FALSE);
+  }
+}
+
+void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
   int row = -2, line = -2, rchar = -2;
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
@@ -298,8 +307,11 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){
       
       return;
     }
+    max = min = sline; // start setting max and min info for clean up
     sit->setRevOne(schar);
     selectMode = TRUE;
+    connect(kApp->clipboard(), SIGNAL(dataChanged()),
+            this, SLOT(clearSelection()));
   }
 //  if(schar == rchar)
   //    rchar++;
@@ -376,10 +388,15 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){
       updateItem(crow, FALSE);
     }
   }
+  if(row > max)
+    max = row;
+  else if(row < min)
+    min = row;
+  
   lrow = row;
 }
 
-bool KSircListBox::xlateToText(int x, int y,
+bool KSircListBox::xlateToText(int x, int y, /*fold00*/
                                int *rrow, int *rline, int *rchar, ircListItem **rit){
   int row, line;
   int top; // Index of top item in list box.

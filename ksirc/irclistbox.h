@@ -40,6 +40,9 @@ class KSircListBox : public QListBox
   virtual void lineUp();
   virtual void lineDown();
 
+protected slots:
+  virtual void clearSelection();
+
  protected:
   virtual void resizeEvent(QResizeEvent *);
   virtual int totalHeight ();
@@ -84,6 +87,7 @@ class KSircListBox : public QListBox
   bool selectMode;
   QPoint spoint;
   int srow, sline, schar, lrow;
+  int max, min;
   ircListItem *sit;
 
 };
