@@ -72,6 +72,12 @@ msgid ""
 "account - beware, this is <b>NOT</b> the sum \n"
 "of the phone costs of all your accounts!"
 msgstr ""
+"Dette viser sammenlagte telefonkostnader\n"
+"for den valgte konto.\n"
+"\n"
+"<b>Viktig</b>: Hvis du har mer en én konto \n"
+"- merk deg at dette er <b>IKKE</b> summen \n"
+"av telefonkostnadene for alle kontoene dine!"
 
 #: accounts.cpp:130 conwindow.cpp:54
 msgid "Volume:"
@@ -86,6 +92,11 @@ msgid ""
 "\n"
 "<link #volaccounting>More on volume accounting</link>"
 msgstr ""
+"Dette viser antall byter overført\n"
+"for den valgte kontoen (ikek for alle dine kontoer\n"
+"Du kan velge hva som skal vises i konteringsdialogen.\n"
+"\n"
+"<link #volaccounting>Mer om volumkontering</link>"
 
 #: accounts.cpp:153
 msgid "Reset Costs"
@@ -1738,10 +1749,12 @@ msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
+"Bruker du /dev/modem? Hvis ja, du skal bruke den virkelige enheten isteden. "
+"F eks /dev/ttyS1 (COM2)."
 
 #: ppplog.cpp:169
 msgid "Check that you supplied the correct username and password!"
-msgstr ""
+msgstr "Sjekk at du har oppgitt korrekt brukernavn og passord!"
 
 #: ppplog.cpp:172
 msgid ""
@@ -1756,6 +1769,8 @@ msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
+"Det virker som fjernsystemet ikke svarer på\n"
+"konfigurasjonsforespørseler! Kontakt din tilbyder!"
 
 #: ppplog.cpp:191
 #, c-format
