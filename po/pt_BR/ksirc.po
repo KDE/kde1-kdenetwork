@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-16 01:59+0100\n"
+"POT-Creation-Date: 1998-12-18 02:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,43 +248,6 @@ msgstr "Somente OP"
 msgid "Modify"
 msgstr "Modificar"
 
-#: KSPrefs/generalData.cpp:49
-msgid "Auto Create Windows"
-msgstr "Auto-criar janelas"
-
-#: KSPrefs/generalData.cpp:58
-msgid "Beep on Notify"
-msgstr "Apitar ao Notificar"
-
-#: KSPrefs/generalData.cpp:67
-msgid "Nick Completion"
-msgstr "Complementação de Apelido"
-
-#: KSPrefs/generalData.cpp:76
-msgid "Colour Picker Popup"
-msgstr "Menu de contexto da paleta de cores"
-
-#: KSPrefs/generalData.cpp:85
-msgid "Auto Rejoin"
-msgstr "Auto re-entrada"
-
-#: KSPrefs/generalData.cpp:94
-msgid "Enable Background Pixmap"
-msgstr "Permitir figura de fundo"
-
-#: KSPrefs/generalData.cpp:111
-msgid "Browse"
-msgstr "Navegar"
-
-#: KSPrefs/generalData.cpp:119
-msgid "Display Topic in Caption"
-msgstr "Mostrar tópico no cabeçalho"
-
-#: KSPrefs/generalData.cpp:128
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
-"Usar modo MDI (é necessário reiniciar para entrar em vigor; experimental!!)"
-
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "Preferências do kSirc"
@@ -321,3 +284,31 @@ msgstr "Tamanho do passo"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Arquivo %s não existe !"
+
+#~ msgid "Auto Create Windows"
+#~ msgstr "Auto-criar janelas"
+
+#~ msgid "Beep on Notify"
+#~ msgstr "Apitar ao Notificar"
+
+#~ msgid "Nick Completion"
+#~ msgstr "Complementação de Apelido"
+
+#~ msgid "Colour Picker Popup"
+#~ msgstr "Menu de contexto da paleta de cores"
+
+#~ msgid "Auto Rejoin"
+#~ msgstr "Auto re-entrada"
+
+#~ msgid "Enable Background Pixmap"
+#~ msgstr "Permitir figura de fundo"
+
+#~ msgid "Browse"
+#~ msgstr "Navegar"
+
+#~ msgid "Display Topic in Caption"
+#~ msgstr "Mostrar tópico no cabeçalho"
+
+#~ msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+#~ msgstr ""
+#~ "Usar modo MDI (é necessário reiniciar para entrar em vigor; experimental!!)"
