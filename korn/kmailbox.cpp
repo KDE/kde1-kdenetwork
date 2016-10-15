@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 #ifdef HAVE_CONFIG_H
-#include "../config.h"
+#include "config.h"
 #endif
 
 #include"kmailbox.h"
@@ -229,3 +229,6 @@ const char *KMailBox::compareHeader(const char *header, const char *field)
 
 	return header;
 }
+
+
+#include "kmailbox.moc"

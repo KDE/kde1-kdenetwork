@@ -212,3 +212,5 @@ void KornOptData::dataChanged()
 void KornOptData::dataChanged(const char*)
 {
 }
+
+#include "optdata.moc"

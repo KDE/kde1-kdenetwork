@@ -8,7 +8,7 @@
 #include<qapp.h>
 
 #ifdef HAVE_CONFIG_H
-#include "../config.h"
+#include "config.h"
 #endif
 
 //#include"qaudio.h"
@@ -164,3 +164,5 @@ void KornButton::runIfUnread()
 	if( _box->unreadMessages() != 0 )
 		runCommand();
 }
+
+#include "kornbutt.moc"

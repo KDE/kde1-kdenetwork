@@ -308,3 +308,5 @@ void Korn::cloneBoxList(QList<KornBox> *dest, QList<KornBox> *src)
 		} while ( src->next() != 0 );
 	}
 }
+
+#include "korn.moc"

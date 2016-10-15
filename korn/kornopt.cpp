@@ -11,7 +11,7 @@
 #include<kapp.h>
 
 #ifdef HAVE_CONFIG_H
-#include "../config.h"
+#include "config.h"
 #endif
 
 #include "kornopt.h"
@@ -161,3 +161,6 @@ void KornOptions::updateList()
 		box->poll	= atoi( pollTime->text() );
 	}
 }
+
+
+#include "kornopt.moc"
