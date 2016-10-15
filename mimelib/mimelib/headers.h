@@ -25,7 +25,7 @@
 #ifndef DW_HEADERS_H
 #define DW_HEADERS_H
 
-#include <iostream.h>
+#include <iostream>
 
 #ifndef DW_CONFIG_H
 #include <mimelib/config.h>

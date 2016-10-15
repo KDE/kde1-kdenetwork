@@ -31,6 +31,7 @@
 #include <mimelib/string.h>
 #include <mimelib/token.h>
 
+using namespace std;
 
 ostream* DwTokenizer::mDebugOut = 0;
 

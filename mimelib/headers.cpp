@@ -30,7 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <iostream.h>
+#include <iostream>
 #include <mimelib/string.h>
 #include <mimelib/headers.h>
 #include <mimelib/field.h>

@@ -29,8 +29,10 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <new.h>
+#include <new>
 #include <mimelib/string.h>
+
+using namespace std;
 
 #define DW_MIN(a,b) ((a) <= (b) ? (a) : (b))
 #define DW_MAX(a,b) ((a) >= (b) ? (a) : (b))

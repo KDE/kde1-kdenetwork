@@ -28,7 +28,7 @@
 #include <mimelib/debug.h>
 #include <assert.h>
 #include <ctype.h>
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 #include <mimelib/string.h>

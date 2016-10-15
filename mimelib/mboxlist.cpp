@@ -29,7 +29,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <iostream.h>
+#include <iostream>
 #include <mimelib/string.h>
 #include <mimelib/mailbox.h>
 #include <mimelib/mboxlist.h>

@@ -30,7 +30,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include <mimelib/string.h>
 #include <mimelib/headers.h>
 #include <mimelib/bodypart.h>

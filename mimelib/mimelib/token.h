@@ -33,6 +33,8 @@
 #include <mimelib/string.h>
 #endif
 
+#include <iostream>
+
 // RFC 822 and RFC 1521 define slightly different grammars for the field
 // bodies they define.  The differences are that RFC 822 defines a basic
 // type 'atom' while RFC 1521 defines a basic type 'token', and RFC 822
@@ -53,8 +55,6 @@
 // classes are fairly simple and efficient.
 // In addition, polymorphism is not needed to use the tokenizer classes.
 
-class ostream;
-
 enum {
     eTkError=-1,
     eTkNull=0,
@@ -74,12 +74,12 @@ public:
     const DwString& Token() const { return mToken; }
     int Type() const              { return mTkType; }
     void StripDelimiters();
-    static ostream* mDebugOut;
+    static std::ostream* mDebugOut;
 protected:
     DwTokenizer(const DwString& aStr);
     DwTokenizer(const char* aCStr);
     virtual ~DwTokenizer();
-    void PrintToken(ostream*);
+    void PrintToken(std::ostream*);
     // Quoted strings, comments, and domain literals are parsed
     // identically in RFC822 and RFC1521
     void ParseQuotedString();

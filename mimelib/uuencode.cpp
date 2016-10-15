@@ -34,7 +34,7 @@
 #if defined(DW_TESTING_UUENCODE)
 #include <stdlib.h>
 #include <time.h>
-#include <iostream.h>
+#include <iostream>
 #include <fstream.h>
 #endif
 
