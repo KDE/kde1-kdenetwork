@@ -460,8 +460,7 @@ void
 TopLevel::slotAbout()
 {
   QString about;
-  about.sprintf(i18n("Knu\nVersion %s\n\nBertrand
-  Leconte\n<B.Leconte@mail.dotcom.fr>\n"), KNU_VERSION);
+  about.sprintf(i18n("Knu\nVersion %s\n\nBertrand Leconte\n<B.Leconte@mail.dotcom.fr>\n"), KNU_VERSION);
 
   QMessageBox::about( this, i18n("About..."),
 		      about);
