@@ -91,3 +91,5 @@ KBiffStatusItem::KBiffStatusItem(const QString& mailbox, const int num_new)
 	  _newMessages(QString().setNum(num_new))
 {
 }
+
+#include "status.moc"

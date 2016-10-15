@@ -764,3 +764,4 @@ TRACEINIT("KBiff::executeCommand()");
 	process.start(KProcess::DontCare);
 }
 
+#include "kbiff.moc"

@@ -1662,3 +1662,6 @@ static const char *compare_header(const char *header, const char *field)
 
 	return header;
 }
+
+
+#include "kbiffmonitor.moc"

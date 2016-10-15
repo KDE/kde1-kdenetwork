@@ -23,7 +23,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 #add_subdirectory(karchie)
-#add_subdirectory(kbiff)
+add_subdirectory(kbiff)
 #add_subdirectory(kfinger)
 add_subdirectory(kmail)
 #add_subdirectory(knu)

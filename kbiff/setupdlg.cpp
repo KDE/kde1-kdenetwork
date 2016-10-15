@@ -1769,3 +1769,5 @@ KBiffNewDlg::KBiffNewDlg(QWidget* parent, const char* name)
 	// set my name
 	setCaption(i18n("New Name"));
 }
+
+#include "setupdlg.moc"

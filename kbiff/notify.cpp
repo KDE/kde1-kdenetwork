@@ -167,3 +167,5 @@ TRACEINIT("KBiffNotify::launchMailClient()");
 
 	process.start(KProcess::DontCare);
 }
+
+#include "notify.moc"

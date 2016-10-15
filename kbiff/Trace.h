@@ -40,7 +40,7 @@
 #define TRACE_H
 
 #include <qstring.h>
-#include <iostream.h>
+#include <iostream>
 #include <stdio.h>
 #include <stdarg.h>
 

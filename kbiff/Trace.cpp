@@ -1,5 +1,7 @@
 #include"Trace.h"
 
+using namespace std;
+
 int Trace::traceIndent = 0;
 int Trace::tabStop = 2;
 bool Trace::traceOn = false;
