@@ -1,0 +1,5 @@
+install_icon(kcontrol.xpm "${KDE1_TOOLBARDIR}")
+install_icon(ktalk.xpm "${KDE1_TOOLBARDIR}")
+install_icon(mini-clock.xpm "${KDE1_TOOLBARDIR}")
+install_icon(mini-connect.xpm "${KDE1_TOOLBARDIR}")
+install_icon(mini-ktalk.xpm "${KDE1_TOOLBARDIR}")
