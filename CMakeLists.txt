@@ -8,6 +8,10 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 find_package(KDE1 REQUIRED)
 #find_package(uulib REQUIRED)
 
+add_definitions(-DHAVE_CONFIG_H)
+
+include_directories(common)
+
 include(CMakePackageConfigHelpers)
 include(KDE1Macros)
 include(KDE1InstallDirs)
