@@ -1,0 +1,47 @@
+add_subdirectory(el)
+add_subdirectory(pt)
+add_subdirectory(fi)
+add_subdirectory(ca)
+add_subdirectory(da)
+add_subdirectory(is)
+add_subdirectory(ru)
+add_subdirectory(et)
+add_subdirectory(pt_BR)
+add_subdirectory(no)
+add_subdirectory(it)
+add_subdirectory(cs)
+add_subdirectory(hu)
+add_subdirectory(sk)
+add_subdirectory(pl)
+add_subdirectory(fr)
+add_subdirectory(es)
+add_subdirectory(he)
+add_subdirectory(ja)
+add_subdirectory(ro)
+add_subdirectory(eo)
+add_subdirectory(br)
+add_subdirectory(tr)
+add_subdirectory(de)
+add_subdirectory(hr)
+add_subdirectory(hs)
+add_subdirectory(zh_CN.GB2312)
+add_subdirectory(nl)
+add_subdirectory(sl)
+add_subdirectory(mk)
+add_subdirectory(sv)
+add_subdirectory(ko)
+
+install(FILES
+    karchie.pot
+    kbiff.pot
+    kcmktalkd.pot
+    kfinger.pot
+    kmail.pot
+    knu.pot
+    korn.pot
+    kppplogview.pot
+    kppp.pot
+    krn.pot
+    ksirc.pot
+    ktalkd.pot
+DESTINATION ${KDE1_LOCALE})
