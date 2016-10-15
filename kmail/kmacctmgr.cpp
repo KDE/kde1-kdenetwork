@@ -15,7 +15,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <iostream.h>
+#include <iostream>
+
+using namespace std;
 
 extern KBusyPtr *kbp;
 //-----------------------------------------------------------------------------

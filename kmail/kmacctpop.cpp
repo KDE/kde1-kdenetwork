@@ -23,6 +23,7 @@
 #include "kmacctfolder.h"
 #include "kmfiltermgr.h"
 
+using namespace std;
 
 //-----------------------------------------------------------------------------
 KMAcctPop::KMAcctPop(KMAcctMgr* aOwner, const char* aAccountName):

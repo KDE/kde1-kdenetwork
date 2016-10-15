@@ -11,6 +11,8 @@
 #include <string.h>
 #include <kapp.h>
 
+using namespace std;
+
 static const char* opConfigNames[] = 
   { "ignore", "and", "unless", "or", NULL };
 

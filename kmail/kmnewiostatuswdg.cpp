@@ -2,11 +2,13 @@
 // (c) Markus Wuebben markus@kde.org
 // This code is published under the GPL
 
-#include <iostream.h>
+#include <iostream>
 #include <kapp.h>
 #include <kwm.h>
 #include "kmnewiostatuswdg.h"
 #include "kmnewiostatuswdg.moc"
+
+using namespace std;
 
 KMIOStatusWdg::KMIOStatusWdg(QWidget *parent, const char *name, 
 			     task type , QString host)
