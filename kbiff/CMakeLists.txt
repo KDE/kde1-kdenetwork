@@ -28,6 +28,6 @@ target_link_libraries(kbiff
 )
 
 install(TARGETS kbiff RUNTIME DESTINATION ${KDE1_BINDIR})
-install(FILES kbiff.kdelnk DESTINATION ${KDE1_DATADIR}/kbiff)
+install(FILES kbiff.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
 
 install_icon(kbiff.xpm)

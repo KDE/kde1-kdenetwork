@@ -24,5 +24,5 @@ target_link_libraries(knu
 )
 
 install(TARGETS knu RUNTIME DESTINATION ${KDE1_BINDIR})
-install(FILES knu.kdelnk DESTINATION "${KDE1_DATADIR}/knu")
+install(FILES knu.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
 install_icon(knu.xpm)

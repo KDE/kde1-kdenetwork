@@ -20,7 +20,7 @@ target_link_libraries(korn
 )
 
 install(TARGETS korn RUNTIME DESTINATION ${KDE1_BINDIR})
-install(FILES KOrn.kdelnk DESTINATION ${KDE1_DATADIR}/korn)
+install(FILES KOrn.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
 install_icon(korn.xpm)
 
 

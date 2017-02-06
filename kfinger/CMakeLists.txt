@@ -20,4 +20,5 @@ target_link_libraries(kfinger
 )
 
 install(TARGETS kfinger RUNTIME DESTINATION ${KDE1_BINDIR})
-install(FILES kfinger.kdelnk kfingerrc DESTINATION ${KDE1_DATADIR}/kfinger)
+install(FILES kfinger.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
+install(FILES kfingerrc DESTINATION ${KDE1_CONFDIR})
