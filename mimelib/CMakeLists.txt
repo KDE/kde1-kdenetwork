@@ -1,6 +1,3 @@
-include_directories(
-    ${QT_INCLUDE_DIR}
-)
 
 set(MIMELIB_SRCS
     address.cpp addrlist.cpp attach.cpp basicmsg.cpp
@@ -15,6 +12,7 @@ set(MIMELIB_SRCS
     )
 
 add_library(mimelib SHARED ${MIMELIB_SRCS})
+target_link_libraries(mimelib Qt::Qt1)
 set_target_properties(mimelib PROPERTIES VERSION 1.0 SOVERSION 1)
 install(TARGETS mimelib LIBRARY DESTINATION ${KDE1_LIBDIR})
 

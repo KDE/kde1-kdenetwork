@@ -13,6 +13,7 @@ add_definitions(-DHAVE_CONFIG_H)
 include_directories(common)
 
 include(CMakePackageConfigHelpers)
+include(Qt1Macros)
 include(KDE1Macros)
 include(KDE1InstallDirs)
 

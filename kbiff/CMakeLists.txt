@@ -1,7 +1,6 @@
 add_subdirectory(pics)
 
 include_directories(
-    ${QT_INCLUDE_DIR}
     ${KDE1_INCLUDE_DIR}
 )
 
@@ -18,7 +17,7 @@ QT1_WRAP_MOC(MOC_FILES ${KBIFF_MOC})
 
 add_executable(kbiff ${KBIFF_SRCS} ${MOC_FILES})
 target_link_libraries(kbiff
-    ${QT_LIBRARIES}
+    Qt::Qt1
     ${X11_LIBRARIES}
     ${KDE1_KDECORE}
     ${KDE1_KDEUI}
