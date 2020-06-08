@@ -51,7 +51,7 @@
 
 #include <fstream.h>
 
-#define KFM_WINDOW "kfmclient"
+#define KFM_WINDOW "kfmclient1"
 #define KFM_OPEN_URL "openURL"
 
 TmpOpenFile::~TmpOpenFile()
@@ -333,7 +333,7 @@ KArchie::slotOpenFileSelected()
   //  KProcess *process = new KProcess;
 
   //  debug ("file open");
-  KURL url("file:/usr/local/kde/bin/kfmclient");
+  KURL url("file:/usr/local/kde/bin/kfmclient1");
   openFile(url);
 }
 

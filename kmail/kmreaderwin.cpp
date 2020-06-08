@@ -1080,7 +1080,7 @@ void KMReaderWin::slotAtmOpen()
   //umask(old_umask);
   //kbp->idle();
   //--- Sven's save attachments to /tmp end ---
-  cmd = "kfmclient openURL \'";
+  cmd = "kfmclient1 openURL \'";
   cmd += fileName;
   cmd += "\'";
   system(cmd);

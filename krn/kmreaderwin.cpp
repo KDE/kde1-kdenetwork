@@ -835,7 +835,7 @@ void KMReaderWin::slotAtmOpen()
 	    (const char*)fileName);
   umask(old_umask);
   kbp->idle();
-  cmd = "kfmclient openURL \'";
+  cmd = "kfmclient1 openURL \'";
   cmd += fileName;
   cmd += "\'";
   system(cmd);

@@ -854,7 +854,7 @@ void KMMainWin::slotUrlClicked(const char* aUrl, int)
 	   !strnicmp(aUrl, "file:", 5))
   {
     statusMsg(i18n("Opening URL..."));
-    system("kfmclient openURL \""+QString(aUrl)+"\"");
+    system("kfmclient1 openURL \""+QString(aUrl)+"\"");
   }
 }
 
