@@ -4,5 +4,5 @@ install_icon(fileforward.xpm "${KDE1_TOOLBARDIR}")
 install_icon(filereplyall.xpm "${KDE1_TOOLBARDIR}")
 install_icon(filereply.xpm "${KDE1_TOOLBARDIR}")
 install_icon(checkmail.xpm "${KDE1_TOOLBARDIR}")
-install_icon(send.xpm "${KDE1_TOOLBARDIR}")
+#install_icon(send.xpm "${KDE1_TOOLBARDIR}") # installed by kdelibs
 install_icon(thumb_up.xpm "${KDE1_TOOLBARDIR}")
