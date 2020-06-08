@@ -2,6 +2,7 @@ add_subdirectory(pics)
 
 include_directories(
     ${KDE1_INCLUDE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../mimelib/
 )
 
 set(KMAIL_SRCS
