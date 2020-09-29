@@ -49,3 +49,17 @@ target_link_libraries(kmail
 install(TARGETS kmail RUNTIME DESTINATION ${KDE1_BINDIR})
 
 install(FILES KMail.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
+
+install(FILES
+    doc/logotp3.gif
+    doc/index.html
+    doc/index-1.html
+    doc/index-2.html
+    doc/index-3.html
+    doc/index-4.html
+    doc/index-5.html
+    doc/index-6.html
+    doc/index-7.html
+    doc/index-8.html
+    doc/index.html
+DESTINATION ${KDE1_HTMLDIR}/en/kmail)
