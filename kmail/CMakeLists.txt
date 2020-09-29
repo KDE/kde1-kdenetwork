@@ -48,6 +48,7 @@ target_link_libraries(kmail
 
 install(TARGETS kmail RUNTIME DESTINATION ${KDE1_BINDIR})
 
+install_icon(kmail.xpm)
 install(FILES KMail.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
 
 install(FILES
