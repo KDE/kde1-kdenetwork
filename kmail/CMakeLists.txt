@@ -31,8 +31,8 @@ set(KMAIL_MOC
 
 QT1_WRAP_MOC(MOC_FILES ${KMAIL_MOC})
 
-add_executable(kmail ${KMAIL_SRCS} ${MOC_FILES})
-target_link_libraries(kmail
+add_executable(kmail1 ${KMAIL_SRCS} ${MOC_FILES})
+target_link_libraries(kmail1
     Qt::Qt1
     ${X11_LIBRARIES}
     ${KDE1_KDECORE}
@@ -46,7 +46,7 @@ target_link_libraries(kmail
     mimelib
 )
 
-install(TARGETS kmail RUNTIME DESTINATION ${KDE1_BINDIR})
+install(TARGETS kmail1 RUNTIME DESTINATION ${KDE1_BINDIR})
 
 install_icon(kmail.xpm)
 install(FILES KMail.kdelnk DESTINATION ${KDE1_APPSDIR}/Internet)
